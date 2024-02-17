@@ -81,6 +81,10 @@ def open_new_window():
 root = tk.Tk()
 root.title("Python Text Editor")
 
+#Logo
+logo = tk.PhotoImage(file="main\\assets\\logo\\text-edit-icon-9.png")
+root.iconphoto(False, logo)
+
 # Create a text area
 text_area = tk.Text(root, wrap=tk.WORD)
 text_area.pack(expand=True, fill=tk.BOTH)
