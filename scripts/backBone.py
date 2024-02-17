@@ -5,7 +5,7 @@ from tkinter import filedialog, messagebox, ttk, colorchooser
 # Function to handle opening a file
 def open_file():
     file_path = filedialog.askopenfilename(defaultextension=".txt",
-                                        filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+            filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
     if not file_path:
         return
     with open(file_path, "r") as file:
@@ -16,7 +16,7 @@ def open_file():
 # Function to handle saving a file
 def save_file():
     file_path = filedialog.asksaveasfilename(defaultextension=".txt",
-                                            filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+                filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
     if not file_path:
         return
     with open(file_path, "w") as file:
@@ -53,6 +53,10 @@ def search_text():
             start = end
         text_area.tag_config("highlight", background="yellow", foreground="black")
 
+# Function to add a new tab
+def add_new_tab():
+    tab = ttk.Frame(tabs)
+    tabs.add(tab, text='Tab'+ str(tabs.index(tk.END) + 1))
 # Create the main window
 root = tk.Tk()
 root.title("Python Text Editor")
@@ -88,6 +92,8 @@ menu_bar.add_cascade(label="Edit", menu=edit_menu)
 edit_menu.add_command(label="Cut", command=lambda: text_area.event_generate("<<Cut>>"))
 edit_menu.add_command(label="Copy", command=lambda: text_area.event_generate("<<Copy>>"))
 edit_menu.add_command(label="Paste", command=lambda: text_area.event_generate("<<Paste>>"))
+edit_menu.add_command(label="Delete", command=lambda: text_area.event_generate("<<Delete>>"))
+edit_menu.add_command(label="Add Tag",command=add_new_tab)
 
 # Create a search menu
 search_menu = tk.Menu(menu_bar, tearoff=0)
@@ -112,6 +118,24 @@ settings_menu.add_command(label="Change Font", command=change_font)
 help_menu = tk.Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Help", menu=help_menu)
 help_menu.add_command(label="About", command=lambda: messagebox.showinfo("About", "Python Text Editor"))
+
+#Button for Dark and Light Mode
+theme_button = tk.Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label="Theme", menu=theme_button,compound="right")
+
+# Create the Notebook widget and add it to the window
+tabs = ttk.Notebook(root)
+tabs.pack(expand=1, fill='both')
+
+# Add two initial tabs
+tab1 = ttk.Frame(tabs)
+tabs.add(tab1, text='Tab  1')
+
+tab2 = ttk.Frame(tabs)
+tabs.add(tab2, text='Tab  2')
+#Add more tabs 
+add_tab_button = tk.Button(root, text="+", command=add_new_tab)
+add_tab_button.pack()  # Place the button next to the tabs
 
 # Start the Tkinter event loop
 root.mainloop()
