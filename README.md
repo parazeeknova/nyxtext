@@ -1,3 +1,5 @@
+⚠️ The Project is in very Early Development. Need to add/ rebase a lot of stuff.
+
 <h3 align="center">
 	<img src="main/assets/logo/logo.png" width="300" alt="Logo"/><br/>
     <img src="main/assets/misc/transparent.png" height="30" width="0px"/>
@@ -72,8 +74,9 @@ Join our community!
 
 &nbsp;
 
-### Note : 
- - This project is intended for educational purposes and may contain bugs or limitations.
+### Note :  
+As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features.
+
 ### 🧠 Design Philosophy
 
 - **Simplicity**: Keep the user interface clean and intuitive. Avoid cluttering the interface with unnecessary features or options. Focus on providing essential functionality in an easy-to-use manner.
@@ -92,7 +95,18 @@ Join our community!
 </p>
 
 &nbsp;
+### Bugs :
+- [ ] Tabs are not working properly
+- [ ] Color scheme not working 
+- [ ] Theme change does not work
 
+### 💡Future Plans : 
+- [ ] Add Frappe, Mocha, Latte, Macchiato themes
+- [ ] Rebase to custom Tkinter
+- [ ] Add filetree structure in the left sidebar
+
+
+&nbsp;
 ### 👐 Contributing
 
 > [!NOTE]<br>
