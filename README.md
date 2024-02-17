@@ -8,7 +8,7 @@
 <h6 align="center">
   <a href="https://github.com/parazeeknova/nyxtext#-info">Info</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#-why?">About</a>
+  <a href="https://github.com//parazeeknova/nyxtext#Design Philosophy">About</a>
   ·
   <a href="https://github.com//parazeeknova/nyxtext#-showcase">Showcase</a>
   ·
@@ -69,3 +69,33 @@ NyxNote is a basic text editor built using Python and Tkinter, featuring the ele
 <p align="center">
 Join our community!
 </p>
+
+&nbsp;
+
+### 🧠 Design Philosophy
+
+- **Simplicity**: Keep the user interface clean and intuitive. Avoid cluttering the interface with unnecessary features or options. Focus on providing essential functionality in an easy-to-use manner.
+- **Customizability**: Provide users with options to customize the editor to suit their preferences.
+- **Modularity**: Design the codebase to be modular and extensible.
+- **Maintainability**: Keep the codebase maintainable and readable.
+- **Community Engagement**: Foster a vibrant and inclusive community around the editor. Encourage users to provide feedback, report bugs, and contribute code.
+
+&nbsp;
+
+### 🎨 Palette
+
+**Catppuccin** consists of 4 beautiful pastel color palettes.
+<p align="center">
+<img src="main/assets/misc/demo.png" alt="catppuccin infrastructure"/>
+</p>
+
+&nbsp;
+
+### 👐 Contributing
+
+> [!NOTE]<br>
+> Thank you for considering contributing to NyxNote! We welcome contributions from everyone, whether you're fixing a bug, adding a feature, or improving documentation.
+
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md)
+
+&nbsp;
