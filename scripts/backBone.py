@@ -133,9 +133,9 @@ tabs.add(tab1, text='Tab  1')
 
 tab2 = ttk.Frame(tabs)
 tabs.add(tab2, text='Tab  2')
-#Add more tabs 
+#Add more tabs  
 add_tab_button = tk.Button(root, text="+", command=add_new_tab)
 add_tab_button.pack()  # Place the button next to the tabs
 
 # Start the Tkinter event loop
-root.mainloop()
+root.mainloop() 
