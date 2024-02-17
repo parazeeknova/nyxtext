@@ -99,6 +99,8 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 - [ ] Tabs are not working properly
 - [ ] Color scheme not working 
 - [ ] Theme change does not work
+- [ ] Change font dosen't work
+- [ ] Change color dosent't work
 
 ### 💡Future Plans : 
 - [ ] Add Frappe, Mocha, Latte, Macchiato themes
