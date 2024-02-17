@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
-import menu as sav
+
 #import scripts.menu as menu
 
 # Function to handle opening a file
