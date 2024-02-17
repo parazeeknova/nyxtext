@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
+import menu as sav
 #import scripts.menu as menu
 
 # Function to handle opening a file
@@ -24,7 +25,8 @@ def save_file():
 
 # Function to handle creating a new file
 def new_file():
-    text_area.delete(1.0, tk.END)
+    tk.Toplevel() ###TO create new file We will try in future taking lots of brain memory
+    
 
 # Function to handle changing the text color
 def change_color():
@@ -56,7 +58,25 @@ def search_text():
 # Function to add a new tab
 def add_new_tab():
     tab = ttk.Frame(tabs)
-    tabs.add(tab, text='Tab'+ str(tabs.index(tk.END) + 1))
+    tabs.add(tab, text='Tab '+ str(tabs.index(tk.END) + 1))
+    
+    
+# Function to clear all tabs except for Tab  1
+def clear_all_tabs_except_first():
+    # Get the total number of tabs
+    total_tabs = tabs.index('end') +  1
+    
+    # Loop through all tabs except for the first one
+    for i in range(3, total_tabs):
+        # Get the widget associated with the tab
+        tab_widget = tabs.tab(i, 'widget')
+        # Remove the tab from the notebook
+        tabs.forget(tab_widget)
+def open_new_window():
+    new_window = tk.Toplevel(root)
+    new_window.title("New Window")
+    new_window.geometry("200x200")
+    tk.Label(new_window, text="This is a new window").pack()
 # Create the main window
 root = tk.Tk()
 root.title("Python Text Editor")
@@ -92,8 +112,8 @@ menu_bar.add_cascade(label="Edit", menu=edit_menu)
 edit_menu.add_command(label="Cut", command=lambda: text_area.event_generate("<<Cut>>"))
 edit_menu.add_command(label="Copy", command=lambda: text_area.event_generate("<<Copy>>"))
 edit_menu.add_command(label="Paste", command=lambda: text_area.event_generate("<<Paste>>"))
-edit_menu.add_command(label="Delete", command=lambda: text_area.event_generate("<<Delete>>"))
-edit_menu.add_command(label="Add Tag",command=add_new_tab)
+edit_menu.add_command(label="Clear Page", command=lambda: text_area.delete(1.0, tk.END))
+edit_menu.add_command(label="Add Tab",command=add_new_tab)
 
 # Create a search menu
 search_menu = tk.Menu(menu_bar, tearoff=0)
@@ -104,11 +124,11 @@ search_menu.add_command(label="Find", command=search_text)
 view_menu = tk.Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="View", menu=view_menu)
 view_menu.add_command(label="Change Color", command=change_color)
-
+view_menu.add_command(label="Clear all Tabs", command=clear_all_tabs_except_first)
 # Create a settings menu
 settings_menu = tk.Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Settings", menu=settings_menu)
-font_name_var = tk.StringVar(root)
+font_name_var = tk.StringVar(root) 
 font_name_var.set("Arial")
 font_size_var = tk.StringVar(root)
 font_size_var.set("12")
@@ -133,9 +153,10 @@ tabs.add(tab1, text='Tab  1')
 
 tab2 = ttk.Frame(tabs)
 tabs.add(tab2, text='Tab  2')
+
 #Add more tabs 
 add_tab_button = tk.Button(root, text="+", command=add_new_tab)
-add_tab_button.pack()  # Place the button next to the tabs
+add_tab_button.pack(side="left")  # Place the button next to the tabs
 
 # Start the Tkinter event loop
 root.mainloop()
