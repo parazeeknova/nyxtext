@@ -31,7 +31,7 @@
 </p>
 &nbsp;
 <p align="center">
-NyxNote is a basic text editor built using Python and Tkinter, featuring the elegant Catppuccino color scheme and the minimalist Paperus icon theme. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability.
+NyxNote is a basic text editor built using Python and Tkinter, featuring the elegant Catppuccin color scheme and the minimalist Paperus icon theme. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability.
 </p> 
 
 <p align="center">
