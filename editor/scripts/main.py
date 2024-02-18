@@ -1,7 +1,7 @@
 # main.py
 import tkinter as tk
 from menu_bar import Menubar
-from text_area import text_Area
+from text_Area import text_Area
 
 # This defines the main function, which is the entry point of the application
 def main():
