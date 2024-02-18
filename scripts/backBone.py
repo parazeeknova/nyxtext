@@ -1,3 +1,12 @@
+# This is an ancient code snippet from the original NyxText project.
+# It is not used in this project.
+# Version v0.0.1-alpha-firstrelease uses this ancient buggy, stupiud code snippet.
+# This file is discontinued and will be removed in the future or not maybe.
+
+# RELIC CODE
+
+
+
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
 
