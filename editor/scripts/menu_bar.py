@@ -1,5 +1,6 @@
 import tkinter as tk
-
+from tkinter import filedialog, messagebox, ttk, colorchooser
+import text_Area as ta
 class Menubar:
     def __init__(self, root):
         self.root = root
@@ -27,10 +28,21 @@ class Menubar:
 
     def open_file(self):
         # Logic for opening a file
-        pass
+        file_path = filedialog.askopenfilename(defaultextension=".txt",
+                                            filetypes=[("Text Files","*.txt"),("All Files","*.*")])
+        if not file_path: 
+            return
+        with open(file_path, "r") as file:
+            ta.text_Area.delete(1.0, tk.END)
+            ta.text_Area.insert(1.0,file.read())
     def save_file(self):
         # Logic to save the file
-        pass
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt",
+                                                filetypes=[("Text Files","*.txt"),("All Files","*.*")])
+        if not file_path:
+            return
+        with open(file_path,"w") as file:
+            file.write(ta.text_Area.get(1.0, tk.END))
     def save_as_file(self):
         pass
     def exit_editor(self):
