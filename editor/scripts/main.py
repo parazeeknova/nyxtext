@@ -2,6 +2,7 @@
 import tkinter as tk
 from menu_bar import Menubar
 
+
 def main():
     root = tk.Tk()
     root.title("NyxText")

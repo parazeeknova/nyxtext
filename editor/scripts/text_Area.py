@@ -1,7 +1,6 @@
 import tkinter as tk
-root = tk.Tk()
+class text_Area():
+    def __init__(self,root):
+        self.text_area = tk.Text(root, wrap=tk.WORD)
+        self.text_area.pack(expand=True, fill=tk.BOTH)
 
-text_area = tk.Text(root, wrap=tk.WORD)
-text_area.pack(expand=True, fill=tk.BOTH)
-
-root.mainloop()
