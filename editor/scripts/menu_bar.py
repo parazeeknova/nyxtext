@@ -1,10 +1,11 @@
+#menu_bar
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
-
-
+from text_Area import textarea
 class Menubar:
-    def __init__(self, root):
+    def __init__(self, root,text_Area):
         self.root = root
+        self.text_Area = text_Area
         self.menubar = tk.Menu(self.root)
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.filemenu.add_command(label="New", command=self.new_file)
@@ -24,12 +25,15 @@ class Menubar:
 
     # Define the methods for your menu commands here
     def new_file(self):
-        # Logic for creating a new file
         pass
 
     def open_file(self):
-        # Logic for opening a file
-            pass
+        file_path = filedialog.askopenfilename(defaultextension=".txt",
+                                                filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+        if file_path:
+            with open(file_path, "r") as file:
+                self.text_Area.text_area.delete(1.0, tk.END)  # Clear the text area
+                self.text_Area.text_area.insert(tk.INSERT, file.read())  # Insert the file content
     def save_file(self):
         pass
     def save_as_file(self):
@@ -45,7 +49,5 @@ class Menubar:
     def copy(self):
         pass
 
-    # ... and so on for the other commands ...
 
-    # Don't forget to add your edit menu to the menubar
         self.menubar.add_cascade(label="Edit", menu=self.editmenu)

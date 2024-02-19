@@ -2,7 +2,7 @@
 import tkinter as tk
 import os
 from menu_bar import Menubar
-from text_Area import text_Area
+from text_Area import textarea
 
 # This defines the main function, which is the entry point of the application
 def main():
@@ -14,12 +14,13 @@ def main():
     ico_path = os.path.abspath("editor\\scripts\\icon.ico")
     root.iconbitmap(ico_path) 
     
-    # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
-    menu_bar = Menubar(root) 
-    root.config(menu=menu_bar.menubar) 
-    
     # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
-    textarea = text_Area(root) 
+    global Textarea
+    Textarea = textarea(root)
+
+    # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
+    menu_bar = Menubar(root,Textarea) 
+    root.config(menu=menu_bar.menubar) 
     
     root.mainloop()
     
