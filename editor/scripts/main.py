@@ -16,16 +16,21 @@ def main():
     ico_path = os.path.abspath("editor\\scripts\\icon.ico")
     root.iconbitmap(ico_path) 
     
+    left_frame = tk.Frame(root)
+    left_frame.pack(side=tk.LEFT, fill=tk.Y)
+    
+    right_frame = tk.Frame(root)
+    right_frame.pack(side=tk.RIGHT, fill=tk.Y)
     # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
-    Textarea = textarea(root)
+    Textarea = textarea(right_frame)
 
     # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,Textarea) 
     root.config(menu=menu_bar.menubar) 
     # Temprory button to switch themes for testing
-    theme_button = tk.Button(root, text="Toggle Theme", command=lambda: toggle_theme(root))
-    theme_button.pack(pady=10)
+    theme_button = tk.Button(left_frame, text="Toggle Theme", command=lambda: toggle_theme(right_frame,left_frame))
+    theme_button.pack(side="bottom",padx=10,pady=5)
 
     
     root.mainloop()
