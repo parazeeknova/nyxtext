@@ -95,32 +95,21 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 </p>
 
 &nbsp;
-### Bugs :
-- [ ] Tab features are not working properly
-- [ ] Color scheme not working 
-- [ ] Theme change does not work
-- [ ] Change font dosen't work
-- [ ] Change color dosent't work
-- [ ] Clear all not working
-- [ ] Fix logo
-- [ ] Font Size fix
-- [ ] Search not working
-- [ ] Add Tabs not working
-
 ### 💡Future Plans : 
-- [ ] Add Frappe, Mocha, Latte, Macchiato themes
-- [ ] Rebase to custom Tkinter
-- [ ] Add filetree structure in the left sidebar
-- [ ] Add link for help 
-- [ ] Word count and Words per minute
-- [ ] Shortcut Keys for common functions
-- [ ] Add a settings page
-- [ ] Increase menu bar size
-- [ ] Add a new theme
-- [ ] Add a new color scheme
-- [ ] Add a new icon theme
-- [ ] Add a new font
+- [ ] Complete rebase to custom_tkinter
+- [ ] Syntax Highlighting
+- [ ] Filetree viewer
+- [ ] Terminal Integration
+- [ ] Code Folding 
+- [ ] Spell Check
+- [ ] Indent
+- [ ] Search and Replace
+- [ ] Snippets
 &nbsp;
+### 🐜 Bugs : 
+None at the moment as the project is still in early development.
+
+
 ### 👐 Contributing
 
 > [!NOTE]<br>
