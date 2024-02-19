@@ -1,17 +1,25 @@
 # main.py
 import tkinter as tk
+import os
 from menu_bar import Menubar
 from text_Area import text_Area
 
 # This defines the main function, which is the entry point of the application
 def main():
     root = tk.Tk()
+    root.geometry("800x600")
     root.title("NyxText")
     
-    menu_bar = Menubar(root) # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
+    # This is the icon for the application. It is expected to be in the same directory as the script
+    ico_path = os.path.abspath("editor\\scripts\\icon.ico")
+    root.iconbitmap(ico_path) 
+    
+    # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
+    menu_bar = Menubar(root) 
     root.config(menu=menu_bar.menubar) 
     
-    textarea = text_Area(root) # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
+    # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
+    textarea = text_Area(root) 
     
     root.mainloop()
     
