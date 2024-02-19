@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
 from text_Area import textarea
+import os as os
 class Menubar:
     def __init__(self, root,text_Area):
         self.root = root
@@ -28,6 +29,7 @@ class Menubar:
         pass
 
     def open_file(self):
+        global file_path
         file_path = filedialog.askopenfilename(defaultextension=".txt",
                                                 filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
         if file_path:
@@ -35,9 +37,26 @@ class Menubar:
                 self.text_Area.text_area.delete(1.0, tk.END)  # Clear the text area
                 self.text_Area.text_area.insert(tk.INSERT, file.read())  # Insert the file content
     def save_file(self):
-        pass
+        global file_path
+        if file_path and os.path.exists(file_path):
+            # Write to the file and close it
+            with open(file_path, "w") as file:
+                file.write(self.text_Area.text_area.get(1.0, tk.END))
+        else:  
+            file_path = filedialog.asksaveasfilename(defaultextension=".txt",
+                                                    filetypes=[("Text file","*.txt"),("All Files","*.*")])
+            if file_path:
+                with open(file_path, "w") as file:
+                    file.write(self.text_Area.text_area.get(1.0, tk.END))
+
+        
     def save_as_file(self):
-        pass
+        file_path = filedialog.asksaveasfile(defaultextension=".txt",
+                                        filetypes=[("Text file","*.txt"),("All Files","*.*")])
+        if not file_path:
+            return
+        file_path.write(self.text_Area.text_area.get(1.0, tk.END))
+        file_path.close()
     def exit_editor(self):
         pass
     def undo(self):
