@@ -64,7 +64,23 @@ class Menubar:
         self.editmenu.add_separator()
         self.editmenu.add_command(label="Cut", command=self.cut)
         self.editmenu.add_command(label="Copy", command=self.copy)
-        
+        self.editmenu.add_command(label="Paste", command=self.paste)
+        self.editmenu.add_command(label="Delete", command=self.delete)
+        self.editmenu.add_command(label="Select All", command=self.select_all)
+        self.editmenu.add_command(label="Begin/End Select",command=self.begin_end_select)
+        self.editmenu.add_separator()
+        self.editmenu.add_command(label="Insert", command=self.insert)
+        self.editmenu.add_command(label="Copy to Clipboard", command=self.copy_to_clipboard)
+        self.editmenu.add_command(label="Indent",command=self.indent)
+        self.editmenu.add_command(label="Convert Case to",command=self.convert_case)
+        self.editmenu.add_command(label="Line Operations",command=self.line_operations)
+        self.editmenu.add_command(label="Comment/Uncomment",command=self.comment_uncomment)
+        self.editmenu.add_command(label="Auto/Uncomment",command=self.auto_uncomment)
+        self.editmenu.add_separator()
+        self.editmenu.add_command(label="Clipboard History", command=self.clipboard_history)
+        self.editmenu.add_separator()
+        self.editmenu.add_command(label="Set Read-Only", command=self.set_readonly)
+        self.editmenu.add_command(label="Clear Read-Only Flag",command=self.clear_readonly)
     # Define the methods for your menu commands here
     def new_file(self):
         pass
@@ -126,7 +142,7 @@ class Menubar:
     def move_to_recycle(self):
         pass
 
-        
+#Edit Menu Functions
     def undo(self):
         pass
     def redo(self):
@@ -135,6 +151,46 @@ class Menubar:
         pass
     def copy(self):
         pass
+    def paste(self):
+        pass
+
+    def delete(self):
+        pass
+
+    def select_all(self):
+        pass
+
+    def begin_end_select(self):
+        pass
+
+    def insert(self):
+        pass
+
+    def copy_to_clipboard(self):
+        pass
+
+    def indent(self):
+        pass
+
+    def convert_case(self):
+        pass
+
+    def line_operations(self):
+        pass
+
+    def comment_uncomment(self):
+        pass
+
+    def auto_uncomment(self):
+        pass
+
+    def clipboard_history(self):
+        pass
+
+    def set_readonly(self):
+        pass
+
+    def clear_readonly(self):
+        pass
 
 
-        self.menubar.add_cascade(label="Edit", menu=self.editmenu)
