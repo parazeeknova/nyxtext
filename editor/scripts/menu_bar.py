@@ -120,6 +120,11 @@ class Menubar:
         self.viewmenu.add_command(label="Word Wrap",command=self.word_wrap)
         self.viewmenu.add_command(label="Focus on Another View",accelerator="F8",command=self.focus_on_another_view)
         self.viewmenu.add_command(label="Hide Lines",accelerator="Alt+H",command=self.hide_lines)
+        
+        
+        #Settings MEnu
+        
+        self.settings.add_command(label="Preferences....",accelerator="Randi Mc",command=self.preferences)
     # Define the methods for your menu commands here
     def new_file(self):
         pass
@@ -292,4 +297,9 @@ class Menubar:
         pass
 
     def hide_lines(self):
+        pass
+
+
+#Settings Menu Functions
+    def preferences(self):
         pass
