@@ -1,7 +1,7 @@
 # theme_manager.py
-
 import tkinter as tk
 from tkinter import ttk, colorchooser
+
 def toggle_theme(root):
     current_theme = root.cget("bg")  # Get the current theme color
     if current_theme == "white":

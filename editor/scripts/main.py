@@ -16,11 +16,17 @@ def main():
     ico_path = os.path.abspath("editor\\scripts\\icon.ico")
     root.iconbitmap(ico_path) 
     
-    # Creates frame left for side bar and right for text area
+    # Setting width of the left frame 10 percent of the screen 
+    screen_width = root.winfo_screenwidth()
+    frame_width = screen_width *  0.10
+    
+    # Creates frame left for side bar and right for text area, bottom for the bottom menu bar
     left_frame = tk.Frame(root)
-    left_frame.pack(side=tk.LEFT, fill=tk.Y)
+    left_frame.place(x = frame_width, y=0, width=frame_width, height=screen_width)
     right_frame = tk.Frame(root)
-    right_frame.pack(side=tk.RIGHT, fill=tk.Y)
+    right_frame.place(x=frame_width, y=0, width=screen_width-frame_width, height=screen_width)
+    bottom_frame = tk.Frame(root)
+    bottom_frame.pack(side="bottom",fill="x")
     
     # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
@@ -30,8 +36,8 @@ def main():
     menu_bar = Menubar(root,Textarea) 
     root.config(menu=menu_bar.menubar) 
     # Temprory button to switch themes for testing
-    theme_button = tk.Button(left_frame, text="Toggle Theme", command=lambda: toggle_theme(right_frame,left_frame))
-    theme_button.pack(side="bottom",padx=10,pady=5)
+    theme_button = tk.Button(bottom_frame, text="Toggle Theme", command=lambda: toggle_theme(root))
+    theme_button.pack(side="left",padx=10,pady=5)
 
     # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
