@@ -16,11 +16,12 @@ def main():
     ico_path = os.path.abspath("editor\\scripts\\icon.ico")
     root.iconbitmap(ico_path) 
     
+    # Creates frame left for side bar and right for text area
     left_frame = tk.Frame(root)
     left_frame.pack(side=tk.LEFT, fill=tk.Y)
-    
     right_frame = tk.Frame(root)
     right_frame.pack(side=tk.RIGHT, fill=tk.Y)
+    
     # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
     Textarea = textarea(right_frame)
@@ -32,7 +33,7 @@ def main():
     theme_button = tk.Button(left_frame, text="Toggle Theme", command=lambda: toggle_theme(right_frame,left_frame))
     theme_button.pack(side="bottom",padx=10,pady=5)
 
-    
+    # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
     
 # The main function is called only when the script is run directly, not when it's imported as a module

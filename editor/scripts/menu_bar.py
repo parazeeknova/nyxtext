@@ -47,7 +47,6 @@ class Menubar:
         self.editmenu.add_separator()
         self.editmenu.add_command(label="Cut", command=self.cut)
         self.editmenu.add_command(label="Copy", command=self.copy)
-        # ... rest of your menu bar code ...
         
     # Define the methods for your menu commands here
     def new_file(self):
