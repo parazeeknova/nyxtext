@@ -8,6 +8,8 @@ class Menubar:
         self.root = root
         self.text_Area = text_Area
         self.menubar = tk.Menu(self.root)
+        
+        
         #Defining menu options as menu objects
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
@@ -20,6 +22,9 @@ class Menubar:
         self.run = tk.Menu(self.menubar, tearoff=0)
         self.window = tk.Menu(self.menubar, tearoff=0)
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
+        
+        
+        
         #Menu Bar
         self.menubar.add_cascade(label="File", menu=self.filemenu)
         self.menubar.add_cascade(label="Edit", menu=self.editmenu)
@@ -32,6 +37,10 @@ class Menubar:
         self.menubar.add_cascade(label="Window", menu=self.window)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
         #Functions of menu bar
+        
+        
+        
+        
         
         #functions of file option
         self.filemenu.add_command(label="New",accelerator="Ctrl+N" ,command=self.new_file)
@@ -58,18 +67,23 @@ class Menubar:
         self.filemenu.add_cascade(label="Move to Recycle Bin", menu=self.move_to_recycle)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", accelerator="Alt+F4",command=self.exit_editor)
+        
+        
+        
+        
+        
         #functions for edit option
-        self.editmenu.add_command(label="Undo", command=self.undo)
-        self.editmenu.add_command(label="Redo", command=self.redo)
+        self.editmenu.add_command(label="Undo",accelerator="Ctrl+Z" ,command=self.undo)
+        self.editmenu.add_command(label="Redo",accelerator="Ctrl+Y"  ,command=self.redo)
         self.editmenu.add_separator()
-        self.editmenu.add_command(label="Cut", command=self.cut)
-        self.editmenu.add_command(label="Copy", command=self.copy)
-        self.editmenu.add_command(label="Paste", command=self.paste)
-        self.editmenu.add_command(label="Delete", command=self.delete)
-        self.editmenu.add_command(label="Select All", command=self.select_all)
+        self.editmenu.add_command(label="Cut",accelerator="Ctrl+X", command=self.cut)
+        self.editmenu.add_command(label="Copy",accelerator="Ctrl+C",command=self.copy)
+        self.editmenu.add_command(label="Paste", accelerator="Ctrl+V" ,command=self.paste)
+        self.editmenu.add_command(label="Delete",accelerator="Del"  ,command=self.delete)
+        self.editmenu.add_command(label="Select All",accelerator="Ctrl+A"  ,command=self.select_all)
         self.editmenu.add_command(label="Begin/End Select",command=self.begin_end_select)
         self.editmenu.add_separator()
-        self.editmenu.add_command(label="Insert", command=self.insert)
+        self.editmenu.add_command(label="Insert",command=self.insert)
         self.editmenu.add_command(label="Copy to Clipboard", command=self.copy_to_clipboard)
         self.editmenu.add_command(label="Indent",command=self.indent)
         self.editmenu.add_command(label="Convert Case to",command=self.convert_case)
@@ -81,6 +95,18 @@ class Menubar:
         self.editmenu.add_separator()
         self.editmenu.add_command(label="Set Read-Only", command=self.set_readonly)
         self.editmenu.add_command(label="Clear Read-Only Flag",command=self.clear_readonly)
+        
+        #Search Menu
+        self.searchmenu.add_command(label="Find",command=self.find)
+        self.searchmenu.add_command(label="Find in Files ...",command=self.find_in_files)
+        self.searchmenu.add_separator()
+        self.searchmenu.add_command(label="Replace",command=self.replace)
+        self.searchmenu.add_separator()
+        self.searchmenu.add_command(label="Jump UP",command=self.jump_up)
+        self.searchmenu.add_command(label="Jump Down",command=self.jump_down)
+        self.searchmenu.add_separator()
+        self.searchmenu.add_command(label="Bookmark",command=self.bookmark)
+        
     # Define the methods for your menu commands here
     def new_file(self):
         pass
@@ -142,6 +168,8 @@ class Menubar:
     def move_to_recycle(self):
         pass
 
+
+
 #Edit Menu Functions
     def undo(self):
         pass
@@ -194,3 +222,24 @@ class Menubar:
         pass
 
 
+
+
+#Search Functions
+
+    def find(self):
+        pass
+
+    def find_in_files(self):
+        pass
+
+    def replace(self):
+        pass
+
+    def jump_up(self):
+        pass
+
+    def jump_down(self):
+        pass
+
+    def bookmark(self):
+        pass
