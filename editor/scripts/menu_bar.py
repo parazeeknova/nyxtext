@@ -17,8 +17,6 @@ class Menubar:
         self.searchmenu = tk.Menu(self.menubar, tearoff=0)
         self.viewmenu = tk.Menu(self.menubar, tearoff=0)
         self.settings = tk.Menu(self.menubar, tearoff=0)
-        self.tools = tk.Menu(self.menubar, tearoff=0)
-        self.macro = tk.Menu(self.menubar, tearoff=0)
         self.run = tk.Menu(self.menubar, tearoff=0)
         self.window = tk.Menu(self.menubar, tearoff=0)
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
@@ -31,8 +29,6 @@ class Menubar:
         self.menubar.add_cascade(label="Search", menu=self.searchmenu)
         self.menubar.add_cascade(label="View", menu=self.viewmenu)
         self.menubar.add_cascade(label="Settings", menu=self.settings)
-        self.menubar.add_cascade(label="Tools", menu=self.tools)
-        self.menubar.add_cascade(label="Macro", menu=self.macro)
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
@@ -97,16 +93,33 @@ class Menubar:
         self.editmenu.add_command(label="Clear Read-Only Flag",command=self.clear_readonly)
         
         #Search Menu
-        self.searchmenu.add_command(label="Find",command=self.find)
-        self.searchmenu.add_command(label="Find in Files ...",command=self.find_in_files)
+        self.searchmenu.add_command(label="Find",accelerator="Ctrl+F",command=self.find)
+        self.searchmenu.add_command(label="Find in Files ...",accelerator="Ctrl+Shift+F",command=self.find_in_files)
         self.searchmenu.add_separator()
-        self.searchmenu.add_command(label="Replace",command=self.replace)
+        self.searchmenu.add_command(label="Replace",accelerator="Ctrl+H",command=self.replace)
         self.searchmenu.add_separator()
         self.searchmenu.add_command(label="Jump UP",command=self.jump_up)
         self.searchmenu.add_command(label="Jump Down",command=self.jump_down)
         self.searchmenu.add_separator()
         self.searchmenu.add_command(label="Bookmark",command=self.bookmark)
         
+        
+        
+        #View Menu
+        self.viewmenu.add_command(label="Always on Top",command=self.always_on_top)
+        self.viewmenu.add_command(label="Toggle Full Screen Mode",accelerator="F11",command=self.toggle_full_screen)
+        self.viewmenu.add_command(label="Post-It",accelerator="F12",command=self.post_it)
+        self.viewmenu.add_command(label="Distraction Free",command=self.distraction_free)
+        self.viewmenu.add_separator()
+        self.viewmenu.add_command(label="View Current File in",command=self.view_currentfile)
+        self.viewmenu.add_separator()
+        self.viewmenu.add_command(label="Show Symbol",command=self.show_symbol)
+        self.viewmenu.add_command(label="Zoom",command=self.zoom)
+        self.viewmenu.add_command(label="Move/Clone Current Document",command=self.move_current_document)
+        self.viewmenu.add_command(label="Tab",command=self.tab)
+        self.viewmenu.add_command(label="Word Wrap",command=self.word_wrap)
+        self.viewmenu.add_command(label="Focus on Another View",accelerator="F8",command=self.focus_on_another_view)
+        self.viewmenu.add_command(label="Hide Lines",accelerator="Alt+H",command=self.hide_lines)
     # Define the methods for your menu commands here
     def new_file(self):
         pass
@@ -242,4 +255,41 @@ class Menubar:
         pass
 
     def bookmark(self):
+        pass
+
+#View Menu Functions
+    def always_on_top(self):
+        pass
+
+    def toggle_full_screen(self):
+        pass
+
+    def post_it(self):
+        pass
+
+    def distraction_free(self):
+        pass
+
+    def view_currentfile(self):
+        pass
+
+    def show_symbol(self):
+        pass
+
+    def zoom(self):
+        pass
+
+    def move_current_document(self):
+        pass
+
+    def tab(self):
+        pass
+
+    def word_wrap(self):
+        pass
+
+    def focus_on_another_view(self):
+        pass
+
+    def hide_lines(self):
         pass
