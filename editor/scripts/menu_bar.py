@@ -34,30 +34,30 @@ class Menubar:
         #Functions of menu bar
         
         #functions of file option
-        self.filemenu.add_command(label="New", command=self.new_file)
+        self.filemenu.add_command(label="New",accelerator="Ctrl+N" ,command=self.new_file)
         self.filemenu.add_separator()
-        self.filemenu.add_command(label="Open", command=self.open_file)
+        self.filemenu.add_command(label="Open", accelerator="Ctrl+O",command=self.open_file)
         self.filemenu.add_command(label="Open Containing Folder", command=self.open_folder)
         self.filemenu.add_command(label="Open Folder as Workspace...", command=self.open_workspace)
         self.filemenu.add_separator()
 
         #Save OPtions
-        self.filemenu.add_command(label="Save", command=self.save_file)
-        self.filemenu.add_command(label="Save As", command=self.save_as_file)
+        self.filemenu.add_command(label="Save", accelerator="Ctrl+S",command=self.save_file)
+        self.filemenu.add_command(label="Save As", accelerator="Ctrl+Alt+S",command=self.save_as_file)
         self.filemenu.add_command(label="Save a Copy as", command=self.save_copy_as)
-        self.filemenu.add_cascade(label="Save All", menu=self.save_all)
+        self.filemenu.add_cascade(label="Save All",accelerator="Ctrl+Shift+S" ,menu=self.save_all)
         self.filemenu.add_separator()
 
         self.filemenu.add_cascade(label="Rename ...", menu=self.rename)
         self.filemenu.add_separator()
         #CLose Options
-        self.filemenu.add_cascade(label="Close", menu=self.close)
-        self.filemenu.add_cascade(label="Close All", menu=self.close_all)
+        self.filemenu.add_cascade(label="Close",accelerator="Ctrl+W", menu=self.close)
+        self.filemenu.add_cascade(label="Close All",accelerator="Ctrl+Shift+W", menu=self.close_all)
         self.filemenu.add_cascade(label="Close Multiple Documents", menu=self.close_multiple)
         
         self.filemenu.add_cascade(label="Move to Recycle Bin", menu=self.move_to_recycle)
         self.filemenu.add_separator()
-        self.filemenu.add_command(label="Exit", command=self.exit_editor)
+        self.filemenu.add_command(label="Exit", accelerator="Alt+F4",command=self.exit_editor)
         #functions for edit option
         self.editmenu.add_command(label="Undo", command=self.undo)
         self.editmenu.add_command(label="Redo", command=self.redo)
