@@ -8,15 +8,40 @@ class Menubar:
         self.root = root
         self.text_Area = text_Area
         self.menubar = tk.Menu(self.root)
+        #Defining menu options as menu objects
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
+        self.filemenu = tk.Menu(self.menubar, tearoff=0)
+        self.editmenu = tk.Menu(self.menubar, tearoff=0)
+        self.searchmenu = tk.Menu(self.menubar, tearoff=0)
+        self.viewmenu = tk.Menu(self.menubar, tearoff=0)
+        self.settings = tk.Menu(self.menubar, tearoff=0)
+        self.tools = tk.Menu(self.menubar, tearoff=0)
+        self.macro = tk.Menu(self.menubar, tearoff=0)
+        self.run = tk.Menu(self.menubar, tearoff=0)
+        self.window = tk.Menu(self.menubar, tearoff=0)
+        self.helpmenu = tk.Menu(self.menubar, tearoff=0)
+        #Menu Bar
+        self.menubar.add_cascade(label="File", menu=self.filemenu)
+        self.menubar.add_cascade(label="Edit", menu=self.editmenu)
+        self.menubar.add_cascade(label="Search", menu=self.searchmenu)
+        self.menubar.add_cascade(label="View", menu=self.viewmenu)
+        self.menubar.add_cascade(label="Settings", menu=self.settings)
+        self.menubar.add_cascade(label="Tools", menu=self.tools)
+        self.menubar.add_cascade(label="Macro", menu=self.macro)
+        self.menubar.add_cascade(label="Run", menu=self.run)
+        self.menubar.add_cascade(label="Window", menu=self.window)
+        self.menubar.add_cascade(label="Help", menu=self.helpmenu)
+        #Functions of menu bar
+        
+        #functions of file option
         self.filemenu.add_command(label="New", command=self.new_file)
         self.filemenu.add_command(label="Open", command=self.open_file)
         self.filemenu.add_command(label="Save", command=self.save_file)
         self.filemenu.add_command(label="Save As", command=self.save_as_file)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", command=self.exit_editor)
-        self.menubar.add_cascade(label="File", menu=self.filemenu)
-        self.editmenu = tk.Menu(self.menubar, tearoff=0)
+        # self.editmenu = tk.Menu(self.menubar, tearoff=0)
+        #functions for edit option
         self.editmenu.add_command(label="Undo", command=self.undo)
         self.editmenu.add_command(label="Redo", command=self.redo)
         self.editmenu.add_separator()
@@ -54,7 +79,7 @@ class Menubar:
     
 
     def exit_editor(self):
-        if messagebox.askokcancel("Exit ??","Do you want to save your changes?"):
+        if messagebox.askokcancel("Exit ?","Do you want to save your changes?"):
             self.save_file()
         self.root.destroy()
         
