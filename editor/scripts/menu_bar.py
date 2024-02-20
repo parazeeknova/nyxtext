@@ -1,6 +1,7 @@
 #menu_bar
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
+import webbrowser as webbrowser
 from text_Area import textarea
 import os as os
 class Menubar:
@@ -124,7 +125,17 @@ class Menubar:
         
         #Settings MEnu
         
-        self.settings.add_command(label="Preferences....",accelerator="Randi Mc",command=self.preferences)
+        self.settings.add_command(label="Preferences....",command=self.preferences)
+        
+        
+        #Run Menu
+        self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.terminal)
+        
+        #Window MEnu
+        self.window.add_command(label="Tabs", command=self.tab)
+        
+        #Help
+        self.helpmenu.add_command(label="Github Repo", command=self.open_website)
     # Define the methods for your menu commands here
     def new_file(self):
         pass
@@ -303,3 +314,16 @@ class Menubar:
 #Settings Menu Functions
     def preferences(self):
         pass
+    
+#Run Menu Functions
+    def terminal(self):
+        pass
+    
+#Window menu Functions
+    def tab(self):
+        pass
+        
+#Help Menu Functions
+    def open_website(self):
+    # Open a URL in the default web browser
+        webbrowser.open('https://github.com//parazeeknova//nyxtext')
