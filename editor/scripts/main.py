@@ -2,7 +2,8 @@ import customtkinter
 import tkinter as tk
 import os
 
-# from menu_Bar import Menubar
+from menu_Bar import Menubar
+from text_Area import textarea
 
 
 def main():
@@ -14,9 +15,13 @@ def main():
     ico_path = os.path.abspath("editor\\scripts\\icon.ico")
     root.iconbitmap(ico_path)
     
-    #Menu bar
-    # menu_bar = Menubar(root) 
-    # root.config(menu=menu_bar.menubar)
+    # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
+    global Textarea
+    Textarea = textarea(root)
+    
+    # Menu bar
+    menu_bar = Menubar(root,Textarea) 
+    root.config(menu=menu_bar.menubar)
 
     root.mainloop()
     
