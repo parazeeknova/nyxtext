@@ -1,5 +1,6 @@
 ⚠️ The Project is in very Early Development. Need to add/ rebase a lot of stuff.
 
+
 <h3 align="center">
 	<img src="main/assets/logo/logo.png" width="300" alt="Logo"/><br/>
     <img src="main/assets/misc/transparent.png" height="30" width="0px"/>
@@ -109,6 +110,12 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 ### 🐜 Bugs : 
 None at the moment as the project is still in early development.
 
+Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
+
+&nbsp;
+### 🌟 Early Access :
+Run main.py to start the editor.
+ 
 
 ### 👐 Contributing
 
