@@ -1,9 +1,12 @@
 #menu_bar
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
-import webbrowser as webbrowser
-from text_Area import textarea
 import os as os
+import webbrowser as webbrowser
+
+# File imports here
+from text_Area import textarea
+
 class Menubar:
     def __init__(self, root,text_Area):
         self.root = root
@@ -56,6 +59,7 @@ class Menubar:
 
         self.filemenu.add_cascade(label="Rename ...", menu=self.rename)
         self.filemenu.add_separator()
+        
         #CLose Options
         self.filemenu.add_cascade(label="Close",accelerator="Ctrl+W", menu=self.close)
         self.filemenu.add_cascade(label="Close All",accelerator="Ctrl+Shift+W", menu=self.close_all)
@@ -64,10 +68,6 @@ class Menubar:
         self.filemenu.add_cascade(label="Move to Recycle Bin", menu=self.move_to_recycle)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", accelerator="Alt+F4",command=self.exit_editor)
-        
-        
-        
-        
         
         #functions for edit option
         self.editmenu.add_command(label="Undo",accelerator="Ctrl+Z" ,command=self.undo)
