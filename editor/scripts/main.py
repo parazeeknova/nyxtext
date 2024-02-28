@@ -15,7 +15,7 @@ def main():
     root.title("NyxText")
     
 # Sets (for now the appearance to light and color scheme to blue)
-    customtkinter.set_appearance_mode("light")
+    customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
     customtkinter.set_default_color_theme("blue")
@@ -26,6 +26,7 @@ def main():
     
 # Setting width of the left frame 10 percent of the screen 
     screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight() - 100
     frame_width = screen_width *  0.10
     rf = int(screen_width-frame_width)
 # Frames 
@@ -39,7 +40,7 @@ def main():
     right_frame.grid(row=1, column=1, sticky='nsew')
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
-    Textarea = textarea(right_frame,int(screen_width),rf)
+    Textarea = textarea(right_frame,int(screen_width),rf,int(screen_height))
     
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,Textarea) 
