@@ -237,8 +237,11 @@ class Menubar:
         self.text_Area.text_area.delete(1.0, tk.END)
 
     def select_all(self):
-        pass
-
+        # Select all the text in the text area
+        self.text_Area.text_area.tag_add(tk.SEL, "1.0", tk.END)
+        self.text_Area.text_area.mark_set(tk.INSERT, "1.0")
+        self.text_Area.text_area.see(tk.INSERT)
+        # self.text_Area.text_area.configure(bg="blue",fg="blue")
     def begin_end_select(self):
         pass
 
