@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
 import os as os
 import webbrowser as webbrowser
-import subprocess
+import subprocess,shutil
 # File imports here
 from text_Area import textarea
 
@@ -12,6 +12,7 @@ class Menubar:
         self.root = root
         self.text_Area = text_Area
         self.menubar = tk.Menu(self.root)
+        self.file_path_1 = None
         
         
         #Defining menu options as menu objects
@@ -139,24 +140,25 @@ class Menubar:
     # Define the methods for your menu commands here
     def new_file(self):
         pass
-    file_path = None
-    def save_file(self):
-        # global self.file_path
-        if self.file_path and os.path.exists(self.file_path):
-            # Write to the file and close it
-            with open(self.file_path, "w") as file:
-                file.write(self.text_Area.text_area.get(1.0, tk.END))
-        else:
-            self.save_as_file()
+    
+    
+
     def open_file(self):
-        global file_path_1
         self.file_path_1 = filedialog.askopenfilename(defaultextension=".txt",
                                                 filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
-        if self.file_path:
+        if self.file_path_1:
             with open(self.file_path_1, "r") as file:
                 self.text_Area.text_area.delete(1.0, tk.END)  # Clear the text area
                 self.text_Area.text_area.insert(tk.INSERT, file.read())  # Insert the file content
-        
+
+    def save_file(self):
+        if self.file_path_1 and os.path.exists(self.file_path_1):
+            # Write to the file and close it
+            with open(self.file_path_1, "w") as file:
+                file.write(self.text_Area.text_area.get(1.0, tk.END))
+        else:
+            self.save_as_file()
+
     def save_as_file(self):
         self.file_path = filedialog.asksaveasfile(defaultextension=".txt",
                                         filetypes=[("Text file","*.txt"),("All Files","*.*")])
@@ -164,36 +166,28 @@ class Menubar:
             return
         self.file_path.write(self.text_Area.text_area.get(1.0, tk.END))
         self.file_path.close()
-    
 
     def exit_editor(self):
         if messagebox.askokcancel("Exit ?","Do you want to save your changes?"):
             self.save_file()
         self.root.destroy()
-        
+
     def open_folder(self):
-        global file_path_1
         # self.file_path = filedialog.askdirectory()
         directory = os.path.dirname(self.file_path_1)
 
-# Print the directory path
-        print(f"Directory: {directory}")
-
-# Open the directory
+        # Open the directory
         if os.name == 'nt': # Windows
              os.startfile(directory)
         elif os.name == 'posix': # macOS or Linux
             subprocess.Popen(['open', directory])
         else:
               print("Unsupported operating system.")
-
-
     def open_workspace(self):
         pass
 
     def save_copy_as(self):
-        pass
-
+       pass
     def save_all(self):
         pass
 
