@@ -216,7 +216,13 @@ class Menubar:
     def redo(self):
         pass
     def cut(self):
-        pass
+        # Get the current selection
+        self.selected_text = self.text_Area.text_area.get(1.0, tk.END)
+        if self.selected_text:
+            # Remove the selected text from the text area
+            self.text_Area.text_area.delete(1.0, tk.END)
+            # Copy the removed text to the clipboard
+            pc.copy(self.selected_text) 
     def copy(self):
       self.text_to_copy = self.text_Area.text_area.get(1.0, tk.END)
       pc.copy(self.text_to_copy)
@@ -228,7 +234,7 @@ class Menubar:
 
 
     def delete(self):
-        pass
+        self.text_Area.text_area.delete(1.0, tk.END)
 
     def select_all(self):
         pass
