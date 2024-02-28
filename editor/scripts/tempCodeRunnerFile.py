@@ -29,25 +29,19 @@ def main():
     frame_width = screen_width *  0.10
     rf = int(screen_width-frame_width)
 # Frames 
-    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=30) # Adjust height as needed
-    top_frame.grid(row=0, column=0, columnspan=2, sticky='ew')
-    
     left_frame = customtkinter.CTkFrame(root, width=int(frame_width), height=int(screen_width))
-    left_frame.grid(row=1, column=0, sticky='nsew') # Ensure left_frame is correctly placed
+    left_frame.grid(row=0, column=0, sticky='nsew') # Ensure left_frame is correctly placed
     
     right_frame = customtkinter.CTkFrame(root, width=rf, height=int(screen_width))
-    right_frame.grid(row=1, column=1, sticky='nsew')
+    right_frame.grid(row=0, column=1, sticky='nsew')
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
-    Textarea = textarea(right_frame,int(screen_width),rf)
+    Textarea = textarea(right_frame,int(screen_width), rf)
     
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,Textarea) 
     root.config(menu=menu_bar.menubar)
 
-# Test Area : 
-    testoptionmenu = customtkinter.CTkOptionMenu(top_frame,values=["option 1", "option 2"])
-    testoptionmenu.pack(side="left",padx=10,pady=5)
 # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
     

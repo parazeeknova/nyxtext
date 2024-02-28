@@ -1,6 +1,10 @@
 import customtkinter as ctk
+
 class textarea():
-    def __init__(self,root):
-        self.root = root
-        self.text_area = ctk.CTkTextbox(root, wrap=ctk.WORD) # Create a text area
-        self.text_area.pack(expand=True, fill=ctk.BOTH)
+    def __init__(self, parent_frame, screen_width, rf):
+        self.parent_frame = parent_frame
+        self.screen_width = screen_width
+        self.rf = rf
+        self.text_area = ctk.CTkTextbox(parent_frame, height = screen_width , width = rf, activate_scrollbars = True, wrap = 'none')
+        self.text_area.grid(row = 0, column = 1, sticky = 'nsew')
+        self.text_area.configure(padx = 10, pady = 10,takefocus = True)
