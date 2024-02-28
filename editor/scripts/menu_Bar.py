@@ -4,8 +4,10 @@ from tkinter import filedialog, messagebox, ttk, colorchooser
 import os as os
 import webbrowser as webbrowser
 import subprocess,shutil
+import pyperclip as pc
 # File imports here
 from text_Area import textarea
+
 
 class Menubar:
     def __init__(self, root,text_Area):
@@ -214,18 +216,32 @@ class Menubar:
     def redo(self):
         pass
     def cut(self):
-        pass
+        # Get the current selection
+        self.selected_text = self.text_Area.text_area.get(1.0, tk.END)
+        if self.selected_text:
+            # Remove the selected text from the text area
+            self.text_Area.text_area.delete(1.0, tk.END)
+            # Copy the removed text to the clipboard
+            pc.copy(self.selected_text) 
     def copy(self):
-        pass
+      self.text_to_copy = self.text_Area.text_area.get(1.0, tk.END)
+      pc.copy(self.text_to_copy)
     def paste(self):
-        pass
+        # Paste text from the clipboard
+        self.pasted_text = pc.paste()
+        # You can now use the pasted_text as needed, for example, insert it into a text area
+        self.text_Area.text_area.insert(tk.INSERT, self.pasted_text)
+
 
     def delete(self):
-        pass
+        self.text_Area.text_area.delete(1.0, tk.END)
 
     def select_all(self):
-        pass
-
+        # Select all the text in the text area
+        self.text_Area.text_area.tag_add(tk.SEL, "1.0", tk.END)
+        self.text_Area.text_area.mark_set(tk.INSERT, "1.0")
+        self.text_Area.text_area.see(tk.INSERT)
+        # self.text_Area.text_area.configure(bg="blue",fg="blue")
     def begin_end_select(self):
         pass
 
