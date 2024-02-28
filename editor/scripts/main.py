@@ -15,7 +15,7 @@ def main():
     root.title("NyxText")
     
 # Sets (for now the appearance to light and color scheme to blue)
-    customtkinter.set_appearance_mode("dark")
+    customtkinter.set_appearance_mode("light")
     
 # Should be replaced with a function in future for catppuccin color scheme 
     customtkinter.set_default_color_theme("blue")
@@ -26,7 +26,7 @@ def main():
     
 # Setting width of the left frame 10 percent of the screen 
     screen_width = root.winfo_screenwidth()
-    screen_height = root.winfo_screenheight() - 100
+    screen_height = root.winfo_screenheight() - 150
     frame_width = screen_width *  0.10
     rf = int(screen_width-frame_width)
 # Frames 
@@ -38,9 +38,16 @@ def main():
     
     right_frame = customtkinter.CTkFrame(root, width=rf, height=int(screen_width))
     right_frame.grid(row=1, column=1, sticky='nsew')
+
+# Creates a tab view to show tabs (Static at the moment)
+    tab_view = customtkinter.CTkTabview(right_frame,width=rf, height=int(screen_width))
+    tab_view.grid(row=0, column=1, sticky='nsew')
+    tab_1 = tab_view.add("Tab 1")
+    tab_2 = tab_view.add("Tab 2")
+    
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
-    Textarea = textarea(right_frame,int(screen_width),rf,int(screen_height))
+    Textarea = textarea(tab_1,int(screen_width),rf,int(screen_height))
     
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,Textarea) 
@@ -48,7 +55,19 @@ def main():
 
 # Test Area : 
     testoptionmenu = customtkinter.CTkOptionMenu(top_frame,values=["option 1", "option 2"])
-    testoptionmenu.pack(side="left",padx=10,pady=5)
+    testoptionmenu.pack(side="left",padx=5,pady=10)
+    
+    testoptionmenu2 = customtkinter.CTkOptionMenu(top_frame,values=["option 2", "option 2"])
+    testoptionmenu2.pack(side="left",padx=5,pady=10)
+    
+    testoptionmenu3 = customtkinter.CTkOptionMenu(top_frame,values=["option 3", "option 2"])
+    testoptionmenu3.pack(side="left",padx=5,pady=10)
+
+    entry = customtkinter.CTkEntry(top_frame, placeholder_text="Search", width=400)
+    entry.pack(side="left",padx=500,pady=10)
+    
+    utton = customtkinter.CTkButton(left_frame, text="Files")
+    utton.pack(side="top",padx=10,pady=22)
 # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
     
