@@ -3,7 +3,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
 import os as os
 import webbrowser as webbrowser
-
+import subprocess
 # File imports here
 from text_Area import textarea
 
@@ -149,10 +149,11 @@ class Menubar:
         else:
             self.save_as_file()
     def open_file(self):
-        self.file_path = filedialog.askopenfilename(defaultextension=".txt",
+        global file_path_1
+        self.file_path_1 = filedialog.askopenfilename(defaultextension=".txt",
                                                 filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
         if self.file_path:
-            with open(self.file_path, "r") as file:
+            with open(self.file_path_1, "r") as file:
                 self.text_Area.text_area.delete(1.0, tk.END)  # Clear the text area
                 self.text_Area.text_area.insert(tk.INSERT, file.read())  # Insert the file content
         
@@ -171,7 +172,21 @@ class Menubar:
         self.root.destroy()
         
     def open_folder(self):
-        pass
+        global file_path_1
+        # self.file_path = filedialog.askdirectory()
+        directory = os.path.dirname(self.file_path_1)
+
+# Print the directory path
+        print(f"Directory: {directory}")
+
+# Open the directory
+        if os.name == 'nt': # Windows
+             os.startfile(directory)
+        elif os.name == 'posix': # macOS or Linux
+            subprocess.Popen(['open', directory])
+        else:
+              print("Unsupported operating system.")
+
 
     def open_workspace(self):
         pass
