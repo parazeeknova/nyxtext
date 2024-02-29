@@ -1,4 +1,5 @@
-⚠️ The Project is in very Early Development. Need to add/ rebase a lot of stuff.
+⚠️ **The Project is in very Early Development. Need to add/ rebase a lot of stuff.**
+
 
 
 <h3 align="center">
@@ -30,9 +31,14 @@
     <a href="https://github.com/catppuccin/catppuccin/releases/latest">
 		<img alt="Releases" src="https://img.shields.io/github/release/parazeeknova/nyxtext.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
 </p>
+
+<div align="center">
+
+[![Tkinter](https://img.shields.io/badge/Tkinter-GUI%20Library-D9E0EE?style=for-the-badge&logo=tkinter)](https://docs.python.org/3/library/tkinter.html) ![CustomTkinter](https://img.shields.io/badge/CustomTkinter-GUI%20Library-D9E0EE?style=for-the-badge)
+</div>
 &nbsp;
 <p align="center">
-NyxNote is a basic text editor built using Python and Tkinter, featuring the elegant Catppuccin color scheme and the minimalist Paperus icon theme. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability.
+<b>NyxText</b> is a basic text editor built using Python, <b>Tkinter and Custom Tkinter</b>, featuring the elegant <b>Catppuccin color scheme</b> and the minimalist <b>Paperus icon theme</b>. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability.
 </p> 
 
 <p align="center">
@@ -44,7 +50,7 @@ NyxNote is a basic text editor built using Python and Tkinter, featuring the ele
     </picture>
   </a>
   <img src="assets/misc/transparent.png" height="1" width="5"/>
-  <a href="https://discord.com/servers/907385605422448742">
+  <a href="https://discord.gg/UwmqqXkV">
     <picture>
       <source srcset="main/assets/social/macchiato_discord.svg" width="64" height="64" alt="Discord Logo" media="(prefers-color-scheme: dark)"/>
       <source srcset="main/assets/social/latte_discord.svg" width="64" height="64" alt="Discord Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
@@ -70,13 +76,14 @@ NyxNote is a basic text editor built using Python and Tkinter, featuring the ele
 </p>
 
 <p align="center">
-Join our community!
+<b>Join our community!</b>
 </p>
 
 &nbsp;
 
+---
 ### Note :  
-As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features.
+As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress!
 
 ### 🧠 Design Philosophy
 
@@ -97,7 +104,7 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 
 &nbsp;
 ### 💡Future Plans : 
-- [ ] Complete rebase to custom_tkinter
+- [x] ~~Complete rebase to custom_tkinter~~ - Done 28/04/2024 ✅
 - [ ] Syntax Highlighting
 - [ ] Filetree viewer
 - [ ] Terminal Integration
@@ -105,18 +112,37 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 - [ ] Spell Check
 - [ ] Indent
 - [ ] Search and Replace
-- [ ] Snippets
 &nbsp;
-### 🐜 Bugs : 
-None at the moment as the project is still in early development.
+---
 
-Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
-
-&nbsp;
 ### 🌟 Early Access :
-Run main.py to start the editor.
- 
+Run ***main.py*** in **editor/scipts** to start the editor, project is very unstable at the moment and bugs are expected.
 
+### 🍷 Early editor screenshots:
+
+<div style="display: flex; align-items: center;">
+    <div style="width: 40%; flex: 1;">
+        <p align="center">Light Mode</p>
+        <hr>
+        <img src="main/assets/misc/Light.png" alt="Light mode"/>
+        <br>
+    </div>
+    <div style="width: 20px;"></div> <!-- Separator -->
+    <div style="width: 40%; flex: 1;">
+        <p align="center">Dark Mode</p>
+        <hr>
+        <img src="main/assets/misc/Dark.png" alt="Dark mode"/>
+    </div>
+</div>
+
+---
+### 🐜 Bugs : 
+- It's not responsive as the project is still in early development.
+
+- Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
+
+&nbsp;
+---
 ### 👐 Contributing
 
 > [!NOTE]<br>
