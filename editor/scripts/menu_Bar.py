@@ -170,7 +170,7 @@ class Menubar:
         if messagebox.askokcancel("Exit ?","Do you want to save your changes?"):
             self.save_file()
         else:
-          self.root.destroy()
+            self.root.destroy()
 
     def open_folder(self):
         # self.file_path = filedialog.askdirectory()
@@ -178,16 +178,16 @@ class Menubar:
 
         # Open the directory
         if os.name == 'nt': # Windows
-             os.startfile(directory)
+            os.startfile(directory)
         elif os.name == 'posix': # macOS or Linux
             subprocess.Popen(['open', directory])
         else:
-              print("Unsupported operating system.")
+            print("Unsupported operating system.")
     def open_workspace(self):
         pass
 
     def save_copy_as(self):
-       pass
+        pass
     def save_all(self):
         pass
 
