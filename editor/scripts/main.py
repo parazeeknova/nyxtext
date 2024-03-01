@@ -3,10 +3,12 @@ import customtkinter
 import tkinter as tk
 import os
 
+
 # File imports here
 from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
+from popup import Popup
 
 
 def main():
@@ -79,7 +81,9 @@ def main():
     utton = customtkinter.CTkButton(left_frame, text="Files")
     utton.pack(side="top",padx=10,pady=22)
     
-    
+    # Correctly instantiate and pack the Popup frame within the main function
+    # root.popup = Popup(root)
+    # root.popup.pack()
 
 # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
