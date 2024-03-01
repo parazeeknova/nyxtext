@@ -142,14 +142,9 @@ class Menubar:
         
         #Help
         self.helpmenu.add_command(label="Github Repo", command=self.open_website)
+        self.helpmenu.add_command(label="Discord", command=self.discord)
     # Define the methods for your menu commands here
-    def syntax_highlighting(self):pass
-    def auto_complete(self):pass
-    def git_integration(self):pass
-    def new_file(self):
-        pass
-    
-    
+
 
     def open_file(self):
         self.file_path_1 = filedialog.askopenfilename(defaultextension=".txt",
@@ -370,3 +365,13 @@ class Menubar:
     def open_website(self):
     # Open a URL in the default web browser
         webbrowser.open('https://github.com//parazeeknova//nyxtext')
+
+    def syntax_highlighting(self):pass
+    def auto_complete(self):pass
+    def git_integration(self):pass
+    def new_file(self):
+        pass
+    
+    def discord(self):
+        webbrowser.open('https://discord.com/invite/UwmqqXkV')
+    
