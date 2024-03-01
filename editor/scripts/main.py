@@ -3,12 +3,10 @@ import customtkinter
 import tkinter as tk
 import os
 
-
 # File imports here
 from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
-from popup import Popup
 
 
 def main():
@@ -18,23 +16,23 @@ def main():
     root.title("NyxText")
     
 # Sets (for now the appearance to light and color scheme to blue)
-    customtkinter.set_appearance_mode("light")
+    customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
-    customtkinter.set_default_color_theme("blue")
+    customtkinter.set_default_color_theme("dark-blue")
 
 # This is the icon for the application. It is expected to be in the same directory as the script
     # ico_path = os.path.abspath("editor\\scripts\\icon.ico")
     # root.iconbitmap(ico_path)
     
 # Setting width of the left frame 10 percent of the screen 
-    screen_width = root.winfo_screenwidth()
+    screen_width = root.winfo_screenwidth() - 25
     screen_height = root.winfo_screenheight() - 150
     frame_width = screen_width *  0.10
     rf = int(screen_width-frame_width)
     
 # Static frames at the moment will be replaced by scrollable frames after a while
-    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=30) # Adjust height as needed
+    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=10) # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky='ew')
     
     left_frame = customtkinter.CTkFrame(root, width=int(frame_width), height=int(screen_width))
@@ -59,17 +57,9 @@ def main():
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,Textarea)
     root.config(menu=menu_bar.menubar)
-
-# Test Area will be removed after few commits: 
-    testoptionmenu = customtkinter.CTkOptionMenu(top_frame,values=["option 1", "option 2"])
-    testoptionmenu.pack(side="left",padx=5,pady=10)
     
-    testoptionmenu2 = customtkinter.CTkOptionMenu(top_frame,values=["option 2", "option 2"])
-    testoptionmenu2.pack(side="left",padx=5,pady=10)
+# All buttons and search bar in the top frame for different functions (Right)
     
-    testoptionmenu3 = customtkinter.CTkOptionMenu(top_frame,values=["option 3", "option 2"])
-    testoptionmenu3.pack(side="left",padx=5,pady=10)
-
     def open_settings_window():
         settings = Settings(root)
     testoptionmenu4 = customtkinter.CTkButton(top_frame, text="Settings",command=open_settings_window)
@@ -81,9 +71,7 @@ def main():
     utton = customtkinter.CTkButton(left_frame, text="Files")
     utton.pack(side="top",padx=10,pady=22)
     
-    # Correctly instantiate and pack the Popup frame within the main function
-    # root.popup = Popup(root)
-    # root.popup.pack()
+    
 
 # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
