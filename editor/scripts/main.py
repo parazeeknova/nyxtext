@@ -9,10 +9,13 @@ from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
 
+# customtkinter.set_widget_scaling(80)
+# customtkinter.set_window_scaling(80)
+
 def main():
 # This defines the main function, which is the entry point of the application
     root = customtkinter.CTk()
-    root.geometry("400x300")
+    root.geometry("800x600")
     root.title("NyxText")
     
 # Sets (for now the appearance to light and color scheme to blue)
@@ -22,12 +25,12 @@ def main():
     customtkinter.set_default_color_theme("dark-blue")
 
 # This is the icon for the application. It is expected to be in the same directory as the script
-    # ico_path = os.path.abspath("editor\\scripts\\icon.ico")
-    # root.iconbitmap(ico_path)
+    ico_path = os.path.abspath("editor\\scripts\\icon.ico")
+    root.iconbitmap(ico_path)
     
 # Setting width of the left frame 10 percent of the screen 
-    screen_width = root.winfo_screenwidth() - 25
-    screen_height = root.winfo_screenheight() - 150
+    screen_width = root.winfo_screenwidth() - 50
+    screen_height = root.winfo_screenheight() - 200
     frame_width = screen_width *  0.10
     rf = int(screen_width-frame_width)
     
@@ -35,10 +38,10 @@ def main():
     top_frame = customtkinter.CTkFrame(root, width=screen_width, height=10) # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky='ew')
     
-    left_frame = customtkinter.CTkFrame(root, width=int(frame_width), height=int(screen_width))
+    left_frame = customtkinter.CTkFrame(root, width=int(frame_width), height=int(screen_height))
     left_frame.grid(row=1, column=0, sticky='nsew') # Ensure left_frame is correctly placed
     
-    right_frame = customtkinter.CTkFrame(root, width=rf, height=int(screen_width))
+    right_frame = customtkinter.CTkScrollableFrame(root, width=rf,)
     right_frame.grid(row=1, column=1, sticky='nsew')
     
     bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=30)
@@ -66,6 +69,12 @@ def main():
     settings_button.pack(side="right",padx=5,pady=10)
     settings_button.configure(width=10)
     
+    def Seperator_R():
+        Seperator = customtkinter.CTkLabel(top_frame, text="|")
+        Seperator.pack(side="right",padx=2,pady=10)
+        Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
+    Seperator_R()
+    
     def chat_gpt():
             webbrowser.open('https://chat.openai.com/')
     chat_gpt_button = customtkinter.CTkButton(top_frame, text="⚙️ ChatGPT",command=chat_gpt)
@@ -90,17 +99,25 @@ def main():
     chat_gpt_button.pack(side="right",padx=5,pady=10)
     chat_gpt_button.configure(width=10)
     
-    right_arrow = customtkinter.CTkButton(top_frame, text=">")
-    right_arrow.pack(side="right",padx=1,pady=10)
-    right_arrow.configure(width= 2,fg_color="transparent")
+    Seperator_R()
+    
+    # Commented at the moment, will implement later
+    
+    # right_arrow = customtkinter.CTkButton(top_frame, text=">")
+    # right_arrow.pack(side="right",padx=1,pady=10)
+    # right_arrow.configure(width= 2,fg_color="transparent")
     
     Search_bar = customtkinter.CTkEntry(top_frame, placeholder_text="🔍 Search")
     Search_bar.pack(side="right",padx=5,pady=10)
     Search_bar.configure(width=250, font = ("VictorMono Nerd Font Bold",15))
     
-    left_arrow = customtkinter.CTkButton(top_frame, text="<")
-    left_arrow.pack(side="right",padx=1,pady=10)
-    left_arrow.configure(width= 2,fg_color="transparent")
+    # Commented at the moment, will be implemented later 
+    
+    # left_arrow = customtkinter.CTkButton(top_frame, text="<")
+    # left_arrow.pack(side="right",padx=1,pady=10)
+    # left_arrow.configure(width= 2,fg_color="transparent")
+    
+    Seperator_R()
     
 # All buttons in the top frame for different functions (Left)
     New_button = customtkinter.CTkButton(top_frame, text="📄")
@@ -139,6 +156,14 @@ def main():
     Exit_button.pack(side="left",padx=3,pady=10)
     Exit_button.configure(width=2)
     
+    Dark_Light_mode = customtkinter.CTkButton(top_frame, text="🌓")
+    Dark_Light_mode.pack(side="left",padx=2,pady=10)
+    Dark_Light_mode.configure(width=2,font = ("Arial",16))
+    
+    About = customtkinter.CTkButton(top_frame, text="About")
+    About.pack(side="left",padx=2,pady=10)
+    About.configure(width=2)
+    
     Seperator()
     
     Discussion = customtkinter.CTkButton(top_frame, text="NyxText - Discussions")
@@ -151,8 +176,16 @@ def main():
     
     Suggestions = customtkinter.CTkButton(top_frame, text="Suggest a Feature")
     Suggestions.pack(side="left",padx=2,pady=10)
-    Suggestions.configure(width=3)    
+    Suggestions.configure(width=3) 
     
+# All buttons in the bottom frame for different functions
+    Color_Scheme_Button = customtkinter.CTkLabel(bottom_frame, text="Color Scheme :")
+    Color_Scheme_Button.pack(side="left",padx=2,pady=10)
+    Color_Scheme_Button.configure(width=2,fg_color="transparent")
+
+    Color_Scheme_button = customtkinter.CTkSegmentedButton(bottom_frame, values=["Frappe", "Latte", "Macchiato", "Mocha"])
+    Color_Scheme_button.pack(side="left",padx=5,pady=10)
+    Color_Scheme_button.configure(width=10)
 
 # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
