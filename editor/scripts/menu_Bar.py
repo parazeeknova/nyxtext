@@ -29,6 +29,7 @@ class Menubar:
         self.run = tk.Menu(self.menubar, tearoff=0)
         self.window = tk.Menu(self.menubar, tearoff=0)
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
+        self.special_feature = tk.Menu(self.menubar, tearoff=0)
         
         
         
@@ -40,6 +41,7 @@ class Menubar:
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
+        self.menubar.add_cascade(label="Special Feature", menu=self.special_feature)
         #Functions of menu bar
         
         
@@ -126,7 +128,11 @@ class Menubar:
         self.viewmenu.add_command(label="Focus on Another View",accelerator="F8",command=self.focus_on_another_view)
         self.viewmenu.add_command(label="Hide Lines",accelerator="Alt+H",command=self.hide_lines)
         
-        
+        #Special Feature
+        self.special_feature.add_command(label="Syantax Highlighting",command=self.syntax_highlighting) 
+        self.special_feature.add_command(label="Auto Complete",command=self.auto_complete) 
+        self.special_feature.add_separator()
+        self.special_feature.add_command(label="Git intregration",command=self.git_integration)
         
         #Run Menu
         self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.open_terminal)
@@ -137,6 +143,9 @@ class Menubar:
         #Help
         self.helpmenu.add_command(label="Github Repo", command=self.open_website)
     # Define the methods for your menu commands here
+    def syntax_highlighting(self):pass
+    def auto_complete(self):pass
+    def git_integration(self):pass
     def new_file(self):
         pass
     
