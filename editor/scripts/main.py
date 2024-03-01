@@ -29,7 +29,8 @@ def main():
     screen_height = root.winfo_screenheight() - 150
     frame_width = screen_width *  0.10
     rf = int(screen_width-frame_width)
-# Frames 
+    
+# Static frames at the moment will be replaced by scrollable frames after a while
     top_frame = customtkinter.CTkFrame(root, width=screen_width, height=30) # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky='ew')
     
@@ -38,8 +39,11 @@ def main():
     
     right_frame = customtkinter.CTkFrame(root, width=rf, height=int(screen_width))
     right_frame.grid(row=1, column=1, sticky='nsew')
+    
+    bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=30)
+    bottom_frame.grid(row=2, column=0, columnspan=2, sticky='ew')
 
-# Creates a tab view to show tabs (Static at the moment)
+# Creates a tab view to show tabs (Static at the moment), Need to impliment the dynamic tab view
     tab_view = customtkinter.CTkTabview(right_frame,width=rf, height=int(screen_width))
     tab_view.grid(row=0, column=1, sticky='nsew')
     tab_1 = tab_view.add("Tab 1")
@@ -53,7 +57,7 @@ def main():
     menu_bar = Menubar(root,Textarea) 
     root.config(menu=menu_bar.menubar)
 
-# Test Area : 
+# Test Area will be removed after few commits: 
     testoptionmenu = customtkinter.CTkOptionMenu(top_frame,values=["option 1", "option 2"])
     testoptionmenu.pack(side="left",padx=5,pady=10)
     
@@ -68,6 +72,8 @@ def main():
     
     utton = customtkinter.CTkButton(left_frame, text="Files")
     utton.pack(side="top",padx=10,pady=22)
+    
+
 # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
     
