@@ -37,7 +37,6 @@ class Menubar:
         self.menubar.add_cascade(label="Edit", menu=self.editmenu)
         self.menubar.add_cascade(label="Search", menu=self.searchmenu)
         self.menubar.add_cascade(label="View", menu=self.viewmenu)
-        self.menubar.add_cascade(label="Settings", menu=self.settings)
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)

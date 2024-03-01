@@ -22,8 +22,8 @@ def main():
     customtkinter.set_default_color_theme("blue")
 
 # This is the icon for the application. It is expected to be in the same directory as the script
-    ico_path = os.path.abspath("editor\\scripts\\icon.ico")
-    root.iconbitmap(ico_path)
+    # ico_path = os.path.abspath("editor\\scripts\\icon.ico")
+    # root.iconbitmap(ico_path)
     
 # Setting width of the left frame 10 percent of the screen 
     screen_width = root.winfo_screenwidth()
