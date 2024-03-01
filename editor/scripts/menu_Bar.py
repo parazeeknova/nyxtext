@@ -40,8 +40,9 @@ class Menubar:
         self.menubar.add_cascade(label="View", menu=self.viewmenu)
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
-        self.menubar.add_cascade(label="Help", menu=self.helpmenu)
         self.menubar.add_cascade(label="Special Feature", menu=self.special_feature)
+        self.menubar.add_cascade(label="Help", menu=self.helpmenu)
+        
         #Functions of menu bar
         
         
@@ -129,10 +130,10 @@ class Menubar:
         self.viewmenu.add_command(label="Hide Lines - (Soon!)",accelerator="Alt+H",command=self.hide_lines)
         
         #Special Feature
-        self.special_feature.add_command(label="Syantax Highlighting",command=self.syntax_highlighting) 
+        self.special_feature.add_command(label="Syntax highlighting",command=self.syntax_highlighting) 
         self.special_feature.add_command(label="Auto Complete",command=self.auto_complete) 
         self.special_feature.add_separator()
-        self.special_feature.add_command(label="Git intregration",command=self.git_integration)
+        self.special_feature.add_command(label="Git integration",command=self.git_integration)
         
         #Run Menu
         self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.open_terminal)
@@ -374,4 +375,12 @@ class Menubar:
     
     def discord(self):
         webbrowser.open('https://discord.com/invite/UwmqqXkV')
+    def show_context_menu(self):
+    # Create a popup menu
+        context_menu = tk.Menu(self, tearoff=0)
+        context_menu.add_command(label="Function 1", command=lambda: print("Function 1 selected"))
+        context_menu.add_command(label="Function 2", command=lambda: print("Function 2 selected"))
+    
+    # Show the context menu at the mouse cursor's position
+        context_menu.post(self.x_root, self.y_root)
     

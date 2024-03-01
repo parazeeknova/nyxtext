@@ -181,7 +181,7 @@ def main():
 # All buttons in the bottom frame for different functions
     Color_Scheme_Button = customtkinter.CTkLabel(bottom_frame, text="Color Scheme :")
     Color_Scheme_Button.pack(side="left",padx=2,pady=10)
-    Color_Scheme_Button.configure(width=2,fg_color="transparent")
+    Color_Scheme_Button.configure(width=2)
 
     Color_Scheme_button = customtkinter.CTkSegmentedButton(bottom_frame, values=["Frappe", "Latte", "Macchiato", "Mocha"])
     Color_Scheme_button.pack(side="left",padx=5,pady=10)
