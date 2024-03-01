@@ -345,14 +345,14 @@ class Menubar:
         system = platform.system()
         if system == "Linux":
         # Assuming GNOME Terminal
-        subprocess.call(['gnome-terminal'])
+            subprocess.call(['gnome-terminal'])
         elif system == "Windows":
-        subprocess.call(['start', 'cmd'])
+            subprocess.call(['start', 'cmd'])
         elif system == "Darwin":
         # macOS
-        subprocess.call(['open', '-a', 'Terminal'])
+            subprocess.call(['open', '-a', 'Terminal'])
         else:
-        print("Unsupported platform")
+            print("Unsupported platform")
     
 #Window menu Functions
     def tab(self):
