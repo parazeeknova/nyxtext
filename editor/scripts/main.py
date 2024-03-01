@@ -2,10 +2,11 @@
 import customtkinter
 import tkinter as tk
 import os
-
+import search
 # File imports here
 from menu_Bar import Menubar
 from text_Area import textarea
+from settings import Settings
 
 
 def main():
@@ -62,6 +63,11 @@ def main():
     
     testoptionmenu3 = customtkinter.CTkOptionMenu(top_frame,values=["option 3", "option 2"])
     testoptionmenu3.pack(side="left",padx=5,pady=10)
+
+    def open_settings_window():
+      settings = Settings(root)
+    testoptionmenu4 = customtkinter.CTkButton(top_frame, text="Settings",command=open_settings_window)
+    testoptionmenu4.pack(side="left",padx=5,pady=10)
 
     entry = customtkinter.CTkEntry(top_frame, placeholder_text="Search", width=400)
     entry.pack(side="left",padx=500,pady=10)
