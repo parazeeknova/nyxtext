@@ -104,7 +104,7 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 
 &nbsp;
 ### 💡Future Plans : 
-- [x] ~~Complete rebase to custom_tkinter~~ - Done 28/04/2024 ✅
+- [x] ~~Complete rebase to custom_tkinter~~ - Done 28/02/2024 ✅
 - [ ] Syntax Highlighting
 - [ ] Filetree viewer
 - [ ] Terminal Integration
