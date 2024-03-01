@@ -55,7 +55,7 @@ def main():
     Textarea = textarea(tab_1,int(screen_width),rf,int(screen_height))
     
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
-    menu_bar = Menubar(root,Textarea) 
+    menu_bar = Menubar(root,Textarea)
     root.config(menu=menu_bar.menubar)
 
 # Test Area will be removed after few commits: 
@@ -78,6 +78,7 @@ def main():
     
     utton = customtkinter.CTkButton(left_frame, text="Files")
     utton.pack(side="top",padx=10,pady=22)
+    
     
 
 # This is the main loop of the application. It keeps the application running until it is closed

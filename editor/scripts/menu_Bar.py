@@ -7,6 +7,8 @@ import subprocess,shutil
 import pyperclip as pc
 # File imports here
 from text_Area import textarea
+import platform
+
 
 
 class Menubar:
@@ -126,13 +128,9 @@ class Menubar:
         self.viewmenu.add_command(label="Hide Lines",accelerator="Alt+H",command=self.hide_lines)
         
         
-        #Settings MEnu
-        
-        self.settings.add_command(label="Preferences....",command=self.preferences)
-        
         
         #Run Menu
-        self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.terminal)
+        self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.open_terminal)
         
         #Window MEnu
         self.window.add_command(label="Tabs", command=self.tab)
@@ -172,7 +170,8 @@ class Menubar:
     def exit_editor(self):
         if messagebox.askokcancel("Exit ?","Do you want to save your changes?"):
             self.save_file()
-        self.root.destroy()
+        else:
+          self.root.destroy()
 
     def open_folder(self):
         # self.file_path = filedialog.askdirectory()
@@ -194,7 +193,13 @@ class Menubar:
         pass
 
     def rename(self):
-        pass
+        self.file_path = filedialog.asksaveasfile(defaultextension=".txt",
+                                        filetypes=[("Text file","*.txt"),("All Files","*.*")])
+        if not self.file_path:
+            return
+        self.file_path.write(self.text_Area.text_area.get(1.0, tk.END))
+        self.file_path.close()
+
 
     def close(self):
         pass
@@ -335,14 +340,19 @@ class Menubar:
     def hide_lines(self):
         pass
 
-
-#Settings Menu Functions
-    def preferences(self):
-        pass
     
-#Run Menu Functions
-    def terminal(self):
-        pass
+    def open_terminal(self):
+      system = platform.system()
+      if system == "Linux":
+        # Assuming GNOME Terminal
+        subprocess.call(['gnome-terminal'])
+      elif system == "Windows":
+        subprocess.call(['start', 'cmd'])
+      elif system == "Darwin":
+        # macOS
+        subprocess.call(['open', '-a', 'Terminal'])
+      else:
+        print("Unsupported platform")
     
 #Window menu Functions
     def tab(self):
