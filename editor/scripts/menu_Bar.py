@@ -228,8 +228,8 @@ class Menubar:
             # Copy the removed text to the clipboard
             pc.copy(self.selected_text) 
     def copy(self):
-      self.text_to_copy = self.text_Area.text_area.get(1.0, tk.END)
-      pc.copy(self.text_to_copy)
+        self.text_to_copy = self.text_Area.text_area.get(1.0, tk.END)
+        pc.copy(self.text_to_copy)
     def paste(self):
         # Paste text from the clipboard
         self.pasted_text = pc.paste()
@@ -341,16 +341,16 @@ class Menubar:
 
     
     def open_terminal(self):
-      system = platform.system()
-      if system == "Linux":
+        system = platform.system()
+        if system == "Linux":
         # Assuming GNOME Terminal
         subprocess.call(['gnome-terminal'])
-      elif system == "Windows":
+        elif system == "Windows":
         subprocess.call(['start', 'cmd'])
-      elif system == "Darwin":
+        elif system == "Darwin":
         # macOS
         subprocess.call(['open', '-a', 'Terminal'])
-      else:
+        else:
         print("Unsupported platform")
     
 #Window menu Functions
