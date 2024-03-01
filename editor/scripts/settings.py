@@ -13,6 +13,6 @@ class Settings():
         self.settings_window.title("Settings")
         self.settings_window.geometry("300x200")
         customtkinter.CTkLabel(self.settings_window, text="Settings Window").pack()
-
+    
 
    
