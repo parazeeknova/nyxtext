@@ -8,6 +8,8 @@ import webbrowser
 from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
+from tkinter import ttk
+from PIL import Image, ImageTk
 
 # customtkinter.set_widget_scaling(80)
 # customtkinter.set_window_scaling(80)
@@ -25,7 +27,7 @@ def main():
     customtkinter.set_default_color_theme("dark-blue")
 
 # This is the icon for the application. It is expected to be in the same directory as the script
-    ico_path = os.path.abspath("editor\\scripts\\icon.ico")
+    ico_path = os.path.abspath("editor\\scripts\\misc\\icons\\icon.ico")
     root.iconbitmap(ico_path)
     
 # Setting width of the left frame 10 percent of the screen 
@@ -38,7 +40,8 @@ def main():
     top_frame = customtkinter.CTkFrame(root, width=screen_width, height=10) # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky='ew')
     
-    left_frame = customtkinter.CTkFrame(root, width=int(frame_width), height=int(screen_height))
+# Using scrollable frame for the left frame (for now will be changed in future), used to fix sizing bug
+    left_frame = customtkinter.CTkScrollableFrame(root, width=int(frame_width), height=int(screen_height))
     left_frame.grid(row=1, column=0, sticky='nsew') # Ensure left_frame is correctly placed
     
     right_frame = customtkinter.CTkScrollableFrame(root, width=rf,)
@@ -53,6 +56,45 @@ def main():
     tab_1 = tab_view.add("Tab 1")
     tab_2 = tab_view.add("Tab 2")
     
+    
+# Preparing images for the file tree
+    folder_image = Image.open("editor\\scripts\\misc\\icons\\folder.ico")
+    resized_folder_icon = folder_image.resize((16, 16), Image.BICUBIC)
+    folder_path = ImageTk.PhotoImage(resized_folder_icon)
+    
+    file_image = Image.open("editor\\scripts\\misc\\icons\\file.ico")
+    resized_file_icon = file_image.resize((16, 16), Image.BICUBIC)
+    file_path = ImageTk.PhotoImage(resized_file_icon)
+
+# Inside the main function, after creating the left_frame
+    file_tree = ttk.Treeview(left_frame,height=10)
+    file_tree.heading("#0", text="Files")
+    file_tree.grid(row=0, column=0, sticky='nsew')
+    file_tree.insert("", "end", text="Folder 1") 
+
+
+    def populate_file_tree(tree, path):
+        for item in os.listdir(path):
+            item_path = os.path.join(path, item)
+            if os.path.isdir(item_path):
+            # Insert the directory into the tree and get its ID
+                global dir_id
+                dir_id = tree.insert("", "end", text=item, open=True,image= folder_path)
+            # Recursively populate the directory
+                populate_file_tree(tree, item_path)
+            else:
+            # Insert the file into the tree using the parent directory's ID
+                tree.insert("", "end", text=item, image= file_path)
+                
+# Styling the Treeview to look dark          
+    style = ttk.Style()
+    style.configure('Treeview', background='#333', foreground='#fff')
+    style.configure('Treeview.Heading', background='#fff', foreground='#333')
+    
+# Bydefault populate the file tree with the desktop directory
+    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    populate_file_tree(file_tree, desktop_path)
+
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
     Textarea = textarea(tab_1,int(screen_width),rf,int(screen_height))
