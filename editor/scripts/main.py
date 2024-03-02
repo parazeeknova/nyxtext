@@ -52,11 +52,15 @@ def main():
 
 # Creates a tab view to show tabs (Static at the moment), Need to impliment the dynamic tab view
     tab_view = customtkinter.CTkTabview(right_frame,width=rf, height=int(screen_width))
-    tab_view.grid(row=0, column=1, sticky='nsew')
+    tab_view.grid(row=0, column=1,pady=10, sticky='nsew')
     tab_1 = tab_view.add("Tab 1")
     tab_2 = tab_view.add("Tab 2")
-    
-    
+
+# All Items for the left frame are below :
+    Filetree_Button = customtkinter.CTkLabel(left_frame, text="FileTree View :")
+    Filetree_Button.grid(row=0, column=0,pady=5, sticky='nsew')
+    Filetree_Button.configure(width=2)
+
 # Preparing images for the file tree
     folder_image = Image.open("editor\\scripts\\misc\\icons\\folder.ico")
     resized_folder_icon = folder_image.resize((16, 16), Image.BICUBIC)
@@ -69,7 +73,7 @@ def main():
 # Inside the main function, after creating the left_frame
     file_tree = ttk.Treeview(left_frame,height=10)
     file_tree.heading("#0", text="Files")
-    file_tree.grid(row=0, column=0, sticky='nsew')
+    file_tree.grid(row=1, column=0, sticky='nsew')
     file_tree.insert("", "end", text="Folder 1") 
 
 
