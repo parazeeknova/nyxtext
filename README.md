@@ -106,7 +106,7 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 ### 💡Future Plans : 
 - [x] ~~Complete rebase to custom_tkinter~~ - Done 28/02/2024 ✅
 - [ ] Syntax Highlighting
-- [ ] Filetree viewer
+- [x] ~~Filetree viewer~~ - Done 02/03/2024 ✅
 - [ ] Terminal Integration
 - [ ] Code Folding 
 - [ ] Spell Check
@@ -122,14 +122,14 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
 
 <div style="display: flex; align-items: center;">
     <div style="width: 40%; flex: 1;">
-        <p align="center">Light Mode</p>
+        <p align="center">Alpha Light Mode</p>
         <hr>
-        <img src="main/assets/misc/Light.png" alt="Light mode"/>
+        <img src="main/assets/misc/Light.png" alt="Alpha Light mode"/>
         <br>
     </div>
-    <div style="width: 20px;"></div> <!-- Separator -->
+    <div style="width: 20px;"></div>      <!-- Separator -->
     <div style="width: 40%; flex: 1;">
-        <p align="center">Dark Mode</p>
+        <p align="center">Beta Dark Mode</p>
         <hr>
         <img src="main/assets/misc/Dark.png" alt="Dark mode"/>
     </div>
