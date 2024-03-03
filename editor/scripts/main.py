@@ -53,11 +53,42 @@ def main():
 # Creates a tab view to show tabs (Static at the moment), Need to impliment the dynamic tab view
     tab_view = customtkinter.CTkTabview(right_frame,width=rf, height=int(screen_height))
     tab_view.grid(row=0, column=1,pady=10, sticky='nsew')
-    tab_1 = tab_view.add("Tab 1")
-    tab_2 = tab_view.add("Tab 2")
+    tab_init = tab_view.add("Workspace")
+    
+    # Initialize a variable to keep track of the tab count
+    global tab_count # Use the global keyword to modify the global variable
+    tab_count = 0
+    def add_new_tab():
+        global tab_count # Use the global keyword to modify the global variable
+        tab_count += 1 # Increment the tab count
+    # Generate a unique title for the new tab
+        tab_title = f"Workspace {tab_count}"
+    # Add a new tab to the tab view
+        new_tab = tab_view.add(tab_title)
+        text_area = textarea(new_tab,int(screen_width),rf,int(screen_height))
+        
+        
+        # Temp for testing will remove later
+        # text_area = customtkinter.CTkTextbox(new_tab, height=int(screen_height), width=rf, activate_scrollbars=True, wrap='none')
+        # text_area.pack(fill='both', expand=True)
+        
+    # Function to remove the currently selected tab
+    def remove_current_tab():
+    # Get the currently selected tab
+        selected_tab = tab_view.get()
+        if selected_tab:
+        # Remove the selected tab
+            tab_view.delete(selected_tab)
+
+# Add a button to remove the currently selected tab
+    remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=remove_current_tab)
+    remove_tab_button.pack(side="right", padx=5, pady=10)
+    
+    add_new_tab = customtkinter.CTkButton(bottom_frame, text="Add New Tab", command=add_new_tab)
+    add_new_tab.pack(side="right",padx=5,pady=10)
 
 # All Items for the left frame are below :
-    Filetree_Button = customtkinter.CTkLabel(left_frame, text="FileTree View :")
+    Filetree_Button = customtkinter.CTkLabel(left_frame, text="FileTree :", font=("VictorMono Nerd Font",14,"bold"))
     Filetree_Button.grid(row=0, column=0,pady=5, sticky='nsew')
     Filetree_Button.configure(width=2)
 
@@ -120,7 +151,7 @@ def main():
 
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
-    Textarea = textarea(tab_1,int(screen_width),rf,int(screen_height))
+    Textarea = textarea(tab_init,int(screen_width),rf,int(screen_height))
     
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,Textarea)
@@ -187,15 +218,15 @@ def main():
 # All buttons in the top frame for different functions (Left)
     New_button = customtkinter.CTkButton(top_frame, text="📄")
     New_button.pack(side="left",padx=2,pady=10)
-    New_button.configure(width=2,font = ("Arial",18),fg_color="transparent")
+    New_button.configure(width=2,font = ("Arial",18))
     
     Open_button = customtkinter.CTkButton(top_frame, text="📂")
     Open_button.pack(side="left",padx=2,pady=10)
-    Open_button.configure(width=2,font = ("Arial",18),fg_color="transparent")
+    Open_button.configure(width=2,font = ("Arial",18))
     
     Save_button = customtkinter.CTkButton(top_frame, text="💾")
     Save_button.pack(side="left",padx=3,pady=10)
-    Save_button.configure(width=2,font = ("Arial",18),fg_color="transparent")
+    Save_button.configure(width=2,font = ("Arial",18))
     
     def Seperator():
         Seperator = customtkinter.CTkLabel(top_frame, text="|")
