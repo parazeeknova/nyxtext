@@ -8,7 +8,7 @@ import webbrowser
 from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
-from tkinter import ttk
+from tkinter import ttk, filedialog
 from PIL import Image, ImageTk
 
 # customtkinter.set_widget_scaling(80)
@@ -32,8 +32,8 @@ def main():
     
 # Setting width of the left frame 10 percent of the screen 
     screen_width = root.winfo_screenwidth() - 50
-    screen_height = root.winfo_screenheight() - 200
-    frame_width = screen_width *  0.10
+    screen_height = root.winfo_screenheight() - 210
+    frame_width = screen_width *  0.11
     rf = int(screen_width-frame_width)
     
 # Static frames at the moment will be replaced by scrollable frames after a while
@@ -44,14 +44,14 @@ def main():
     left_frame = customtkinter.CTkScrollableFrame(root, width=int(frame_width), height=int(screen_height))
     left_frame.grid(row=1, column=0, sticky='nsew') # Ensure left_frame is correctly placed
     
-    right_frame = customtkinter.CTkScrollableFrame(root, width=rf,)
+    right_frame = customtkinter.CTkScrollableFrame(root, width=rf,height=int(screen_height))
     right_frame.grid(row=1, column=1, sticky='nsew')
     
     bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=30)
     bottom_frame.grid(row=2, column=0, columnspan=2, sticky='ew')
 
 # Creates a tab view to show tabs (Static at the moment), Need to impliment the dynamic tab view
-    tab_view = customtkinter.CTkTabview(right_frame,width=rf, height=int(screen_width))
+    tab_view = customtkinter.CTkTabview(right_frame,width=rf, height=int(screen_height))
     tab_view.grid(row=0, column=1,pady=10, sticky='nsew')
     tab_1 = tab_view.add("Tab 1")
     tab_2 = tab_view.add("Tab 2")
@@ -71,10 +71,9 @@ def main():
     file_path = ImageTk.PhotoImage(resized_file_icon)
 
 # Inside the main function, after creating the left_frame
-    file_tree = ttk.Treeview(left_frame,height=10)
-    file_tree.heading("#0", text="Files")
+    file_tree = ttk.Treeview(left_frame,height=35)
+    file_tree.heading("#0", text="Files :", anchor="w")
     file_tree.grid(row=1, column=0, sticky='nsew')
-    file_tree.insert("", "end", text="Folder 1") 
 
 
     def populate_file_tree(tree, path):
@@ -88,16 +87,36 @@ def main():
                 populate_file_tree(tree, item_path)
             else:
             # Insert the file into the tree using the parent directory's ID
-                tree.insert("", "end", text=item, image= file_path)
-                
+                tree.insert(dir_id, "end", text=item, image= file_path)
+
+    def open_directory_dialog():
+        directory_path = filedialog.askdirectory()
+        if directory_path:
+        # Clear the current file tree
+            for item in file_tree.get_children():
+                file_tree.delete(item)
+        # Populate the file tree with the selected directory
+        populate_file_tree(file_tree, directory_path)
+
 # Styling the Treeview to look dark          
     style = ttk.Style()
     style.configure('Treeview', background='#333', foreground='#fff')
-    style.configure('Treeview.Heading', background='#fff', foreground='#333')
-    
+    style.configure('Treeview.Heading', background='#333', foreground='#333')
+
+# Customizing the appearance of selected items and lines
+    style.map('Treeview',
+    background=[('selected', '#555')],
+    foreground=[('selected', '#fff')]
+)
+
 # Bydefault populate the file tree with the desktop directory
-    desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    populate_file_tree(file_tree, desktop_path)
+    # desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+    current_directory_path = os.getcwd()
+    populate_file_tree(file_tree, current_directory_path)
+    
+# Add a button to open the directory dialog
+    open_directory_button = customtkinter.CTkButton(left_frame, text="Open Directory", command=open_directory_dialog)
+    open_directory_button.grid(row=2, column=0,pady=5, sticky='nsew')
 
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
