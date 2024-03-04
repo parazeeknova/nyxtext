@@ -12,9 +12,9 @@
 <h6 align="center">
   <a href="https://github.com/parazeeknova/nyxtext#-info">Info</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#Design Philosophy">About</a>
+  <a href="https://github.com//parazeeknova/nyxtext#-Note">About</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#-showcase">Showcase</a>
+  <a href="https://github.com//parazeeknova/nyxtext#-Early editor screenshots">Showcase</a>
   ·
   <a href="https://github.com/parazeeknova/nyxtext/docs">Docs</a>
 </h6>
@@ -145,6 +145,46 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
 - [ ] Search bar does not work.
 
 - Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
+
+&nbsp;
+---
+
+### How do I run NyxText ? :
+
+Here's a step-by-step guide on getting nyxtext up and running:
+
+**1. Install Python:**
+
+- If you don't have Python installed, download the appropriate installer for your operating system from the official website: https://www.python.org/downloads/.
+- Follow the on-screen instructions to complete the installation.
+
+**2. Install Dependencies:**
+
+- Open a terminal or command prompt window.
+- Install the required Python libraries using `pip`:
+
+```
+pip install customtkinter Pillow webbrowser pyperclip platform
+```
+**3. Usage:**
+
+- Clone the Repository:
+- Click the `<>code` button, `clone` or `download` the repo. 
+- `cd` to your desired location
+- In your terminal, run the following command: 
+   
+```
+git clone https://github.com/parazeeknova/nyxtext.git
+```
+**4. Run the Editor:**
+
+- Navigate to the project directory:
+```
+cd nyxtext\editor\scripts
+python -u main.py
+```
+This will launch the nyxtext editor.
+> If you encounter any problems or have any questions while using nyxtext, feel free to reach out to me.
 
 &nbsp;
 ---
