@@ -164,7 +164,7 @@ Here's a step-by-step guide on getting nyxtext up and running:
 - Install the required Python libraries using `pip`:
 
 ```
-pip install customtkinter Pillow webbrowser pyperclip platform
+pip install customtkinter Pillow pyperclip
 ```
 **3. Usage:**
 
