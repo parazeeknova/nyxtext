@@ -224,6 +224,7 @@ class Menubar:
         pass
     def redo(self):
         pass
+    
     def cut(self):
         # Get the current selection
         self.selected_text = self.text_Area.text_area.get(1.0, tk.END)

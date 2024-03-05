@@ -11,48 +11,57 @@ from settings import Settings
 from tkinter import ttk, filedialog
 from PIL import Image, ImageTk
 
+# Sets (for now the appearance to light and color scheme to blue)
+customtkinter.set_appearance_mode("dark")
+    
+# Should be replaced with a function in future for catppuccin color scheme 
+customtkinter.set_default_color_theme("dark-blue")
+
 # customtkinter.set_widget_scaling(80)
 # customtkinter.set_window_scaling(80)
 
 def main():
+    
 # This defines the main function, which is the entry point of the application
+    global root
     root = customtkinter.CTk()
-    root.geometry("800x600")
+    root.geometry(f"{1100}x{580}")
     root.title("NyxText")
     
-# Sets (for now the appearance to light and color scheme to blue)
-    customtkinter.set_appearance_mode("dark")
-    
-# Should be replaced with a function in future for catppuccin color scheme 
-    customtkinter.set_default_color_theme("dark-blue")
+    # configure grid layout (4x4)
+    # Useful for responsiveness 
+    root.grid_rowconfigure(0,weight=1)
+    root.grid_columnconfigure(0,weight=1)
+    root.grid_columnconfigure(1,weight=1)
 
 # This is the icon for the application. It is expected to be in the same directory as the script
     ico_path = os.path.abspath("editor\\scripts\\misc\\icons\\icon.ico")
     root.iconbitmap(ico_path)
     
-# Setting width of the left frame 10 percent of the screen 
-    screen_width = root.winfo_screenwidth() - 50
-    screen_height = root.winfo_screenheight() - 210
-    frame_width = screen_width *  0.11
-    rf = int(screen_width-frame_width)
+# Setting width variables
+    screen_width = root.winfo_screenwidth() 
+    screen_height = root.winfo_screenheight() 
     
-# Static frames at the moment will be replaced by scrollable frames after a while
-    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=10) # Adjust height as needed
-    top_frame.grid(row=0, column=0, columnspan=2, sticky='ew')
+# Frames for the main text editor 
+    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=10,corner_radius=0) # Adjust height as needed
+    top_frame.grid(row=0, column=0, columnspan=2, sticky='nsew')
     
-# Using scrollable frame for the left frame (for now will be changed in future), used to fix sizing bug
-    left_frame = customtkinter.CTkScrollableFrame(root, width=int(frame_width), height=int(screen_height))
-    left_frame.grid(row=1, column=0, sticky='nsew') # Ensure left_frame is correctly placed
+    left_frame = customtkinter.CTkFrame(root, width=100,corner_radius=0)
+    left_frame.grid(row=1, column=0,rowspan=4, sticky='nsew') # Ensure left_frame is correctly placed
     
-    right_frame = customtkinter.CTkScrollableFrame(root, width=rf,height=int(screen_height))
-    right_frame.grid(row=1, column=1, sticky='nsew')
+    right_frame = customtkinter.CTkFrame(root, width=int(screen_width)-100,height=int(screen_height)-30,corner_radius=0)
+    right_frame.grid(row=1, column=1,sticky='nsew')
     
-    bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=30)
-    bottom_frame.grid(row=2, column=0, columnspan=2, sticky='ew')
+    bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=20,corner_radius=0)
+    bottom_frame.grid(row=2, column=0, columnspan=2, sticky='nsew')
 
-# Creates a tab view to show tabs (Static at the moment), Need to impliment the dynamic tab view
-    tab_view = customtkinter.CTkTabview(right_frame,width=rf, height=int(screen_height))
-    tab_view.grid(row=0, column=1,pady=10, sticky='nsew')
+
+# Creates a tab view to show tabs, implimented the partial dynamic tab view
+    right_frame.grid_rowconfigure(0, weight=1)
+    right_frame.grid_columnconfigure(0, weight=1)
+    
+    tab_view = customtkinter.CTkTabview(right_frame,width=int(screen_width)-250,height=int(screen_height)-200)
+    tab_view.grid(row=0, column=0,pady=10, sticky='nsew')
     tab_init = tab_view.add("Workspace")
     
     # Initialize a variable to keep track of the tab count
@@ -65,9 +74,8 @@ def main():
         tab_title = f"Workspace {tab_count}"
     # Add a new tab to the tab view
         new_tab = tab_view.add(tab_title)
-        text_area = textarea(new_tab,int(screen_width),rf,int(screen_height))
-        
-        
+        text_area = textarea(new_tab)
+    
         # Temp for testing will remove later
         # text_area = customtkinter.CTkTextbox(new_tab, height=int(screen_height), width=rf, activate_scrollbars=True, wrap='none')
         # text_area.pack(fill='both', expand=True)
@@ -151,7 +159,7 @@ def main():
 
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
     global Textarea
-    Textarea = textarea(tab_init,int(screen_width),rf,int(screen_height))
+    Textarea = textarea(tab_init)
     
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,Textarea)
@@ -274,7 +282,7 @@ def main():
     Suggestions.pack(side="left",padx=2,pady=10)
     Suggestions.configure(width=3) 
     
-# All buttons in the bottom frame for different functions
+    # All buttons in the bottom frame for different functions
     Color_Scheme_Button = customtkinter.CTkLabel(bottom_frame, text="Color Scheme :")
     Color_Scheme_Button.pack(side="left",padx=2,pady=10)
     Color_Scheme_Button.configure(width=2)
@@ -282,10 +290,9 @@ def main():
     Color_Scheme_button = customtkinter.CTkSegmentedButton(bottom_frame, values=["Frappe", "Latte", "Macchiato", "Mocha"])
     Color_Scheme_button.pack(side="left",padx=5,pady=10)
     Color_Scheme_button.configure(width=10)
-
-# This is the main loop of the application. It keeps the application running until it is closed
-    root.mainloop()
     
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
     main()
+    # This is the main loop of the application. It keeps the application running until it is closed
+    root.mainloop()
