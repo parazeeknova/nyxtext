@@ -15,7 +15,7 @@ class Menubar:
     def __init__(self, root,text_Area):
         self.root = root
         self.text_Area = text_Area
-        self.menubar = tk.Menu(self.root)
+        self.menubar = tk.Menu(self.root, background='grey', fg='white')
         self.file_path_1 = None
         
         
