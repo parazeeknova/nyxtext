@@ -78,7 +78,7 @@ class Settings():
             # Here you would typically update the system theme of your application
             # For demonstration, we're just printing the selected theme
         # List of system themes to be displayed in the option menu
-        system_themes = ["Pandey", "Ka ", "Kaam ", "Tha","Ye"]
+        system_themes = ["Dark", "Light", "Kaam "]
 
         # Create a variable to store the selected system theme
         selected_system_theme = tk.StringVar(self.settings_window)

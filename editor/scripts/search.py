@@ -1,7 +1,9 @@
 from tkinter import *
-from menu_Bar import Menubar
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk, colorchooser
+import menu_Bar
 import customtkinter
-
+from text_Area import textarea
 # Assuming label_element is defined here for simplicity
 label_element = [
     "New", "Open", "Open Containing Folder", "Open Folder as Workspace...",
@@ -14,11 +16,11 @@ label_element = [
 
 class SearchWindow(Toplevel):
     
-    def __init__(self, master=None, menubar=None):
+    def __init__(self, master=None):
         super().__init__(master)
         self.title("Search Window")
         self.geometry("400x200")
-        self.menubar = menubar
+        
         
         # Create combobox with options from label_element
         self.combobox = customtkinter.CTkComboBox(self, values=label_element)
@@ -33,8 +35,15 @@ class SearchWindow(Toplevel):
         selected_label = self.combobox.get()
         if selected_label == "Open":
             # Assuming Menubar.open_file is a static method or accessible instance method
-            self.Menubar.open_file()
+            self.open_file()
         else:
             pass
         # Add more conditions here for other actions
 
+    def open_file(self):
+        self.file_path_1 = filedialog.askopenfilename(defaultextension=".txt",
+                                                filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+        if self.file_path_1:
+            with open(self.file_path_1, "r") as file:
+                self.text_Area.text_area.delete(1.0, tk.END)  # Clear the text area
+                self.text_Area.text_area.insert(tk.INSERT, file.read())  # Insert the file content
