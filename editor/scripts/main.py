@@ -8,8 +8,7 @@ import webbrowser
 from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
-from tkinter import ttk, filedialog
-from PIL import Image, ImageTk
+from tkinter import ttk, filedialog, PhotoImage
 
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
@@ -35,8 +34,11 @@ def main():
     root.grid_columnconfigure(1,weight=1)
 
 # This is the icon for the application. It is expected to be in the same directory as the script
-    ico_path = os.path.abspath("editor\\scripts\\misc\\icons\\icon.ico")
-    root.iconbitmap(ico_path)
+
+    if os.name == 'nt':  # for Windows
+        root.iconbitmap("editor/scripts/misc/icons/icon.ico")
+    elif os.name == 'posix':  # for Linux and MacOS
+        root.iconphoto(False, PhotoImage(file="editor/scripts/misc/icons/icon.png"))
     
 # Setting width variables
     screen_width = root.winfo_screenwidth() 
@@ -101,13 +103,11 @@ def main():
     Filetree_Button.configure(width=2)
 
 # Preparing images for the file tree
-    folder_image = Image.open("editor\\scripts\\misc\\icons\\folder.ico")
-    resized_folder_icon = folder_image.resize((16, 16), Image.BICUBIC)
-    folder_path = ImageTk.PhotoImage(resized_folder_icon)
+    folder_image = PhotoImage(file="editor/scripts/misc/icons/folder.png")
+    folder_path = folder_image
     
-    file_image = Image.open("editor\\scripts\\misc\\icons\\file.ico")
-    resized_file_icon = file_image.resize((16, 16), Image.BICUBIC)
-    file_path = ImageTk.PhotoImage(resized_file_icon)
+    file_image = PhotoImage(file="editor/scripts/misc/icons/file.png")
+    file_path = file_image
 
 # Inside the main function, after creating the left_frame
     file_tree = ttk.Treeview(left_frame,height=35)
