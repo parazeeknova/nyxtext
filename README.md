@@ -12,9 +12,9 @@
 <h6 align="center">
   <a href="https://github.com/parazeeknova/nyxtext#-info">Info</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#Design Philosophy">About</a>
+  <a href="https://github.com//parazeeknova/nyxtext#-Note">About</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#-showcase">Showcase</a>
+  <a href="https://github.com//parazeeknova/nyxtext#-Early editor screenshots">Showcase</a>
   ·
   <a href="https://github.com/parazeeknova/nyxtext/docs">Docs</a>
 </h6>
@@ -97,7 +97,9 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 
 ### 🎨 Palette
 
-**Catppuccin** consists of 4 beautiful pastel color palettes.
+**Catppuccin** consists of 4 beautiful pastel color palettes. \
+Thats not it it also has some other custom made themes like **lumber** and **H2O**. \
+The number of themes is not definite, we will be adding more in the future, Also you can make your **own**.
 <p align="center">
 <img src="main/assets/misc/demo.png" alt="catppuccin infrastructure"/>
 </p>
@@ -107,11 +109,10 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 - [x] ~~Complete rebase to custom_tkinter~~ - Done 28/02/2024 ✅
 - [ ] Syntax Highlighting
 - [x] ~~Filetree viewer~~ - Done 02/03/2024 ✅
-- [ ] Terminal Integration
-- [ ] Code Folding 
+- [ ] Terminal Integration - Partialy done 03/03/2024 ⚠️
 - [ ] Spell Check
 - [ ] Indent
-- [ ] Search and Replace
+- [ ] Search bar
 &nbsp;
 ---
 
@@ -122,14 +123,14 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
 
 <div style="display: flex; align-items: center;">
     <div style="width: 40%; flex: 1;">
-        <p align="center">Alpha Light Mode</p>
+        <p align="center">Different Flavours (as of α-0.0.1v ): </p>
         <hr>
-        <img src="main/assets/misc/Light.png" alt="Alpha Light mode"/>
+        <img src="main/assets/misc/flavours.png" alt="Different flavours"/>
         <br>
     </div>
     <div style="width: 20px;"></div>      <!-- Separator -->
     <div style="width: 40%; flex: 1;">
-        <p align="center">Beta Dark Mode</p>
+        <p align="center">Beta Dark Mode (as of α-0.0.1v )</p>
         <hr>
         <img src="main/assets/misc/Dark.png" alt="Dark mode"/>
     </div>
@@ -137,9 +138,53 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
 
 ---
 ### 🐜 Bugs : 
-- It's not responsive as the project is still in early development.
+- [ ] It's not responsive as the project is still in early development.
+- [ ] The editor only works in the full screen at the moment.
+- [ ] Filetree cannot open files
+- [ ] There is no dynamic heading.
+- [ ] Search bar does not work.
 
 - Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
+
+&nbsp;
+---
+
+### How do I run NyxText ? :
+
+Here's a step-by-step guide on getting nyxtext up and running:
+
+**1. Install Python:**
+
+- If you don't have Python installed, download the appropriate installer for your operating system from the official website: https://www.python.org/downloads/.
+- Follow the on-screen instructions to complete the installation.
+
+**2. Install Dependencies:**
+
+- Open a terminal or command prompt window.
+- Install the required Python libraries using `pip`:
+
+```
+pip install customtkinter Pillow pyperclip
+```
+**3. Usage:**
+
+- Clone the Repository:
+- Click the `<>code` button, `clone` or `download` the repo. 
+- `cd` to your desired location
+- In your terminal, run the following command: 
+   
+```
+git clone https://github.com/parazeeknova/nyxtext.git
+```
+**4. Run the Editor:**
+
+- Navigate to the project directory:
+```
+cd nyxtext\editor\scripts
+python -u main.py
+```
+This will launch the nyxtext editor.
+> If you encounter any problems or have any questions while using nyxtext, feel free to reach out to me.
 
 &nbsp;
 ---
