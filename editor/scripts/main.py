@@ -14,19 +14,34 @@ from tkinter import ttk, filedialog, PhotoImage
 customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
-customtkinter.set_default_color_theme("dark-blue")
+customtkinter.set_default_color_theme("blue")
 
 # customtkinter.set_widget_scaling(80)
 # customtkinter.set_window_scaling(80)
+def show_welcome_window(root):
+    welcome_window = customtkinter.CTkToplevel(root)
+    welcome_window.geometry(f"{root.winfo_width()}x{root.winfo_height()}+{root.winfo_x()}+{root.winfo_y()}")
+    # welcome_window.geometry(f"{parent.winfo_width()}x{parent.winfo_height()}+{parent.winfo_x()}+{parent.winfo_y()}")
+    welcome_window.title("Welcome to NyxText")
+    welcome_window.geometry(f"{1100}x{580}")
+    welcome_window.wm_overrideredirect(True)
+    # welcome_window.attributes('-alpha', 0.8)
+    welcome_window.grab_set()
+
+    welcome_label = customtkinter.CTkLabel(welcome_window, text="Welcome to NyxText, your advanced text editor!\n\nClick 'Start' to proceed.", font=("VictorMono Nerd Font", 14))
+    welcome_label.pack(pady=50)
+
+    start_button = customtkinter.CTkButton(welcome_window, text="Start", command=welcome_window.destroy, font=("VictorMono Nerd Font", 14))
+    start_button.pack(pady=10)
+
 
 def main():
-    
 # This defines the main function, which is the entry point of the application
     global root
     root = customtkinter.CTk()
     root.geometry(f"{1100}x{580}")
     root.title("NyxText")
-    
+    show_welcome_window(root)
     # configure grid layout (4x4)
     # Useful for responsiveness 
     root.grid_rowconfigure(0,weight=1)
@@ -103,10 +118,10 @@ def main():
     Filetree_Button.configure(width=2)
 
 # Preparing images for the file tree
-    folder_image = PhotoImage(file="editor/scripts/misc/icons/folder.png")
+    folder_image = PhotoImage("editor/scripts/misc/icons/folder.png")
     folder_path = folder_image
     
-    file_image = PhotoImage(file="editor/scripts/misc/icons/file.png")
+    file_image = PhotoImage("editor/scripts/misc/icons/file.png")
     file_path = file_image
 
 # Inside the main function, after creating the left_frame
