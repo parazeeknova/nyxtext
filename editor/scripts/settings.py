@@ -92,4 +92,6 @@ class Settings():
         system_theme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=system_themes, variable=selected_system_theme, command=on_system_theme_select)
         system_theme_option_menu.place(x=200, y=140) # Position the option menu to the right of the system theme label
         
+        start_button = ctk.CTkButton(self.settings_window, text="OK", command=self.settings_window.destroy, font=("VictorMono Nerd Font", 14))
+        start_button.place(x=110 ,y= 200)
         self.settings_window.grab_set()
