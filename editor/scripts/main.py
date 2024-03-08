@@ -280,9 +280,13 @@ def main():
     Exit_button.pack(side="left",padx=3,pady=10)
     Exit_button.configure(width=2)
     
-    Dark_Light_mode = customtkinter.CTkButton(top_frame, text="🌓")
-    Dark_Light_mode.pack(side="left",padx=2,pady=10)
-    Dark_Light_mode.configure(width=2,font = ("Arial",16))
+    # Switch to change Light and DarkMode :
+    def change_appearance_mode_event(new_appearance_mode: str):
+        customtkinter.set_appearance_mode(new_appearance_mode)
+
+    Appearance_mode_optionemenu = customtkinter.CTkOptionMenu(top_frame, values=["Light", "Dark", "System"],
+                                                                        command=change_appearance_mode_event)
+    Appearance_mode_optionemenu.pack(side="left",padx=2,pady=10)
     
     About = customtkinter.CTkButton(top_frame, text="About")
     About.pack(side="left",padx=2,pady=10)
@@ -303,13 +307,28 @@ def main():
     Suggestions.configure(width=3) 
     
     # All buttons in the bottom frame for different functions
-    Color_Scheme_Button = customtkinter.CTkLabel(bottom_frame, text="Color Scheme :")
-    Color_Scheme_Button.pack(side="left",padx=2,pady=10)
-    Color_Scheme_Button.configure(width=2)
-
+    
+    # Switch to change the System Scaling to user desired percentage
+    def change_scaling_event(new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        customtkinter.set_widget_scaling(new_scaling_float)
+    
+    scaling_optionemenu = customtkinter.CTkOptionMenu(bottom_frame, width=80,values=["80%", "90%", "100%", "110%", "120%"],
+                                                                command=change_scaling_event)
+    scaling_optionemenu.pack(side="left",padx=2,pady=10)
+    
+    Seperator = customtkinter.CTkLabel(bottom_frame, text="|")
+    Seperator.pack(side="left",padx=2,pady=10)
+    Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
+        
+    Color_Scheme_Label = customtkinter.CTkLabel(bottom_frame, text="Color Scheme :")
+    Color_Scheme_Label.pack(side="left",padx=2,pady=10)
+    Color_Scheme_Label.configure(width=2)
+    
     Color_Scheme_button = customtkinter.CTkSegmentedButton(bottom_frame, values=["Frappe", "Latte", "Macchiato", "Mocha"])
     Color_Scheme_button.pack(side="left",padx=5,pady=10)
     Color_Scheme_button.configure(width=10)
+    
     
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
