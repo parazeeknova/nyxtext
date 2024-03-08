@@ -40,7 +40,6 @@ class Menubar:
         self.menubar.add_cascade(label="View", menu=self.viewmenu)
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
-        self.menubar.add_cascade(label="Special Feature", menu=self.special_feature)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
         
         #Functions of menu bar
@@ -129,23 +128,17 @@ class Menubar:
         self.viewmenu.add_command(label="Focus on Another View - (Soon!)",accelerator="F8",command=self.focus_on_another_view)
         self.viewmenu.add_command(label="Hide Lines - (Soon!)",accelerator="Alt+H",command=self.hide_lines)
         
-        #Special Feature
-        self.special_feature.add_command(label="Syntax highlighting",command=self.syntax_highlighting) 
-        self.special_feature.add_command(label="Auto Complete",command=self.auto_complete) 
-        self.special_feature.add_separator()
-        self.special_feature.add_command(label="Git integration",command=self.git_integration)
-        
         #Run Menu
         self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.open_terminal)
         
-        #Window MEnu
+        #Window Menu
         self.window.add_command(label="Tabs", command=self.tab)
         
         #Help
         self.helpmenu.add_command(label="Github Repo", command=self.open_website)
         self.helpmenu.add_command(label="Discord", command=self.discord)
-    # Define the methods for your menu commands here
 
+    # Define the methods for your menu commands here
 
     def open_file(self):
         self.file_path_1 = filedialog.askopenfilename(defaultextension=".txt",

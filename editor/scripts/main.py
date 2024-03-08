@@ -18,13 +18,16 @@ customtkinter.set_default_color_theme("blue")
 
 # customtkinter.set_widget_scaling(80)
 # customtkinter.set_window_scaling(80)
+
+# Welcome screen for the text editor disabled because currently a mess 
+# Need to work on this mess in future
 def show_welcome_window(root):
     welcome_window = customtkinter.CTkToplevel(root)
     # welcome_window.geometry(f"{root.winfo_width()}x{root.winfo_height()}+{root.winfo_x()}+{root.winfo_y()}")
     welcome_window.title("Welcome to NyxText")
     welcome_window.geometry(f"{1100}x{580}")
     welcome_window.wm_overrideredirect(True)
-    # welcome_window.attributes('-alpha', 0.8)
+    welcome_window.attributes('-alpha', 0.8)
     welcome_window.grab_set()
 
     welcome_label = customtkinter.CTkLabel(welcome_window, text="Welcome to NyxText, your advanced text editor!\n\nClick 'Start' to proceed.", font=("VictorMono Nerd Font", 14))
@@ -59,7 +62,7 @@ def main():
     screen_height = root.winfo_screenheight() 
     
 # Frames for the main text editor 
-    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=10,corner_radius=0) # Adjust height as needed
+    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=20,corner_radius=0) # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky='nsew')
     
     left_frame = customtkinter.CTkFrame(root, width=100,corner_radius=0)
@@ -71,13 +74,60 @@ def main():
     bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=20,corner_radius=0)
     bottom_frame.grid(row=2, column=0, columnspan=2, sticky='nsew')
 
-
 # Creates a tab view to show tabs, implimented the partial dynamic tab view
     right_frame.grid_rowconfigure(0, weight=1)
-    right_frame.grid_columnconfigure(0, weight=1)
+    right_frame.grid_columnconfigure(0, weight=2)
     
     tab_view = customtkinter.CTkTabview(right_frame,width=int(screen_width)-250,height=int(screen_height)-200)
     tab_view.grid(row=0, column=0,pady=10, sticky='nsew')
+    
+# Welcome Tab : 
+    welcome_tab = tab_view.add("Welcome")
+    
+    welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="NyxText",
+                                                font=('JetBrainsMono NF',80,"bold"),
+                                                padx=100,anchor="center")
+    welcome_title_text.pack(side='top',pady=(100,0))
+    
+    welcome_title_desc = customtkinter.CTkLabel(welcome_tab, text="- A Catppuccin based Text Editor",
+                                                font=('JetBrainsMono NF',20,"italic"),
+                                                padx=100,anchor="center")
+    welcome_title_desc.pack(side='top')
+    
+    welcome_title_start = customtkinter.CTkLabel(welcome_tab, text="Start",
+                                                font=('JetBrainsMono NF',16,"bold"),
+                                                padx=100,anchor="center")
+    welcome_title_start.pack(side='top',pady=(50,10))
+    
+    welcome_new_button = customtkinter.CTkButton(welcome_tab,text=" New file... ",
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+    welcome_new_button.pack()
+    
+    welcome_open_button = customtkinter.CTkButton(welcome_tab,text=" Open file... ",
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+    welcome_open_button.pack()
+    
+    welcome_openfolder_button = customtkinter.CTkButton(welcome_tab,text=" Open Folder... ",
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+    welcome_openfolder_button.pack()
+    
+    welcome_about_button = customtkinter.CTkButton(welcome_tab,text=" About... ",
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+    welcome_about_button.pack()
+    
+    welcome_title_recents = customtkinter.CTkLabel(welcome_tab, text="Recents",
+                                                font=('JetBrainsMono NF',16,"bold"),
+                                                padx=100,anchor="center")
+    welcome_title_recents.pack(side='top',pady=(30,10))
+    
+    # Static at the moment need to replace with dynamic :
+    welcome_recent = customtkinter.CTkButton(welcome_tab,text=" Github/Nyxtext ",
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+    welcome_recent.pack()
+    
+
+
+# Workspace continue : 
     tab_init = tab_view.add("Workspace")
     
     # Initialize a variable to keep track of the tab count
@@ -333,6 +383,6 @@ def main():
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
     main()
-    show_welcome_window(root)
+    # show_welcome_window(root)
     # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
