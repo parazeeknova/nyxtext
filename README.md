@@ -92,6 +92,7 @@ As the first project developed by a group of undergraduates, NyxNote is a work i
 - **Modularity**: Design the codebase to be modular and extensible.
 - **Maintainability**: Keep the codebase maintainable and readable.
 - **Community Engagement**: Foster a vibrant and inclusive community around the editor. Encourage users to provide feedback, report bugs, and contribute code.
+- **Feature Rich**: Have all the basic features for a text editor
 
 &nbsp;
 
@@ -102,17 +103,37 @@ Thats not it it also has some other custom made themes like **lumber** and **H2O
 The number of themes is not definite, we will be adding more in the future, Also you can make your **own**.
 <p align="center">
 <img src="main/assets/misc/demo.png" alt="catppuccin infrastructure"/>
+<h>⚠️ Image referenced from Catppuccin's Repo</h> 
 </p>
+
+
+&nbsp;
+### ✨Features :
+- Edit Text files ~ duh.
+- **Workspace** - Work on multiple text file simultaneously.
+- Catpuccin Color Palette themes(4) + 4 Custom made themes and counting on..
+- **Dark / Light** mode.
+- Basic functions (new,open,save,cut,copy, etc.) check **menu bar** for more..
+- **FileTree** View which shows all your project's files & folders.
+- **System scaling** support.
+- **Responsive** design - 3 modes (windowed, middleman, fullscreen).
+- **AI** assistence, shortcuts to Gemini, ChatGPT, BlackboxAI... 
+- ***More Soon...***
 
 &nbsp;
 ### 💡Future Plans : 
 - [x] ~~Complete rebase to custom_tkinter~~ - Done 28/02/2024 ✅
-- [ ] Syntax Highlighting
+- [ ] Auto completion, Grammer check
 - [x] ~~Filetree viewer~~ - Done 02/03/2024 ✅
-- [ ] Terminal Integration - Partialy done 03/03/2024 ⚠️
 - [ ] Spell Check
-- [ ] Indent
-- [ ] Search bar
+- [ ] Search & replace 
+- [ ] Split file viewer, comparasion window
+- [ ] Focus window
+- [ ] Undo / Redo
+- [ ] Working Settings page
+- [ ] Text Formatting - (Bold, Underline, Bulletpoints)
+- [ ] Basic file Encryption / Decryption
+- [ ] Hyperlinks, Markdown support
 &nbsp;
 ---
 
@@ -136,10 +157,16 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
     </div>
 </div>
 
+<div>
+        <p align="center">Homepage on Dark Mode (as of α-0.0.2v )</p>
+        <hr>
+        <img src="main/assets/misc/Welcome.png" alt="Welcome Screen"/>
+</div>
+
 ---
 ### 🐜 Bugs : 
-- [ ] It's not responsive as the project is still in early development.
-- [ ] The editor only works in the full screen at the moment.
+- [x] ~~It's not responsive as the project is still in early development.~~ - Done 08/03/2024 ✅
+- [x] ~~The editor only works in the full screen at the moment.~~ - Done 08/03/2024  ✅ - Now has 3 modes
 - [ ] Filetree cannot open files
 - [ ] There is no dynamic heading.
 - [ ] Search bar does not work.
