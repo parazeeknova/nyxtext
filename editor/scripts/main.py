@@ -9,7 +9,7 @@ from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
 from tkinter import ttk, filedialog, PhotoImage
-
+from search import SearchWindow
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
     
@@ -188,6 +188,12 @@ def main():
     settings_button.pack(side="right",padx=5,pady=10)
     settings_button.configure(width=10)
     
+    # Instantiate SearchWindow and pass the text area
+    def open_search_window():
+        search = SearchWindow(root,textarea)
+    serch_button = customtkinter.CTkButton(top_frame,text="Search",command=open_search_window)
+    serch_button.pack(side="right",padx=5,pady=10)
+    serch_button.configure(width=10)
     def Seperator_R():
         Seperator = customtkinter.CTkLabel(top_frame, text="|")
         Seperator.pack(side="right",padx=2,pady=10)
