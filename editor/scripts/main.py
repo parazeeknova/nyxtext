@@ -10,6 +10,8 @@ from text_Area import textarea
 from settings import Settings
 from tkinter import ttk, filedialog, PhotoImage
 from search import SearchWindow
+from PIL import Image
+
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
     
@@ -62,16 +64,16 @@ def main():
     screen_height = root.winfo_screenheight() 
     
 # Frames for the main text editor 
-    top_frame = customtkinter.CTkFrame(root, width=screen_width, height=20,corner_radius=0) # Adjust height as needed
+    top_frame = customtkinter.CTkFrame(root, width=screen_width,height=int(screen_height * 0.15),corner_radius=0) # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky='nsew')
     
-    left_frame = customtkinter.CTkFrame(root, width=100,corner_radius=0)
+    left_frame = customtkinter.CTkFrame(root, width=screen_width * 0.16,corner_radius=0)
     left_frame.grid(row=1, column=0,rowspan=4, sticky='nsew') # Ensure left_frame is correctly placed
     
     right_frame = customtkinter.CTkFrame(root, width=int(screen_width)-100,height=int(screen_height)-30,corner_radius=0)
     right_frame.grid(row=1, column=1,sticky='nsew')
     
-    bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=20,corner_radius=0)
+    bottom_frame = customtkinter.CTkFrame(root, width=screen_width,height=int(screen_height * 0.15),corner_radius=0)
     bottom_frame.grid(row=2, column=0, columnspan=2, sticky='nsew')
 
 # Creates a tab view to show tabs, implimented the partial dynamic tab view
@@ -84,35 +86,40 @@ def main():
 # Welcome Tab : 
     welcome_tab = tab_view.add("Welcome")
     
-    welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="NyxText",
+    my_image = customtkinter.CTkImage(light_image=Image.open("main/assets/logo/logo.png"),
+                                    dark_image=Image.open("main/assets/logo/logo.png"),
+                                    size=(400, 200))
+
+    
+    welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="",image= my_image,
                                                 font=('JetBrainsMono NF',80,"bold"),
                                                 padx=100,anchor="center")
     welcome_title_text.pack(side='top',pady=(100,0))
     
-    welcome_title_desc = customtkinter.CTkLabel(welcome_tab, text="- A Catppuccin based Text Editor",
-                                                font=('JetBrainsMono NF',20,"italic"),
-                                                padx=100,anchor="center")
-    welcome_title_desc.pack(side='top')
+    # welcome_title_desc = customtkinter.CTkLabel(welcome_tab, text="- A Catppuccin based Text Editor",
+    #                                             font=('JetBrainsMono NF',20,"italic"),
+    #                                             padx=100,anchor="center")
+    # welcome_title_desc.pack(side='top')
     
     welcome_title_start = customtkinter.CTkLabel(welcome_tab, text="Start",
                                                 font=('JetBrainsMono NF',16,"bold"),
                                                 padx=100,anchor="center")
-    welcome_title_start.pack(side='top',pady=(50,10))
+    welcome_title_start.pack(side='top',pady=(30,10))
     
     welcome_new_button = customtkinter.CTkButton(welcome_tab,text=" New file... ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#ed8796')
     welcome_new_button.pack()
     
     welcome_open_button = customtkinter.CTkButton(welcome_tab,text=" Open file... ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#a6da95')
     welcome_open_button.pack()
     
     welcome_openfolder_button = customtkinter.CTkButton(welcome_tab,text=" Open Folder... ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#91d7e3')
     welcome_openfolder_button.pack()
     
     welcome_about_button = customtkinter.CTkButton(welcome_tab,text=" About... ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#8aadf4')
     welcome_about_button.pack()
     
     welcome_title_recents = customtkinter.CTkLabel(welcome_tab, text="Recents",
@@ -122,7 +129,7 @@ def main():
     
     # Static at the moment need to replace with dynamic :
     welcome_recent = customtkinter.CTkButton(welcome_tab,text=" Github/Nyxtext ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#00c3ff')
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#ee99a0')
     welcome_recent.pack()
     
 
