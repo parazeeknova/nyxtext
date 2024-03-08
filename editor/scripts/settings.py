@@ -6,10 +6,14 @@ from tkinter import colorchooser
 
 class Settings():
     def __init__(self, master):
+
         self.settings_window = ctk.CTkToplevel(master)
+        # self.settings_window.geometry(f"{self.winfo_width()}x{self.winfo_height()}+{self.winfo_x()}+{self.winfo_y()}")
         self.settings_window.title("Settings")
         self.settings_window.geometry("500x500")
-
+        self.settings_window.wm_overrideredirect(True)
+        
+        self.settings_window.grab_set()
         # Create a label for the font settings
         font_label = ctk.CTkLabel(self.settings_window, text="Font Type")
         font_label.place(x=20, y=20) # Position the label on the left side
@@ -49,7 +53,7 @@ class Settings():
         selected_font_size.set(font_sizes[0]) # Default to the first size
 
         # Create the option menu with font size options
-        font_size_option_menu = ctk.CTkOptionMenu(self.settings_window, values=font_sizes, variable=selected_font_size, command=on_font_size_select)
+        font_size_option_menu = ctk.CTkComboBox(self.settings_window, values=font_sizes, variable=selected_font_size, command=on_font_size_select)
         font_size_option_menu.place(x=200, y=60) # Position the option menu to the right of the font size label
         
         # Create a label for the font color settings
@@ -89,16 +93,3 @@ class Settings():
         system_theme_option_menu.place(x=200, y=140) # Position the option menu to the right of the system theme label
         
         
-        # Create a label for the system scaling settings
-        system_scaling_label = ctk.CTkLabel(self.settings_window, text="System Scaling")
-        system_scaling_label.place(x=20, y=180) # Position the label below the system theme label
-
-        # Function to handle system scaling selection
-        def on_system_scaling_select(scale_value):
-            print(f"Selected system scaling: {scale_value}")
-            # Here you would typically update the system scaling of your application
-            # For demonstration, we're just printing the selected scale value
-
-        # Create a custom tkinter scale for system scaling selection
-        system_scaling_scale = ctk.CTkScale(self.settings_window, from_=50, to=200, orient="horizontal", command=on_system_scaling_select)
-        system_scaling_scale.place(x=200, y=180) # Position the scale to the right of the system scaling label
