@@ -128,7 +128,11 @@ def main():
     welcome_title_recents.pack(side='top',pady=(30,10))
     
     # Static at the moment need to replace with dynamic :
-    welcome_recent = customtkinter.CTkButton(welcome_tab,text=" Github/Nyxtext ",
+    welcome_recent = customtkinter.CTkButton(welcome_tab,text=" Github/Parazeeknova/Nyxtext ",
+                                                fg_color='transparent',hover=False,anchor="center",text_color='#ee99a0')
+    welcome_recent.pack()
+    
+    welcome_recent = customtkinter.CTkButton(welcome_tab,text=" Github/Parazeeknova ",
                                                 fg_color='transparent',hover=False,anchor="center",text_color='#ee99a0')
     welcome_recent.pack()
     
@@ -174,11 +178,12 @@ def main():
     Filetree_Button.configure(width=2)
 
 # Preparing images for the file tree
-    folder_image = PhotoImage("editor/scripts/misc/icons/folder.png")
-    folder_path = folder_image
+# Commented for better version in future 
+    # folder_image = PhotoImage("editor/scripts/misc/icons/folder.png")
+    # folder_path = folder_image
     
-    file_image = PhotoImage("editor/scripts/misc/icons/file.png")
-    file_path = file_image
+    # file_image = PhotoImage("editor/scripts/misc/icons/file.png")
+    # file_path = file_image
 
 # Inside the main function, after creating the left_frame
     file_tree = ttk.Treeview(left_frame,height=35)
@@ -192,12 +197,12 @@ def main():
             if os.path.isdir(item_path):
             # Insert the directory into the tree and get its ID
                 global dir_id
-                dir_id = tree.insert("", "end", text=item, open=True,image= folder_path)
+                dir_id = tree.insert("", "end", text=item, open=True) # ,image= folder_path)
             # Recursively populate the directory
                 populate_file_tree(tree, item_path)
             else:
             # Insert the file into the tree using the parent directory's ID
-                tree.insert(dir_id, "end", text=item, image= file_path)
+                tree.insert(dir_id, "end", text=item) #, image= file_path)
 
     def open_directory_dialog():
         directory_path = filedialog.askdirectory()
