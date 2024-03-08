@@ -20,8 +20,7 @@ customtkinter.set_default_color_theme("blue")
 # customtkinter.set_window_scaling(80)
 def show_welcome_window(root):
     welcome_window = customtkinter.CTkToplevel(root)
-    welcome_window.geometry(f"{root.winfo_width()}x{root.winfo_height()}+{root.winfo_x()}+{root.winfo_y()}")
-    # welcome_window.geometry(f"{parent.winfo_width()}x{parent.winfo_height()}+{parent.winfo_x()}+{parent.winfo_y()}")
+    # welcome_window.geometry(f"{root.winfo_width()}x{root.winfo_height()}+{root.winfo_x()}+{root.winfo_y()}")
     welcome_window.title("Welcome to NyxText")
     welcome_window.geometry(f"{1100}x{580}")
     welcome_window.wm_overrideredirect(True)
@@ -36,12 +35,12 @@ def show_welcome_window(root):
 
 
 def main():
+    
 # This defines the main function, which is the entry point of the application
     global root
     root = customtkinter.CTk()
     root.geometry(f"{1100}x{580}")
     root.title("NyxText")
-    show_welcome_window(root)
     # configure grid layout (4x4)
     # Useful for responsiveness 
     root.grid_rowconfigure(0,weight=1)
@@ -315,5 +314,6 @@ def main():
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
     main()
+    show_welcome_window(root)
     # This is the main loop of the application. It keeps the application running until it is closed
     root.mainloop()
