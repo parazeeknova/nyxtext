@@ -13,7 +13,7 @@ class Settings():
         self.settings_window.geometry("500x500")
         self.settings_window.wm_overrideredirect(True)
         
-        self.settings_window.grab_set()
+        
         # Create a label for the font settings
         font_label = ctk.CTkLabel(self.settings_window, text="Font Type")
         font_label.place(x=20, y=20) # Position the label on the left side
@@ -92,4 +92,4 @@ class Settings():
         system_theme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=system_themes, variable=selected_system_theme, command=on_system_theme_select)
         system_theme_option_menu.place(x=200, y=140) # Position the option menu to the right of the system theme label
         
-        
+        self.settings_window.grab_set()
