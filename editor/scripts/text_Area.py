@@ -26,8 +26,10 @@ class textarea():
         popup_menu.add_command(label="Undo", command=self.undo)
         popup_menu.add_command(label="Redo", command=self.redo)
 
-        self.text_area.bind("<Button-3>", do_popup)
+        # Bind the focusout event to hide the menu
+        popup_menu.bind("<FocusOut>", lambda event: popup_menu.unpost())
 
+        self.text_area.bind("<Button-3>", do_popup)
         self.undo_stack = deque(maxlen=10)
         self.redo_stack = deque(maxlen=10)
         self.undo_stack.append(self.text_area.get(1.0, tk.END))
