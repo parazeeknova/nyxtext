@@ -126,6 +126,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] Auto completion, Grammer check
 - [x] ~~Filetree viewer~~ - Done 02/03/2024 ✅
 - [ ] Spell Check
+- [x] ~~Syntax Highlighter~~ - Done 09/03/2024  ✅ ~ Used [Chlorophyll](https://github.com/rdbende/chlorophyll)
 - [ ] Search & replace 
 - [ ] Split file viewer, comparasion window
 - [ ] Focus window
@@ -176,7 +177,7 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
 &nbsp;
 ---
 
-### How do I run NyxText ? :
+### How do I run NyxText in the Alpha Phase ? :
 
 Here's a step-by-step guide on getting nyxtext up and running:
 
@@ -191,7 +192,7 @@ Here's a step-by-step guide on getting nyxtext up and running:
 - Install the required Python libraries using `pip`:
 
 ```
-pip install customtkinter Pillow pyperclip
+pip install customtkinter Pillow pyperclip chlorophyll pygments
 ```
 **3. Usage:**
 

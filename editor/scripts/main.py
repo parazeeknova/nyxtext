@@ -12,11 +12,14 @@ from tkinter import ttk, filedialog, PhotoImage
 from search import SearchWindow
 from PIL import Image
 
+import pygments.lexers
+from chlorophyll import CodeView
+
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
-customtkinter.set_default_color_theme("green")
+customtkinter.set_default_color_theme("editor/scripts/color_Themes/H2O.json")
 
 # customtkinter.set_widget_scaling(80)
 # customtkinter.set_window_scaling(80)
@@ -86,20 +89,26 @@ def main():
 # Welcome Tab : 
     welcome_tab = tab_view.add("Welcome")
     
-    my_image = customtkinter.CTkImage(light_image=Image.open("main/assets/logo/logo.png"),
-                                    dark_image=Image.open("main/assets/logo/logo.png"),
-                                    size=(400, 200))
-
-    
-    welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="",image= my_image,
+    if os.name == 'nt':  # for Windows
+        my_image = customtkinter.CTkImage(light_image=Image.open("main/assets/logo/logo.png"),
+                                        dark_image=Image.open("main/assets/logo/logo.png"),
+                                        size=(400, 200))
+        
+        welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="",image= my_image,
                                                 font=('JetBrainsMono NF',80,"bold"),
                                                 padx=100,anchor="center")
-    welcome_title_text.pack(side='top',pady=(100,0))
+        welcome_title_text.pack(side='top',pady=(100,0))
     
-    # welcome_title_desc = customtkinter.CTkLabel(welcome_tab, text="- A Catppuccin based Text Editor",
-    #                                             font=('JetBrainsMono NF',20,"italic"),
-    #                                             padx=100,anchor="center")
-    # welcome_title_desc.pack(side='top')
+    elif os.name == 'posix': # for linux
+        welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="NyxText",
+                                                font=('JetBrainsMono NF',80,"bold"),
+                                                padx=100,anchor="center")
+        welcome_title_text.pack(side='top',pady=(100,0))
+
+        welcome_title_desc = customtkinter.CTkLabel(welcome_tab, text="- A Catppuccin based Text Editor",
+                                                    font=('JetBrainsMono NF',20,"italic"),
+                                                    padx=100,anchor="center")
+        welcome_title_desc.pack(side='top')
     
     welcome_title_start = customtkinter.CTkLabel(welcome_tab, text="Start",
                                                 font=('JetBrainsMono NF',16,"bold"),
@@ -172,6 +181,13 @@ def main():
     add_new_tab = customtkinter.CTkButton(bottom_frame, text="Add New Tab", command=add_new_tab)
     add_new_tab.pack(side="right",padx=5,pady=10)
 
+# Code Area (Need to remove in future:)
+# Gives the ability for syntax Highlighting 
+    tab_codespace = tab_view.add("Code Space")
+    codeview = CodeView(tab_codespace, lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
+    codeview.pack(fill="both", expand=True)
+
+
 # All Items for the left frame are below :
     Filetree_Button = customtkinter.CTkLabel(left_frame, text="FileTree :", font=("VictorMono Nerd Font",14,"bold"))
     Filetree_Button.grid(row=0, column=0,pady=5, sticky='nsew')
@@ -189,6 +205,7 @@ def main():
     file_tree = ttk.Treeview(left_frame,height=35)
     file_tree.heading("#0", text="Files :", anchor="w")
     file_tree.grid(row=1, column=0, sticky='nsew')
+
 
 
     def populate_file_tree(tree, path):
