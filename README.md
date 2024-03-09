@@ -111,6 +111,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 ### ✨Features :
 - Edit Text files ~ duh.
 - **Workspace** - Work on multiple text file simultaneously.
+- **Syntax highlighting** - For the code space area.
 - Catpuccin Color Palette themes(4) + 4 Custom made themes and counting on..
 - **Dark / Light** mode.
 - Basic functions (new,open,save,cut,copy, etc.) check **menu bar** for more..
