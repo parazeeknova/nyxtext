@@ -16,7 +16,7 @@ from PIL import Image
 customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
-customtkinter.set_default_color_theme("blue")
+customtkinter.set_default_color_theme("green")
 
 # customtkinter.set_widget_scaling(80)
 # customtkinter.set_window_scaling(80)
