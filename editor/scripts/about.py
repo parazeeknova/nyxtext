@@ -3,6 +3,7 @@ import tkinter
 import webbrowser
 import os
 from PIL import Image
+from features  import FeaturesWindow
 class MyWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
@@ -65,6 +66,8 @@ class MyWindow(ctk.CTkToplevel):
         self.discord_button = ctk.CTkButton(self, text="Discord",font=('JetBrainsMono NF',13),fg_color='transparent',command=self.discord,text_color='#8aadf4')
         self.discord_button.pack(side='top', padx=30, pady=5)
         
+        self.features_button = ctk.CTkButton(self, text="Features", font=('JetBrainsMono NF',13), fg_color='transparent', command=self.open_features, text_color='#a6da95')
+        self.features_button.pack(side='top', padx=30, pady=5)
         # Version Number
         self.build = ctk.CTkLabel(self, text="Build: Daily", font=("JetBrainsMono NF", 10, "bold"))
         self.build.pack(side='bottom')
@@ -81,3 +84,6 @@ class MyWindow(ctk.CTkToplevel):
 
     def discord(self):
         webbrowser.open('https://discord.com/invite/UwmqqXkV')
+    def open_features(self):
+        features_window = FeaturesWindow(self)
+        features_window.mainloop()
