@@ -14,7 +14,7 @@ from PIL import Image
 import pygments.lexers
 
 # Function import here
-from search import SearchWindow
+from search import Searchwindow
 from new_file import newfile_window
 from open_file import openfile_window
 from chlorophyll import CodeView

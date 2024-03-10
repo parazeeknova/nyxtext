@@ -21,7 +21,7 @@ class Settings():
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         self.settings_window.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
-        
+        self.settings_window.attributes('-alpha', 0.9)
         # Create a label for the font settings
         font_label = ctk.CTkLabel(self.settings_window, text="Font Type")
         font_label.place(x=20, y=20) # Position the label on the left side
@@ -89,7 +89,7 @@ class Settings():
             # Here you would typically update the system theme of your application
             # For demonstration, we're just printing the selected theme
         # List of system themes to be displayed in the option menu
-        system_themes = ["Dark", "Light", "Kaam "]
+        system_themes = ["Dark", "Light", "System"]
 
         # Create a variable to store the selected system theme
         selected_system_theme = tk.StringVar(self.settings_window)
@@ -120,7 +120,7 @@ class Settings():
         color_scheme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=color_schemes, variable=selected_color_scheme, command=on_color_scheme_select)
         color_scheme_option_menu.place(x=200, y=220) # Position the option menu to the right of the color scheme label
         
-        color_schemes1 = ["Dark Blue", "Blue", "Slate","Lumber","Frappe","Latte","Mocha","Macchito","Oceanic","Blue Green","Jim Jam"]
+        color_schemes1 = ["Dracula","monokai","ayu-dark","ayu-light","mariana"]
         
         selected_color_scheme1 = tk.StringVar(self.settings_window)
         selected_color_scheme1.set(color_schemes[0]) # Default to the first scheme
