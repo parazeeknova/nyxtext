@@ -13,6 +13,14 @@ class Settings():
         self.settings_window.geometry("500x500")
         self.settings_window.wm_overrideredirect(True)
         
+        # Center the window on the screen
+        screen_width = self.settings_window.winfo_screenwidth()
+        screen_height = self.settings_window.winfo_screenheight()
+        window_width = 400
+        window_height = 300
+        position_top = int(screen_height / 2 - window_height / 2)
+        position_right = int(screen_width / 2 - window_width / 2)
+        self.settings_window.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
         
         # Create a label for the font settings
         font_label = ctk.CTkLabel(self.settings_window, text="Font Type")
@@ -37,7 +45,7 @@ class Settings():
         
         #Create a label for the font size settings
         font_size_label = ctk.CTkLabel(self.settings_window, text="Font Size")
-        font_size_label.place(x=20, y=60) # Position the label below the font label
+        font_size_label.place(x=20, y=70) # Position the label below the font label
 
         # Function to handle font size selection
         def on_font_size_select(font_size):
@@ -54,11 +62,11 @@ class Settings():
 
         # Create the option menu with font size options
         font_size_option_menu = ctk.CTkComboBox(self.settings_window, values=font_sizes, variable=selected_font_size, command=on_font_size_select)
-        font_size_option_menu.place(x=200, y=60) # Position the option menu to the right of the font size label
+        font_size_option_menu.place(x=200, y=70) # Position the option menu to the right of the font size label
         
         # Create a label for the font color settings
         font_color_label = ctk.CTkLabel(self.settings_window, text="Font Color")
-        font_color_label.place(x=20, y=100) # Position the label below the font size label
+        font_color_label.place(x=20, y=120) # Position the label below the font size label
 
         # Function to handle font color selection using color chooser dialog
         def on_font_color_select():
@@ -70,11 +78,11 @@ class Settings():
 
         # Create a button to open the color chooser dialog
         font_color_button = ctk.CTkButton(self.settings_window, text="Choose Color", command=on_font_color_select)
-        font_color_button.place(x=200, y=100) # Position the button to the right of the font color label
+        font_color_button.place(x=200, y=120) # Position the button to the right of the font color label
         
         # Create a label for the system theme settings
         system_theme_label = ctk.CTkLabel(self.settings_window, text="System Theme")
-        system_theme_label.place(x=20, y=140) # Position the label below the font color label
+        system_theme_label.place(x=20, y=170) # Position the label below the font color label
 
         # Function to handle system theme selection
         def on_system_theme_select(theme):
@@ -90,8 +98,8 @@ class Settings():
 
         # Create the option menu with system theme options
         system_theme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=system_themes, variable=selected_system_theme, command=on_system_theme_select)
-        system_theme_option_menu.place(x=200, y=140) # Position the option menu to the right of the system theme label
+        system_theme_option_menu.place(x=200, y=170) # Position the option menu to the right of the system theme label
         
         start_button = ctk.CTkButton(self.settings_window, text="OK", command=self.settings_window.destroy, font=("VictorMono Nerd Font", 14))
-        start_button.place(x=110 ,y= 200)
+        start_button.place(x=110 ,y= 220)
         self.settings_window.grab_set()
