@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import tkinter as tk
 from collections import deque
+from tkinter import filedialog, messagebox, ttk, colorchooser
 
 class textarea():
     def __init__(self, parent_frame):
@@ -25,6 +26,12 @@ class textarea():
         popup_menu.add_separator()
         popup_menu.add_command(label="Undo", command=self.undo)
         popup_menu.add_command(label="Redo", command=self.redo)
+        popup_menu.add_separator()
+        popup_menu.add_command(label="Delete", command=self.delete_selected)
+        popup_menu.add_command(label="Select All", command=self.select_all)
+        popup_menu.add_command(label="Exit", command=self.exit_editor)
+        
+        
 
         # Bind the focusout event to hide the menu
         popup_menu.bind("<FocusOut>", lambda event: popup_menu.unpost())
@@ -65,3 +72,25 @@ class textarea():
             self.undo_stack.append(self.text_area.get(1.0, tk.END))
             self.text_area.delete(1.0, tk.END)
             self.text_area.insert(1.0, self.redo_stack.pop())
+
+    def select_all(self):
+        self.text_area.tag_add(tk.SEL, "1.0", tk.END)
+        self.text_area.mark_set(tk.INSERT, "1.0")
+        self.text_area.see(tk.INSERT)
+
+    def exit_editor(self):
+        if messagebox.askokcancel("Exit ?","Do you want to save your changes?"):
+            self.save_file()
+        else:
+            self.root.destroy()
+
+    def close_tab(self):
+        # Assuming you have a method to close the tab, otherwise, you might need to implement it
+        pass
+
+    def delete_selected(self):
+        try:
+            start, end = self.text_area.tag_ranges(tk.SEL)
+            self.text_area.delete(start, end)
+        except tk.TclError:
+            pass # No selection
