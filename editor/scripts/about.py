@@ -1,6 +1,6 @@
 import customtkinter as ctk
 import tkinter
-
+import webbrowser
 class MyWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
@@ -16,6 +16,11 @@ class MyWindow(ctk.CTkToplevel):
         position_right = int(screen_width / 2 - window_width / 2)
         self.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
         
+        # Create a close button with specified width and height
+        self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=20, height=20)
+        # Place the close button at the top right corner
+        self.close_button.place(x=window_width - 30, y=10)
+        # The rest of your code remains the same...
         # Create a label with big bold text in the top and middle
         self.welcome_title_text = ctk.CTkLabel(self, text="NyxText",
                                                 font=('JetBrainsMono NF',80,"bold"),
@@ -34,7 +39,7 @@ class MyWindow(ctk.CTkToplevel):
         self.button2 = ctk.CTkButton(self, text="Report an Issue")
         self.button2.pack(side='top', padx=30, pady=10)
 
-        self.button3 = ctk.CTkButton(self, text="Github Repo...")
+        self.button3 = ctk.CTkButton(self, text="Github Repo...", command=self.open_website)
         self.button3.pack(side='top', padx=30, pady=10)
 
         # Add a label named "Social"
@@ -42,9 +47,16 @@ class MyWindow(ctk.CTkToplevel):
         self.social_label.pack(side='top', pady=10)
 
         # Add a button with "Discord" written on it
-        self.discord_button = ctk.CTkButton(self, text="Discord")
+        self.discord_button = ctk.CTkButton(self, text="Discord", command=self.discord)
         self.discord_button.pack(side='top', padx=30, pady=10)
 
         # Add a label with "Text made with love"
         self.love_label = ctk.CTkLabel(self, text="Text made with ❤️....", font=("JetBrainsMono NF", 15, "italic"))
         self.love_label.pack(side='top', pady=10)
+
+    def open_website(self):
+        # Open a URL in the default web browser
+        webbrowser.open('https://github.com//parazeeknova//nyxtext')
+
+    def discord(self):
+        webbrowser.open('https://discord.com/invite/UwmqqXkV')
