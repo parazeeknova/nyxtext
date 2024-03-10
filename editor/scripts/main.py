@@ -14,7 +14,7 @@ from PIL import Image
 import pygments.lexers
 
 # Function import here
-from search import SearchWindow
+from search import Searchwindow
 from new_file import newfile_window
 from open_file import openfile_window
 from chlorophyll import CodeView
@@ -329,7 +329,7 @@ def main():
     
 # Instantiate SearchWindow and pass the text area
     def open_search_window():
-        search = SearchWindow(root)
+        search = Searchwindow(root)
     serch_button = customtkinter.CTkButton(top_frame,text="🔍 Search",command= open_search_window)
     serch_button.pack(side="right",padx=5,pady=10)
     serch_button.configure(width=10, font= ("VictorMono Nerd Font",15))
