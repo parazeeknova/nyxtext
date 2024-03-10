@@ -23,6 +23,12 @@ class Settings():
         self.settings_window.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
         self.settings_window.attributes('-alpha', 0.95)
         # Create a label for the font settings
+        
+        # Create a close button with specified width and height
+        close_button = ctk.CTkButton(self.settings_window, text="X", command=self.settings_window.destroy, width=20, height=20, fg_color='transparent', text_color='#ed8796')
+# Place the close button at the top right corner
+        close_button.place(x=window_width - 24, y=10)
+
         font_label = ctk.CTkLabel(self.settings_window, text="Font Type")
         font_label.place(x=20, y=20) # Position the label on the left side
 
