@@ -25,7 +25,7 @@ from chlorophyll import CodeView
 customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
-customtkinter.set_default_color_theme("dark-blue")
+customtkinter.set_default_color_theme("editor/scripts/color_Themes/frappe.json")
 
 # Welcome screen for the text editor disabled because currently a mess 
 # Need to work on this mess in future

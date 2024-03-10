@@ -153,17 +153,47 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
     </div>
     <div style="width: 20px;"></div>      <!-- Separator -->
     <div style="width: 40%; flex: 1;">
-        <p align="center">Beta Dark Mode (as of α-0.0.1v )</p>
+        <p align="center">Cattppuccin Color Scheme (as of α-0.0.5v )</p>
         <hr>
-        <img src="main/assets/misc/Dark.png" alt="Dark mode"/>
+        <img src="main/assets/misc/Catppuccin_color_scheme.png" alt="Dark mode"/>
     </div>
 </div>
 
-<div>
-        <p align="center">Homepage on Dark Mode (as of α-0.0.2v )</p>
+<div style="display: flex; align-items: center;">
+    <div style="width: 40%; flex: 1;">
+        <p align="center">Frappe Flavour (as of α-0.0.5v ): </p>
         <hr>
-        <img src="main/assets/misc/Welcome.png" alt="Welcome Screen"/>
+        <img src="main/assets/screenshots/frappe_dark_about.png" alt="Different flavours"/>
+        <br>
+    </div>
+    <div style="width: 20px;"></div>      <!-- Separator -->
+    <div style="width: 40%; flex: 1;">
+        <p align="center">Macchiato code (as of α-0.0.5v )</p>
+        <hr>
+        <img src="main/assets/screenshots/macchiato_dark_code.png" alt="Dark mode"/>
+    </div>
 </div>
+
+<div style="display: flex; align-items: center;">
+    <div style="width: 40%; flex: 1;">
+        <p align="center">Default Light(as of α-0.0.5v ): </p>
+        <hr>
+        <img src="main/assets/screenshots/default_light.png" alt="Different flavours"/>
+        <br>
+    </div>
+    <div style="width: 20px;"></div>      <!-- Separator -->
+    <div style="width: 40%; flex: 1;">
+        <p align="center">Default Dark Windowed (as of α-0.0.5v )</p>
+        <hr>
+        <img src="main/assets/screenshots/default_dark_windowed.png" alt="Dark mode"/>
+    </div>
+</div>
+
+<p align='center'>
+
+For more Screenshots head over : `main\assets\screenshots` .
+
+</p>
 
 ---
 ### 🐜 Bugs : 

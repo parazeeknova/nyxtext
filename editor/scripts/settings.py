@@ -21,7 +21,7 @@ class Settings():
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         self.settings_window.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
-        self.settings_window.attributes('-alpha', 0.9)
+        self.settings_window.attributes('-alpha', 0.95)
         # Create a label for the font settings
         font_label = ctk.CTkLabel(self.settings_window, text="Font Type")
         font_label.place(x=20, y=20) # Position the label on the left side
