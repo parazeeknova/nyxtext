@@ -20,6 +20,7 @@ class textarea():
                 popup_menu.grab_release()
 
         popup_menu = tk.Menu(self.parent_frame, tearoff=0)
+        popup_menu.config(bg="black", fg="grey")
         popup_menu.add_command(label="Cut", command=self.cut)
         popup_menu.add_command(label="Copy", command=self.copy)
         popup_menu.add_command(label="Paste", command=self.paste)
