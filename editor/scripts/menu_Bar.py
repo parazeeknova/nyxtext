@@ -18,7 +18,6 @@ class Menubar:
         self.menubar = tk.Menu(self.root, background='grey', fg='white')
         self.file_path_1 = None
         
-        
         #Defining menu options as menu objects
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
@@ -31,8 +30,6 @@ class Menubar:
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
         self.special_feature = tk.Menu(self.menubar, tearoff=0)
         
-        
-        
         #Menu Bar
         self.menubar.add_cascade(label="File", menu=self.filemenu)
         self.menubar.add_cascade(label="Edit", menu=self.editmenu)
@@ -41,12 +38,6 @@ class Menubar:
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
-        
-        #Functions of menu bar
-        
-        
-        
-        
         
         #functions of file option
         self.filemenu.add_command(label="New",accelerator="Ctrl+N" ,command=self.new_file)
@@ -62,7 +53,6 @@ class Menubar:
         self.filemenu.add_command(label="Save a Copy as", command=self.save_copy_as)
         self.filemenu.add_cascade(label="Save All",accelerator="Ctrl+Shift+S" ,menu=self.save_all)
         self.filemenu.add_separator()
-
         self.filemenu.add_cascade(label="Rename ...", menu=self.rename)
         self.filemenu.add_separator()
         
@@ -70,7 +60,6 @@ class Menubar:
         self.filemenu.add_cascade(label="Close - (Soon!)",accelerator="Ctrl+W", menu=self.close)
         self.filemenu.add_cascade(label="Close All - (Soon!)",accelerator="Ctrl+Shift+W", menu=self.close_all)
         self.filemenu.add_cascade(label="Close Multiple Documents - (Soon!)", menu=self.close_multiple)
-        
         self.filemenu.add_cascade(label="Move to Recycle Bin - (Soon!)", menu=self.move_to_recycle)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", accelerator="Alt+F4",command=self.exit_editor)
@@ -109,8 +98,6 @@ class Menubar:
         self.searchmenu.add_command(label="Jump Down - (Soon!)",command=self.jump_down)
         self.searchmenu.add_separator()
         self.searchmenu.add_command(label="Bookmark - (Soon!)",command=self.bookmark)
-        
-        
         
         #View Menu
         self.viewmenu.add_command(label="Always on Top - (Soon!)",command=self.always_on_top)
@@ -197,7 +184,6 @@ class Menubar:
         self.file_path.write(self.text_Area.text_area.get(1.0, tk.END))
         self.file_path.close()
 
-
     def close(self):
         pass
 
@@ -209,8 +195,6 @@ class Menubar:
 
     def move_to_recycle(self):
         pass
-
-
 
 #Edit Menu Functions
     def undo(self):
@@ -234,7 +218,6 @@ class Menubar:
         self.pasted_text = pc.paste()
         # You can now use the pasted_text as needed, for example, insert it into a text area
         self.text_Area.text_area.insert(tk.INSERT, self.pasted_text)
-
 
     def delete(self):
         self.text_Area.text_area.delete(1.0, tk.END)
@@ -277,10 +260,7 @@ class Menubar:
 
     def clear_readonly(self):
         pass
-
-
-
-
+    
 #Search Functions
 
     def find(self):
@@ -338,7 +318,6 @@ class Menubar:
     def hide_lines(self):
         pass
 
-    
     def open_terminal(self):
         system = platform.system()
         if system == "Linux":
@@ -377,4 +356,3 @@ class Menubar:
     
     # Show the context menu at the mouse cursor's position
         context_menu.post(self.x_root, self.y_root)
-    

@@ -17,7 +17,7 @@ class MyWindow(ctk.CTkToplevel):
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         self.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
-        self.attributes('-alpha', 0.9)
+        self.attributes('-alpha', 0.95)
         # Create a close button with specified width and height
         self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=20, height=20,fg_color='transparent',text_color='#ed8796')
         # Place the close button at the top right corner

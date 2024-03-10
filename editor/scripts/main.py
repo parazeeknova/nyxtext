@@ -17,6 +17,7 @@ import pygments.lexers
 from search import Searchwindow
 from new_file import newfile_window
 from open_file import openfile_window
+from open_folder import openfolder_window
 from chlorophyll import CodeView
 
 # Sets (for now the appearance to light and color scheme to blue)
@@ -122,8 +123,9 @@ def main():
     welcome_open_button = customtkinter.CTkButton(welcome_tab,text=" Open file... ", command=lambda: open_window(welcome_tab),
                                                 fg_color='transparent',hover=False,anchor="center",text_color='#a6da95')
     welcome_open_button.pack()
-    
-    welcome_openfolder_button = customtkinter.CTkButton(welcome_tab,text=" Open Folder... ", 
+    def openfol_window(master):
+        openfolder = openfolder_window(master)
+    welcome_openfolder_button = customtkinter.CTkButton(welcome_tab,text=" Open Folder... ", command=lambda: openfol_window(welcome_tab),
                                                 fg_color='transparent',hover=False,anchor="center",text_color='#91d7e3')
     welcome_openfolder_button.pack()
     
