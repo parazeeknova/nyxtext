@@ -23,7 +23,7 @@ from chlorophyll import CodeView
 customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
-customtkinter.set_default_color_theme("editor/scripts/color_Themes/frappe.json")
+customtkinter.set_default_color_theme("dark-blue")
 
 # Welcome screen for the text editor disabled because currently a mess 
 # Need to work on this mess in future
@@ -177,7 +177,19 @@ def main():
 
 # Code Area (Need to remove in future:)
 # Gives the ability for syntax Highlighting 
-    tab_codespace = tab_view.add("Code Space")
+    global codespace_count
+    codespace_count = 0
+    def add_new_codespace():
+        global codespace_count
+        codespace_count += 1 # Increment the tab count
+    # Generate a unique title for the new tab
+        codespace_title = f"CodeSpace {codespace_count}"
+    # Add a new tab to the tab view
+        new_codespace = tab_view.add(codespace_title)
+        codespace = CodeView(new_codespace,lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
+        codespace.pack(fill="both",expand=True)
+        
+    tab_codespace = tab_view.add("Codespace")
     codeview = CodeView(tab_codespace, lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
     codeview.pack(fill="both", expand=True)
 
@@ -372,7 +384,7 @@ def main():
     Suggestions.configure(width=3) 
     
 # About button in the top_bar
-    About = customtkinter.CTkButton(top_frame, text="About", command=lambda: open_window(welcome_tab))
+    About = customtkinter.CTkButton(top_frame, text="About", command=lambda: about_window(welcome_tab))
     About.pack(side="left",padx=2,pady=10)
     About.configure(width=2)
     
@@ -383,6 +395,15 @@ def main():
     Exit_button.configure(width=2)
 
 # All buttons in the bottom frame for different functions
+    # Creating a button for theme change
+    # Not working at the moment will implement in future
+    
+    # def changetheme_event(changetheme_next: str):
+    #     customtkinter.set_default_color_theme(changetheme_next)
+    # Changetheme_optionmenu = customtkinter.CTkOptionMenu(bottom_frame, values=["blue","dark-blue","green"],
+    #                                                         command=changetheme_event)
+    # Changetheme_optionmenu.pack(side="left",padx=5,pady=10)
+    
     Dir_Label = customtkinter.CTkLabel(bottom_frame, text="Working directory : ")
     Dir_Label.pack(side="left",padx=(10,0),pady=10)
     Dir_Label.configure(width=2,font= ("JetBrainsMono NF",12,"bold"))
@@ -407,14 +428,14 @@ def main():
     Seperator_R()
 
 # Add a button to remove the currently selected tab
-    remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Workspace", command=remove_current_tab)
+    remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=remove_current_tab)
     remove_tab_button.pack(side="right", padx=5, pady=10)
     
-    add_new_tab = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=add_new_tab)
-    add_new_tab.pack(side="right",padx=5,pady=10)
+    add_new_tab_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=add_new_tab)
+    add_new_tab_button.pack(side="right",padx=5,pady=10)
     
-    add_codespace = customtkinter.CTkButton(bottom_frame, text="Add Codespace")
-    add_codespace.pack(side="right", padx=5,pady=10)
+    add_new_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=add_new_codespace)
+    add_new_codespace_button.pack(side="right",padx=5,pady=10)
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
     main()
