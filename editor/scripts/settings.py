@@ -17,7 +17,7 @@ class Settings():
         screen_width = self.settings_window.winfo_screenwidth()
         screen_height = self.settings_window.winfo_screenheight()
         window_width = 400
-        window_height = 300
+        window_height = 400
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         self.settings_window.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
@@ -67,7 +67,6 @@ class Settings():
         # Create a label for the font color settings
         font_color_label = ctk.CTkLabel(self.settings_window, text="Font Color")
         font_color_label.place(x=20, y=120) # Position the label below the font size label
-
         # Function to handle font color selection using color chooser dialog
         def on_font_color_select():
             color_code = colorchooser.askcolor(title="Choose color")
@@ -100,6 +99,39 @@ class Settings():
         system_theme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=system_themes, variable=selected_system_theme, command=on_system_theme_select)
         system_theme_option_menu.place(x=200, y=170) # Position the option menu to the right of the system theme label
         
+        # Create a label for the color scheme settings
+        color_scheme_label = ctk.CTkLabel(self.settings_window, text="Color Scheme")
+        color_scheme_label.place(x=20, y=220) # Position the label below the system theme label
+
+        # Function to handle color scheme selection
+        def on_color_scheme_select(color_scheme):
+            print(f"Selected color scheme: {color_scheme}")
+            # Here you would typically update the color scheme of your application
+            # For demonstration, we're just printing the selected color scheme
+
+        # List of color schemes to be displayed in the option menu
+        color_schemes = ["Dark Blue", "Blue", "Slate","Lumber","Frappe","Latte","Mocha","Macchito","Oceanic","Blue Green","Jim Jam"]
+
+        # Create a variable to store the selected color scheme
+        selected_color_scheme = tk.StringVar(self.settings_window)
+        selected_color_scheme.set(color_schemes[0]) # Default to the first scheme
+
+        # Create the option menu with color scheme options
+        color_scheme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=color_schemes, variable=selected_color_scheme, command=on_color_scheme_select)
+        color_scheme_option_menu.place(x=200, y=220) # Position the option menu to the right of the color scheme label
+        
+        color_schemes1 = ["Dark Blue", "Blue", "Slate","Lumber","Frappe","Latte","Mocha","Macchito","Oceanic","Blue Green","Jim Jam"]
+        
+        selected_color_scheme1 = tk.StringVar(self.settings_window)
+        selected_color_scheme1.set(color_schemes[0]) # Default to the first scheme
+        # Create a label for the CodeSpace color scheme settings
+        codespace_color_scheme_label = ctk.CTkLabel(self.settings_window, text="CodeSpace Color Scheme")
+        codespace_color_scheme_label.place(x=20, y=270) # Position the label below the color scheme option menu
+
+        # Create the option menu with CodeSpace color scheme options
+        codespace_color_scheme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=color_schemes1, variable=selected_color_scheme1, command=on_color_scheme_select)
+        codespace_color_scheme_option_menu.place(x=200, y=270) # Position the option menu to the right of the CodeSpace color scheme label
+        
         start_button = ctk.CTkButton(self.settings_window, text="OK", command=self.settings_window.destroy, font=("VictorMono Nerd Font", 14))
-        start_button.place(x=110 ,y= 220)
+        start_button.place(x=110 ,y= 320)
         self.settings_window.grab_set()
