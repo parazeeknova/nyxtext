@@ -5,11 +5,12 @@ import os
 import webbrowser
 
 # File imports here
+from about import MyWindow
 from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
 from tkinter import ttk, filedialog, PhotoImage
-from search import SearchWindow
+from search import Searchwindow
 from PIL import Image
 
 import pygments.lexers
@@ -32,7 +33,7 @@ def show_welcome_window(root):
     welcome_window.title("Welcome to NyxText")
     welcome_window.geometry(f"{1100}x{580}")
     welcome_window.wm_overrideredirect(True)
-    welcome_window.attributes('-alpha', 0.8)
+
     welcome_window.grab_set()
 
     welcome_label = customtkinter.CTkLabel(welcome_window, text="Welcome to NyxText, your advanced text editor!\n\nClick 'Start' to proceed.", font=("VictorMono Nerd Font", 14))
@@ -60,7 +61,8 @@ def main():
     if os.name == 'nt':  # for Windows
         root.iconbitmap("editor/scripts/misc/icons/icon.ico")
     elif os.name == 'posix':  # for Linux and MacOS
-        root.iconphoto(False, PhotoImage(file="editor/scripts/misc/icons/icon.png"))
+        # root.iconphoto(False, PhotoImage(file="editor/scripts/misc/icons/icon.png"))
+        pass
     
 # Setting width variables
     screen_width = root.winfo_screenwidth() 
@@ -127,10 +129,14 @@ def main():
                                                 fg_color='transparent',hover=False,anchor="center",text_color='#91d7e3')
     welcome_openfolder_button.pack()
     
-    welcome_about_button = customtkinter.CTkButton(welcome_tab,text=" About... ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#8aadf4')
+    def open_window(master):
+        my_window = MyWindow(master)
+        my_window.pack()
+
+# Assuming welcome_tab is defined elsewhere in your code
+    welcome_about_button = customtkinter.CTkButton(welcome_tab, text=" About... ",
+                                fg_color='transparent', hover=False, anchor="center", text_color='#8aadf4', command=lambda: open_window(welcome_tab))
     welcome_about_button.pack()
-    
     welcome_title_recents = customtkinter.CTkLabel(welcome_tab, text="Recents",
                                                 font=('JetBrainsMono NF',16,"bold"),
                                                 padx=100,anchor="center")
@@ -268,8 +274,8 @@ def main():
     
     # Instantiate SearchWindow and pass the text area
     def open_search_window():
-        search = SearchWindow(root,textarea)
-    serch_button = customtkinter.CTkButton(top_frame,text="Search",command=open_search_window)
+        search = Searchwindow(root)
+    serch_button = customtkinter.CTkButton(top_frame,text="Search",command= open_search_window)
     serch_button.pack(side="right",padx=5,pady=10)
     serch_button.configure(width=10)
     def Seperator_R():
@@ -367,7 +373,9 @@ def main():
                                                                         command=change_appearance_mode_event)
     Appearance_mode_optionemenu.pack(side="left",padx=2,pady=10)
     
-    About = customtkinter.CTkButton(top_frame, text="About")
+    
+    
+    About = customtkinter.CTkButton(top_frame, text="About", command=lambda: open_window(welcome_tab))
     About.pack(side="left",padx=2,pady=10)
     About.configure(width=2)
     
