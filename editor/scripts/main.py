@@ -131,8 +131,7 @@ def main():
     
     def open_window(master):
         my_window = MyWindow(master)
-        my_window.pack()
-
+        
 # Assuming welcome_tab is defined elsewhere in your code
     welcome_about_button = customtkinter.CTkButton(welcome_tab, text=" About... ",
                                 fg_color='transparent', hover=False, anchor="center", text_color='#8aadf4', command=lambda: open_window(welcome_tab))
