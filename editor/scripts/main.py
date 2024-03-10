@@ -14,6 +14,7 @@ from PIL import Image
 import pygments.lexers
 
 # Function import here
+# from framework import Framework
 from search import Searchwindow
 from new_file import newfile_window
 from open_file import openfile_window
