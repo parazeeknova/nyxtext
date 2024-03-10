@@ -106,7 +106,6 @@ The number of themes is not definite, we will be adding more in the future, Also
 <h>⚠️ Image referenced from Catppuccin's Repo</h> 
 </p>
 
-
 &nbsp;
 ### ✨Features :
 - Edit Text files ~ duh.
@@ -189,12 +188,13 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
     </div>
 </div>
 
-<p align='center'>
-
-For more Screenshots head over : `main\assets\screenshots` .
-
+&nbsp;
+<p align="center">
+<img src="main/assets/misc/Syntax_Highlighting.png" alt="Frappe, Syntax Highlighting"/>
+<h>Syntax Highlighting✨</h> 
 </p>
 
+&nbsp;
 ---
 ### 🐜 Bugs : 
 - [x] ~~It's not responsive as the project is still in early development.~~ - Done 08/03/2024 ✅
