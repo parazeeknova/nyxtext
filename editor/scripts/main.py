@@ -23,7 +23,7 @@ from chlorophyll import CodeView
 customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
-customtkinter.set_default_color_theme("editor/scripts/color_Themes/H2O.json")
+customtkinter.set_default_color_theme("editor/scripts/color_Themes/frappe.json")
 
 # Welcome screen for the text editor disabled because currently a mess 
 # Need to work on this mess in future
@@ -175,13 +175,6 @@ def main():
         # Remove the selected tab
             tab_view.delete(selected_tab)
 
-# Add a button to remove the currently selected tab
-    remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=remove_current_tab)
-    remove_tab_button.pack(side="right", padx=5, pady=10)
-    
-    add_new_tab = customtkinter.CTkButton(bottom_frame, text="Add New Tab", command=add_new_tab)
-    add_new_tab.pack(side="right",padx=5,pady=10)
-
 # Code Area (Need to remove in future:)
 # Gives the ability for syntax Highlighting 
     tab_codespace = tab_view.add("Code Space")
@@ -263,18 +256,27 @@ def main():
     settings_button.pack(side="right",padx=5,pady=10)
     settings_button.configure(width=10)
     
-    # Instantiate SearchWindow and pass the text area
-    def open_search_window():
-        search = SearchWindow(root)
-    serch_button = customtkinter.CTkButton(top_frame,text="Search",command= open_search_window)
-    serch_button.pack(side="right",padx=5,pady=10)
-    serch_button.configure(width=10)
+# Switch to change Light and DarkMode :
+    def change_appearance_mode_event(new_appearance_mode: str):
+        customtkinter.set_appearance_mode(new_appearance_mode)
+    Appearance_mode_optionemenu = customtkinter.CTkOptionMenu(top_frame, values=["Light", "Dark", "System"],
+                                                                        command=change_appearance_mode_event)
+    Appearance_mode_optionemenu.pack(side="right",padx=2,pady=10)
+
+# Switch to change the System Scaling to user desired percentage
+    def change_scaling_event(new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        customtkinter.set_widget_scaling(new_scaling_float)
+    scaling_optionemenu = customtkinter.CTkOptionMenu(top_frame, width=80,values=["80%", "90%", "100%", "110%", "120%"],
+                                                                command=change_scaling_event)
+    scaling_optionemenu.pack(side="right",padx=2,pady=10)
+    
     def Seperator_R():
         Seperator = customtkinter.CTkLabel(top_frame, text="|")
         Seperator.pack(side="right",padx=2,pady=10)
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
     Seperator_R()
-    
+
     def chat_gpt():
             webbrowser.open('https://chat.openai.com/')
     chat_gpt_button = customtkinter.CTkButton(top_frame, text="⚙️ ChatGPT",command=chat_gpt)
@@ -307,18 +309,19 @@ def main():
     # right_arrow.pack(side="right",padx=1,pady=10)
     # right_arrow.configure(width= 2,fg_color="transparent")
     
-    Search_bar = customtkinter.CTkEntry(top_frame, placeholder_text="🔍 Search")
-    Search_bar.pack(side="right",padx=5,pady=10)
-    Search_bar.configure(width=250, font = ("VictorMono Nerd Font Bold",15))
-    
     # Commented at the moment, will be implemented later 
     
     # left_arrow = customtkinter.CTkButton(top_frame, text="<")
     # left_arrow.pack(side="right",padx=1,pady=10)
     # left_arrow.configure(width= 2,fg_color="transparent")
     
-    Seperator_R()
-    
+# Instantiate SearchWindow and pass the text area
+    def open_search_window():
+        search = SearchWindow(root)
+    serch_button = customtkinter.CTkButton(top_frame,text="🔍 Search",command= open_search_window)
+    serch_button.pack(side="right",padx=5,pady=10)
+    serch_button.configure(width=10, font= ("VictorMono Nerd Font",15))
+
 # All buttons in the top frame for different functions (Left)
     New_button = customtkinter.CTkButton(top_frame, text="📄")
     New_button.pack(side="left",padx=2,pady=10)
@@ -350,19 +353,23 @@ def main():
     Paste_button.pack(side="left",padx=3,pady=10)
     Paste_button.configure(width=2)
     
+    select_button = customtkinter.CTkButton(top_frame, text="Select")
+    select_button.pack(side="left",padx=3,pady=10)
+    select_button.configure(width=2)
+    
+    undo_button = customtkinter.CTkButton(top_frame, text="Undo")
+    undo_button.pack(side="left",padx=3,pady=10)
+    undo_button.configure(width=2)
+    
+    redo_button = customtkinter.CTkButton(top_frame, text="Redo")
+    redo_button.pack(side="left",padx=3,pady=10)
+    redo_button.configure(width=2)
+    
     Seperator()
     
-    Exit_button = customtkinter.CTkButton(top_frame, text="Exit")
-    Exit_button.pack(side="left",padx=3,pady=10)
-    Exit_button.configure(width=2)
-    
-    # Switch to change Light and DarkMode :
-    def change_appearance_mode_event(new_appearance_mode: str):
-        customtkinter.set_appearance_mode(new_appearance_mode)
-
-    Appearance_mode_optionemenu = customtkinter.CTkOptionMenu(top_frame, values=["Light", "Dark", "System"],
-                                                                        command=change_appearance_mode_event)
-    Appearance_mode_optionemenu.pack(side="left",padx=2,pady=10)
+    Suggestions = customtkinter.CTkButton(top_frame, text="Suggest a Feature")
+    Suggestions.pack(side="left",padx=2,pady=10)
+    Suggestions.configure(width=3) 
     
 # About button in the top_bar
     About = customtkinter.CTkButton(top_frame, text="About", command=lambda: open_window(welcome_tab))
@@ -370,34 +377,44 @@ def main():
     About.configure(width=2)
     
     Seperator()
-
-    Suggestions = customtkinter.CTkButton(top_frame, text="Suggest a Feature")
-    Suggestions.pack(side="left",padx=2,pady=10)
-    Suggestions.configure(width=3) 
     
+    Exit_button = customtkinter.CTkButton(top_frame, text="Exit")
+    Exit_button.pack(side="left",padx=3,pady=10)
+    Exit_button.configure(width=2)
+
 # All buttons in the bottom frame for different functions
+    Dir_Label = customtkinter.CTkLabel(bottom_frame, text="Working directory : ")
+    Dir_Label.pack(side="left",padx=(10,0),pady=10)
+    Dir_Label.configure(width=2,font= ("JetBrainsMono NF",12,"bold"))
     
-    # Switch to change the System Scaling to user desired percentage
-    def change_scaling_event(new_scaling: str):
-        new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        customtkinter.set_widget_scaling(new_scaling_float)
+    dirvar = str(current_directory_path)
+    Dir_Label_pth = customtkinter.CTkLabel(bottom_frame, text=dirvar)
+    Dir_Label_pth.pack(side="left",padx=2,pady=10)
+    Dir_Label_pth.configure(width=2,font= ("JetBrainsMono NF",12))
     
-    scaling_optionemenu = customtkinter.CTkOptionMenu(bottom_frame, width=80,values=["80%", "90%", "100%", "110%", "120%"],
-                                                                command=change_scaling_event)
-    scaling_optionemenu.pack(side="left",padx=2,pady=10)
+    # Color_Scheme_button = customtkinter.CTkSegmentedButton(bottom_frame, values=["Frappe", "Latte", "Macchiato", "Mocha"])
+    # Color_Scheme_button.pack(side="left",padx=5,pady=10)
+    # Color_Scheme_button.configure(width=10)
     
-    Seperator = customtkinter.CTkLabel(bottom_frame, text="|")
-    Seperator.pack(side="left",padx=2,pady=10)
-    Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
-        
-    Color_Scheme_Label = customtkinter.CTkLabel(bottom_frame, text="Color Scheme :")
-    Color_Scheme_Label.pack(side="left",padx=2,pady=10)
-    Color_Scheme_Label.configure(width=2)
+    Search_bar = customtkinter.CTkEntry(bottom_frame, placeholder_text="Enter your commands here..")
+    Search_bar.pack(side="right",padx=10,pady=10)
+    Search_bar.configure(width=250, font = ("VictorMono Nerd Font Bold",15))
     
-    Color_Scheme_button = customtkinter.CTkSegmentedButton(bottom_frame, values=["Frappe", "Latte", "Macchiato", "Mocha"])
-    Color_Scheme_button.pack(side="left",padx=5,pady=10)
-    Color_Scheme_button.configure(width=10)
+    def Seperator_R():
+        Seperator = customtkinter.CTkLabel(bottom_frame, text="|")
+        Seperator.pack(side="right",padx=2,pady=10)
+        Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
+    Seperator_R()
 
+# Add a button to remove the currently selected tab
+    remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Workspace", command=remove_current_tab)
+    remove_tab_button.pack(side="right", padx=5, pady=10)
+    
+    add_new_tab = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=add_new_tab)
+    add_new_tab.pack(side="right",padx=5,pady=10)
+    
+    add_codespace = customtkinter.CTkButton(bottom_frame, text="Add Codespace")
+    add_codespace.pack(side="right", padx=5,pady=10)
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
     main()
