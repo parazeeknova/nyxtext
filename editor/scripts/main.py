@@ -379,15 +379,7 @@ def main():
     About.configure(width=2)
     
     Seperator()
-    
-    Discussion = customtkinter.CTkButton(top_frame, text="NyxText - Discussions")
-    Discussion.pack(side="left",padx=2,pady=10)
-    Discussion.configure(width=3)
-    
-    Issues = customtkinter.CTkButton(top_frame, text="Report an Issue")
-    Issues.pack(side="left",padx=2,pady=10)
-    Issues.configure(width=3)
-    
+
     Suggestions = customtkinter.CTkButton(top_frame, text="Suggest a Feature")
     Suggestions.pack(side="left",padx=2,pady=10)
     Suggestions.configure(width=3) 
