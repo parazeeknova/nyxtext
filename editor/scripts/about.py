@@ -27,7 +27,3 @@ class MyWindow(ctk.CTkToplevel):
         self.button3 = ctk.CTkButton(self, text="Button 3")
         self.button3.pack(side="left", padx=20)
 
-def open_window(master):
-    my_window = MyWindow(master)
-    my_window.pack()
-

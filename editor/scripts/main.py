@@ -10,20 +10,18 @@ from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
 from tkinter import ttk, filedialog, PhotoImage
-from search import Searchwindow
 from PIL import Image
 
 import pygments.lexers
 from chlorophyll import CodeView
 
+# Function import here
+from new_file import newfile_window
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
     
 # Should be replaced with a function in future for catppuccin color scheme 
 customtkinter.set_default_color_theme("editor/scripts/color_Themes/H2O.json")
-
-# customtkinter.set_widget_scaling(80)
-# customtkinter.set_window_scaling(80)
 
 # Welcome screen for the text editor disabled because currently a mess 
 # Need to work on this mess in future
@@ -117,7 +115,10 @@ def main():
                                                 padx=100,anchor="center")
     welcome_title_start.pack(side='top',pady=(30,10))
     
-    welcome_new_button = customtkinter.CTkButton(welcome_tab,text=" New file... ",
+# Opens a new window for creating a new file : 
+    def new_window(master):
+            new = newfile_window(master)
+    welcome_new_button = customtkinter.CTkButton(welcome_tab,text=" New file... ",command=lambda: new_window(welcome_tab),
                                                 fg_color='transparent',hover=False,anchor="center",text_color='#ed8796')
     welcome_new_button.pack()
     
@@ -129,14 +130,14 @@ def main():
                                                 fg_color='transparent',hover=False,anchor="center",text_color='#91d7e3')
     welcome_openfolder_button.pack()
     
+# Fires up the about  window when clicked on "About" button in About (Welcome Screen)
     def open_window(master):
         my_window = MyWindow(master)
-        my_window.pack()
-
-# Assuming welcome_tab is defined elsewhere in your code
     welcome_about_button = customtkinter.CTkButton(welcome_tab, text=" About... ",
                                 fg_color='transparent', hover=False, anchor="center", text_color='#8aadf4', command=lambda: open_window(welcome_tab))
     welcome_about_button.pack()
+    
+# Shows up the recent files opened : 
     welcome_title_recents = customtkinter.CTkLabel(welcome_tab, text="Recents",
                                                 font=('JetBrainsMono NF',16,"bold"),
                                                 padx=100,anchor="center")
@@ -201,6 +202,7 @@ def main():
 
 # Preparing images for the file tree
 # Commented for better version in future 
+
     # folder_image = PhotoImage("editor/scripts/misc/icons/folder.png")
     # folder_path = folder_image
     
@@ -211,8 +213,6 @@ def main():
     file_tree = ttk.Treeview(left_frame,height=35)
     file_tree.heading("#0", text="Files :", anchor="w")
     file_tree.grid(row=1, column=0, sticky='nsew')
-
-
 
     def populate_file_tree(tree, path):
         for item in os.listdir(path):
@@ -311,7 +311,6 @@ def main():
     Seperator_R()
     
     # Commented at the moment, will implement later
-    
     # right_arrow = customtkinter.CTkButton(top_frame, text=">")
     # right_arrow.pack(side="right",padx=1,pady=10)
     # right_arrow.configure(width= 2,fg_color="transparent")
@@ -321,7 +320,6 @@ def main():
     Search_bar.configure(width=250, font = ("VictorMono Nerd Font Bold",15))
     
     # Commented at the moment, will be implemented later 
-    
     # left_arrow = customtkinter.CTkButton(top_frame, text="<")
     # left_arrow.pack(side="right",padx=1,pady=10)
     # left_arrow.configure(width= 2,fg_color="transparent")
