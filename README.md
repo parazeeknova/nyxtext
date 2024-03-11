@@ -1,6 +1,4 @@
-⚠️ **The Project is in very Early Development. Need to add/ rebase a lot of stuff!.**
-
-
+⚠️ _**The project is actively being developed. Need to add/ rebase a lot of stuff!.**_
 
 <h3 align="center">
 	<img src="main/assets/logo/logo.png" width="300" alt="Logo"/><br/>
@@ -10,18 +8,20 @@
 </h3>
 
 <h6 align="center">
-  <a href="https://github.com/parazeeknova/nyxtext#-info">Info</a>
+  <a href="https://github.com/parazeeknova/nyxtext#note-">Info</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#-Note">About</a>
+  <a href="https://github.com//parazeeknova/nyxtext#-early-access-">Early Access</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#-Early editor screenshots">Showcase</a>
+  <a href="https://github.com//parazeeknova/nyxtext#-early-editor-screenshots">Showcase</a>
   ·
-  <a href="https://github.com/parazeeknova/nyxtext/docs">Docs</a>
+  <a href="https://github.com/parazeeknova/nyxtext#-contributing">Contribution</a>
 </h6>
 
 <p align="center">
   <img src="main/assets/misc/macchiato.png" width="400" />
 </p>
+
+&nbsp;
 
 <p align="center">
 	<a href="https://github.com/parazeeknova/nyxtext/stargazers">
@@ -29,14 +29,18 @@
 	<a href="https://github.com/parazeeknova/nyxtext/issues">
 		<img alt="Issues" src="https://img.shields.io/github/issues/parazeeknova/nyxtext?style=for-the-badge&logo=gitbook&color=B5E8E0&logoColor=D9E0EE&labelColor=302D41"></a>
     <a href="https://github.com/catppuccin/catppuccin/releases/latest">
+    <img alt="Maintained" src="  https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
 		<img alt="Releases" src="https://img.shields.io/github/release/parazeeknova/nyxtext.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
 </p>
 
 <div align="center">
 
-[![Tkinter](https://img.shields.io/badge/Tkinter-GUI%20Library-D9E0EE?style=for-the-badge&logo=tkinter)](https://docs.python.org/3/library/tkinter.html) ![CustomTkinter](https://img.shields.io/badge/CustomTkinter-GUI%20Library-D9E0EE?style=for-the-badge)
+![Tkinter](https://img.shields.io/badge/Tkinter-GUI%20Library-D9E0EE?style=for-the-badge&logo=tkinter) 
+![CustomTkinter](https://img.shields.io/badge/CustomTkinter-GUI%20Library-D9E0EE?style=for-the-badge)
 </div>
+
 &nbsp;
+
 <p align="center">
 <b>NyxText</b> is a basic text editor built using Python, <b>Tkinter and Custom Tkinter</b>, featuring the elegant <b>Catppuccin color scheme</b> and the minimalist <b>Paperus icon theme</b>. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability.
 </p> 
@@ -79,16 +83,12 @@
 <b>Join our community!</b>
 </p>
 
-<div align='center'>
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J0VIXCM)
-
-</div>
-&nbsp;
-
 ---
+
 ### Note :  
-As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress!
+As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! \
+
+**NyxText is currently in early access (v0.0.5-α). A downloadable installer will be available in the beta phase.**
 
 ### 🧠 Design Philosophy
 
@@ -112,6 +112,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 </p>
 
 &nbsp;
+
 ### ✨Features :
 - Edit Text files ~ duh.
 - **Workspace** - Work on multiple text file simultaneously.
@@ -126,6 +127,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 - ***More Soon...***
 
 &nbsp;
+
 ### 💡Future Plans : 
 - [x] ~~Complete rebase to custom_tkinter~~ - Done 28/02/2024 ✅
 - [ ] Auto completion, Grammer check
@@ -140,11 +142,10 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] Text Formatting - (Bold, Underline, Bulletpoints)
 - [ ] Basic file Encryption / Decryption
 - [ ] Hyperlinks, Markdown support
-&nbsp;
----
 
-### 🌟 Early Access :
-Run ***main.py*** in **editor/scipts** to start the editor, project is very unstable at the moment and bugs are expected.
+&nbsp;
+
+---
 
 ### 🍷 Early editor screenshots:
 
@@ -194,12 +195,14 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
 </div>
 
 &nbsp;
+
 <p align="center">
 <img src="main/assets/misc/Syntax_Highlighting.png" alt="Frappe, Syntax Highlighting"/>
 <h>Syntax Highlighting✨</h> 
 </p>
 
 &nbsp;
+
 ---
 ### 🐜 Bugs : 
 - [x] ~~It's not responsive as the project is still in early development.~~ - Done 08/03/2024 ✅
@@ -210,8 +213,9 @@ Run ***main.py*** in **editor/scipts** to start the editor, project is very unst
 
 - Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
 
-&nbsp;
 ---
+### 🌟 Early Access :
+Run ***main.py*** in **editor/scipts** to start the editor, project is very unstable at the moment and bugs are expected.
 
 ### How do I run NyxText in the Alpha Phase ? :
 
@@ -251,6 +255,12 @@ This will launch the nyxtext editor.
 > If you encounter any problems or have any questions while using nyxtext, feel free to reach out to me.
 
 &nbsp;
+
+---
+
+### ⭐ Stargraph: 
+![](https://starchart.cc/parazeeknova/nyxtext.svg)
+
 ---
 ### 👐 Contributing
 
@@ -260,3 +270,48 @@ This will launch the nyxtext editor.
 See [CONTRIBUTING.md](docs/CONTRIBUTING.md)
 
 &nbsp;
+
+### 📜 License
+
+NyxText is released under the MIT license, which grants the following permissions:
+
+- Commercial use
+- Distribution
+- Modification
+- Private use
+
+For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/nyxtext/blob/main/LICENSE).
+
+&nbsp;
+
+### 💖 Gratitude
+
+Thanks to my Team for developing, contributing this project :
+
+- [Noviciuss](https://github.com/noviciusss) (Developer)
+- [Castimonia07](https://github.com/castimonia07) (For Colorschemes)
+
+&nbsp;
+
+### ☕ Support 
+- Consider supporting NyxText's development with a coffee!
+- Every contribution helps! If you enjoy using NyxText, consider buying me a coffee to fuel further development.
+
+<div align='center'>
+
+![Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)
+[![ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/J3J0VIXCM)
+![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)
+</div>
+
+&nbsp;
+
+<p align="center"><img src="main/assets/misc/catppuccin_cat.svg" /></p>
+<div align="center">
+
+![Dev](http://ForTheBadge.com/images/badges/built-by-developers.svg)
+![Python](http://ForTheBadge.com/images/badges/made-with-python.svg)
+![Love](http://ForTheBadge.com/images/badges/built-with-love.svg)
+</div>
+<p align="center">Copyright &copy; 2024-present <a href="https://github.com/parazeeknova/nyxtext" target="_blank">NyxText</a>
+<p align="center"><a href="https://github.com/parazeeknova/nyxtext/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=302d41&colorB=b7bdf8"/></a></p>
