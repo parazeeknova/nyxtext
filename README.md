@@ -148,8 +148,6 @@ The number of themes is not definite, we will be adding more in the future, Also
 
 &nbsp;
 
----
-
 ### 🍷 Early editor screenshots:
 
 <div style="display: flex; align-items: center;">
@@ -217,6 +215,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 - Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
 
 ---
+
 ### 🌟 Early Access :
 Run ***main.py*** in **editor/scipts** to start the editor, project is very unstable at the moment and bugs are expected.
 
@@ -259,12 +258,11 @@ This will launch the nyxtext editor.
 
 &nbsp;
 
----
-
 ### ⭐ Stargraph: 
 ![](https://starchart.cc/parazeeknova/nyxtext.svg)
 
 ---
+
 ### 👐 Contributing
 
 > [!NOTE]<br>
