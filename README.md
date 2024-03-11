@@ -15,6 +15,9 @@
   <a href="https://github.com//parazeeknova/nyxtext#-early-editor-screenshots">Showcase</a>
   ·
   <a href="https://github.com/parazeeknova/nyxtext#-contributing">Contribution</a>
+  ·
+  <a href="https://github.com/parazeeknova/nyxtext#-support">Support</a>
+
 </h6>
 
 <p align="center">
@@ -29,7 +32,7 @@
 	<a href="https://github.com/parazeeknova/nyxtext/issues">
 		<img alt="Issues" src="https://img.shields.io/github/issues/parazeeknova/nyxtext?style=for-the-badge&logo=gitbook&color=B5E8E0&logoColor=D9E0EE&labelColor=302D41"></a>
     <a href="https://github.com/catppuccin/catppuccin/releases/latest">
-    <img alt="Maintained" src="  https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
+    <img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
 		<img alt="Releases" src="https://img.shields.io/github/release/parazeeknova/nyxtext.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
 </p>
 
