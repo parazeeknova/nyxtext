@@ -11,21 +11,21 @@ class newfile_window(ctk.CTkToplevel):
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
-        window_width = 220
+        window_width = 280
         window_height = 250
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         self.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
-        self.attributes('-alpha', 0.5)
+        self.attributes('-alpha', 0.95)
         # Close Button
         self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=6, height=6, fg_color='transparent', text_color='#ed8796')
         self.close_button.place(x=window_width - 24, y=1)
         # Create a label for New file title
-        self.newfile_label = ctk.CTkLabel(self, text="New File Options :", font=('Calibri',18,"bold"), padx=100,)
+        self.newfile_label = ctk.CTkLabel(self, text="New File Options :",font=("JetBrainsMono NF", 19, "bold"), padx=100,)
         self.newfile_label.pack(side='top', pady=(20,0))
         
         # File Path Label
-        self.file_path_label = ctk.CTkLabel(self, text="File Path:", font=('Calibri',12),)
+        self.file_path_label = ctk.CTkLabel(self, text="File Path:", font=('JetBrainsMono NF',13),)
         self.file_path_label.pack(side='top', pady=(10,0)) # Adjust pady as needed
         
         # File Path Entry Box
@@ -35,10 +35,10 @@ class newfile_window(ctk.CTkToplevel):
         self.button_open = ctk.CTkButton(self, text="Open...", width=100, height=25, corner_radius=10, command=self.open_file)
         self.button_open.pack(side="top",pady=5)
         # Buttons
-        self.button1 = ctk.CTkButton(self, text="Button 1", width=100, height=25, corner_radius=10)
+        self.button1 = ctk.CTkButton(self, text="OPen in Workspace", width=100, height=25, corner_radius=10)
         self.button1.pack(side='left', padx=(0,10))
         
-        self.button2 = ctk.CTkButton(self, text="Button 2", width=100, height=25, corner_radius=10)
+        self.button2 = ctk.CTkButton(self, text="Open in Codespace", width=100, height=25, corner_radius=10)
         self.button2.pack(side='left')
         
         
