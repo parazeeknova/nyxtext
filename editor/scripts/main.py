@@ -14,12 +14,15 @@ from PIL import Image
 import pygments.lexers
 
 # Function import here
-# from framework import Framework
 from search import Searchwindow
 from new_file import newfile_window
 from open_file import openfile_window
 from open_folder import openfolder_window
 from chlorophyll import CodeView
+
+# Packages
+from framework.tab_View import TabView
+from framework.welcome_Screen import WelcomeScreen
 
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
