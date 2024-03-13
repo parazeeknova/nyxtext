@@ -6,7 +6,7 @@ class openfile_window(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.geometry("400x200")
-        self.title("New File")
+        self.title("Open File")
         self.wm_attributes('-type', 'splash')
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
@@ -35,7 +35,7 @@ class openfile_window(ctk.CTkToplevel):
         self.button_open = ctk.CTkButton(self, text="Open...", width=100, height=25, corner_radius=10, command=self.open_file)
         self.button_open.pack(side="top",pady=5)
         # Buttons
-        self.button1 = ctk.CTkButton(self, text="OPen in Workspace", width=100, height=25, corner_radius=10)
+        self.button1 = ctk.CTkButton(self, text="Open in Workspace", width=100, height=25, corner_radius=10)
         self.button1.pack(side='left', padx=(0,10))
         
         self.button2 = ctk.CTkButton(self, text="Open in Codespace", width=100, height=25, corner_radius=10)
