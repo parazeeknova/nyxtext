@@ -21,7 +21,7 @@ class openfile_window(ctk.CTkToplevel):
         self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=6, height=6, fg_color='transparent', text_color='#ed8796')
         self.close_button.place(x=window_width - 24, y=1)
         # Create a label for New file title
-        self.newfile_label = ctk.CTkLabel(self, text="New File Options :",font=("JetBrainsMono NF", 19, "bold"), padx=100,)
+        self.newfile_label = ctk.CTkLabel(self, text="Open File Options :",font=("JetBrainsMono NF", 19, "bold"), padx=100,)
         self.newfile_label.pack(side='top', pady=(20,0))
         
         # File Path Label
