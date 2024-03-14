@@ -1,3 +1,5 @@
+# Open Folder option in welcome screen : 
+
 import customtkinter as ctk
 from tkinter import filedialog
 import tkinter as tk
@@ -40,7 +42,7 @@ class openfolder_window(ctk.CTkToplevel):
         self.button4.pack(side='top',pady=5)
         
     def open_folder(self):
-        self.Folder_path_1 = filedialog.askopenFoldername(defaultextension=".txt",
+        self.Folder_path_1 = filedialog.askopenfilename(defaultextension=".txt",
                                         Foldertypes=[("Text Folder", "*.txt"), ("All Folders", "*.*")])
         if self.Folder_path_1:
             with open(self.Folder_path_1, "r") as Folder:

@@ -1,5 +1,6 @@
+# Welcome Screen :
+
 import customtkinter
-import tkinter
 import os
 
 from PIL import Image
@@ -80,19 +81,3 @@ class WelcomeScreen:
         welcome_recent = customtkinter.CTkButton(self.welcome_tab,text=" Github/Parazeeknova ",
                                                 fg_color='transparent',hover=False,anchor="center",text_color='#ee99a0')
         welcome_recent.pack()
-
-    def create_welcome_tab(self):
-        # ... (code to create the welcome tab)
-        pass
-
-    def new_window(self, master):
-        new = newfile_window(master)
-
-    def open_window(self, master):
-        open = openfile_window(master)
-
-    def openfol_window(self, master):
-        openfolder = openfolder_window(master)
-
-    def about_window(self, master):
-        about = MyWindow(master)

@@ -1,6 +1,6 @@
+# Tab View :
+
 import customtkinter
-import tkinter as tk
-import os
 from text_Area import textarea
 from chlorophyll import CodeView
 import pygments.lexers

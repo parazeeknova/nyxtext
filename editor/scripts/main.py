@@ -17,6 +17,8 @@ from search import Searchwindow
 # Packages
 from framework.tab_View import TabView
 from framework.welcome_Screen import WelcomeScreen
+from framework.workspace import Workspace
+from framework.codespace import Codespace
 
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
@@ -84,48 +86,14 @@ def main():
 
 # Welcome tab from the welcome_Screen.py file in framework folder which is a package now
     welcome_tab = WelcomeScreen(tab_view.tab_view)
-
-# Workspace continue creates a Default text area for text editing:
-# All functions of the menu bar works on this tab, NEED TO FIX AND MAKE THE FUNCTIONS TO WORK ON SELECTED TAB !!
-    # tab_init = TabView.add_new_tab("Workspace")
     
-    # Initialize a variable to keep track of the tab count
-    global tab_count # Use the global keyword to modify the global variable
-    tab_count = 0
-    def add_new_tab():
-        global tab_count # Use the global keyword to modify the global variable
-        tab_count += 1 # Increment the tab count
-    # Generate a unique title for the new tab
-        tab_title = f"Workspace {tab_count}"
-    # Add a new tab to the tab view
-        new_tab = tab_view.add(tab_title)
-        text_area = textarea(new_tab)
+# Workspace creates a Default text area for text editing:
+# All functions of the menu bar works on this tab, NEED TO FIX AND MAKE THE FUNCTIONS TO WORK ON SELECTED TAB !!
+    tab_init = Workspace(tab_view.tab_view)
 
-    # Function to remove the currently selected tab
-    def remove_current_tab():
-    # Get the currently selected tab
-        selected_tab = tab_view.get()
-        if selected_tab:
-        # Remove the selected tab
-            tab_view.delete(selected_tab)
-
-# Code Area (Need to remove in future:)
+# Codespace creates a DEfault code area for code editing: 
 # Gives the ability for syntax Highlighting 
-    # global codespace_count
-    # codespace_count = 0
-    # def add_new_codespace():
-    #     global codespace_count
-    #     codespace_count += 1 # Increment the tab count
-    # # Generate a unique title for the new tab
-    #     codespace_title = f"CodeSpace {codespace_count}"
-    # # Add a new tab to the tab view
-    #     new_codespace = tab_view.add(codespace_title)
-    #     codespace = CodeView(new_codespace,lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
-    #     codespace.pack(fill="both",expand=True)
-        
-    # tab_codespace = tab_view.add("Codespace")
-    # codeview = CodeView(tab_codespace, lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
-    # codeview.pack(fill="both", expand=True)
+    Codeview = Codespace(tab_view.tab_view)
 
 # All Items for the left frame are below :
     Filetree_Button = customtkinter.CTkLabel(left_frame, text="FileTree :", font=("VictorMono Nerd Font",14,"bold"))
@@ -187,10 +155,6 @@ def main():
     open_directory_button = customtkinter.CTkButton(left_frame, text="Open Directory", command=open_directory_dialog)
     open_directory_button.grid(row=2, column=0,pady=5, sticky='nsew')
 
-# This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
-    # global Textarea
-    # Textarea = textarea(tab_init)
-    
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,textarea)
     root.config(menu=menu_bar.menubar)
@@ -347,10 +311,6 @@ def main():
     Dir_Label_pth.pack(side="left",padx=2,pady=10)
     Dir_Label_pth.configure(width=2,font= ("JetBrainsMono NF",12))
     
-    # Color_Scheme_button = customtkinter.CTkSegmentedButton(bottom_frame, values=["Frappe", "Latte", "Macchiato", "Mocha"])
-    # Color_Scheme_button.pack(side="left",padx=5,pady=10)
-    # Color_Scheme_button.configure(width=10)
-    
     Search_bar = customtkinter.CTkEntry(bottom_frame, placeholder_text="Enter your commands here..")
     Search_bar.pack(side="right",padx=10,pady=10)
     Search_bar.configure(width=250, font = ("VictorMono Nerd Font Bold",15))
@@ -361,15 +321,6 @@ def main():
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
     Seperator_R()
 
-# Add a button to remove the currently selected tab
-    # remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=remove_current_tab)
-    # remove_tab_button.pack(side="right", padx=5, pady=10)
-    
-    # add_new_tab_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=add_new_tab)
-    # add_new_tab_button.pack(side="right",padx=5,pady=10)
-    
-    # add_new_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=add_new_codespace)
-    # add_new_codespace_button.pack(side="right",padx=5,pady=10)
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
     main()
