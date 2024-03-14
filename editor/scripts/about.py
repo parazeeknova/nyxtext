@@ -3,7 +3,7 @@ import tkinter
 import webbrowser
 import os
 from PIL import Image
-from features  import FeaturesWindow
+from features import FeaturesWindow
 class MyWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)

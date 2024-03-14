@@ -7,7 +7,7 @@ import pygments.lexers
 
 class TabView:
     def __init__(self, right_frame, screen_width, screen_height):
-        self.tab_view = customtkinter.CTkTabview(right_frame, width=int(screen_width)-250, height=int(screen_height)-200)
+        self.tab_view = customtkinter.CTkTabview(right_frame, width=int(screen_width)-220, height=int(screen_height)-250)
         self.tab_view.grid(row=0, column=0, pady=10, sticky='nsew')
         self.tab_count = 0
         self.codespace_count = 0

@@ -9,16 +9,10 @@ from about import MyWindow
 from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
-from tkinter import ttk, filedialog, PhotoImage
-from PIL import Image
-import pygments.lexers
+from tkinter import ttk, filedialog
 
 # Function import here
 from search import Searchwindow
-from new_file import newfile_window
-from open_file import openfile_window
-from open_folder import openfolder_window
-from chlorophyll import CodeView
 
 # Packages
 from framework.tab_View import TabView
@@ -85,77 +79,15 @@ def main():
     right_frame.grid_columnconfigure(0, weight=2)
 
 # Creates a tab view to show tabs, implimented the dynamic tab view for the workspace (Text Area) :
-    tab_view = customtkinter.CTkTabview(right_frame,width=int(screen_width)-250,height=int(screen_height)-200)
-    tab_view.grid(row=0, column=0,pady=10, sticky='nsew')
-    
-# Welcome Tab : 
-    welcome_tab = tab_view.add("Welcome")
-    
-    if os.name == 'nt':  # for Windows
-        my_image = customtkinter.CTkImage(light_image=Image.open("main/assets/logo/logo.png"),
-                                        dark_image=Image.open("main/assets/logo/logo.png"),
-                                        size=(400, 200))
-        
-        welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="",image= my_image,
-                                                font=('JetBrainsMono NF',80,"bold"),
-                                                padx=100,anchor="center")
-        welcome_title_text.pack(side='top',pady=(100,0))
-    elif os.name == 'posix': # for linux
-        welcome_title_text = customtkinter.CTkLabel(welcome_tab, text="NyxText",
-                                                font=('JetBrainsMono NF',80,"bold"),
-                                                padx=100,anchor="center")
-        welcome_title_text.pack(side='top',pady=(100,0))
+# Uses framework package to create the tab view
+    tab_view = TabView(right_frame, screen_width, screen_height)
 
-        welcome_title_desc = customtkinter.CTkLabel(welcome_tab, text="- A Catppuccin based Text Editor",
-                                                    font=('JetBrainsMono NF',20,"italic"),
-                                                    padx=100,anchor="center")
-        welcome_title_desc.pack(side='top')
-    
-    welcome_title_start = customtkinter.CTkLabel(welcome_tab, text="Start",
-                                                font=('JetBrainsMono NF',16,"bold"),
-                                                padx=100,anchor="center")
-    welcome_title_start.pack(side='top',pady=(30,10))
-    
-# Opens a new window for creating a new file : 
-    def new_window(master):
-            new = newfile_window(master)
-    welcome_new_button = customtkinter.CTkButton(welcome_tab,text=" New file... ", command=lambda: new_window(welcome_tab),
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#ed8796')
-    welcome_new_button.pack()
-    def open_window(master):
-            open = openfile_window(master)
-    welcome_open_button = customtkinter.CTkButton(welcome_tab,text=" Open file... ", command=lambda: open_window(welcome_tab),
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#a6da95')
-    welcome_open_button.pack()
-    def openfol_window(master):
-        openfolder = openfolder_window(master)
-    welcome_openfolder_button = customtkinter.CTkButton(welcome_tab,text=" Open Folder... ", command=lambda: openfol_window(welcome_tab),
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#91d7e3')
-    welcome_openfolder_button.pack()
-    
-    def about_window(master):
-            about = MyWindow(master)
-    welcome_about_button = customtkinter.CTkButton(welcome_tab, text=" About... ",
-                                fg_color='transparent', hover=False, anchor="center", text_color='#8aadf4', command=lambda: about_window(welcome_tab))
-    welcome_about_button.pack()
-    
-    welcome_title_recents = customtkinter.CTkLabel(welcome_tab, text="Recents",
-                                                font=('JetBrainsMono NF',16,"bold"),
-                                                padx=100,anchor="center")
-    welcome_title_recents.pack(side='top',pady=(30,10))
-    
-    # Static at the moment need to replace with dynamic :
-    welcome_recent = customtkinter.CTkButton(welcome_tab,text=" Github/Parazeeknova/Nyxtext ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#ee99a0')
-    welcome_recent.pack()
-    
-    welcome_recent = customtkinter.CTkButton(welcome_tab,text=" Github/Parazeeknova ",
-                                                fg_color='transparent',hover=False,anchor="center",text_color='#ee99a0')
-    welcome_recent.pack()
+# Welcome tab from the welcome_Screen.py file in framework folder which is a package now
+    welcome_tab = WelcomeScreen(tab_view.tab_view)
 
 # Workspace continue creates a Default text area for text editing:
 # All functions of the menu bar works on this tab, NEED TO FIX AND MAKE THE FUNCTIONS TO WORK ON SELECTED TAB !!
-    tab_init = tab_view.add("Workspace")
+    # tab_init = TabView.add_new_tab("Workspace")
     
     # Initialize a variable to keep track of the tab count
     global tab_count # Use the global keyword to modify the global variable
@@ -168,11 +100,7 @@ def main():
     # Add a new tab to the tab view
         new_tab = tab_view.add(tab_title)
         text_area = textarea(new_tab)
-    
-        # Temp for testing will remove later
-        # text_area = customtkinter.CTkTextbox(new_tab, height=int(screen_height), width=rf, activate_scrollbars=True, wrap='none')
-        # text_area.pack(fill='both', expand=True)
-        
+
     # Function to remove the currently selected tab
     def remove_current_tab():
     # Get the currently selected tab
@@ -183,21 +111,21 @@ def main():
 
 # Code Area (Need to remove in future:)
 # Gives the ability for syntax Highlighting 
-    global codespace_count
-    codespace_count = 0
-    def add_new_codespace():
-        global codespace_count
-        codespace_count += 1 # Increment the tab count
-    # Generate a unique title for the new tab
-        codespace_title = f"CodeSpace {codespace_count}"
-    # Add a new tab to the tab view
-        new_codespace = tab_view.add(codespace_title)
-        codespace = CodeView(new_codespace,lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
-        codespace.pack(fill="both",expand=True)
+    # global codespace_count
+    # codespace_count = 0
+    # def add_new_codespace():
+    #     global codespace_count
+    #     codespace_count += 1 # Increment the tab count
+    # # Generate a unique title for the new tab
+    #     codespace_title = f"CodeSpace {codespace_count}"
+    # # Add a new tab to the tab view
+    #     new_codespace = tab_view.add(codespace_title)
+    #     codespace = CodeView(new_codespace,lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
+    #     codespace.pack(fill="both",expand=True)
         
-    tab_codespace = tab_view.add("Codespace")
-    codeview = CodeView(tab_codespace, lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
-    codeview.pack(fill="both", expand=True)
+    # tab_codespace = tab_view.add("Codespace")
+    # codeview = CodeView(tab_codespace, lexer=pygments.lexers.PythonLexer, color_scheme="dracula")
+    # codeview.pack(fill="both", expand=True)
 
 # All Items for the left frame are below :
     Filetree_Button = customtkinter.CTkLabel(left_frame, text="FileTree :", font=("VictorMono Nerd Font",14,"bold"))
@@ -260,11 +188,11 @@ def main():
     open_directory_button.grid(row=2, column=0,pady=5, sticky='nsew')
 
 # This imports the text_Area class from a module named text_area.py. This class is expected to contain the logic for creating a text area for the application
-    global Textarea
-    Textarea = textarea(tab_init)
+    # global Textarea
+    # Textarea = textarea(tab_init)
     
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
-    menu_bar = Menubar(root,Textarea)
+    menu_bar = Menubar(root,textarea)
     root.config(menu=menu_bar.menubar)
     
 # All buttons and search bar in the top frame for different functions (Right)
@@ -434,14 +362,14 @@ def main():
     Seperator_R()
 
 # Add a button to remove the currently selected tab
-    remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=remove_current_tab)
-    remove_tab_button.pack(side="right", padx=5, pady=10)
+    # remove_tab_button = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=remove_current_tab)
+    # remove_tab_button.pack(side="right", padx=5, pady=10)
     
-    add_new_tab_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=add_new_tab)
-    add_new_tab_button.pack(side="right",padx=5,pady=10)
+    # add_new_tab_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=add_new_tab)
+    # add_new_tab_button.pack(side="right",padx=5,pady=10)
     
-    add_new_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=add_new_codespace)
-    add_new_codespace_button.pack(side="right",padx=5,pady=10)
+    # add_new_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=add_new_codespace)
+    # add_new_codespace_button.pack(side="right",padx=5,pady=10)
 # The main function is called only when the script is run directly, not when it's imported as a module 
 if __name__ == "__main__":
     main()
