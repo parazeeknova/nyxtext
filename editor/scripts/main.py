@@ -282,7 +282,7 @@ def main():
     Suggestions.configure(width=3) 
     
 # About button in the top_bar
-    About = customtkinter.CTkButton(top_frame, text="About", command=lambda: about_window(welcome_tab))
+    About = customtkinter.CTkButton(top_frame, text="About", command=lambda: MyWindow())
     About.pack(side="left",padx=2,pady=10)
     About.configure(width=2)
     
