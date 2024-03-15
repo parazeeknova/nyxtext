@@ -116,7 +116,7 @@ class Settings():
             # For demonstration, we're just printing the selected color scheme
 
         # List of color schemes to be displayed in the option menu
-        color_schemes = ["Dark Blue", "Blue", "Slate","Lumber","Frappe","Latte","Mocha","Macchito","Oceanic","Blue Green","Jim Jam"]
+        color_schemes = ["Dark Blue", "Blue", "Slate","Lumber","Frappe","Latte","Mocha","Macchito","Oceanic","Shrek","Jim Jam"]
 
         # Create a variable to store the selected color scheme
         selected_color_scheme = tk.StringVar(self.settings_window)

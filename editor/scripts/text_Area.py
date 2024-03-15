@@ -20,7 +20,7 @@ class textarea():
                 popup_menu.grab_release()
 
         popup_menu = tk.Menu(self.parent_frame, tearoff=0)
-        popup_menu.config(bg="black", fg="grey")
+        popup_menu.config(bg="grey", fg="black")
         popup_menu.add_command(label="Cut", command=self.cut)
         popup_menu.add_command(label="Copy", command=self.copy)
         popup_menu.add_command(label="Paste", command=self.paste)
@@ -38,9 +38,9 @@ class textarea():
         popup_menu.bind("<FocusOut>", lambda event: popup_menu.unpost())
 
         self.text_area.bind("<Button-3>", do_popup)
-        self.undo_stack = deque(maxlen=10)
-        self.redo_stack = deque(maxlen=10)
-        self.undo_stack.append(self.text_area.get(1.0, tk.END))
+        # self.undo_stack = deque(maxlen=10)
+        # self.redo_stack = deque(maxlen=10)
+        # self.undo_stack.append(self.text_area.get(1.0, tk.END))
 
     def cut(self):
         try:
@@ -63,17 +63,17 @@ class textarea():
         self.text_area.insert(tk.INSERT, self.text_area.clipboard_get())
 
     def undo(self):
-        if len(self.undo_stack) > 1: # Ensure there's more than one state to undo
-            self.redo_stack.append(self.text_area.get(1.0, tk.END))
-            self.text_area.delete(1.0, tk.END)
-            self.text_area.insert(1.0, self.undo_stack.pop())
+        try:
+            self.text_area.edit_undo()
+        except:
+            pass # No undo history
 
     def redo(self):
-        if self.redo_stack:
-            self.undo_stack.append(self.text_area.get(1.0, tk.END))
-            self.text_area.delete(1.0, tk.END)
-            self.text_area.insert(1.0, self.redo_stack.pop())
-
+        try:
+            self.text_area.edit_redo()
+        except:
+            pass # No redo history
+    
     def select_all(self):
         self.text_area.tag_add(tk.SEL, "1.0", tk.END)
         self.text_area.mark_set(tk.INSERT, "1.0")
@@ -83,7 +83,7 @@ class textarea():
         if messagebox.askokcancel("Exit ?","Do you want to save your changes?"):
             self.save_file()
         else:
-            self.root.destroy()
+            self.text_area.destroy()
 
     def close_tab(self):
         # Assuming you have a method to close the tab, otherwise, you might need to implement it
