@@ -181,7 +181,7 @@ def main():
                                                                 command=change_scaling_event)
     scaling_optionemenu.pack(side="right",padx=2,pady=10)
     
-    def Seperator_R():
+    def Seperator_R() -> None:
         Seperator = customtkinter.CTkLabel(top_frame, text="|")
         Seperator.pack(side="right",padx=2,pady=10)
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
@@ -212,19 +212,7 @@ def main():
     chat_gpt_button.configure(width=10)
     
     Seperator_R()
-    
-    # Commented at the moment, will implement later
-    
-    # right_arrow = customtkinter.CTkButton(top_frame, text=">")
-    # right_arrow.pack(side="right",padx=1,pady=10)
-    # right_arrow.configure(width= 2,fg_color="transparent")
-    
-    # Commented at the moment, will be implemented later 
-    
-    # left_arrow = customtkinter.CTkButton(top_frame, text="<")
-    # left_arrow.pack(side="right",padx=1,pady=10)
-    # left_arrow.configure(width= 2,fg_color="transparent")
-    
+
 # Instantiate SearchWindow and pass the text area
     def open_search_window():
         search = Searchwindow(root)
@@ -245,7 +233,7 @@ def main():
     Save_button.pack(side="left",padx=3,pady=10)
     Save_button.configure(width=2,font = ("Arial",18))
     
-    def Seperator():
+    def Seperator() -> None:
         Seperator = customtkinter.CTkLabel(top_frame, text="|")
         Seperator.pack(side="left",padx=2,pady=10)
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
@@ -315,10 +303,29 @@ def main():
     Search_bar.pack(side="right",padx=10,pady=10)
     Search_bar.configure(width=250, font = ("VictorMono Nerd Font Bold",15))
     
-    def Seperator_R():
+    # left_arrow = customtkinter.CTkButton(bottom_frame, text="⇐")
+    # left_arrow.pack(side="right",padx=1,pady=10)
+    # left_arrow.configure(width= 2,fg_color="transparent")
+
+    # right_arrow = customtkinter.CTkButton(bottom_frame, text="⇒")
+    # right_arrow.pack(side="right",padx=1,pady=10)
+    # right_arrow.configure(width= 2,fg_color="transparent")
+    
+    def Seperator_R() -> None:
         Seperator = customtkinter.CTkLabel(bottom_frame, text="|")
         Seperator.pack(side="right",padx=2,pady=10)
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
+    Seperator_R()
+    
+    remove_current_tab = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=lambda: tab_view.remove_current_tab())
+    remove_current_tab.pack(side="right", padx=2, pady=10)
+    
+    add_workspace_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=lambda: tab_view.add_new_workspace())
+    add_workspace_button.pack(side="right", padx=2, pady=10)
+    
+    add_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=lambda: tab_view.add_new_codespace())
+    add_codespace_button.pack(side="right", padx=2, pady=10)
+    
     Seperator_R()
 
 # The main function is called only when the script is run directly, not when it's imported as a module 

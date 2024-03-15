@@ -12,7 +12,7 @@ class TabView:
         self.tab_count = 0
         self.codespace_count = 0
 
-    def add_new_tab(self):
+    def add_new_workspace(self):
         self.tab_count += 1
         tab_title = f"Workspace {self.tab_count}"
         new_tab = self.tab_view.add(tab_title)
