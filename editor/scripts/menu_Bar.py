@@ -27,6 +27,7 @@ class Menubar:
         self.settings = tk.Menu(self.menubar, tearoff=0)
         self.run = tk.Menu(self.menubar, tearoff=0)
         self.window = tk.Menu(self.menubar, tearoff=0)
+        self.color = tk.Menu(self.menubar,tearoff=0)
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
         self.special_feature = tk.Menu(self.menubar, tearoff=0)
         
@@ -37,6 +38,7 @@ class Menubar:
         self.menubar.add_cascade(label="View", menu=self.viewmenu)
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
+        self.menubar.add_cascade(label="Color Scheme",menu=self.color)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
         
         #functions of file option
@@ -120,6 +122,18 @@ class Menubar:
         
         #Window Menu
         self.window.add_command(label="Tabs", command=self.tab)
+        #Color Scheme
+        self.color.add_command(label= "Dark Blue",command=self.color_schemes)
+        self.color.add_command(label= "Blue",command=self.color_schemes)
+        self.color.add_command(label= "Slate",command=self.color_schemes)
+        self.color.add_command(label= "Lumber",command=self.color_schemes)
+        self.color.add_command(label= "Frappe",command=self.color_schemes)
+        self.color.add_command(label= "Latte",command=self.color_schemes)
+        self.color.add_command(label= "Mocha",command=self.color_schemes)
+        self.color.add_command(label= "Macchito",command=self.color_schemes)
+        self.color.add_command(label= "Oceanic",command=self.color_schemes)
+        self.color.add_command(label= "Shrek",command=self.color_schemes)
+        self.color.add_command(label= "Jim Jam",command=self.color_schemes)        
         
         #Help
         self.helpmenu.add_command(label="Github Repo", command=self.open_website)
@@ -198,9 +212,11 @@ class Menubar:
 
 #Edit Menu Functions
     def undo(self):
-        pass
+        self.text_Area.text_area.edit_modified(True)
+        self.text_Area.text_area.edit_undo()
     def redo(self):
-        pass
+        self.text_Area.text_area.edit_modified(True)
+        self.text_Area.text_area.edit_redo()
     
     def cut(self):
         # Get the current selection
@@ -356,3 +372,5 @@ class Menubar:
     
     # Show the context menu at the mouse cursor's position
         context_menu.post(self.x_root, self.y_root)
+        
+    def color_schemes():pass
