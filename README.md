@@ -266,7 +266,7 @@ This will launch the nyxtext editor.
 
 ## ❓ FAQs:
 
-### What's new in the latest Porcupine release?
+### What's new in the latest NyxText release?
 
 See [CHANGELOG.md](CHANGELOG.md).
 
@@ -275,7 +275,7 @@ You will likely get syntax highlighting without any configuring
 and autocompletions with a few lines of configuration file editing.
 See [the instructions on Porcupine wiki](https://github.com/Akuli/porcupine/wiki/Getting-Porcupine-to-work-with-a-programming-language). -->
 
-### Help! Porcupine doesn't work.
+### Help! NyxtText doesn't work.
 
 Install all the python pip packages for alpha stage.
 If it still doesn't work, [let me know by creating an issue on
