@@ -89,7 +89,7 @@
 ---
 
 ### Note :  
-As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! \
+As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
 
 **NyxText is currently in early access (v0.0.5-α). A downloadable installer will be available in the beta phase.**
 
@@ -145,6 +145,14 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] Text Formatting - (Bold, Underline, Bulletpoints)
 - [ ] Basic file Encryption / Decryption
 - [ ] Hyperlinks, Markdown support
+- [ ] Auto completion when pressing Tab for Codespace
+- [ ] Git support
+- [ ] Running files in a separate terminal or command prompt window
+- [ ] Automatic indenting and trailing whitespace stripping when Enter is pressed
+- [ ] Line length marker
+- [ ] Code folding
+- [ ] Multiple files can be opened at the same time like tabs in a web browser
+- [ ] The tabs can be dragged out of the window to open a new window
 
 &nbsp;
 
@@ -194,13 +202,6 @@ The number of themes is not definite, we will be adding more in the future, Also
         <img src="main/assets/screenshots/default_dark_windowed.png" alt="Dark mode"/>
     </div>
 </div>
-
-&nbsp;
-
-<p align="center">
-<img src="main/assets/misc/Syntax_Highlighting.png" alt="Frappe, Syntax Highlighting"/>
-<h>Syntax Highlighting✨</h> 
-</p>
 
 &nbsp;
 
@@ -260,6 +261,51 @@ This will launch the nyxtext editor.
 
 ### ⭐ Stargraph: 
 ![](https://starchart.cc/parazeeknova/nyxtext.svg)
+
+---
+
+## ❓ FAQs:
+
+### What's new in the latest Porcupine release?
+
+See [CHANGELOG.md](CHANGELOG.md).
+
+<!-- ### Does NyxText support programming language X?
+You will likely get syntax highlighting without any configuring
+and autocompletions with a few lines of configuration file editing.
+See [the instructions on Porcupine wiki](https://github.com/Akuli/porcupine/wiki/Getting-Porcupine-to-work-with-a-programming-language). -->
+
+### Help! Porcupine doesn't work.
+
+Install all the python pip packages for alpha stage.
+If it still doesn't work, [let me know by creating an issue on
+GitHub](http://github.com/parazeeknova/nyxtext/issues/new).
+
+### Is NyxText written in NyxText?
+
+Not at the moment. We are writing the very first version in `VSCodium`, but will use it when we are done with basic features.
+
+### Why is it named NyxText?
+
+1. **Mythological Inspiration:** `NyxText` draws upon the Greek goddess `Nyx`, associated with night, creation, and beginnings. This resonates with writers and programmers who often find inspiration during the quiet hours. The name subtly reflects this theme through its potential use of darker design elements.
+
+2. **Euphony and Distinction:** `NyxText` possesses a pleasant sound with `Nyx` adding a touch of mystique. This name stands out from common text editors, making it both memorable and unique.
+
+3. **Symbolic Alignment:**  `Nyx` can also symbolize the blank canvas or the void before creation. This perfectly aligns with the core function of a text editor - providing a blank slate for writers and programmers to bring their ideas to life.
+
+### I want an editor that does X, but X is not in the feature list above. Does NyxText do X?
+You can run NyxText and find out,
+or [create an issue on GitHub](https://github.com/parazeeknova/nyxtext/issues/new) and ask.
+If you manage to make us excited about X, We might implement it.
+
+### Why did you create a new editor?
+Because I can.
+
+### Why did you create a new editor in tkinter or X?
+Because I can.
+
+### Why not use editor X?
+Because NyxText is better.
 
 ---
 
