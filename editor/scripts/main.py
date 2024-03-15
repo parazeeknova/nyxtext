@@ -50,6 +50,7 @@ def main():
     # configure grid layout (4x4)
     # Useful for responsiveness 
     root.grid_rowconfigure(0,weight=1)
+    root.grid_rowconfigure(1,weight=2)
     root.grid_columnconfigure(0,weight=1)
     root.grid_columnconfigure(1,weight=1)
 
