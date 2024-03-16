@@ -155,6 +155,11 @@ def main():
 # Add a button to open the directory dialog
     open_directory_button = customtkinter.CTkButton(left_frame, text="Open Directory", command=open_directory_dialog)
     open_directory_button.grid(row=2, column=0,pady=5, sticky='nsew')
+    
+    def new_instance_window():
+        pass
+    open_new_window = customtkinter.CTkButton(left_frame, text="Open New Window", command=new_instance_window)
+    open_new_window.grid(row=3, column=0,pady=5, sticky='nsew')
 
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,textarea)
