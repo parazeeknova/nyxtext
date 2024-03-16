@@ -235,7 +235,7 @@ Here's a step-by-step guide on getting nyxtext up and running:
 - Install the required Python libraries using `pip`:
 
 ```
-pip install customtkinter Pillow pyperclip chlorophyll pygments
+python -m pip install -r requirements.txt
 ```
 **3. Usage:**
 

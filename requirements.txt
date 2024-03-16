@@ -1,0 +1,5 @@
+chlorophyll
+customtkinter
+Pillow
+pyperclip
+pygments
