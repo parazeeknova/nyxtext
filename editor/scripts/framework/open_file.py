@@ -9,7 +9,7 @@ class openfile_window(ctk.CTkToplevel):
         super().__init__(master)
         self.geometry("400x200")
         self.title("Open File")
-        self.wm_attributes('-type', 'splash')
+        self.wm_attributes('-topmost', False)
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
