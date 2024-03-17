@@ -31,3 +31,8 @@ class TabView:
         selected_tab = self.tab_view.get()
         if selected_tab:
             self.tab_view.delete(selected_tab)
+    
+    def select_current_tab(self):
+        selected_tab = self.tab_view.get()
+        return selected_tab
+        
