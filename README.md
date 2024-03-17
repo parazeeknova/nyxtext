@@ -143,7 +143,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] Undo / Redo
 - [ ] Working Settings page
 - [ ] Text Formatting - (Bold, Underline, Bulletpoints)
-- [ ] Basic file Encryption / Decryption
+- [ ] Basic file [Encryption / Decryption](https://github.com/parazeeknova/nyxtext/issues/17)
 - [ ] Hyperlinks, Markdown support
 - [ ] Auto completion when pressing Tab for Codespace
 - [ ] Git support
