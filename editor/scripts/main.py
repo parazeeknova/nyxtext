@@ -1,8 +1,10 @@
 # System imports here
-import customtkinter
 import tkinter as tk
 import os
 import webbrowser
+
+# Third party imports here
+import customtkinter
 
 # File imports here
 from about import MyWindow
