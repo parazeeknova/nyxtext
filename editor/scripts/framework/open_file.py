@@ -3,13 +3,18 @@
 import customtkinter as ctk
 from tkinter import filedialog
 import tkinter as tk
+import os
 
 class openfile_window(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.geometry("400x200")
         self.title("Open File")
-        self.wm_attributes('-topmost', False)
+        # Creating execption handeling for windows & Linux
+        if os.name == 'nt': 
+                self.wm_attributes('-topmost', False)
+        elif os.name=="posix":
+            self.wm_attributes('-type','splash')
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
@@ -37,14 +42,15 @@ class openfile_window(ctk.CTkToplevel):
         self.button_open = ctk.CTkButton(self, text="Open...", width=100, height=25, corner_radius=10, command=self.open_file)
         self.button_open.pack(side="top",pady=5)
         # Buttons
-        self.button1 = ctk.CTkButton(self, text="Open in Workspace", width=100, height=25, corner_radius=10)
+        self.button1 = ctk.CTkButton(self, text="Open in Workspace", width=100, height=25, corner_radius=10,command=self.open_work)
         self.button1.pack(side='left', padx=(0,10))
         
-        self.button2 = ctk.CTkButton(self, text="Open in Codespace", width=100, height=25, corner_radius=10)
+        self.button2 = ctk.CTkButton(self, text="Open in Codespace", width=100, height=25, corner_radius=10,command=self.open_code)
         self.button2.pack(side='left')
         
         
-        
+    def open_work(self):pass
+    def open_code(self):pass
     def open_file(self):
         self.file_path_1 = filedialog.askopenfilename(defaultextension=".txt",
                                         filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])

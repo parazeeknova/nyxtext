@@ -3,12 +3,16 @@
 import customtkinter as ctk
 from tkinter import filedialog
 import tkinter as tk
+import os
 class openfolder_window(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.geometry("400x200")
         self.title("New folder")
-        self.wm_overrideredirect(True)
+        if os.name == 'nt': 
+                self.wm_attributes('-topmost', False)
+        elif os.name=="posix":
+            self.wm_attributes('-type','splash')
         
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()

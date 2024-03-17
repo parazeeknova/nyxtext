@@ -1,13 +1,16 @@
 # New File option in Welcome Screen : 
 
 import customtkinter as ctk
-
+import os
 class newfile_window(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
         self.geometry("400x200")
         self.title("New File")
-        self.wm_attributes('-type', 'splash')
+        if os.name == 'nt': 
+                self.wm_attributes('-topmost', False)
+        elif os.name=="posix":
+            self.wm_attributes('-type','splash')
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
