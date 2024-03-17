@@ -17,25 +17,15 @@ class WelcomeScreen:
         self.tab_view = tab_view
         
         # Creating execption handeling for windows & Linux
-        if os.name == 'nt': # for windows
-            my_image = customtkinter.CTkImage(light_image=Image.open("main/assets/logo/logo.png"),
-                                            dark_image=Image.open("main/assets/logo/logo.png"),
-                                            size=(400, 200))
-            welcome_title_text = customtkinter.CTkLabel(self.welcome_tab, text="",image= my_image,
+        welcome_title_text = customtkinter.CTkLabel(self.welcome_tab, text="NyxText",
                                                     font=('JetBrainsMono NF',80,"bold"),
                                                     padx=100,anchor="center")
-            welcome_title_text.pack(side='top',pady=(100,0))
-        
-        elif os.name == 'posix': # for linux
-            welcome_title_text = customtkinter.CTkLabel(self.welcome_tab, text="NyxText",
-                                                    font=('JetBrainsMono NF',80,"bold"),
-                                                    padx=100,anchor="center")
-            welcome_title_text.pack(side='top',pady=(100,0))
+        welcome_title_text.pack(side='top',pady=(100,0))
 
-            welcome_title_desc = customtkinter.CTkLabel(self.welcome_tab, text="- A Catppuccin based Text Editor",
+        welcome_title_desc = customtkinter.CTkLabel(self.welcome_tab, text="- A Catppuccin based Text Editor",
                                                         font=('JetBrainsMono NF',20,"italic"),
                                                         padx=100,anchor="center")
-            welcome_title_desc.pack(side='top')
+        welcome_title_desc.pack(side='top')
             
         
         welcome_title_start = customtkinter.CTkLabel(self.welcome_tab, text="Start",
