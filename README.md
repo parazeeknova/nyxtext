@@ -235,7 +235,7 @@ Here's a step-by-step guide on getting nyxtext up and running:
 - Install the required Python libraries using `pip`:
 
 ```
-pip install customtkinter Pillow pyperclip chlorophyll pygments
+python -m pip install -r requirements.txt
 ```
 **3. Usage:**
 
@@ -249,10 +249,9 @@ git clone https://github.com/parazeeknova/nyxtext.git
 ```
 **4. Run the Editor:**
 
-- Navigate to the project directory:
+- Navigate to the checkout directory:
 ```
-cd nyxtext\editor\scripts
-python -u main.py
+python -u editor/scripts/main.py
 ```
 This will launch the nyxtext editor.
 > If you encounter any problems or have any questions while using nyxtext, feel free to reach out to me.
