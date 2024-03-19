@@ -24,7 +24,7 @@ from framework.codespace import Codespace
 
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
-    
+
 # Should be replaced with a function in future for catppuccin color scheme 
 customtkinter.set_default_color_theme("editor/scripts/color_Themes/frappe.json")
 
@@ -62,21 +62,21 @@ def main():
     elif os.name == 'posix':  # for Linux and MacOS
         # root.iconphoto(False, PhotoImage(file="editor/scripts/misc/icons/icon.png"))
         pass
-    
+
 # Setting width variables
     screen_width = root.winfo_screenwidth() 
     screen_height = root.winfo_screenheight() 
-    
+
 # Frames for the main text editor 
     top_frame = customtkinter.CTkFrame(root, width=screen_width,height=int(screen_height * 0.15),corner_radius=0) # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky='nsew')
-    
+
     left_frame = customtkinter.CTkFrame(root, width=screen_width * 0.16,corner_radius=0)
     left_frame.grid(row=1, column=0,rowspan=4, sticky='nsew') # Ensure left_frame is correctly placed
-    
+
     right_frame = customtkinter.CTkFrame(root, width=int(screen_width)-100,height=int(screen_height)-30,corner_radius=0)
     right_frame.grid(row=1, column=1,sticky='nsew')
-    
+
     bottom_frame = customtkinter.CTkFrame(root, width=screen_width,height=int(screen_height * 0.15),corner_radius=0)
     bottom_frame.grid(row=2, column=0, columnspan=2, sticky='nsew')
 
@@ -89,7 +89,7 @@ def main():
 
 # Welcome tab from the welcome_Screen.py file in framework folder which is a package now
     welcome_tab = WelcomeScreen(tab_view.tab_view)
-    
+
 # Workspace creates a Default text area for text editing:
 # All functions of the menu bar works on this tab, NEED TO FIX AND MAKE THE FUNCTIONS TO WORK ON SELECTED TAB !!
     tab_init = Workspace(tab_view.tab_view)
@@ -107,7 +107,7 @@ def main():
 # Commented for better version in future 
     # folder_image = PhotoImage("editor/scripts/misc/icons/folder.png")
     # folder_path = folder_image
-    
+
     # file_image = PhotoImage("editor/scripts/misc/icons/file.png")
     # file_path = file_image
 
@@ -115,7 +115,7 @@ def main():
     file_tree = ttk.Treeview(left_frame,height=35)
     file_tree.heading("#0", text="Files :", anchor="w")
     file_tree.grid(row=1, column=0, sticky='nsew')
-    
+
 # Function to put items in the file tree : 
     def populate_file_tree(tree, path):
         for item in os.listdir(path):
@@ -153,11 +153,11 @@ def main():
     # desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
     current_directory_path = os.getcwd()
     populate_file_tree(file_tree, current_directory_path)
-    
+
 # Add a button to open the directory dialog
     open_directory_button = customtkinter.CTkButton(left_frame, text="Open Directory", command=open_directory_dialog)
     open_directory_button.grid(row=2, column=0,pady=5, sticky='nsew')
-    
+
     def new_instance_window():
         pass
     open_new_window = customtkinter.CTkButton(left_frame, text="Open New Window", command=new_instance_window)
@@ -166,14 +166,14 @@ def main():
 # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
     menu_bar = Menubar(root,textarea)
     root.config(menu=menu_bar.menubar)
-    
+
 # All buttons and search bar in the top frame for different functions (Right)
     def open_settings_window():
         settings = Settings(root)
     settings_button = customtkinter.CTkButton(top_frame, text="⚙️",command=open_settings_window)
     settings_button.pack(side="right",padx=5,pady=10)
     settings_button.configure(width=10)
-    
+
 # Switch to change Light and DarkMode :
     def change_appearance_mode_event(new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
@@ -188,7 +188,7 @@ def main():
     scaling_optionemenu = customtkinter.CTkOptionMenu(top_frame, width=80,values=["80%", "90%", "100%", "110%", "120%"],
                                                                 command=change_scaling_event)
     scaling_optionemenu.pack(side="right",padx=2,pady=10)
-    
+
     def Seperator_R() -> None:
         Seperator = customtkinter.CTkLabel(top_frame, text="|")
         Seperator.pack(side="right",padx=2,pady=10)
@@ -200,25 +200,25 @@ def main():
     chat_gpt_button = customtkinter.CTkButton(top_frame, text="⚙️ ChatGPT",command=chat_gpt)
     chat_gpt_button.pack(side="right",padx=5,pady=10)
     chat_gpt_button.configure(width=10)
-    
+
     def Phind():
             webbrowser.open('https://www.phind.com/')
     chat_gpt_button = customtkinter.CTkButton(top_frame, text="Phind",command=Phind)
     chat_gpt_button.pack(side="right",padx=5,pady=10)
     chat_gpt_button.configure(width=10)
-    
+
     def Blackbox_AI():
             webbrowser.open('https://www.blackbox.ai/')
     chat_gpt_button = customtkinter.CTkButton(top_frame, text="BlackBox AI",command=Blackbox_AI)
     chat_gpt_button.pack(side="right",padx=5,pady=10)
     chat_gpt_button.configure(width=10)
-    
+
     def Gemini():
             webbrowser.open('https://gemini.google.com/')
     chat_gpt_button = customtkinter.CTkButton(top_frame, text="Gemini",command=Gemini)
     chat_gpt_button.pack(side="right",padx=5,pady=10)
     chat_gpt_button.configure(width=10)
-    
+
     Seperator_R()
 
 # Instantiate SearchWindow and pass the text area
@@ -232,58 +232,58 @@ def main():
     New_button = customtkinter.CTkButton(top_frame, text="📄")
     New_button.pack(side="left",padx=2,pady=10)
     New_button.configure(width=2,font = ("Arial",18))
-    
+
     Open_button = customtkinter.CTkButton(top_frame, text="📂")
     Open_button.pack(side="left",padx=2,pady=10)
     Open_button.configure(width=2,font = ("Arial",18))
-    
+
     Save_button = customtkinter.CTkButton(top_frame, text="💾")
     Save_button.pack(side="left",padx=3,pady=10)
     Save_button.configure(width=2,font = ("Arial",18))
-    
+
     def Seperator() -> None:
         Seperator = customtkinter.CTkLabel(top_frame, text="|")
         Seperator.pack(side="left",padx=2,pady=10)
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
     Seperator()
-        
+
     Cut_button = customtkinter.CTkButton(top_frame, text="Cut")
     Cut_button.pack(side="left",padx=3,pady=10)
     Cut_button.configure(width=2)
-    
+
     Copy_button = customtkinter.CTkButton(top_frame, text="Copy")
     Copy_button.pack(side="left",padx=3,pady=10)
     Copy_button.configure(width=2)
-    
+
     Paste_button = customtkinter.CTkButton(top_frame, text="Paste")
     Paste_button.pack(side="left",padx=3,pady=10)
     Paste_button.configure(width=2)
-    
+
     select_button = customtkinter.CTkButton(top_frame, text="Select")
     select_button.pack(side="left",padx=3,pady=10)
     select_button.configure(width=2)
-    
+
     undo_button = customtkinter.CTkButton(top_frame, text="Undo")
     undo_button.pack(side="left",padx=3,pady=10)
     undo_button.configure(width=2)
-    
+
     redo_button = customtkinter.CTkButton(top_frame, text="Redo")
     redo_button.pack(side="left",padx=3,pady=10)
     redo_button.configure(width=2)
-    
+
     Seperator()
-    
+
     Suggestions = customtkinter.CTkButton(top_frame, text="Suggest a Feature")
     Suggestions.pack(side="left",padx=2,pady=10)
     Suggestions.configure(width=3) 
-    
+
 # About button in the top_bar
     About = customtkinter.CTkButton(top_frame, text="About", command=lambda: MyWindow())
     About.pack(side="left",padx=2,pady=10)
     About.configure(width=2)
-    
+
     Seperator()
-    
+
     Exit_button = customtkinter.CTkButton(top_frame, text="Exit")
     Exit_button.pack(side="left",padx=3,pady=10)
     Exit_button.configure(width=2)
@@ -291,26 +291,26 @@ def main():
 # All buttons in the bottom frame for different functions
     # Creating a button for theme change
     # Not working at the moment will implement in future
-    
+
     # def changetheme_event(changetheme_next: str):
     #     customtkinter.set_default_color_theme(changetheme_next)
     # Changetheme_optionmenu = customtkinter.CTkOptionMenu(bottom_frame, values=["blue","dark-blue","green"],
     #                                                         command=changetheme_event)
     # Changetheme_optionmenu.pack(side="left",padx=5,pady=10)
-    
+
     Dir_Label = customtkinter.CTkLabel(bottom_frame, text="Working directory : ")
     Dir_Label.pack(side="left",padx=(10,0),pady=10)
     Dir_Label.configure(width=2,font= ("JetBrainsMono NF",12,"bold"))
-    
+
     dirvar = str(current_directory_path)
     Dir_Label_pth = customtkinter.CTkLabel(bottom_frame, text=dirvar)
     Dir_Label_pth.pack(side="left",padx=2,pady=10)
     Dir_Label_pth.configure(width=2,font= ("JetBrainsMono NF",12))
-    
+
     Search_bar = customtkinter.CTkEntry(bottom_frame, placeholder_text="Enter your commands here..")
     Search_bar.pack(side="right",padx=10,pady=10)
     Search_bar.configure(width=250, font = ("VictorMono Nerd Font Bold",15))
-    
+
     # left_arrow = customtkinter.CTkButton(bottom_frame, text="⇐")
     # left_arrow.pack(side="right",padx=1,pady=10)
     # left_arrow.configure(width= 2,fg_color="transparent")
@@ -318,22 +318,22 @@ def main():
     # right_arrow = customtkinter.CTkButton(bottom_frame, text="⇒")
     # right_arrow.pack(side="right",padx=1,pady=10)
     # right_arrow.configure(width= 2,fg_color="transparent")
-    
+
     def Seperator_R() -> None:
         Seperator = customtkinter.CTkLabel(bottom_frame, text="|")
         Seperator.pack(side="right",padx=2,pady=10)
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
     Seperator_R()
-    
+
     remove_current_tab = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=lambda: tab_view.remove_current_tab())
     remove_current_tab.pack(side="right", padx=2, pady=10)
-    
+
     add_workspace_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=lambda: tab_view.add_new_workspace())
     add_workspace_button.pack(side="right", padx=2, pady=10)
-    
+
     add_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=lambda: tab_view.add_new_codespace())
     add_codespace_button.pack(side="right", padx=2, pady=10)
-    
+
     Seperator_R()
 
 # The main function is called only when the script is run directly, not when it's imported as a module 

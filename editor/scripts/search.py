@@ -16,4 +16,4 @@ label_element = [
 class Searchwindow():
         def __init__(self, master):
             inputbox = customtkinter.CTkInputDialog(text="Search...",title="Search")
-        
+

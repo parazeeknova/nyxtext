@@ -13,7 +13,7 @@ class openfolder_window(ctk.CTkToplevel):
                 self.wm_attributes('-topmost', False)
         elif os.name=="posix":
             self.wm_attributes('-type','splash')
-        
+
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
@@ -23,28 +23,28 @@ class openfolder_window(ctk.CTkToplevel):
         position_right = int(screen_width / 2 - window_width / 2)
         self.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
         self.attributes('-alpha', 0.9)
-        
+
         self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=6, height=6, fg_color='transparent', text_color='#ed8796')
         self.close_button.place(x=24, y=1)
         # Create a label for New folder title
         self.openfolder_label = ctk.CTkLabel(self, text="Folder Options :",font=("JetBrainsMono NF", 19, "bold"), padx=100,)
         self.openfolder_label.pack(side='top', pady=(20,0))
-        
+
         self.button_open = ctk.CTkButton(self, text="Open Folder", width=100, height=25, corner_radius=10, command=self.open_folder)
         self.button_open.pack(side="top",pady=5)
         # Buttons
         self.button1 = ctk.CTkButton(self, text="New folder in Workspace", width=100, height=25, corner_radius=10)
         self.button1.pack(side='top', pady=5)
-        
+
         self.button2 = ctk.CTkButton(self, text="New folder in Codespace", width=100, height=25, corner_radius=10)
         self.button2.pack(side='top',pady=5)
-        
+
         self.button3 = ctk.CTkButton(self, text="Open folder in Workspace", width=100, height=25, corner_radius=10)
         self.button3.pack(side='top', pady=5)
-        
+
         self.button4 = ctk.CTkButton(self, text="Open folder in Codespace", width=100, height=25, corner_radius=10)
         self.button4.pack(side='top',pady=5)
-        
+
     def open_folder(self):
         self.Folder_path_1 = filedialog.askopenfilename(defaultextension=".txt",
                                         Foldertypes=[("Text Folder", "*.txt"), ("All Folders", "*.*")])

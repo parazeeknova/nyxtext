@@ -5,7 +5,7 @@ class FeaturesWindow(ctk.CTkToplevel):
         super().__init__(master)
         self.geometry("1600x1000")
         self.wm_overrideredirect(True)
-        
+
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
@@ -15,20 +15,20 @@ class FeaturesWindow(ctk.CTkToplevel):
         position_right = int(screen_width / 2 - window_width / 2)
         self.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
         self.attributes('-alpha', 0.95)
-        
+
         # Create a close button with specified width and height
         self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=20, height=20, fg_color='transparent', text_color='#ed8796')
         # Place the close button at the top right corner
         self.close_button.place(x=window_width - 24, y=10)
-        
+
         self.welcome_title_text = ctk.CTkLabel(self, text="Features",
                                                 font=('JetBrainsMono NF',80,"bold"),
                                                 padx=100, anchor="center")
         self.welcome_title_text.pack(side='top', pady=(50,0))
-        
+
         # Define a list of colors
         colors = ['#ed8796', '#87ed96', '#9687ed', '#ed9687', '#8796ed', '#96ed87', '#ed8787', '#87ed87', '#9687ed', '#ed9696']
-        
+
         # List of features
         features = [
             "1- Work on multiple text files simultaneously.",
@@ -42,7 +42,7 @@ class FeaturesWindow(ctk.CTkToplevel):
             "9- AI assistence, shortcuts to Gemini, ChatGPT, BlackboxAI...",
             "10- Code area for coding"
         ]
-        
+
         # Iterate over features and create labels with different colors
         for i, feature in enumerate(features):
             feature_label = ctk.CTkLabel(self, text=feature,
