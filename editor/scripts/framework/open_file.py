@@ -1,10 +1,7 @@
 # Open File option in Welcome Screen : 
 
 import customtkinter as ctk
-from tkinter import filedialog
-import tkinter as tk
 import os
-from framework.tab_View import TabView
 
 class openfile_window(ctk.CTkToplevel):
     def __init__(self, master=None):

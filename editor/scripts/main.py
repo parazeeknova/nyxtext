@@ -1,5 +1,4 @@
 # System imports here
-import tkinter as tk
 import os
 import webbrowser
 

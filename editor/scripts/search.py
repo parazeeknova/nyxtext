@@ -1,9 +1,5 @@
 from tkinter import *
-import tkinter as tk
-from tkinter import filedialog, messagebox, ttk, colorchooser
-import menu_Bar
 import customtkinter
-from text_Area import textarea
 # Assuming label_element is defined here for simplicity
 label_element = [
     "New", "Open", "Open Containing Folder", 
