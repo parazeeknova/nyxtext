@@ -31,8 +31,8 @@ class textarea():
         popup_menu.add_command(label="Delete", command=self.delete_selected)
         popup_menu.add_command(label="Select All", command=self.select_all)
         popup_menu.add_command(label="Exit", command=self.exit_editor)
-        
-        
+
+
 
         # Bind the focusout event to hide the menu
         popup_menu.bind("<FocusOut>", lambda event: popup_menu.unpost())
@@ -73,7 +73,7 @@ class textarea():
             self.text_area.edit_redo()
         except:
             pass # No redo history
-    
+
     def select_all(self):
         self.text_area.tag_add(tk.SEL, "1.0", tk.END)
         self.text_area.mark_set(tk.INSERT, "1.0")

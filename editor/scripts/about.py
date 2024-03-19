@@ -9,7 +9,7 @@ class MyWindow(ctk.CTkToplevel):
         super().__init__(master)
         self.geometry("1600x1000")
         self.wm_overrideredirect(True)
-        
+
         # Center the window on the screen
         screen_width = self.winfo_screenwidth()
         screen_height = self.winfo_screenheight()
@@ -23,7 +23,7 @@ class MyWindow(ctk.CTkToplevel):
         self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=20, height=20,fg_color='transparent',text_color='#ed8796')
         # Place the close button at the top right corner
         self.close_button.place(x=window_width - 24, y=10)
-        
+
         # Create a label with big bold text in the top and middle
         if os.name == 'nt':
             self.my_image = ctk.CTkImage(light_image=Image.open("main/assets/logo/logo.png"),
@@ -33,7 +33,7 @@ class MyWindow(ctk.CTkToplevel):
                                                 font=('JetBrainsMono NF',80,"bold"),
                                                 padx=100,anchor="center")
             self.welcome_title_text.pack(side='top',pady=(50,0))
-        
+
         elif os.name == 'posix':
             self.welcome_title_text = ctk.CTkLabel(self, text="NyxText",
                                                 font=('JetBrainsMono NF',80,"bold"),
@@ -44,7 +44,7 @@ class MyWindow(ctk.CTkToplevel):
                                                     font=('JetBrainsMono NF',20,"italic"),
                                                     padx=100,anchor="center")
             welcome_title_desc.pack(side='top')
-        
+
         # Update Button : 
         self.update_button = ctk.CTkButton(self, text=" ↻ Update ",font=('JetBrainsMono NF',13),fg_color='#b7bdf8',text_color='#363a4f',hover=False)
         self.update_button.pack(side='top',padx=30, pady=(15,0))
@@ -65,7 +65,7 @@ class MyWindow(ctk.CTkToplevel):
         # Add a button with "Discord" written on it
         self.discord_button = ctk.CTkButton(self, text="Discord",font=('JetBrainsMono NF',13),fg_color='transparent',command=self.discord,text_color='#8aadf4')
         self.discord_button.pack(side='top', padx=30, pady=5)
-        
+
         self.features_button = ctk.CTkButton(self, text="Features", font=('JetBrainsMono NF',13), fg_color='transparent', command=self.open_features, text_color='#a6da95')
         self.features_button.pack(side='top', padx=30, pady=5)
         # Version Number
@@ -73,7 +73,7 @@ class MyWindow(ctk.CTkToplevel):
         self.build.pack(side='bottom')
         self.version = ctk.CTkLabel(self, text="Version: v0.0.5-ɑ", font=("JetBrainsMono NF", 10, "bold"))
         self.version.pack(side='bottom')
-        
+
         # Add a label with "Text made with love"
         self.love_label = ctk.CTkLabel(self, text="NyxText made with 💖 by NYX", font=("JetBrainsMono NF", 12, "italic"))
         self.love_label.pack(side='bottom', pady=10)

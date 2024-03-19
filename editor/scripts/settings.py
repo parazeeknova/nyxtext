@@ -12,7 +12,7 @@ class Settings():
         self.settings_window.title("Settings")
         self.settings_window.geometry("500x500")
         self.settings_window.wm_overrideredirect(True)
-        
+
         # Center the window on the screen
         screen_width = self.settings_window.winfo_screenwidth()
         screen_height = self.settings_window.winfo_screenheight()
@@ -23,7 +23,7 @@ class Settings():
         self.settings_window.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
         self.settings_window.attributes('-alpha', 0.95)
         # Create a label for the font settings
-        
+
         # Create a close button with specified width and height
         close_button = ctk.CTkButton(self.settings_window, text="X", command=self.settings_window.destroy, width=20, height=20, fg_color='transparent', text_color='#ed8796')
 # Place the close button at the top right corner
@@ -48,7 +48,7 @@ class Settings():
         # Create the option menu with font options
         font_option_menu = ctk.CTkOptionMenu(self.settings_window, values=available_fonts, variable=selected_font, command=on_font_select)
         font_option_menu.place(x=200, y=20) # Position the option menu to the right of the label
-        
+
         #Create a label for the font size settings
         font_size_label = ctk.CTkLabel(self.settings_window, text="Font Size")
         font_size_label.place(x=20, y=70) # Position the label below the font label
@@ -69,7 +69,7 @@ class Settings():
         # Create the option menu with font size options
         font_size_option_menu = ctk.CTkComboBox(self.settings_window, values=font_sizes, variable=selected_font_size, command=on_font_size_select)
         font_size_option_menu.place(x=200, y=70) # Position the option menu to the right of the font size label
-        
+
         # Create a label for the font color settings
         font_color_label = ctk.CTkLabel(self.settings_window, text="Font Color")
         font_color_label.place(x=20, y=120) # Position the label below the font size label
@@ -84,7 +84,7 @@ class Settings():
         # Create a button to open the color chooser dialog
         font_color_button = ctk.CTkButton(self.settings_window, text="Choose Color", command=on_font_color_select)
         font_color_button.place(x=200, y=120) # Position the button to the right of the font color label
-        
+
         # Create a label for the system theme settings
         system_theme_label = ctk.CTkLabel(self.settings_window, text="System Theme")
         system_theme_label.place(x=20, y=170) # Position the label below the font color label
@@ -104,7 +104,7 @@ class Settings():
         # Create the option menu with system theme options
         system_theme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=system_themes, variable=selected_system_theme, command=on_system_theme_select)
         system_theme_option_menu.place(x=200, y=170) # Position the option menu to the right of the system theme label
-        
+
         # Create a label for the color scheme settings
         color_scheme_label = ctk.CTkLabel(self.settings_window, text="Color Scheme")
         color_scheme_label.place(x=20, y=220) # Position the label below the system theme label
@@ -125,9 +125,9 @@ class Settings():
         # Create the option menu with color scheme options
         color_scheme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=color_schemes, variable=selected_color_scheme, command=on_color_scheme_select)
         color_scheme_option_menu.place(x=200, y=220) # Position the option menu to the right of the color scheme label
-        
+
         color_schemes1 = ["Dracula","monokai","ayu-dark","ayu-light","mariana"]
-        
+
         selected_color_scheme1 = tk.StringVar(self.settings_window)
         selected_color_scheme1.set(color_schemes[0]) # Default to the first scheme
         # Create a label for the CodeSpace color scheme settings
@@ -137,7 +137,7 @@ class Settings():
         # Create the option menu with CodeSpace color scheme options
         codespace_color_scheme_option_menu = ctk.CTkOptionMenu(self.settings_window, values=color_schemes1, variable=selected_color_scheme1, command=on_color_scheme_select)
         codespace_color_scheme_option_menu.place(x=200, y=270) # Position the option menu to the right of the CodeSpace color scheme label
-        
+
         start_button = ctk.CTkButton(self.settings_window, text="OK", command=self.settings_window.destroy, font=("VictorMono Nerd Font", 14))
         start_button.place(x=110 ,y= 320)
         self.settings_window.grab_set()

@@ -17,7 +17,7 @@ class Menubar:
         self.text_Area = text_Area
         self.menubar = tk.Menu(self.root, background='grey', fg='white')
         self.file_path_1 = None
-        
+
         #Defining menu options as menu objects
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
@@ -30,7 +30,7 @@ class Menubar:
         self.color = tk.Menu(self.menubar,tearoff=0)
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
         self.special_feature = tk.Menu(self.menubar, tearoff=0)
-        
+
         #Menu Bar
         self.menubar.add_cascade(label="File", menu=self.filemenu)
         self.menubar.add_cascade(label="Edit", menu=self.editmenu)
@@ -40,7 +40,7 @@ class Menubar:
         self.menubar.add_cascade(label="Window", menu=self.window)
         self.menubar.add_cascade(label="Color Scheme",menu=self.color)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
-        
+
         #functions of file option
         self.filemenu.add_command(label="New",accelerator="Ctrl+N" ,command=self.new_file)
         self.filemenu.add_separator()
@@ -57,7 +57,7 @@ class Menubar:
         self.filemenu.add_separator()
         self.filemenu.add_cascade(label="Rename ...", menu=self.rename)
         self.filemenu.add_separator()
-        
+
         #CLose Options
         self.filemenu.add_cascade(label="Close - (Soon!)",accelerator="Ctrl+W", menu=self.close)
         self.filemenu.add_cascade(label="Close All - (Soon!)",accelerator="Ctrl+Shift+W", menu=self.close_all)
@@ -65,7 +65,7 @@ class Menubar:
         self.filemenu.add_cascade(label="Move to Recycle Bin - (Soon!)", menu=self.move_to_recycle)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", accelerator="Alt+F4",command=self.exit_editor)
-        
+
         #functions for edit option
         self.editmenu.add_command(label="Undo",accelerator="Ctrl+Z" ,command=self.undo)
         self.editmenu.add_command(label="Redo",accelerator="Ctrl+Y"  ,command=self.redo)
@@ -89,7 +89,7 @@ class Menubar:
         self.editmenu.add_separator()
         self.editmenu.add_command(label="Set Read-Only - (Soon!)", command=self.set_readonly)
         self.editmenu.add_command(label="Clear Read-Only Flag - (Soon!)",command=self.clear_readonly)
-        
+
         #Search Menu
         self.searchmenu.add_command(label="Find",accelerator="Ctrl+F",command=self.find)
         self.searchmenu.add_command(label="Find in Files ...",accelerator="Ctrl+Shift+F",command=self.find_in_files)
@@ -100,7 +100,7 @@ class Menubar:
         self.searchmenu.add_command(label="Jump Down - (Soon!)",command=self.jump_down)
         self.searchmenu.add_separator()
         self.searchmenu.add_command(label="Bookmark - (Soon!)",command=self.bookmark)
-        
+
         #View Menu
         self.viewmenu.add_command(label="Always on Top - (Soon!)",command=self.always_on_top)
         self.viewmenu.add_command(label="Toggle Full Screen Mode - (Soon!)",accelerator="F11",command=self.toggle_full_screen)
@@ -116,10 +116,10 @@ class Menubar:
         self.viewmenu.add_command(label="Word Wrap - (Soon!)",command=self.word_wrap)
         self.viewmenu.add_command(label="Focus on Another View - (Soon!)",accelerator="F8",command=self.focus_on_another_view)
         self.viewmenu.add_command(label="Hide Lines - (Soon!)",accelerator="Alt+H",command=self.hide_lines)
-        
+
         #Run Menu
         self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.open_terminal)
-        
+
         #Window Menu
         self.window.add_command(label="Tabs", command=self.tab)
         #Color Scheme
@@ -134,7 +134,7 @@ class Menubar:
         self.color.add_command(label= "Oceanic",command=self.color_schemes)
         self.color.add_command(label= "Shrek",command=self.color_schemes)
         self.color.add_command(label= "Jim Jam",command=self.color_schemes)        
-        
+
         #Help
         self.helpmenu.add_command(label="Github Repo", command=self.open_website)
         self.helpmenu.add_command(label="Discord", command=self.discord)
@@ -217,7 +217,7 @@ class Menubar:
     def redo(self):
         self.text_Area.text_area.edit_modified(True)
         self.text_Area.text_area.edit_redo()
-    
+
     def cut(self):
         # Get the current selection
         self.selected_text = self.text_Area.text_area.get(1.0, tk.END)
@@ -276,7 +276,7 @@ class Menubar:
 
     def clear_readonly(self):
         pass
-    
+
 #Search Functions
 
     def find(self):
@@ -346,11 +346,11 @@ class Menubar:
             subprocess.call(['open', '-a', 'Terminal'])
         else:
             print("Unsupported platform")
-    
+
 #Window menu Functions
     def tab(self):
         pass
-        
+
 #Help Menu Functions
     def open_website(self):
     # Open a URL in the default web browser
@@ -361,7 +361,7 @@ class Menubar:
     def git_integration(self):pass
     def new_file(self):
         pass
-    
+
     def discord(self):
         webbrowser.open('https://discord.com/invite/UwmqqXkV')
     def show_context_menu(self):
@@ -369,8 +369,8 @@ class Menubar:
         context_menu = tk.Menu(self, tearoff=0)
         context_menu.add_command(label="Function 1", command=lambda: print("Function 1 selected"))
         context_menu.add_command(label="Function 2", command=lambda: print("Function 2 selected"))
-    
+
     # Show the context menu at the mouse cursor's position
         context_menu.post(self.x_root, self.y_root)
-        
+
     def color_schemes():pass
