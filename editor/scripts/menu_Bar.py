@@ -1,8 +1,8 @@
 #menu_bar
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk, colorchooser
-import os as os
-import webbrowser as webbrowser
+import os
+import webbrowser
 import subprocess,shutil
 import pyperclip as pc
 # File imports here
