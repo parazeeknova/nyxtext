@@ -1,7 +1,6 @@
 import customtkinter as ctk
 import tkinter as tk
-from collections import deque
-from tkinter import filedialog, messagebox, ttk, colorchooser
+from tkinter import messagebox
 
 class textarea():
     def __init__(self, parent_frame):

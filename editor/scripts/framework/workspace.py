@@ -1,7 +1,6 @@
 # Workspace : 
 
 from text_Area import textarea
-from framework.tab_View import TabView
 
 class Workspace:
     def __init__(self,tab_view):

@@ -1,12 +1,10 @@
 #menu_bar
 import tkinter as tk
-from tkinter import filedialog, messagebox, ttk, colorchooser
+from tkinter import filedialog, messagebox
 import os
 import webbrowser
-import subprocess,shutil
+import subprocess
 import pyperclip as pc
-# File imports here
-from text_Area import textarea
 import platform
 
 

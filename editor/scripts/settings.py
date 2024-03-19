@@ -1,7 +1,6 @@
 import tkinter as tk
 import customtkinter as ctk
 import tkinter.font as tkFont
-from text_Area import textarea
 from tkinter import colorchooser
 
 class Settings():
