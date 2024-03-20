@@ -1,4 +1,5 @@
-⚠️ _**The project is actively being developed. Need to add/ rebase a lot of stuff!.**_
+⚠️ _**The project is actively being developed. Need to add/ rebase a lot of stuff!.**_ \
+⏲️ _Currently the development is slow due to university examinations_
 
 <h3 align="center">
 	<img src="main/assets/logo/logo.png" width="300" alt="Logo"/><br/>
