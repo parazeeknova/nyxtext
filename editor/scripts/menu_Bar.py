@@ -335,8 +335,13 @@ class Menubar:
     def open_terminal(self):
         system = platform.system()
         if system == "Linux":
-        # Assuming GNOME Terminal
-            subprocess.call(['gnome-terminal'])
+            terminals=['xfce4-terminal','gnome-terminal','konsole','terminator','tilix','urxvt','st','alacritty','kitty','hyper','xterm','uxterm']
+            for terminal in terminals:
+                try:
+                    subprocess.call([terminal])
+                    break
+                except Exception as e:
+                    print(e)
         elif system == "Windows":
             subprocess.call(['start', 'cmd'])
         elif system == "Darwin":
