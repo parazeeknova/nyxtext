@@ -121,12 +121,12 @@ def main():
             item_path = os.path.join(path, item)
             if os.path.isdir(item_path):
             # Insert the directory into the tree and get its ID
-                global dir_id
                 dir_id = tree.insert("", "end", text=item, open=True) # ,image= folder_path)
             # Recursively populate the directory
                 populate_file_tree(tree, item_path)
             else:
             # Insert the file into the tree using the parent directory's ID
+                dir_id = tree.insert("", "end", text=item, open=True) 
                 tree.insert(dir_id, "end", text=item) #, image= file_path)
 
     def open_directory_dialog():
