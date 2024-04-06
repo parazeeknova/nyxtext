@@ -332,14 +332,14 @@ For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/
 
 ### 💖 Gratitude
 
-Thanks to my Team for developing, contributing this project :
+Thanks to my Team for the initial development of the project, contributing this project :
 
-- [Noviciuss](https://github.com/noviciusss) (Developer)
-- [Castimonia07](https://github.com/castimonia07) (For Colorschemes)
+- [Noviciuss](https://github.com/noviciusss) (init Developer)
+- [Castimonia07](https://github.com/castimonia07) (init Colorschemes)
 
 &nbsp;
 
-### ☕ Support 
+<!-- ### ☕ Support 
 - Consider supporting NyxText's development with a coffee!
 - Every contribution helps! If you enjoy using NyxText, consider buying me a coffee to fuel further development.
 
@@ -348,7 +348,7 @@ Thanks to my Team for developing, contributing this project :
 ![Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)
 [![ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/J3J0VIXCM)
 ![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)
-</div>
+</div> -->
 
 &nbsp;
 
