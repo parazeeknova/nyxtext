@@ -332,7 +332,8 @@ class Menubar:
     def hide_lines(self):
         pass
 
-    def open_terminal(self):
+    @staticmethod
+    def open_terminal():
         system = platform.system()
         if system == "Linux":
             terminals=['xfce4-terminal','gnome-terminal','konsole','terminator','tilix','urxvt','st','alacritty','kitty','hyper','xterm','uxterm']
@@ -355,7 +356,8 @@ class Menubar:
         pass
 
 #Help Menu Functions
-    def open_website(self):
+    @staticmethod
+    def open_website():
     # Open a URL in the default web browser
         webbrowser.open('https://github.com//parazeeknova//nyxtext')
 
@@ -365,7 +367,8 @@ class Menubar:
     def new_file(self):
         pass
 
-    def discord(self):
+    @staticmethod
+    def discord():
         webbrowser.open('https://discord.com/invite/UwmqqXkV')
     def show_context_menu(self):
     # Create a popup menu
