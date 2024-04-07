@@ -77,11 +77,13 @@ class MyWindow(ctk.CTkToplevel):
         self.love_label = ctk.CTkLabel(self, text="NyxText made with 💖 by NYX", font=("JetBrainsMono NF", 12, "italic"))
         self.love_label.pack(side='bottom', pady=10)
 
-    def open_website(self):
+    @staticmethod
+    def open_website():
         # Open a URL in the default web browser
         webbrowser.open('https://github.com//parazeeknova//nyxtext')
 
-    def discord(self):
+    @staticmethod
+    def discord():
         webbrowser.open('https://discord.com/invite/UwmqqXkV')
     def open_features(self):
         features_window = FeaturesWindow(self)
