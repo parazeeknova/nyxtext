@@ -122,11 +122,12 @@ The number of themes is not definite, we will be adding more in the future, Also
 - **Syntax highlighting** - For the code space area.
 - Catpuccin Color Palette themes(4) + 4 Custom made themes and counting on..
 - **Dark / Light** mode.
-- Basic functions (new,open,save,cut,copy, etc.) check **menu bar** for more..
+- **Basic functions** (new,open,save,cut,copy, etc.) check **menu bar** for more..
 - **FileTree** View which shows all your project's files & folders.
 - **System scaling** support.
 - **Responsive** design - 3 modes (windowed, middleman, fullscreen).
 - **AI** assistence, shortcuts to Gemini, ChatGPT, BlackboxAI... 
+- **Integrated Terminal** Supports all basic commands, highly customizable, supports multiple tabs to run simultaneously...
 - ***More Soon...***
 
 &nbsp;
