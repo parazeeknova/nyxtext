@@ -3,3 +3,4 @@ customtkinter
 Pillow
 pyperclip
 pygments
+tkterm 

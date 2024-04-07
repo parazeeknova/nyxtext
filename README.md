@@ -142,6 +142,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] Focus window
 - [ ] Undo / Redo
 - [ ] Working Settings page
+- [x] ~~Terminal Support~~ - Done ✅ ~ Intergated [TkTerm](https://github.com/dhanoosu/TkTerm)
 - [ ] Text Formatting - (Bold, Underline, Bulletpoints)
 - [ ] Basic file Encryption / Decryption
 - [ ] Hyperlinks, Markdown support
