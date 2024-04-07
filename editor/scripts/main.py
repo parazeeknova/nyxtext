@@ -96,7 +96,7 @@ def main():
     toggle_button = customtkinter.CTkButton(bottom_frame, text="Terminal", width=5,command=toggle_more_bottom_frame)
     toggle_button.pack(side="right", padx=2, pady=10)
     more_bottom_frame.grid_remove()
-    
+
 # Terminal :
     terminal = Terminal(more_bottom_frame)
     terminal.shell = True
