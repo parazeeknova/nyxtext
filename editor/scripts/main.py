@@ -11,6 +11,7 @@ from menu_Bar import Menubar
 from text_Area import textarea
 from settings import Settings
 from tkinter import ttk, filedialog
+from tkterm import Terminal
 
 # Function import here
 from search import Searchwindow
@@ -25,7 +26,7 @@ from framework.codespace import Codespace
 customtkinter.set_appearance_mode("dark")
 
 # Should be replaced with a function in future for catppuccin color scheme 
-customtkinter.set_default_color_theme("editor/scripts/color_Themes/frappe.json")
+customtkinter.set_default_color_theme("editor/scripts/color_themes/H2O.json")
 
 # Welcome screen for the text editor disabled because currently a mess 
 # Need to work on this mess in future
@@ -81,6 +82,26 @@ def main():
 
     right_frame.grid_rowconfigure(0, weight=1)
     right_frame.grid_columnconfigure(0, weight=2)
+
+# Create a toggable more_bottom_frame for terminal and other features
+    def toggle_more_bottom_frame():
+        if more_bottom_frame.winfo_viewable():
+            more_bottom_frame.grid_remove()
+        else:
+            more_bottom_frame.grid()
+
+    more_bottom_frame = customtkinter.CTkFrame(root, width=screen_width, height=int(screen_height * 0.15), corner_radius=0)
+    more_bottom_frame.grid(row=3, column=0, columnspan=2, sticky='nsew')
+
+    toggle_button = customtkinter.CTkButton(bottom_frame, text="Terminal", width=5,command=toggle_more_bottom_frame)
+    toggle_button.pack(side="right", padx=2, pady=10)
+    more_bottom_frame.grid_remove()
+    
+# Terminal :
+    terminal = Terminal(more_bottom_frame)
+    terminal.shell = True
+    terminal.linebar = True
+    terminal.pack(expand=True, fill='both')
 
 # Creates a tab view to show tabs, implimented the dynamic tab view for the workspace (Text Area) :
 # Uses framework package to create the tab view
