@@ -298,7 +298,7 @@ def main():
     Suggestions.configure(width=3) 
 
 # About button in the top_bar
-    About = customtkinter.CTkButton(top_frame, text="About", command=lambda: MyWindow())
+    About = customtkinter.CTkButton(top_frame, text="About", command=MyWindow)
     About.pack(side="left",padx=2,pady=10)
     About.configure(width=2)
 
@@ -345,13 +345,13 @@ def main():
         Seperator.configure(width=2,font = ("Arial",16),fg_color="transparent")
     Seperator_R()
 
-    remove_current_tab = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=lambda: tab_view.remove_current_tab())
+    remove_current_tab = customtkinter.CTkButton(bottom_frame, text="Remove Tab", command=tab_view.remove_current_tab)
     remove_current_tab.pack(side="right", padx=2, pady=10)
 
-    add_workspace_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=lambda: tab_view.add_new_workspace())
+    add_workspace_button = customtkinter.CTkButton(bottom_frame, text="Add Workspace", command=tab_view.add_new_workspace)
     add_workspace_button.pack(side="right", padx=2, pady=10)
 
-    add_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=lambda: tab_view.add_new_codespace())
+    add_codespace_button = customtkinter.CTkButton(bottom_frame, text="Add Codespace", command=tab_view.add_new_codespace)
     add_codespace_button.pack(side="right", padx=2, pady=10)
 
     Seperator_R()
