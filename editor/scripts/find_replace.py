@@ -1,6 +1,8 @@
 # find_replace.py
 import tkinter as tk
+
 import customtkinter
+
 
 class FindReplaceGUI:
     def __init__(self, master):
@@ -21,10 +23,14 @@ class FindReplaceGUI:
         self.replace_entry = customtkinter.CTkEntry(self.main_frame)
         self.replace_entry.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        self.find_button = customtkinter.CTkButton(self.main_frame, text="Find", command=self.find)
+        self.find_button = customtkinter.CTkButton(
+            self.main_frame, text="Find", command=self.find
+        )
         self.find_button.pack(side=tk.LEFT)
 
-        self.replace_button = customtkinter.CTkButton(self.main_frame, text="Replace", command=self.replace)
+        self.replace_button = customtkinter.CTkButton(
+            self.main_frame, text="Replace", command=self.replace
+        )
         self.replace_button.pack(side=tk.LEFT)
 
     def find(self):
