@@ -1,5 +1,6 @@
 import customtkinter as ctk
 
+
 class FeaturesWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)
@@ -14,20 +15,43 @@ class FeaturesWindow(ctk.CTkToplevel):
         position_top = int(screen_height / 2 - window_height / 2)
         position_right = int(screen_width / 2 - window_width / 2)
         self.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
-        self.attributes('-alpha', 0.95)
+        self.attributes("-alpha", 0.95)
 
         # Create a close button with specified width and height
-        self.close_button = ctk.CTkButton(self, text="X", command=self.destroy, width=20, height=20, fg_color='transparent', text_color='#ed8796')
+        self.close_button = ctk.CTkButton(
+            self,
+            text="X",
+            command=self.destroy,
+            width=20,
+            height=20,
+            fg_color="transparent",
+            text_color="#ed8796",
+        )
         # Place the close button at the top right corner
         self.close_button.place(x=window_width - 24, y=10)
 
-        self.welcome_title_text = ctk.CTkLabel(self, text="Features",
-                                                font=('JetBrainsMono NF',80,"bold"),
-                                                padx=100, anchor="center")
-        self.welcome_title_text.pack(side='top', pady=(50,0))
+        self.welcome_title_text = ctk.CTkLabel(
+            self,
+            text="Features",
+            font=("JetBrainsMono NF", 80, "bold"),
+            padx=100,
+            anchor="center",
+        )
+        self.welcome_title_text.pack(side="top", pady=(50, 0))
 
         # Define a list of colors
-        colors = ['#ed8796', '#87ed96', '#9687ed', '#ed9687', '#8796ed', '#96ed87', '#ed8787', '#87ed87', '#9687ed', '#ed9696']
+        colors = [
+            "#ed8796",
+            "#87ed96",
+            "#9687ed",
+            "#ed9687",
+            "#8796ed",
+            "#96ed87",
+            "#ed8787",
+            "#87ed87",
+            "#9687ed",
+            "#ed9696",
+        ]
 
         # List of features
         features = [
@@ -40,13 +64,17 @@ class FeaturesWindow(ctk.CTkToplevel):
             "7- System scaling support.",
             "8- Responsive design - 3 modes (windowed, middleman, fullscreen).",
             "9- AI assistence, shortcuts to Gemini, ChatGPT, BlackboxAI...",
-            "10- Code area for coding"
+            "10- Code area for coding",
         ]
 
         # Iterate over features and create labels with different colors
         for i, feature in enumerate(features):
-            feature_label = ctk.CTkLabel(self, text=feature,
-                                        font=('JetBrainsMono NF',15,"italic"),
-                                        padx=100, anchor="center",
-                                        text_color=colors[i % len(colors)]) # Use modulo to cycle through colors
-            feature_label.pack(side='top')
+            feature_label = ctk.CTkLabel(
+                self,
+                text=feature,
+                font=("JetBrainsMono NF", 15, "italic"),
+                padx=100,
+                anchor="center",
+                text_color=colors[i % len(colors)],
+            )  # Use modulo to cycle through colors
+            feature_label.pack(side="top")

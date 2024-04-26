@@ -1,22 +1,22 @@
-#menu_bar
-import tkinter as tk
-from tkinter import filedialog, messagebox
+# menu_bar
 import os
-import webbrowser
-import subprocess
-import pyperclip as pc
 import platform
+import subprocess
+import tkinter as tk
+import webbrowser
+from tkinter import filedialog, messagebox
 
+import pyperclip as pc
 
 
 class Menubar:
-    def __init__(self, root,text_Area):
+    def __init__(self, root, text_Area):
         self.root = root
         self.text_Area = text_Area
-        self.menubar = tk.Menu(self.root, background='grey', fg='white')
+        self.menubar = tk.Menu(self.root, background="grey", fg="white")
         self.file_path_1 = None
 
-        #Defining menu options as menu objects
+        # Defining menu options as menu objects
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.filemenu = tk.Menu(self.menubar, tearoff=0)
         self.editmenu = tk.Menu(self.menubar, tearoff=0)
@@ -25,127 +25,212 @@ class Menubar:
         self.settings = tk.Menu(self.menubar, tearoff=0)
         self.run = tk.Menu(self.menubar, tearoff=0)
         self.window = tk.Menu(self.menubar, tearoff=0)
-        self.color = tk.Menu(self.menubar,tearoff=0)
+        self.color = tk.Menu(self.menubar, tearoff=0)
         self.helpmenu = tk.Menu(self.menubar, tearoff=0)
         self.special_feature = tk.Menu(self.menubar, tearoff=0)
 
-        #Menu Bar
+        # Menu Bar
         self.menubar.add_cascade(label="File", menu=self.filemenu)
         self.menubar.add_cascade(label="Edit", menu=self.editmenu)
         self.menubar.add_cascade(label="Search", menu=self.searchmenu)
         self.menubar.add_cascade(label="View", menu=self.viewmenu)
         self.menubar.add_cascade(label="Run", menu=self.run)
         self.menubar.add_cascade(label="Window", menu=self.window)
-        self.menubar.add_cascade(label="Color Scheme",menu=self.color)
+        self.menubar.add_cascade(label="Color Scheme", menu=self.color)
         self.menubar.add_cascade(label="Help", menu=self.helpmenu)
 
-        #functions of file option
-        self.filemenu.add_command(label="New",accelerator="Ctrl+N" ,command=self.new_file)
+        # functions of file option
+        self.filemenu.add_command(
+            label="New", accelerator="Ctrl+N", command=self.new_file
+        )
         self.filemenu.add_separator()
-        self.filemenu.add_command(label="Open", accelerator="Ctrl+O",command=self.open_file)
-        self.filemenu.add_command(label="Open Containing Folder", command=self.open_folder)
-        self.filemenu.add_command(label="Open Folder as Workspace...", command=self.open_workspace)
+        self.filemenu.add_command(
+            label="Open", accelerator="Ctrl+O", command=self.open_file
+        )
+        self.filemenu.add_command(
+            label="Open Containing Folder", command=self.open_folder
+        )
+        self.filemenu.add_command(
+            label="Open Folder as Workspace...", command=self.open_workspace
+        )
         self.filemenu.add_separator()
 
-        #Save OPtions
-        self.filemenu.add_command(label="Save", accelerator="Ctrl+S",command=self.save_file)
-        self.filemenu.add_command(label="Save As", accelerator="Ctrl+Alt+S",command=self.save_as_file)
+        # Save OPtions
+        self.filemenu.add_command(
+            label="Save", accelerator="Ctrl+S", command=self.save_file
+        )
+        self.filemenu.add_command(
+            label="Save As", accelerator="Ctrl+Alt+S", command=self.save_as_file
+        )
         self.filemenu.add_command(label="Save a Copy as", command=self.save_copy_as)
-        self.filemenu.add_cascade(label="Save All",accelerator="Ctrl+Shift+S" ,menu=self.save_all)
+        self.filemenu.add_cascade(
+            label="Save All", accelerator="Ctrl+Shift+S", menu=self.save_all
+        )
         self.filemenu.add_separator()
         self.filemenu.add_cascade(label="Rename ...", menu=self.rename)
         self.filemenu.add_separator()
 
-        #CLose Options
-        self.filemenu.add_cascade(label="Close - (Soon!)",accelerator="Ctrl+W", menu=self.close)
-        self.filemenu.add_cascade(label="Close All - (Soon!)",accelerator="Ctrl+Shift+W", menu=self.close_all)
-        self.filemenu.add_cascade(label="Close Multiple Documents - (Soon!)", menu=self.close_multiple)
-        self.filemenu.add_cascade(label="Move to Recycle Bin - (Soon!)", menu=self.move_to_recycle)
+        # CLose Options
+        self.filemenu.add_cascade(
+            label="Close - (Soon!)", accelerator="Ctrl+W", menu=self.close
+        )
+        self.filemenu.add_cascade(
+            label="Close All - (Soon!)", accelerator="Ctrl+Shift+W", menu=self.close_all
+        )
+        self.filemenu.add_cascade(
+            label="Close Multiple Documents - (Soon!)", menu=self.close_multiple
+        )
+        self.filemenu.add_cascade(
+            label="Move to Recycle Bin - (Soon!)", menu=self.move_to_recycle
+        )
         self.filemenu.add_separator()
-        self.filemenu.add_command(label="Exit", accelerator="Alt+F4",command=self.exit_editor)
+        self.filemenu.add_command(
+            label="Exit", accelerator="Alt+F4", command=self.exit_editor
+        )
 
-        #functions for edit option
-        self.editmenu.add_command(label="Undo",accelerator="Ctrl+Z" ,command=self.undo)
-        self.editmenu.add_command(label="Redo",accelerator="Ctrl+Y"  ,command=self.redo)
+        # functions for edit option
+        self.editmenu.add_command(label="Undo", accelerator="Ctrl+Z", command=self.undo)
+        self.editmenu.add_command(label="Redo", accelerator="Ctrl+Y", command=self.redo)
         self.editmenu.add_separator()
-        self.editmenu.add_command(label="Cut",accelerator="Ctrl+X", command=self.cut)
-        self.editmenu.add_command(label="Copy",accelerator="Ctrl+C",command=self.copy)
-        self.editmenu.add_command(label="Paste", accelerator="Ctrl+V" ,command=self.paste)
-        self.editmenu.add_command(label="Delete",accelerator="Del"  ,command=self.delete)
-        self.editmenu.add_command(label="Select All",accelerator="Ctrl+A"  ,command=self.select_all)
-        self.editmenu.add_command(label="Begin/End Select - (Soon!)",command=self.begin_end_select)
+        self.editmenu.add_command(label="Cut", accelerator="Ctrl+X", command=self.cut)
+        self.editmenu.add_command(label="Copy", accelerator="Ctrl+C", command=self.copy)
+        self.editmenu.add_command(
+            label="Paste", accelerator="Ctrl+V", command=self.paste
+        )
+        self.editmenu.add_command(
+            label="Delete", accelerator="Del", command=self.delete
+        )
+        self.editmenu.add_command(
+            label="Select All", accelerator="Ctrl+A", command=self.select_all
+        )
+        self.editmenu.add_command(
+            label="Begin/End Select - (Soon!)", command=self.begin_end_select
+        )
         self.editmenu.add_separator()
-        self.editmenu.add_command(label="Insert - (Soon!)",command=self.insert)
-        self.editmenu.add_command(label="Copy to Clipboard - (Soon!)", command=self.copy_to_clipboard)
-        self.editmenu.add_command(label="Indent - (Soon!)",command=self.indent)
-        self.editmenu.add_command(label="Convert Case to - (Soon!)",command=self.convert_case)
-        self.editmenu.add_command(label="Line Operations - (Soon!)",command=self.line_operations)
-        self.editmenu.add_command(label="Comment/Uncomment - (Soon!)",command=self.comment_uncomment)
-        self.editmenu.add_command(label="Auto/Uncomment - (Soon!)",command=self.auto_uncomment)
+        self.editmenu.add_command(label="Insert - (Soon!)", command=self.insert)
+        self.editmenu.add_command(
+            label="Copy to Clipboard - (Soon!)", command=self.copy_to_clipboard
+        )
+        self.editmenu.add_command(label="Indent - (Soon!)", command=self.indent)
+        self.editmenu.add_command(
+            label="Convert Case to - (Soon!)", command=self.convert_case
+        )
+        self.editmenu.add_command(
+            label="Line Operations - (Soon!)", command=self.line_operations
+        )
+        self.editmenu.add_command(
+            label="Comment/Uncomment - (Soon!)", command=self.comment_uncomment
+        )
+        self.editmenu.add_command(
+            label="Auto/Uncomment - (Soon!)", command=self.auto_uncomment
+        )
         self.editmenu.add_separator()
-        self.editmenu.add_command(label="Clipboard History - (Soon!)", command=self.clipboard_history)
+        self.editmenu.add_command(
+            label="Clipboard History - (Soon!)", command=self.clipboard_history
+        )
         self.editmenu.add_separator()
-        self.editmenu.add_command(label="Set Read-Only - (Soon!)", command=self.set_readonly)
-        self.editmenu.add_command(label="Clear Read-Only Flag - (Soon!)",command=self.clear_readonly)
+        self.editmenu.add_command(
+            label="Set Read-Only - (Soon!)", command=self.set_readonly
+        )
+        self.editmenu.add_command(
+            label="Clear Read-Only Flag - (Soon!)", command=self.clear_readonly
+        )
 
-        #Search Menu
-        self.searchmenu.add_command(label="Find",accelerator="Ctrl+F",command=self.find)
-        self.searchmenu.add_command(label="Find in Files ...",accelerator="Ctrl+Shift+F",command=self.find_in_files)
+        # Search Menu
+        self.searchmenu.add_command(
+            label="Find", accelerator="Ctrl+F", command=self.find
+        )
+        self.searchmenu.add_command(
+            label="Find in Files ...",
+            accelerator="Ctrl+Shift+F",
+            command=self.find_in_files,
+        )
         self.searchmenu.add_separator()
-        self.searchmenu.add_command(label="Replace - (Soon!)",accelerator="Ctrl+H",command=self.replace)
+        self.searchmenu.add_command(
+            label="Replace - (Soon!)", accelerator="Ctrl+H", command=self.replace
+        )
         self.searchmenu.add_separator()
-        self.searchmenu.add_command(label="Jump UP - (Soon!)",command=self.jump_up)
-        self.searchmenu.add_command(label="Jump Down - (Soon!)",command=self.jump_down)
+        self.searchmenu.add_command(label="Jump UP - (Soon!)", command=self.jump_up)
+        self.searchmenu.add_command(label="Jump Down - (Soon!)", command=self.jump_down)
         self.searchmenu.add_separator()
-        self.searchmenu.add_command(label="Bookmark - (Soon!)",command=self.bookmark)
+        self.searchmenu.add_command(label="Bookmark - (Soon!)", command=self.bookmark)
 
-        #View Menu
-        self.viewmenu.add_command(label="Always on Top - (Soon!)",command=self.always_on_top)
-        self.viewmenu.add_command(label="Toggle Full Screen Mode - (Soon!)",accelerator="F11",command=self.toggle_full_screen)
-        self.viewmenu.add_command(label="Post-It - (Soon!)",accelerator="F12",command=self.post_it)
-        self.viewmenu.add_command(label="Distraction Free - (Soon!)",command=self.distraction_free)
+        # View Menu
+        self.viewmenu.add_command(
+            label="Always on Top - (Soon!)", command=self.always_on_top
+        )
+        self.viewmenu.add_command(
+            label="Toggle Full Screen Mode - (Soon!)",
+            accelerator="F11",
+            command=self.toggle_full_screen,
+        )
+        self.viewmenu.add_command(
+            label="Post-It - (Soon!)", accelerator="F12", command=self.post_it
+        )
+        self.viewmenu.add_command(
+            label="Distraction Free - (Soon!)", command=self.distraction_free
+        )
         self.viewmenu.add_separator()
-        self.viewmenu.add_command(label="View Current File in - (Soon!)",command=self.view_currentfile)
+        self.viewmenu.add_command(
+            label="View Current File in - (Soon!)", command=self.view_currentfile
+        )
         self.viewmenu.add_separator()
-        self.viewmenu.add_command(label="Show Symbol - (Soon!)",command=self.show_symbol)
-        self.viewmenu.add_command(label="Zoom - (Soon!)",command=self.zoom)
-        self.viewmenu.add_command(label="Move/Clone Current Document - (Soon!)",command=self.move_current_document)
-        self.viewmenu.add_command(label="Tab - (Soon!)",command=self.tab)
-        self.viewmenu.add_command(label="Word Wrap - (Soon!)",command=self.word_wrap)
-        self.viewmenu.add_command(label="Focus on Another View - (Soon!)",accelerator="F8",command=self.focus_on_another_view)
-        self.viewmenu.add_command(label="Hide Lines - (Soon!)",accelerator="Alt+H",command=self.hide_lines)
+        self.viewmenu.add_command(
+            label="Show Symbol - (Soon!)", command=self.show_symbol
+        )
+        self.viewmenu.add_command(label="Zoom - (Soon!)", command=self.zoom)
+        self.viewmenu.add_command(
+            label="Move/Clone Current Document - (Soon!)",
+            command=self.move_current_document,
+        )
+        self.viewmenu.add_command(label="Tab - (Soon!)", command=self.tab)
+        self.viewmenu.add_command(label="Word Wrap - (Soon!)", command=self.word_wrap)
+        self.viewmenu.add_command(
+            label="Focus on Another View - (Soon!)",
+            accelerator="F8",
+            command=self.focus_on_another_view,
+        )
+        self.viewmenu.add_command(
+            label="Hide Lines - (Soon!)", accelerator="Alt+H", command=self.hide_lines
+        )
 
-        #Run Menu
-        self.run.add_command(label="Terminal",accelerator="Ctrl+T", command=self.open_terminal)
+        # Run Menu
+        self.run.add_command(
+            label="Terminal", accelerator="Ctrl+T", command=self.open_terminal
+        )
 
-        #Window Menu
+        # Window Menu
         self.window.add_command(label="Tabs", command=self.tab)
-        #Color Scheme
-        self.color.add_command(label= "Dark Blue",command=self.color_schemes)
-        self.color.add_command(label= "Blue",command=self.color_schemes)
-        self.color.add_command(label= "Slate",command=self.color_schemes)
-        self.color.add_command(label= "Lumber",command=self.color_schemes)
-        self.color.add_command(label= "Frappe",command=self.color_schemes)
-        self.color.add_command(label= "Latte",command=self.color_schemes)
-        self.color.add_command(label= "Mocha",command=self.color_schemes)
-        self.color.add_command(label= "Macchito",command=self.color_schemes)
-        self.color.add_command(label= "Oceanic",command=self.color_schemes)
-        self.color.add_command(label= "Shrek",command=self.color_schemes)
-        self.color.add_command(label= "Jim Jam",command=self.color_schemes)        
+        # Color Scheme
+        self.color.add_command(label="Dark Blue", command=self.color_schemes)
+        self.color.add_command(label="Blue", command=self.color_schemes)
+        self.color.add_command(label="Slate", command=self.color_schemes)
+        self.color.add_command(label="Lumber", command=self.color_schemes)
+        self.color.add_command(label="Frappe", command=self.color_schemes)
+        self.color.add_command(label="Latte", command=self.color_schemes)
+        self.color.add_command(label="Mocha", command=self.color_schemes)
+        self.color.add_command(label="Macchito", command=self.color_schemes)
+        self.color.add_command(label="Oceanic", command=self.color_schemes)
+        self.color.add_command(label="Shrek", command=self.color_schemes)
+        self.color.add_command(label="Jim Jam", command=self.color_schemes)
 
-        #Help
+        # Help
         self.helpmenu.add_command(label="Github Repo", command=self.open_website)
         self.helpmenu.add_command(label="Discord", command=self.discord)
 
     # Define the methods for your menu commands here
 
     def open_file(self):
-        self.file_path_1 = filedialog.askopenfilename(defaultextension=".txt",
-                                                filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")])
+        self.file_path_1 = filedialog.askopenfilename(
+            defaultextension=".txt",
+            filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")],
+        )
         if self.file_path_1:
             with open(self.file_path_1, "r") as file:
                 self.text_Area.text_area.delete(1.0, tk.END)  # Clear the text area
-                self.text_Area.text_area.insert(tk.INSERT, file.read())  # Insert the file content
+                self.text_Area.text_area.insert(
+                    tk.INSERT, file.read()
+                )  # Insert the file content
 
     def save_file(self):
         if self.file_path_1 and os.path.exists(self.file_path_1):
@@ -156,15 +241,17 @@ class Menubar:
             self.save_as_file()
 
     def save_as_file(self):
-        self.file_path = filedialog.asksaveasfile(defaultextension=".txt",
-                                        filetypes=[("Text file","*.txt"),("All Files","*.*")])
+        self.file_path = filedialog.asksaveasfile(
+            defaultextension=".txt",
+            filetypes=[("Text file", "*.txt"), ("All Files", "*.*")],
+        )
         if not self.file_path:
             return
         self.file_path.write(self.text_Area.text_area.get(1.0, tk.END))
         self.file_path.close()
 
     def exit_editor(self):
-        if messagebox.askokcancel("Exit ?","Do you want to save your changes?"):
+        if messagebox.askokcancel("Exit ?", "Do you want to save your changes?"):
             self.save_file()
         else:
             self.root.destroy()
@@ -174,23 +261,27 @@ class Menubar:
         directory = os.path.dirname(self.file_path_1)
 
         # Open the directory
-        if os.name == 'nt': # Windows
+        if os.name == "nt":  # Windows
             os.startfile(directory)
-        elif os.name == 'posix': # macOS or Linux
-            subprocess.Popen(['open', directory])
+        elif os.name == "posix":  # macOS or Linux
+            subprocess.Popen(["open", directory])
         else:
             print("Unsupported operating system.")
+
     def open_workspace(self):
         pass
 
     def save_copy_as(self):
         pass
+
     def save_all(self):
         pass
 
     def rename(self):
-        self.file_path = filedialog.asksaveasfile(defaultextension=".txt",
-                                        filetypes=[("Text file","*.txt"),("All Files","*.*")])
+        self.file_path = filedialog.asksaveasfile(
+            defaultextension=".txt",
+            filetypes=[("Text file", "*.txt"), ("All Files", "*.*")],
+        )
         if not self.file_path:
             return
         self.file_path.write(self.text_Area.text_area.get(1.0, tk.END))
@@ -208,10 +299,11 @@ class Menubar:
     def move_to_recycle(self):
         pass
 
-#Edit Menu Functions
+    # Edit Menu Functions
     def undo(self):
         self.text_Area.text_area.edit_modified(True)
         self.text_Area.text_area.edit_undo()
+
     def redo(self):
         self.text_Area.text_area.edit_modified(True)
         self.text_Area.text_area.edit_redo()
@@ -223,10 +315,12 @@ class Menubar:
             # Remove the selected text from the text area
             self.text_Area.text_area.delete(1.0, tk.END)
             # Copy the removed text to the clipboard
-            pc.copy(self.selected_text) 
+            pc.copy(self.selected_text)
+
     def copy(self):
         self.text_to_copy = self.text_Area.text_area.get(1.0, tk.END)
         pc.copy(self.text_to_copy)
+
     def paste(self):
         # Paste text from the clipboard
         self.pasted_text = pc.paste()
@@ -242,6 +336,7 @@ class Menubar:
         self.text_Area.text_area.mark_set(tk.INSERT, "1.0")
         self.text_Area.text_area.see(tk.INSERT)
         # self.text_Area.text_area.configure(bg="blue",fg="blue")
+
     def begin_end_select(self):
         pass
 
@@ -275,7 +370,7 @@ class Menubar:
     def clear_readonly(self):
         pass
 
-#Search Functions
+    # Search Functions
 
     def find(self):
         pass
@@ -295,7 +390,7 @@ class Menubar:
     def bookmark(self):
         pass
 
-#View Menu Functions
+    # View Menu Functions
     def always_on_top(self):
         pass
 
@@ -336,7 +431,20 @@ class Menubar:
     def open_terminal():
         system = platform.system()
         if system == "Linux":
-            terminals=['xfce4-terminal','gnome-terminal','konsole','terminator','tilix','urxvt','st','alacritty','kitty','hyper','xterm','uxterm']
+            terminals = [
+                "xfce4-terminal",
+                "gnome-terminal",
+                "konsole",
+                "terminator",
+                "tilix",
+                "urxvt",
+                "st",
+                "alacritty",
+                "kitty",
+                "hyper",
+                "xterm",
+                "uxterm",
+            ]
             for terminal in terminals:
                 try:
                     subprocess.call([terminal])
@@ -344,39 +452,51 @@ class Menubar:
                 except Exception as e:
                     print(e)
         elif system == "Windows":
-            subprocess.call(['start', 'cmd'])
+            subprocess.call(["start", "cmd"])
         elif system == "Darwin":
-        # macOS
-            subprocess.call(['open', '-a', 'Terminal'])
+            # macOS
+            subprocess.call(["open", "-a", "Terminal"])
         else:
             print("Unsupported platform")
 
-#Window menu Functions
+    # Window menu Functions
     def tab(self):
         pass
 
-#Help Menu Functions
+    # Help Menu Functions
     @staticmethod
     def open_website():
-    # Open a URL in the default web browser
-        webbrowser.open('https://github.com//parazeeknova//nyxtext')
+        # Open a URL in the default web browser
+        webbrowser.open("https://github.com//parazeeknova//nyxtext")
 
-    def syntax_highlighting(self):pass
-    def auto_complete(self):pass
-    def git_integration(self):pass
+    def syntax_highlighting(self):
+        pass
+
+    def auto_complete(self):
+        pass
+
+    def git_integration(self):
+        pass
+
     def new_file(self):
         pass
 
     @staticmethod
     def discord():
-        webbrowser.open('https://discord.com/invite/UwmqqXkV')
-    def show_context_menu(self):
-    # Create a popup menu
-        context_menu = tk.Menu(self, tearoff=0)
-        context_menu.add_command(label="Function 1", command=lambda: print("Function 1 selected"))
-        context_menu.add_command(label="Function 2", command=lambda: print("Function 2 selected"))
+        webbrowser.open("https://discord.com/invite/UwmqqXkV")
 
-    # Show the context menu at the mouse cursor's position
+    def show_context_menu(self):
+        # Create a popup menu
+        context_menu = tk.Menu(self, tearoff=0)
+        context_menu.add_command(
+            label="Function 1", command=lambda: print("Function 1 selected")
+        )
+        context_menu.add_command(
+            label="Function 2", command=lambda: print("Function 2 selected")
+        )
+
+        # Show the context menu at the mouse cursor's position
         context_menu.post(self.x_root, self.y_root)
 
-    def color_schemes():pass
+    def color_schemes():
+        pass
