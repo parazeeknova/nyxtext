@@ -137,7 +137,7 @@ def main():
     ai_bottom_frame = customtkinter.CTkFrame(
         root, width=int(screen_width), height=int(screen_height), corner_radius=0
     )
-    ai_bottom_frame.grid(row=1, column=3, columnspan=2, sticky="nsew")
+    ai_bottom_frame.grid(row=0, column=3, columnspan=2,rowspan=3,sticky="nsew")
 
     toggle_button = customtkinter.CTkButton(
         bottom_frame, text="Terminal", width=5, command=toggle_more_bottom_frame
@@ -337,11 +337,17 @@ def main():
     # Instantiate SearchWindow and pass the text area
     # def open_search_window():
     #     search = Searchwindow(root)
-
+    
+    label_gemini = customtkinter.CTkLabel( ai_bottom_frame, text="Gemini ✨", font=("JetBrainsMono NF", 14, "bold"))
+    label_gemini.pack(side="top", padx=10, pady=10)
     output_text = customtkinter.CTkTextbox(
         ai_bottom_frame, width=350, wrap="word", font=("JetBrainsMono NF", 12)
     )
     output_text.pack(fill="both", expand=True)
+    label_about_dev = customtkinter.CTkLabel( ai_bottom_frame, text="Configured by Parazeeknova", font=("JetBrainsMono NF", 10, "italic"))
+    label_about_dev.pack(side="bottom", padx=10, pady=0)
+    label_about = customtkinter.CTkLabel( ai_bottom_frame, text="Powered by Google Vertex AI ☁️ - Gemini AI Experimental", font=("JetBrainsMono NF", 10, "italic"))
+    label_about.pack(side="bottom", padx=10, pady=0)
 
     def generate(input_text):
         vertexai.init(project="vital-platform-421513", location="us-central1")
