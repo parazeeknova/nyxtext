@@ -371,7 +371,7 @@ def main():
         generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
     }
 
-    def combined_command():
+    def combined_command(event=None):
         on_button_click()
         toggle_ai_bottom_frame()
         toggle_left_frame()
@@ -385,6 +385,7 @@ def main():
         top_frame, placeholder_text="Search | Powered by Gemini ✨", height=35
     )
     input_entry.pack(fill="x", expand=True, side="right", padx=10, pady=10)
+    input_entry.bind('<Return>', combined_command) 
 
     def on_button_click():
         input_text = input_entry.get()
