@@ -1,14 +1,13 @@
 # System imports here
+import base64
 import os
+import threading
 import webbrowser
 from tkinter import filedialog, ttk
 
 # Third party imports here
 import customtkinter
-import threading
-import base64
 import vertexai
-from vertexai.generative_models import GenerativeModel, Part, FinishReason
 import vertexai.preview.generative_models as generative_models
 
 # File imports here
@@ -26,6 +25,7 @@ from search import Searchwindow
 from settings import Settings
 from text_Area import textarea
 from tkterm import Terminal
+from vertexai.generative_models import FinishReason, GenerativeModel, Part
 
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
@@ -92,9 +92,7 @@ def main():
     left_frame = customtkinter.CTkFrame(
         root, width=screen_width * 0.16, corner_radius=0
     )
-    left_frame.grid(
-        row=1, column=0, rowspan=4, sticky="nsew"
-    )
+    left_frame.grid(row=1, column=0, rowspan=4, sticky="nsew")
 
     right_frame = customtkinter.CTkFrame(
         root,
@@ -124,7 +122,7 @@ def main():
             left_frame.grid_remove()
         else:
             left_frame.grid()
-            
+
     def toggle_ai_bottom_frame():
         if ai_bottom_frame.winfo_viewable():
             ai_bottom_frame.grid_remove()
@@ -135,7 +133,7 @@ def main():
         root, width=screen_width, height=int(screen_height * 0.15), corner_radius=0
     )
     more_bottom_frame.grid(row=3, column=0, columnspan=2, sticky="nsew")
-    
+
     ai_bottom_frame = customtkinter.CTkFrame(
         root, width=int(screen_width), height=int(screen_height), corner_radius=0
     )
@@ -151,17 +149,16 @@ def main():
         top_frame, text="Toggle FileTree", width=5, command=toggle_left_frame
     )
     toggle_left_frame_button.pack(side="right", padx=2, pady=10)
-    
+
     def combined_op():
         toggle_ai_bottom_frame()
         toggle_left_frame()
-    
+
     toggle_ai_bottom_frame_button = customtkinter.CTkButton(
         bottom_frame, text="AI", width=5, command=combined_op
     )
     toggle_ai_bottom_frame_button.pack(side="right", padx=2, pady=10)
     ai_bottom_frame.grid_remove()
-    
 
     # Terminal :
     terminal = Terminal(more_bottom_frame)
@@ -340,8 +337,10 @@ def main():
     # Instantiate SearchWindow and pass the text area
     # def open_search_window():
     #     search = Searchwindow(root)
-    
-    output_text = customtkinter.CTkTextbox(ai_bottom_frame,width=350,wrap="word",font=("JetBrainsMono NF", 12))
+
+    output_text = customtkinter.CTkTextbox(
+        ai_bottom_frame, width=350, wrap="word", font=("JetBrainsMono NF", 12)
+    )
     output_text.pack(fill="both", expand=True)
 
     def generate(input_text):
@@ -354,37 +353,39 @@ def main():
             safety_settings=safety_settings,
             stream=True,
         )
-        
+
         for response in responses:
             output_text.insert(customtkinter.END, response.text)
             output_text.see(customtkinter.END)
-        
+
     generation_config = {
-    "max_output_tokens": 8192,
-    "temperature": 1,
-    "top_p": 0.95,
+        "max_output_tokens": 8192,
+        "temperature": 1,
+        "top_p": 0.95,
     }
-    
+
     safety_settings = {
-    generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
+        generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
     }
-    
+
     def combined_command():
         on_button_click()
         toggle_ai_bottom_frame()
         toggle_left_frame()
-    
-    generate_button = customtkinter.CTkButton(top_frame, text="🔍", command=combined_command, width=1)
+
+    generate_button = customtkinter.CTkButton(
+        top_frame, text="🔍", command=combined_command, width=1
+    )
     generate_button.pack(side="right", padx=2, pady=10)
 
     input_entry = customtkinter.CTkEntry(
         top_frame, placeholder_text="Search | Powered by Gemini ✨", height=35
     )
     input_entry.pack(fill="x", expand=True, side="right", padx=10, pady=10)
-    
+
     def on_button_click():
         input_text = input_entry.get()
         threading.Thread(target=generate, args=(input_text,)).start()
