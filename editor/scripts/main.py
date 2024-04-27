@@ -385,7 +385,7 @@ def main():
         top_frame, placeholder_text="Search | Powered by Gemini ✨", height=35
     )
     input_entry.pack(fill="x", expand=True, side="right", padx=10, pady=10)
-    input_entry.bind('<Return>', combined_command) 
+    input_entry.bind("<Return>", combined_command)
 
     def on_button_click():
         input_text = input_entry.get()
