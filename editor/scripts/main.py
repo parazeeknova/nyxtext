@@ -25,7 +25,7 @@ from tkterm import Terminal
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
 
-# Should be replaced with a function in future for catppuccin color scheme 
+# Should be replaced with a function in future for catppuccin color scheme
 customtkinter.set_default_color_theme("editor/scripts/color_themes/frappe.json")
 
 
@@ -113,7 +113,7 @@ def main():
             more_bottom_frame.grid_remove()
         else:
             more_bottom_frame.grid()
-    
+
     def toggle_left_frame():
         if left_frame.winfo_viewable():
             left_frame.grid_remove()
@@ -130,7 +130,7 @@ def main():
     )
     toggle_button.pack(side="right", padx=2, pady=10)
     more_bottom_frame.grid_remove()
-    
+
     toggle_left_frame = customtkinter.CTkButton(
         top_frame, text="Toggle FileTree", width=5, command=toggle_left_frame
     )
@@ -156,8 +156,6 @@ def main():
     # Codespace creates a DEfault code area for code editing:
     # Gives the ability for syntax Highlighting
     Codeview = Codespace(tab_view.tab_view)
-    
-    
 
     # All Items for the left frame are below :
     Filetree_Button = customtkinter.CTkLabel(
@@ -316,8 +314,10 @@ def main():
     # def open_search_window():
     #     search = Searchwindow(root)
 
-    search_bar_top = customtkinter.CTkEntry(top_frame, placeholder_text="Search", height=35)
-    search_bar_top.pack(fill="x", expand=True,side="right", padx=10, pady=10)
+    search_bar_top = customtkinter.CTkEntry(
+        top_frame, placeholder_text="Search", height=35
+    )
+    search_bar_top.pack(fill="x", expand=True, side="right", padx=10, pady=10)
 
     # All buttons in the top frame for different functions (Left)
     New_button = customtkinter.CTkButton(top_frame, text="📄")
@@ -377,7 +377,7 @@ def main():
     Exit_button = customtkinter.CTkButton(top_frame, text="Exit")
     Exit_button.pack(side="left", padx=3, pady=10)
     Exit_button.configure(width=2)
-    
+
     Seperator()
     # All buttons in the bottom frame for different functions
     # Creating a button for theme change
