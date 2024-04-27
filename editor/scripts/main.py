@@ -25,8 +25,8 @@ from tkterm import Terminal
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
 
-# Should be replaced with a function in future for catppuccin color scheme
-customtkinter.set_default_color_theme("editor/scripts/color_themes/H2O.json")
+# Should be replaced with a function in future for catppuccin color scheme 
+customtkinter.set_default_color_theme("editor/scripts/color_themes/frappe.json")
 
 
 # Welcome screen for the text editor disabled because currently a mess
@@ -93,9 +93,9 @@ def main():
 
     right_frame = customtkinter.CTkFrame(
         root,
-        width=int(screen_width) - 100,
+        width=int(screen_width),
         height=int(screen_height) - 30,
-        corner_radius=0,
+        corner_radius=1,
     )
     right_frame.grid(row=1, column=1, sticky="nsew")
 
@@ -113,6 +113,12 @@ def main():
             more_bottom_frame.grid_remove()
         else:
             more_bottom_frame.grid()
+    
+    def toggle_left_frame():
+        if left_frame.winfo_viewable():
+            left_frame.grid_remove()
+        else:
+            left_frame.grid()
 
     more_bottom_frame = customtkinter.CTkFrame(
         root, width=screen_width, height=int(screen_height * 0.15), corner_radius=0
@@ -124,6 +130,11 @@ def main():
     )
     toggle_button.pack(side="right", padx=2, pady=10)
     more_bottom_frame.grid_remove()
+    
+    toggle_left_frame = customtkinter.CTkButton(
+        top_frame, text="Toggle FileTree", width=5, command=toggle_left_frame
+    )
+    toggle_left_frame.pack(side="right", padx=2, pady=10)
 
     # Terminal :
     terminal = Terminal(more_bottom_frame)
@@ -145,6 +156,8 @@ def main():
     # Codespace creates a DEfault code area for code editing:
     # Gives the ability for syntax Highlighting
     Codeview = Codespace(tab_view.tab_view)
+    
+    
 
     # All Items for the left frame are below :
     Filetree_Button = customtkinter.CTkLabel(
@@ -193,8 +206,8 @@ def main():
 
     # Styling the Treeview to look dark
     style = ttk.Style()
-    style.configure("Treeview", background="#333", foreground="#fff")
-    style.configure("Treeview.Heading", background="#333", foreground="#333")
+    style.configure("Treeview", background="#51576d", foreground="#fff")
+    style.configure("Treeview.Heading", background="#51576d", foreground="#fff")
 
     # Customizing the appearance of selected items and lines
     style.map(
@@ -300,14 +313,11 @@ def main():
     Seperator_R()
 
     # Instantiate SearchWindow and pass the text area
-    def open_search_window():
-        search = Searchwindow(root)
+    # def open_search_window():
+    #     search = Searchwindow(root)
 
-    serch_button = customtkinter.CTkButton(
-        top_frame, text="🔍 Search", command=open_search_window
-    )
-    serch_button.pack(side="right", padx=5, pady=10)
-    serch_button.configure(width=10, font=("VictorMono Nerd Font", 15))
+    search_bar_top = customtkinter.CTkEntry(top_frame, placeholder_text="Search", height=35)
+    search_bar_top.pack(fill="x", expand=True,side="right", padx=10, pady=10)
 
     # All buttons in the top frame for different functions (Left)
     New_button = customtkinter.CTkButton(top_frame, text="📄")
@@ -364,12 +374,11 @@ def main():
     About.pack(side="left", padx=2, pady=10)
     About.configure(width=2)
 
-    Seperator()
-
     Exit_button = customtkinter.CTkButton(top_frame, text="Exit")
     Exit_button.pack(side="left", padx=3, pady=10)
     Exit_button.configure(width=2)
-
+    
+    Seperator()
     # All buttons in the bottom frame for different functions
     # Creating a button for theme change
     # Not working at the moment will implement in future
@@ -389,11 +398,11 @@ def main():
     Dir_Label_pth.pack(side="left", padx=2, pady=10)
     Dir_Label_pth.configure(width=2, font=("JetBrainsMono NF", 12))
 
-    Search_bar = customtkinter.CTkEntry(
-        bottom_frame, placeholder_text="Enter your commands here.."
-    )
-    Search_bar.pack(side="right", padx=10, pady=10)
-    Search_bar.configure(width=250, font=("VictorMono Nerd Font Bold", 15))
+    # Search_bar = customtkinter.CTkEntry(
+    #     bottom_frame, placeholder_text="Enter your commands here.."
+    # )
+    # Search_bar.pack(side="right", padx=10, pady=10)
+    # Search_bar.configure(width=250, font=("VictorMono Nerd Font Bold", 15))
 
     # left_arrow = customtkinter.CTkButton(bottom_frame, text="⇐")
     # left_arrow.pack(side="right",padx=1,pady=10)
