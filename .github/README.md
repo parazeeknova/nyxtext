@@ -1,11 +1,11 @@
 > [!CAUTION]
-> This project will undergo major changes, mostprobably a new framework 
+> This project will undergo major changes, most probably a new framework 
 
 <h3 align="center">
-	<img src="main/assets/logo/logo.png" width="300" alt="Logo"/><br/>
-    <img src="main/assets/misc/transparent.png" height="30" width="0px"/>
+	<img src="../main/assets/logo/logo.png" width="300" alt="Logo"/><br/>
+    <img src="../main/assets/misc/transparent.png" height="30" width="0px"/>
     Nyxtext
-	<img src="main/assets/misc/transparent.png" height="30" width="0px"/>
+	<img src="../main/assets/misc/transparent.png" height="30" width="0px"/>
 </h3>
 
 <h6 align="center">
@@ -22,7 +22,7 @@
 </h6>
 
 <p align="center">
-  <img src="main/assets/misc/macchiato.png" width="400" />
+  <img src="../main/assets/misc/macchiato.png" width="400" />
 </p>
 
 &nbsp;
@@ -52,33 +52,33 @@
 <p align="center">
   <a href="https://github.com/parazeeknova/nyxtext">
     <picture>
-      <source srcset="main/assets/social/macchiato_github.svg" width="64" height="64" alt="Github Logo" media="(prefers-color-scheme: dark)"/>
-      <source srcset="main/assets/social/latte_github.svg" width="64" height="64" alt="Github Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
-      <img src="assets/social/latte_github.svg" width="64" height="64" alt="Github Logo"/>
+      <source srcset="../main/assets/social/macchiato_github.svg" width="64" height="64" alt="Github Logo" media="(prefers-color-scheme: dark)"/>
+      <source srcset="../main/assets/social/latte_github.svg" width="64" height="64" alt="Github Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
+      <img src="../assets/social/latte_github.svg" width="64" height="64" alt="Github Logo"/>
     </picture>
   </a>
   <img src="assets/misc/transparent.png" height="1" width="5"/>
   <a href="https://discord.gg/UwmqqXkV">
     <picture>
-      <source srcset="main/assets/social/macchiato_discord.svg" width="64" height="64" alt="Discord Logo" media="(prefers-color-scheme: dark)"/>
-      <source srcset="main/assets/social/latte_discord.svg" width="64" height="64" alt="Discord Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
-      <img src="assets/social/latte_discord.svg" width="64" height="64" alt="Discord Logo"/>
+      <source srcset="../main/assets/social/macchiato_discord.svg" width="64" height="64" alt="Discord Logo" media="(prefers-color-scheme: dark)"/>
+      <source srcset="../main/assets/social/latte_discord.svg" width="64" height="64" alt="Discord Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
+      <img src="../assets/social/latte_discord.svg" width="64" height="64" alt="Discord Logo"/>
     </picture>
   </a>
-  <img src="assets/misc/transparent.png" height="1" width="5"/>
+  <img src="../assets/misc/transparent.png" height="1" width="5"/>
   <a href="https://twitter.com/hashcodes_">
     <picture>
-      <source srcset="main/assets/social/macchiato_twitter.svg" width="64" height="64" alt="Twitter Logo" media="(prefers-color-scheme: dark)"/>
-      <source srcset="main/assets/social/latte_twitter.svg" width="64" height="64" alt="Twitter Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
-      <img src="assets/social/latte_twitter.svg" width="64" height="64" alt="Twitter Logo"/>
+      <source srcset="../main/assets/social/macchiato_twitter.svg" width="64" height="64" alt="Twitter Logo" media="(prefers-color-scheme: dark)"/>
+      <source srcset="../main/assets/social/latte_twitter.svg" width="64" height="64" alt="Twitter Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
+      <img src="../assets/social/latte_twitter.svg" width="64" height="64" alt="Twitter Logo"/>
     </picture>
   </a>
-  <img src="assets/misc/transparent.png" height="1" width="5"/>
+  <img src="../assets/misc/transparent.png" height="1" width="5"/>
   <a href="https://www.reddit.com/user/parazeeknova">
     <picture>
-      <source srcset="main/assets/social/macchiato_reddit.svg" width="64" height="64" alt="Reddit Logo" media="(prefers-color-scheme: dark)"/>
-      <source srcset="main/assets/social/latte_reddit.svg" width="64" height="64" alt="Reddit Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
-      <img src="assets/social/latte_reddit.svg" width="64" height="64" alt="Reddit Logo"/>
+      <source srcset="../main/assets/social/macchiato_reddit.svg" width="64" height="64" alt="Reddit Logo" media="(prefers-color-scheme: dark)"/>
+      <source srcset="../main/assets/social/latte_reddit.svg" width="64" height="64" alt="Reddit Logo" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"/>
+      <img src="../assets/social/latte_reddit.svg" width="64" height="64" alt="Reddit Logo"/>
     </picture>
   </a>
 </p>
@@ -87,10 +87,13 @@
 <b>Join our community!</b>
 </p>
 
-### This Project is now a part of buildspace nightsandweekends s5 !
-<p align="centre"
-  <img src="nyxtextatbuildspace.png" alt="buildspace" width="60%"/>
->
+<p align="center">
+  <strong>This project is part of buildspacs's nights&weekends s5 !</strong>
+</p>
+<p align="center">
+  <img src="nyxtextatbuildspace.png" width="60%"/>
+</p>
+
 ---
 
 > [!NOTE] 
@@ -115,7 +118,7 @@
 Thats not it it also has some other custom made themes like **lumber** and **H2O**. \
 The number of themes is not definite, we will be adding more in the future, Also you can make your **own**.
 <p align="center">
-<img src="main/assets/misc/demo.png" alt="catppuccin infrastructure"/>
+<img src="../main/assets/misc/demo.png" alt="catppuccin infrastructure"/>
 <h>⚠️ Image referenced from Catppuccin's Repo</h> 
 </p>
 
@@ -171,14 +174,14 @@ The number of themes is not definite, we will be adding more in the future, Also
     <div style="width: 40%; flex: 1;">
         <p align="center">Different Flavours (as of α-0.0.1v ): </p>
         <hr>
-        <img src="main/assets/misc/flavours.png" alt="Different flavours"/>
+        <img src="../main/assets/misc/flavours.png" alt="Different flavours"/>
         <br>
     </div>
     <div style="width: 20px;"></div>      <!-- Separator -->
     <div style="width: 40%; flex: 1;">
         <p align="center">Cattppuccin Color Scheme (as of α-0.0.5v )</p>
         <hr>
-        <img src="main/assets/misc/Catppuccin_color_scheme.png" alt="Dark mode"/>
+        <img src="../main/assets/misc/Catppuccin_color_scheme.png" alt="Dark mode"/>
     </div>
 </div>
 
@@ -186,14 +189,14 @@ The number of themes is not definite, we will be adding more in the future, Also
     <div style="width: 40%; flex: 1;">
         <p align="center">Frappe Flavour (as of α-0.0.5v ): </p>
         <hr>
-        <img src="main/assets/screenshots/frappe_dark_about.png" alt="Different flavours"/>
+        <img src="../main/assets/screenshots/frappe_dark_about.png" alt="Different flavours"/>
         <br>
     </div>
     <div style="width: 20px;"></div>      <!-- Separator -->
     <div style="width: 40%; flex: 1;">
         <p align="center">Macchiato code (as of α-0.0.5v )</p>
         <hr>
-        <img src="main/assets/screenshots/macchiato_dark_code.png" alt="Dark mode"/>
+        <img src="../main/assets/screenshots/macchiato_dark_code.png" alt="Dark mode"/>
     </div>
 </div>
 
@@ -201,14 +204,14 @@ The number of themes is not definite, we will be adding more in the future, Also
     <div style="width: 40%; flex: 1;">
         <p align="center">Default Light(as of α-0.0.5v ): </p>
         <hr>
-        <img src="main/assets/screenshots/default_light.png" alt="Different flavours"/>
+        <img src="../main/assets/screenshots/default_light.png" alt="Different flavours"/>
         <br>
     </div>
     <div style="width: 20px;"></div>      <!-- Separator -->
     <div style="width: 40%; flex: 1;">
         <p align="center">Default Dark Windowed (as of α-0.0.5v )</p>
         <hr>
-        <img src="main/assets/screenshots/default_dark_windowed.png" alt="Dark mode"/>
+        <img src="../main/assets/screenshots/default_dark_windowed.png" alt="Dark mode"/>
     </div>
 </div>
 
@@ -341,27 +344,14 @@ For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/
 
 ### 💖 Gratitude
 
-Thanks to my Team for the initial development of the project, contributing this project :
+Thanks to my Friends for the initial development of the project, contributing this project :
 
-- [Noviciuss](https://github.com/noviciusss) (init Developer)
-- [Castimonia07](https://github.com/castimonia07) (init Colorschemes)
-
-&nbsp;
-
-<!-- ### ☕ Support 
-- Consider supporting NyxText's development with a coffee!
-- Every contribution helps! If you enjoy using NyxText, consider buying me a coffee to fuel further development.
-
-<div align='center'>
-
-![Coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)
-[![ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/J3J0VIXCM)
-![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)
-</div> -->
+- [OG Noviciuss](https://github.com/noviciusss) (initial Developer)
+- [OG Castimonia07](https://github.com/castimonia07) (initial Colorschemes)
 
 &nbsp;
 
-<p align="center"><img src="main/assets/misc/catppuccin_cat.svg" /></p>
+<p align="center"><img src="../main/assets/misc/catppuccin_cat.svg" /></p>
 <div align="center">
 
 ![Dev](http://ForTheBadge.com/images/badges/built-by-developers.svg)
