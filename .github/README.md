@@ -1,4 +1,5 @@
-⚠️ _**The project is actively being developed. Need to add/ rebase a lot of stuff!.**_ \
+> [!CAUTION]
+> This project will undergo major changes, mostprobably a new framework 
 
 <h3 align="center">
 	<img src="main/assets/logo/logo.png" width="300" alt="Logo"/><br/>
@@ -45,7 +46,7 @@
 &nbsp;
 
 <p align="center">
-<b>NyxText</b> is a basic text editor built using Python, <b>Tkinter and Custom Tkinter</b>, featuring the elegant <b>Catppuccin color scheme</b> and the minimalist <b>Paperus icon theme</b>. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability.
+<b>NyxText</b> is a basic text editor built using Python, <b>Tkinter and Custom Tkinter</b>, featuring the elegant <b>Catppuccin color scheme</b> and the minimalist <b>Paperus icon theme</b>. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability, also a ai powered desktop application that offers a comprehensive text editor for creatives, developers, and students alike.
 </p> 
 
 <p align="center">
@@ -86,10 +87,14 @@
 <b>Join our community!</b>
 </p>
 
+### This Project is now a part of buildspace nightsandweekends s5 !
+<p align="centre"
+  <img src="nyxtextatbuildspace.png" alt="buildspace" width="60%"/>
+>
 ---
 
-### Note :  
-As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
+> [!NOTE] 
+> As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
 
 **NyxText is currently in early access (v0.0.5-α). A downloadable installer will be available in the beta phase.**
 
