@@ -8,7 +8,7 @@
 <h6 align="center">
   <a href="https://github.com/parazeeknova/nyxtext#note-">Info</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#Installing-Nyxtext">Install</a>
+  <a href="https://github.com//parazeeknova/nyxtext#-installing-nyxtext">Install</a>
   ·
   <a href="https://github.com//parazeeknova/nyxtext#-early-editor-screenshots">Showcase</a>
   ·
@@ -80,20 +80,10 @@
   </a>
 </p>
 
-<p align="center">
-<b>Join our community!</b>
-</p>
-
-<p align="center">
-  <strong>This project is part of buildspacs's nights&weekends s5 !</strong>
-</p>
-
 ---
 
 > [!NOTE] 
 > As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
-
-**NyxText is currently in early access (v0.0.5-α). A downloadable installer will be available in the beta phase.**
 
 ### ✨ Installing Nyxtext
 
