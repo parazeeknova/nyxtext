@@ -222,6 +222,11 @@ The number of themes is not definite, we will be adding more in the future, Also
 - Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
 
 ---
+### 🛹 Development : 
+
+![Alt](https://repobeats.axiom.co/api/embed/48b536e2dca4bf56e257d45398e6c692872b17bb.svg "Repobeats analytics image")
+
+---
 
 ## ❓ FAQs:
 
