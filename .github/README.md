@@ -8,7 +8,7 @@
 <h6 align="center">
   <a href="https://github.com/parazeeknova/nyxtext#note-">Info</a>
   ·
-  <a href="https://github.com//parazeeknova/nyxtext#-early-access-">Early Access</a>
+  <a href="https://github.com//parazeeknova/nyxtext#Installing-Nyxtext">Install</a>
   ·
   <a href="https://github.com//parazeeknova/nyxtext#-early-editor-screenshots">Showcase</a>
   ·
@@ -94,6 +94,57 @@
 > As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
 
 **NyxText is currently in early access (v0.0.5-α). A downloadable installer will be available in the beta phase.**
+
+### ✨ Installing Nyxtext
+
+<details>
+
+<summary>Debian-based Linux distributions (e.g. Ubuntu, Mint)</summary>
+
+**Open a terminal and run these commands:**
+
+```bash
+git clone --depth 1 https://github.com/parazeeknova/nyxtext.git
+sudo apt update
+sudo apt install python3 python3-pip
+python3 -m venv nyxtext
+source nyxtext/bin/activate
+pip install -r requirements.txt
+python editor/scripts/main.py
+```
+</details>
+
+<details>
+<summary>Arch Linux</summary>
+
+**To install NyxText on Arch Linux, you can follow these steps:**
+
+```bash
+sudo pacman -Sy python tk
+git clone --depth 1 https://github.com/parazeeknova/nyxtext.git
+cd nyxtext
+python -m venv nyxtext
+source nyxtext/bin/activate
+pip install -r requirements.txt
+python editor/scripts/main.py
+```
+
+</details>
+
+<details>
+<summary>MacOS</summary>
+
+I don't have a Mac. If you have a Mac, you can help me a lot by installing
+Nyxtext and letting me know how well it works.
+
+</details>
+
+<details>
+<summary>Windows</summary>
+
+Download Nyxtext from [the releases page](https://github.com/parazeeknova/nyxtext/releases) and extract it. Then run through `Nyxtext.exe`.
+
+</details>
 
 ### 🧠 Design Philosophy
 
@@ -182,62 +233,15 @@ The number of themes is not definite, we will be adding more in the future, Also
 
 ---
 
-### 🌟 Early Access :
-Run ***main.py*** in **editor/scipts** to start the editor, project is very unstable at the moment and bugs are expected.
-
-### How do I run NyxText in the Alpha Phase ? :
-
-Here's a step-by-step guide on getting nyxtext up and running:
-
-**1. Install Python:**
-
-- If you don't have Python installed, download the appropriate installer for your operating system from the official website: https://www.python.org/downloads/.
-- Follow the on-screen instructions to complete the installation.
-
-**2. Install Dependencies:**
-
-- Open a terminal or command prompt window.
-- Install the required Python libraries using `pip`:
-
-```
-python -m pip install -r requirements.txt
-```
-**3. Usage:**
-
-- Clone the Repository:
-- Click the `<>code` button, `clone` or `download` the repo. 
-- `cd` to your desired location
-- In your terminal, run the following command: 
-   
-```
-git clone https://github.com/parazeeknova/nyxtext.git
-```
-**4. Run the Editor:**
-
-- Navigate to the checkout directory:
-```
-python -u editor/scripts/main.py
-```
-This will launch the nyxtext editor.
-> If you encounter any problems or have any questions while using nyxtext, feel free to reach out to me.
-
-&nbsp;
-
-### ⭐ Stargraph: 
-![](https://starchart.cc/parazeeknova/nyxtext.svg)
-
----
-
 ## ❓ FAQs:
 
 ### What's new in the latest NyxText release?
 
-See [CHANGELOG.md](CHANGELOG.md).
+See [Releases](https://github.com/parazeeknova/nyxtext/releases).
 
 <!-- ### Does NyxText support programming language X?
 You will likely get syntax highlighting without any configuring
-and autocompletions with a few lines of configuration file editing.
-See [the instructions on Porcupine wiki](https://github.com/Akuli/porcupine/wiki/Getting-Porcupine-to-work-with-a-programming-language). -->
+and autocompletions with a few lines of configuration file editing. -->
 
 ### Help! NyxtText doesn't work.
 
@@ -247,7 +251,7 @@ GitHub](http://github.com/parazeeknova/nyxtext/issues/new).
 
 ### Is NyxText written in NyxText?
 
-Not at the moment. We are writing the very first version in `VSCodium`, but will use it when we are done with basic features.
+Not at the moment. We are writing the very first version in `Neovim`, but will use it when we are done with basic features.
 
 ### Why is it named NyxText?
 
@@ -269,7 +273,7 @@ Because I can.
 Because I can.
 
 ### Why not use editor X?
-Because NyxText is better.
+Because Nyxtext is better.
 
 ---
 
@@ -284,13 +288,7 @@ See [CONTRIBUTING.md](../docs/CONTRIBUTING.md)
 
 ### 📜 License
 
-NyxText is released under the MIT license, which grants the following permissions:
-
-- Commercial use
-- Distribution
-- Modification
-- Private use
-
+NyxText is released under the MIT license:
 For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/nyxtext/blob/main/LICENSE).
 
 &nbsp;

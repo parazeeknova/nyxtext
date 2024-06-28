@@ -22,3 +22,21 @@ When contributing code to NyxNote, please adhere to the following guidelines:
 
 - Write clear and concise code with meaningful variable names and comments where necessary.
 - Test your changes thoroughly to ensure they do not introduce regressions or break existing functionality.
+
+To get started, make a fork of Nyxtext with the button in the top right corner of this page.
+Then install Python and [git](https://git-scm.com/), and run these commands:
+
+```bash
+    git clone https://github.com/parazeeknova/nyxtext.git
+    cd nyxtext
+    python3 -m venv env
+    source env/bin/activate
+    pip install -r requirements.txt
+    python3 -m editor/scripts/main.py
+```
+
+This should run Nyxtext. If you change some of Nyxtext's code in the `nyxtext` directory and you run `python3 -m editor/scripts/main.py` again, your changes should be visible right away.
+
+Windows-specific notes:
+- You need to use `py` instead of `python3` when creating the venv, and `env\Scripts\activate` instead of `source env/bin/activate` to activate it.
+- If creating the venv fails with an error message like `Error: [Errno 13] Permission denied: ...\\python.exe`, try creating the venv into a different folder.  It is created into whatever folder you are currently `cd`'d to (i.e. the folder that shows up on the command prompt before the `>`).
