@@ -5,8 +5,6 @@ import tkinter as tk
 from tkinter import filedialog
 
 import customtkinter as ctk
-
-
 class openfolder_window(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)

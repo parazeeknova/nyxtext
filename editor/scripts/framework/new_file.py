@@ -1,10 +1,7 @@
 # New File option in Welcome Screen :
 
 import os
-
 import customtkinter as ctk
-
-
 class newfile_window(ctk.CTkToplevel):
     def __init__(self, master=None):
         super().__init__(master)

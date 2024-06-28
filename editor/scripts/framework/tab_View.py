@@ -4,8 +4,6 @@ import customtkinter
 import pygments.lexers
 from chlorophyll import CodeView
 from text_Area import textarea
-
-
 class TabView:
     def __init__(self, right_frame, screen_width, screen_height):
         self.tab_view = customtkinter.CTkTabview(

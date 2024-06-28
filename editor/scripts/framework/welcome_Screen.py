@@ -9,9 +9,12 @@ from about import MyWindow
 from framework.new_file import newfile_window
 from framework.open_file import openfile_window
 from framework.open_folder import openfolder_window
+from framework.def_path import resource
+
 from PIL import Image
 
-
+def_light_image = resource("..\\misc\\logo\\logo.png")
+def_dark_image = resource("..\\misc\\logo\\logo.png")
 class WelcomeScreen:
     def __init__(self, tab_view):
         self.welcome_tab = tab_view.add("Welcome")
@@ -20,8 +23,8 @@ class WelcomeScreen:
         # Creating execption handeling for windows & Linux
         if os.name == "nt":  # for windows
             my_image = customtkinter.CTkImage(
-                light_image=Image.open("main/assets/logo/logo.png"),
-                dark_image=Image.open("main/assets/logo/logo.png"),
+                light_image=Image.open(def_light_image),
+                dark_image=Image.open(def_dark_image),
                 size=(400, 200),
             )
             welcome_title_text = customtkinter.CTkLabel(

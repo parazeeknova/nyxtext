@@ -3,7 +3,7 @@ import base64
 import os,sys
 import threading
 import webbrowser
-from tkinter import filedialog, ttk
+from tkinter import filedialog, ttk, PhotoImage
 
 # Third party imports here
 import customtkinter
@@ -18,28 +18,21 @@ from framework.codespace import Codespace
 from framework.tab_View import TabView
 from framework.welcome_Screen import WelcomeScreen
 from framework.workspace import Workspace
+from framework.def_path import resource
 from menu_Bar import Menubar
 
 # Function import here
-from search import Searchwindow
+# from search import Searchwindow
 from settings import Settings
 from text_Area import textarea
 from tkterm import Terminal
 from vertexai.generative_models import FinishReason, GenerativeModel, Part
 
-import sys, os
-def resource(relative_path):
-    base_path = getattr(
-        sys,
-        '_MEIPASS',
-        os.path.dirname(os.path.abspath(__file__)))
-    return os.path.join(base_path, relative_path)
-
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
 
 # Sets the color theme
-current_theme = resource("color_themes\\frappe.json")
+current_theme = resource("..\\color_themes\\frappe.json")
 
 # Should be replaced with a function in future for catppuccin color scheme
 customtkinter.set_default_color_theme(current_theme)
@@ -84,7 +77,7 @@ def main():
     root.grid_columnconfigure(1, weight=1)
 
     # This is the icon for the application. It is expected to be in the same directory as the scriptw
-    icon = resource("misc\\icons\\icon.ico")
+    icon = resource("..\\misc\\icons\\icon.ico")
     if os.name == "nt":  # for Windows
         root.iconbitmap(icon)
     elif os.name == "posix":  # for Linux and MacOS
@@ -202,11 +195,13 @@ def main():
 
     # Preparing images for the file tree
     # Commented for better version in future
-    # folder_image = PhotoImage("editor/scripts/misc/icons/folder.png")
-    # folder_path = folder_image
-
-    # file_image = PhotoImage("editor/scripts/misc/icons/file.png")
-    # file_path = file_image
+    def_folder_image = resource("..\\misc\\icons\\folder.png")
+    folder_image = PhotoImage(file=def_folder_image)
+    folder_path = folder_image
+    
+    def_file_image = resource("..\\misc\\icons\\file.png")
+    file_image = PhotoImage(file=def_file_image)
+    file_path = file_image
 
     # Inside the main function, after creating the left_frame
     file_tree = ttk.Treeview(left_frame, height=35)
@@ -221,13 +216,13 @@ def main():
                 # Insert the directory into the tree and get its ID
                 dir_id = tree.insert(
                     "", "end", text=item, open=True
-                )  # ,image= folder_path)
+                ,image= folder_path)
                 # Recursively populate the directory
                 populate_file_tree(tree, item_path)
             else:
                 # Insert the file into the tree using the parent directory's ID
                 dir_id = tree.insert("", "end", text=item, open=True)
-                tree.insert(dir_id, "end", text=item)  # , image= file_path)
+                tree.insert(dir_id, "end", text=item, image= file_path)
 
     def open_directory_dialog():
         directory_path = filedialog.askdirectory()

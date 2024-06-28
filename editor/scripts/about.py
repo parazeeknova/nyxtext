@@ -1,10 +1,11 @@
-import os
+import os,sys
 import webbrowser
 
 import customtkinter as ctk
 from features import FeaturesWindow
 from PIL import Image
 
+from framework.def_path import resource
 
 class MyWindow(ctk.CTkToplevel):
     def __init__(self, master=None):
@@ -37,8 +38,10 @@ class MyWindow(ctk.CTkToplevel):
         # Create a label with big bold text in the top and middle
         if os.name == "nt":
             self.my_image = ctk.CTkImage(
-                light_image=Image.open("main/assets/logo/logo.png"),
-                dark_image=Image.open("main/assets/logo/logo.png"),
+                def_light_image = resource("mics\\logo\\logo.png"),
+                def_dark_image = resource("mics\\logo\\logo.png"),
+                light_image=Image.open(self.def_light_image),
+                dark_image=Image.open(self.def_dark_image),
                 size=(400, 200),
             )
             self.welcome_title_text = ctk.CTkLabel(
