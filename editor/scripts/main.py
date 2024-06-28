@@ -18,7 +18,7 @@ from framework.codespace import Codespace
 from framework.tab_View import TabView
 from framework.welcome_Screen import WelcomeScreen
 from framework.workspace import Workspace
-from framework.def_path import resource
+from def_path import resource
 from menu_Bar import Menubar
 
 # Function import here
@@ -32,7 +32,7 @@ from vertexai.generative_models import FinishReason, GenerativeModel, Part
 customtkinter.set_appearance_mode("dark")
 
 # Sets the color theme
-current_theme = resource("..\\color_themes\\frappe.json")
+current_theme = resource("color_themes\\frappe.json")
 
 # Should be replaced with a function in future for catppuccin color scheme
 customtkinter.set_default_color_theme(current_theme)
@@ -77,7 +77,7 @@ def main():
     root.grid_columnconfigure(1, weight=1)
 
     # This is the icon for the application. It is expected to be in the same directory as the scriptw
-    icon = resource("..\\misc\\icons\\icon.ico")
+    icon = resource("misc\\icons\\icon.ico")
     if os.name == "nt":  # for Windows
         root.iconbitmap(icon)
     elif os.name == "posix":  # for Linux and MacOS
@@ -195,11 +195,11 @@ def main():
 
     # Preparing images for the file tree
     # Commented for better version in future
-    def_folder_image = resource("..\\misc\\icons\\folder.png")
+    def_folder_image = resource("misc\\icons\\folder.png")
     folder_image = PhotoImage(file=def_folder_image)
     folder_path = folder_image
     
-    def_file_image = resource("..\\misc\\icons\\file.png")
+    def_file_image = resource("misc\\icons\\file.png")
     file_image = PhotoImage(file=def_file_image)
     file_path = file_image
 
