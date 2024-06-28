@@ -4,18 +4,18 @@ import os
 
 import customtkinter
 from about import MyWindow
+from def_path import resource
 
 # File Imports here :
 from framework.new_file import newfile_window
 from framework.open_file import openfile_window
 from framework.open_folder import openfolder_window
-from def_path import resource
-
-
 from PIL import Image
 
 def_light_image = resource("misc\\logo\\logo.png")
 def_dark_image = resource("misc\\logo\\logo.png")
+
+
 class WelcomeScreen:
     def __init__(self, tab_view):
         self.welcome_tab = tab_view.add("Welcome")

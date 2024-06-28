@@ -1,13 +1,15 @@
-import os,sys
+import os
+import sys
 import webbrowser
 
 import customtkinter as ctk
+from def_path import resource
 from features import FeaturesWindow
 from PIL import Image
 
-from def_path import resource
 def_light_image = resource("misc\\logo\\logo.png")
 def_dark_image = resource("misc\\logo\\logo.png")
+
 
 class MyWindow(ctk.CTkToplevel):
     def __init__(self, master=None):

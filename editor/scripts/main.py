@@ -1,9 +1,10 @@
 # System imports here
 import base64
-import os,sys
+import os
+import sys
 import threading
 import webbrowser
-from tkinter import filedialog, ttk, PhotoImage
+from tkinter import PhotoImage, filedialog, ttk
 
 # Third party imports here
 import customtkinter
@@ -12,13 +13,13 @@ import vertexai.preview.generative_models as generative_models
 
 # File imports here
 from about import MyWindow
+from def_path import resource
 from framework.codespace import Codespace
 
 # Packages
 from framework.tab_View import TabView
 from framework.welcome_Screen import WelcomeScreen
 from framework.workspace import Workspace
-from def_path import resource
 from menu_Bar import Menubar
 
 # Function import here
@@ -142,7 +143,7 @@ def main():
     ai_bottom_frame = customtkinter.CTkFrame(
         root, width=int(screen_width), height=int(screen_height), corner_radius=0
     )
-    ai_bottom_frame.grid(row=0, column=3, columnspan=2,rowspan=3,sticky="nsew")
+    ai_bottom_frame.grid(row=0, column=3, columnspan=2, rowspan=3, sticky="nsew")
 
     toggle_button = customtkinter.CTkButton(
         bottom_frame, text="Terminal", width=5, command=toggle_more_bottom_frame
@@ -198,7 +199,7 @@ def main():
     def_folder_image = resource("misc\\icons\\folder.png")
     folder_image = PhotoImage(file=def_folder_image)
     folder_path = folder_image
-    
+
     def_file_image = resource("misc\\icons\\file.png")
     file_image = PhotoImage(file=def_file_image)
     file_path = file_image
@@ -214,15 +215,13 @@ def main():
             item_path = os.path.join(path, item)
             if os.path.isdir(item_path):
                 # Insert the directory into the tree and get its ID
-                dir_id = tree.insert(
-                    "", "end", text=item, open=True
-                ,image= folder_path)
+                dir_id = tree.insert("", "end", text=item, open=True, image=folder_path)
                 # Recursively populate the directory
                 populate_file_tree(tree, item_path)
             else:
                 # Insert the file into the tree using the parent directory's ID
                 dir_id = tree.insert("", "end", text=item, open=True)
-                tree.insert(dir_id, "end", text=item, image= file_path)
+                tree.insert(dir_id, "end", text=item, image=file_path)
 
     def open_directory_dialog():
         directory_path = filedialog.askdirectory()
@@ -344,16 +343,26 @@ def main():
     # Instantiate SearchWindow and pass the text area
     # def open_search_window():
     #     search = Searchwindow(root)
-    
-    label_gemini = customtkinter.CTkLabel( ai_bottom_frame, text="Gemini ✨", font=("JetBrainsMono NF", 14, "bold"))
+
+    label_gemini = customtkinter.CTkLabel(
+        ai_bottom_frame, text="Gemini ✨", font=("JetBrainsMono NF", 14, "bold")
+    )
     label_gemini.pack(side="top", padx=10, pady=10)
     output_text = customtkinter.CTkTextbox(
         ai_bottom_frame, width=350, wrap="word", font=("JetBrainsMono NF", 12)
     )
     output_text.pack(fill="both", expand=True)
-    label_about_dev = customtkinter.CTkLabel( ai_bottom_frame, text="Configured by Parazeeknova", font=("JetBrainsMono NF", 10, "italic"))
+    label_about_dev = customtkinter.CTkLabel(
+        ai_bottom_frame,
+        text="Configured by Parazeeknova",
+        font=("JetBrainsMono NF", 10, "italic"),
+    )
     label_about_dev.pack(side="bottom", padx=10, pady=0)
-    label_about = customtkinter.CTkLabel( ai_bottom_frame, text="Powered by Google Vertex AI ☁️ - Gemini AI Experimental", font=("JetBrainsMono NF", 10, "italic"))
+    label_about = customtkinter.CTkLabel(
+        ai_bottom_frame,
+        text="Powered by Google Vertex AI ☁️ - Gemini AI Experimental",
+        font=("JetBrainsMono NF", 10, "italic"),
+    )
     label_about.pack(side="bottom", padx=10, pady=0)
 
     def generate(input_text):
