@@ -1,6 +1,3 @@
-> [!CAUTION]
-> This project will undergo major changes, most probably a new framework 
-
 <h3 align="center">
 	<img src="assets/logo/logo.png" width="300" alt="Logo"/><br/>
     <img src="assets/misc/transparent.png" height="30" width="0px"/>
@@ -166,50 +163,40 @@ The number of themes is not definite, we will be adding more in the future, Also
 &nbsp;
 
 ### 🍷 Early editor screenshots:
-
-<div style="display: flex; align-items: center;">
-    <div style="width: 40%; flex: 1;">
-        <p align="center">Different Flavours (as of α-0.0.1v ): </p>
-        <hr>
-        <img src="assets/misc/flavours.png" alt="Different flavours"/>
-        <br>
-    </div>
-    <div style="width: 20px;"></div>      <!-- Separator -->
-    <div style="width: 40%; flex: 1;">
-        <p align="center">Cattppuccin Color Scheme (as of α-0.0.5v )</p>
-        <hr>
-        <img src="assets/misc/Catppuccin_color_scheme.png" alt="Dark mode"/>
-    </div>
-</div>
-
-<div style="display: flex; align-items: center;">
-    <div style="width: 40%; flex: 1;">
-        <p align="center">Frappe Flavour (as of α-0.0.5v ): </p>
-        <hr>
-        <img src="assets/screenshots/frappe_dark_about.png" alt="Different flavours"/>
-        <br>
-    </div>
-    <div style="width: 20px;"></div>      <!-- Separator -->
-    <div style="width: 40%; flex: 1;">
-        <p align="center">Macchiato code (as of α-0.0.5v )</p>
-        <hr>
-        <img src="assets/screenshots/macchiato_dark_code.png" alt="Dark mode"/>
-    </div>
-</div>
-
-<div style="display: flex; align-items: center;">
-    <div style="width: 40%; flex: 1;">
-        <p align="center">Default Light(as of α-0.0.5v ): </p>
-        <hr>
-        <img src="assets/screenshots/default_light.png" alt="Different flavours"/>
-        <br>
-    </div>
-    <div style="width: 20px;"></div>      <!-- Separator -->
-    <div style="width: 40%; flex: 1;">
-        <p align="center">Default Dark Windowed (as of α-0.0.5v )</p>
-        <hr>
-        <img src="assets/screenshots/default_dark_windowed.png" alt="Dark mode"/>
-    </div>
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+  <div>
+    <p align="center">Different Flavours (as of α-0.0.1v ): </p>
+    <hr>
+    <img src="assets/misc/flavours.png" alt="Different flavours"/>
+    <br>
+  </div>
+  <div>
+    <p align="center">Cattppuccin Color Scheme (as of α-0.0.5v )</p>
+    <hr>
+    <img src="assets/misc/Catppuccin_color_scheme.png" alt="Dark mode"/>
+  </div>
+  <div>
+    <p align="center">Frappe Flavour (as of α-0.0.5v ): </p>
+    <hr>
+    <img src="assets/screenshots/frappe_dark_about.png" alt="Different flavours"/>
+    <br>
+  </div>
+  <div>
+    <p align="center">Macchiato code (as of α-0.0.5v )</p>
+    <hr>
+    <img src="assets/screenshots/macchiato_dark_code.png" alt="Dark mode"/>
+  </div>
+  <div>
+    <p align="center">Default Light(as of α-0.0.5v ): </p>
+    <hr>
+    <img src="assets/screenshots/default_light.png" alt="Different flavours"/>
+    <br>
+  </div>
+  <div>
+    <p align="center">Default Dark Windowed (as of α-0.0.5v )</p>
+    <hr>
+    <img src="assets/screenshots/default_dark_windowed.png" alt="Dark mode"/>
+  </div>
 </div>
 
 &nbsp;
@@ -348,7 +335,7 @@ Thanks to my Friends for the initial development of the project, contributing th
 
 &nbsp;
 
-<p align="center"><img src="../main/assets/misc/catppuccin_cat.svg" /></p>
+<p align="center"><img src="assets/misc/catppuccin_cat.svg" /></p>
 <div align="center">
 
 ![Dev](http://ForTheBadge.com/images/badges/built-by-developers.svg)
