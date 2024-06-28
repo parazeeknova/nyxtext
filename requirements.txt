@@ -4,3 +4,4 @@ Pillow
 pyperclip
 pygments
 tkterm 
+google-cloud-aiplatform

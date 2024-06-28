@@ -1,5 +1,7 @@
 __pycache__/
 .vs/
 .idea/
-.build/
+build/
+dist/
+main.spec
 tempCodeRunnerFile.py

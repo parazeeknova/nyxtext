@@ -1,6 +1,6 @@
 # System imports here
 import base64
-import os
+import os,sys
 import threading
 import webbrowser
 from tkinter import filedialog, ttk
@@ -27,11 +27,22 @@ from text_Area import textarea
 from tkterm import Terminal
 from vertexai.generative_models import FinishReason, GenerativeModel, Part
 
+import sys, os
+def resource(relative_path):
+    base_path = getattr(
+        sys,
+        '_MEIPASS',
+        os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
 
+# Sets the color theme
+current_theme = resource("color_themes\\frappe.json")
+
 # Should be replaced with a function in future for catppuccin color scheme
-customtkinter.set_default_color_theme("editor/scripts/color_themes/frappe.json")
+customtkinter.set_default_color_theme(current_theme)
 
 
 # Welcome screen for the text editor disabled because currently a mess
@@ -73,8 +84,9 @@ def main():
     root.grid_columnconfigure(1, weight=1)
 
     # This is the icon for the application. It is expected to be in the same directory as the scriptw
+    icon = resource("misc\\icons\\icon.ico")
     if os.name == "nt":  # for Windows
-        root.iconbitmap("editor/scripts/misc/icons/icon.ico")
+        root.iconbitmap(icon)
     elif os.name == "posix":  # for Linux and MacOS
         # root.iconphoto(False, PhotoImage(file="editor/scripts/misc/icons/icon.png"))
         pass
@@ -351,7 +363,7 @@ def main():
 
     def generate(input_text):
         vertexai.init(project="vital-platform-421513", location="us-central1")
-        model = GenerativeModel("gemini-experimental")
+        model = GenerativeModel("gemini-1.5-flash-001")
         global responses
         responses = model.generate_content(
             [input_text],
