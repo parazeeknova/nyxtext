@@ -42,5 +42,5 @@ jobs:
     - name: Upload Build Artificat 
       uses: actions/upload-artifact@v4
       with:
-        path: ./Nyxtext
+        path: ./Nyxtext-${{ github.run_number }}.zip
         name: Nyxtext
