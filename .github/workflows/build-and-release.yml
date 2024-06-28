@@ -40,7 +40,7 @@ jobs:
         Compress-Archive -Path ./dist/Nyxtext/* -DestinationPath ./Nyxtext-${{ github.run_number }}.zip
 
     - name: Upload Build Artificat 
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         path: ./Nyxtext-${{ github.run_number }}.zip
         name: Nyxtext
