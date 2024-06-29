@@ -2,6 +2,7 @@ import os
 
 from CTkMenuBar import *
 from hPyT import *
+from CTkMessagebox import CTkMessagebox
 
 
 class Menubar:
@@ -146,4 +147,9 @@ class Menubar:
             Menubar.has_hidden_title_bar = True
 
     def exit_editor(self):
+      msg = CTkMessagebox(title="Exit?", message="Do you want to close the program?", icon="question", option_1="Cancel", option_2="No", option_3="Yes", justify="center", option_focus="No", fade_in_duration=6)
+      response = msg.get()
+      if response=="Yes":
         self.root.destroy()
+      else:
+        pass

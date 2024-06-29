@@ -19,7 +19,7 @@ from framework.tab_View import TabView
 from framework.welcome_Screen import WelcomeScreen
 from framework.workspace import Workspace
 from hPyT import *
-from menu_bar import Menubar
+from menu_Bar import Menubar
 from pywinstyles import *
 
 # Function import here
