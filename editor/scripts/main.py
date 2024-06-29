@@ -6,6 +6,8 @@ from tkinter import PhotoImage, filedialog, ttk
 
 # Third party imports here
 import customtkinter
+from pywinstyles import *
+from hPyT import *
 import vertexai
 import vertexai.preview.generative_models as generative_models
 
@@ -26,12 +28,11 @@ from text_Area import textarea
 from tkterm import Terminal
 from vertexai.generative_models import FinishReason, GenerativeModel, Part
 
+
 # Sets (for now the appearance to light and color scheme to blue)
 customtkinter.set_appearance_mode("dark")
-
 # Sets the color theme
 current_theme = resource("color_themes\\frappe.json")
-
 # Should be replaced with a function in future for catppuccin color scheme
 customtkinter.set_default_color_theme(current_theme)
 
@@ -40,7 +41,8 @@ customtkinter.set_default_color_theme(current_theme)
 # Need to work on this mess in future
 def show_welcome_window(root):
     welcome_window = customtkinter.CTkToplevel(root)
-    # welcome_window.geometry(f"{root.winfo_width()}x{root.winfo_height()}+{root.winfo_x()}+{root.winfo_y()}")
+    # Relative window centre position
+    window_frame.center_relative(welcome_window, root)
     welcome_window.title("Welcome to NyxText")
     welcome_window.geometry(f"{1100}x{580}")
     welcome_window.wm_overrideredirect(True)
@@ -60,12 +62,15 @@ def show_welcome_window(root):
     )
     start_button.pack(pady=10)
 
+
 # This defines the main function, which is the entry point of the application
 def main():
     global root
     root = customtkinter.CTk()
     root.geometry(f"{1100}x{580}")
     root.title("NyxText")
+    
+    
     # configure grid layout (4x4)
     # Useful for responsiveness
     root.grid_rowconfigure(0, weight=1)
@@ -73,9 +78,14 @@ def main():
     root.grid_columnconfigure(0, weight=1)
     root.grid_columnconfigure(1, weight=1)
 
+
     # Menu bar in the title bar for windows also this is the icon for the application.
     icon = resource("misc\\icons\\icon.ico")
     if os.name == "nt":  # for Windows
+        # Pywinstyles for theming
+        apply_style(root, "aero")
+        change_border_color(root, color=get_accent_color()) # Change the border color to the accent color
+        change_header_color(root, color=get_accent_color()) # Change the header color to the accent color
         root.iconbitmap(icon)
         menu_bar = Menubar(root)
     elif os.name == "posix":  # for Linux and MacOS
@@ -531,6 +541,13 @@ def main():
 
     Seperator_R()
 
+    # Function to set opacity of the frames (pywinstyles)
+    set_opacity(top_frame, value=0.6)
+    set_opacity(left_frame, value=0.6)
+    set_opacity(right_frame, value=0.6)
+    set_opacity(bottom_frame, value=0.6)
+    set_opacity(more_bottom_frame, value=0.6)
+    set_opacity(ai_bottom_frame, value=0.6)
 
 # The main function is called only when the script is run directly, not when it's imported as a module
 if __name__ == "__main__":
