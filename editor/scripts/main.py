@@ -60,6 +60,7 @@ def show_welcome_window(root):
     )
     start_button.pack(pady=10)
 
+
 # This defines the main function, which is the entry point of the application
 def main():
     global root
