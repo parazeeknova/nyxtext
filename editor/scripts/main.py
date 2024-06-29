@@ -409,7 +409,11 @@ def main():
     New_button.pack(side="left", padx=2, pady=10)
     New_button.configure(width=2, font=("Arial", 18))
 
-    Open_button = customtkinter.CTkButton(top_frame, text="📂")
+    def file_path_prompt():
+        file_path = filedialog.askopenfilename()
+        return file_path
+
+    Open_button = customtkinter.CTkButton(top_frame, text="📂", command=lambda:tab_view.add_new_workspace_with_file(file_path_prompt()))
     Open_button.pack(side="left", padx=2, pady=10)
     Open_button.configure(width=2, font=("Arial", 18))
 

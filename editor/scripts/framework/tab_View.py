@@ -1,5 +1,6 @@
 # Tab View :
 
+import os
 import customtkinter
 import pygments.lexers
 from chlorophyll import CodeView
@@ -38,3 +39,17 @@ class TabView:
     def select_current_tab(self):
         selected_tab = self.tab_view.get()
         return selected_tab
+    
+    def add_new_workspace_with_file(self, filepath):
+      self.tab_count += 1
+      tab_title = os.path.basename(filepath)
+      new_tab = self.tab_view.add(tab_title)
+      text_area = textarea(new_tab)
+      file_content = self.read_file_content(filepath)
+      text_area.insert('1.0', file_content)
+      return new_tab
+
+    def read_file_content(self, filepath):
+      with open(filepath, 'r') as file:
+        content = file.read()
+      return content
