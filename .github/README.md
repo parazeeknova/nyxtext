@@ -185,7 +185,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 |--------------------------------------|--------------------------------------------|---------------------------------|---------------------------------|
 | ![Homescreen](assets/screenshots/Homescreen.png) | ![Terminal](assets/screenshots/Terminal.png) | ![Gemini](assets/screenshots/Gemini.png) | ![Exit](assets/screenshots/Exit.png) |
 | Codespace (as of α-v0.1.5 ) | Default Dark Windowed (as of α-v0.1.5 ) | Default Light Windowed (as of α-v0.1.5 ) | Workspace (as of α-v0.1.5 ) |
-| ![Codespace](assets/screenshots/Codespace.png) | ![Dark mode](assets/screenshots/Default_Dark.png) | ![Light mode](assets/screenshots/Default_Light.png) | ![Workspace](assets/screenshots/Workspace.png) |
+| ![Codespace](assets/screenshots/Codespace.png) | ![Dark mode](assets/screenshots/Default_Dark.png) | ![Light mode](assets/screenshots/Default_Light_mode.png) | ![Workspace](assets/screenshots/Workspace.png) |
 
 &nbsp;
 
