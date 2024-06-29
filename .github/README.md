@@ -43,7 +43,7 @@
 &nbsp;
 
 <p align="center">
-<b>NyxText</b> is a basic text editor built using Python, <b>Tkinter and Custom Tkinter</b>, featuring the elegant <b>Catppuccin color scheme</b> and the minimalist <b>Paperus icon theme</b>. This project represents a collaboration effort, with each element of the text editor organized into separate files for clarity and maintainability, also a ai powered desktop application that offers a comprehensive text editor for creatives, developers, and students alike.
+<b>Nyxtext</b> is a text editor built using Python, with the added functionality of Custom Tkinter. It showcases the elegant <b>Catppuccin color scheme and follows glassmorphic design</b>, providing a visually pleasing experience. This project follows a modular approach, with each element of the text editor organized into separate files for improved clarity and maintainability. NyxText is not only build to be a text editor, but also a <b>AI-powered desktop application</b> that caters to the needs of creatives, developers, and students alike.
 </p> 
 
 <p align="center">
@@ -154,7 +154,7 @@ Thats not it it also has some other custom made themes like **lumber** and **H2O
 The number of themes is not definite, we will be adding more in the future, Also you can make your **own**.
 <p align="center">
 <img src="assets/misc/demo.png" alt="catppuccin infrastructure"/>
-<h>⚠️ Image referenced from Catppuccin's Repo</h> 
+<h>Image referenced from Catppuccin (4 color palettes 🎨)</h> 
 </p>
 
 &nbsp;
@@ -172,13 +172,27 @@ The number of themes is not definite, we will be adding more in the future, Also
 - **AI** assistence, shortcuts to Gemini, ChatGPT, BlackboxAI... 
 - **Integrated Terminal** Supports all basic commands, highly customizable, supports multiple tabs to run simultaneously...
 - **Integrated Gemini**: Includes a powerful search bar powered by the Gemini API for easy access to code and content.
+- **Immersive Mode** Fullscreen mode for distraction-free writing. (hides titlebar)
+- **Accent** Picks accent color for the editor (border, title) from you windows theme (windows)
+- **Glassmorphic** design for the editor (windows)
 - ***More Soon...***
+
+&nbsp;
+
+### 📸 Early Editor Screenshots
+
+| Homescreen (as of α-v0.1.5 ) | Terminal (as of α-v0.1.5 ) | Gemini (as of α-v0.1.5 ) | Exit (as of α-v0.1.5 ) |
+|--------------------------------------|--------------------------------------------|---------------------------------|---------------------------------|
+| ![Homescreen](assets/screenshots/Homescreen.png) | ![Terminal](assets/screenshots/Terminal.png) | ![Gemini](assets/screenshots/Gemini.png) | ![Exit](assets/screenshots/Exit.png) |
+| Codespace (as of α-v0.1.5 ) | Default Dark Windowed (as of α-v0.1.5 ) | Default Light Windowed (as of α-v0.1.5 ) | Workspace (as of α-v0.1.5 ) |
+| ![Codespace](assets/screenshots/Codespace.png) | ![Dark mode](assets/screenshots/Default_Dark.png) | ![Light mode](assets/screenshots/Default_Light.png) | ![Workspace](assets/screenshots/Workspace.png) |
 
 &nbsp;
 
 ### 💡Future Plans : 
 - [x] ~~Complete rebase to custom_tkinter~~ - Done 28/02/2024 ✅
 - [x] ~~Integrated Gemini AI~~ - Done 27/04/2024 ✅
+- [x] ~~Open Files~~ - Done 29/7/2024 ✅
 - [ ] Auto completion, Grammer check
 - [x] ~~Filetree viewer~~ - Done 02/03/2024 ✅
 - [ ] Spell Check
@@ -190,6 +204,7 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] Working Settings page
 - [x] ~~Terminal Support~~ - Done ✅ ~ Intergated [TkTerm](https://github.com/dhanoosu/TkTerm)
 - [ ] Text Formatting - (Bold, Underline, Bulletpoints)
+- [x] ~~Glassmorphic design for the editor~~ - Done 30/07/2024 ✅ ~ [pywinstyles](https://github.com/Akascape)
 - [ ] Basic file Encryption / Decryption
 - [ ] Hyperlinks, Markdown support
 - [ ] Auto completion when pressing Tab for Codespace
@@ -203,15 +218,8 @@ The number of themes is not definite, we will be adding more in the future, Also
 
 &nbsp;
 
-| Different Flavours (as of α-0.0.1v ) | Cattppuccin Color Scheme (as of α-0.0.5v ) | Frappe Flavour (as of α-0.0.5v ) | Macchiato code (as of α-0.0.5v ) |
-|--------------------------------------|--------------------------------------------|---------------------------------|---------------------------------|
-| ![Different flavours](assets/misc/flavours.png) | ![Dark mode](assets/misc/Catppuccin_color_scheme.png) | ![Different flavours](assets/screenshots/frappe_dark_about.png) | ![Dark mode](assets/screenshots/macchiato_dark_code.png) |
-| Default Light (as of α-0.0.5v ) | Default Dark Windowed (as of α-0.0.5v ) | | |
-| ![Different flavours](assets/screenshots/default_light.png) | ![Dark mode](assets/screenshots/default_dark_windowed.png) | | |
-
-&nbsp;
-
 ---
+
 ### 🐜 Bugs : 
 - [x] ~~It's not responsive as the project is still in early development.~~ - Done 08/03/2024 ✅
 - [x] ~~The editor only works in the full screen at the moment.~~ - Done 08/03/2024  ✅ - Now has 3 modes

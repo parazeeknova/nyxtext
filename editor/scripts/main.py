@@ -33,7 +33,7 @@ customtkinter.set_appearance_mode("dark")
 # Sets the color theme
 current_theme = resource("color_themes\\frappe.json")
 # Should be replaced with a function in future for catppuccin color scheme
-customtkinter.set_default_color_theme(current_theme)
+customtkinter.set_default_color_theme("blue")
 
 
 # Welcome screen for the text editor disabled because currently a mess
