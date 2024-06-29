@@ -1,7 +1,5 @@
 # System imports here
-import base64
 import os
-import sys
 import threading
 import webbrowser
 from tkinter import PhotoImage, filedialog, ttk
@@ -20,10 +18,9 @@ from framework.codespace import Codespace
 from framework.tab_View import TabView
 from framework.welcome_Screen import WelcomeScreen
 from framework.workspace import Workspace
-from menu_Bar import Menubar
+from menu_bar import Menubar
 
 # Function import here
-# from search import Searchwindow
 from settings import Settings
 from text_Area import textarea
 from tkterm import Terminal
@@ -63,7 +60,6 @@ def show_welcome_window(root):
     )
     start_button.pack(pady=10)
 
-
 # This defines the main function, which is the entry point of the application
 def main():
     global root
@@ -77,10 +73,11 @@ def main():
     root.grid_columnconfigure(0, weight=1)
     root.grid_columnconfigure(1, weight=1)
 
-    # This is the icon for the application. It is expected to be in the same directory as the scriptw
+    # Menu bar in the title bar for windows also this is the icon for the application.
     icon = resource("misc\\icons\\icon.ico")
     if os.name == "nt":  # for Windows
         root.iconbitmap(icon)
+        menu_bar = Menubar(root)
     elif os.name == "posix":  # for Linux and MacOS
         # root.iconphoto(False, PhotoImage(file="editor/scripts/misc/icons/icon.png"))
         pass
@@ -260,10 +257,6 @@ def main():
         left_frame, text="Open New Window", command=new_instance_window
     )
     open_new_window.grid(row=3, column=0, pady=5, sticky="nsew")
-
-    # This imports the Menubar class from a module named menu_bar.py. This class is expected to contain the logic for creating a menu bar for the application
-    menu_bar = Menubar(root, textarea)
-    root.config(menu=menu_bar.menubar)
 
     # All buttons and search bar in the top frame for different functions (Right)
     def open_settings_window():
