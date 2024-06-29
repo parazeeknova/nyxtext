@@ -102,13 +102,13 @@ class textarea:
             start, end = self.text_area.tag_ranges(tk.SEL)
             self.text_area.delete(start, end)
         except tk.TclError:
-            pass 
-        
+            pass
+
     def insert(self, index, text):
-      line, column = map(int, index.split('.'))
-      lines = self.text_area.get('1.0', 'end').splitlines(True)  # Keep line endings
-      position = sum(len(lines[i]) for i in range(line - 1)) + column
-      current_text = self.text_area.get('1.0', 'end')
-      new_text = current_text[:position] + text + current_text[position:]
-      self.text_area.delete('1.0', 'end')
-      self.text_area.insert('1.0', new_text)
+        line, column = map(int, index.split("."))
+        lines = self.text_area.get("1.0", "end").splitlines(True)  # Keep line endings
+        position = sum(len(lines[i]) for i in range(line - 1)) + column
+        current_text = self.text_area.get("1.0", "end")
+        new_text = current_text[:position] + text + current_text[position:]
+        self.text_area.delete("1.0", "end")
+        self.text_area.insert("1.0", new_text)
