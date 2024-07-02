@@ -5,15 +5,15 @@ import webbrowser
 from tkinter import PhotoImage, filedialog, ttk
 
 # Third party imports here
-import customtkinter as C # Alias for customtkinter
+import customtkinter as C  # Alias for customtkinter
 import vertexai
 import vertexai.preview.generative_models as generative_models
 
 # File imports here
 from about import MyWindow
 from def_path import resource
-from framework.codespace import Codespace
 from external import CTkScrollableDropdown as Dropdown
+from framework.codespace import Codespace
 
 # Packages
 from framework.tab_View import TabView
@@ -29,9 +29,9 @@ from text_Area import textarea
 from tkterm import Terminal
 from vertexai.generative_models import FinishReason, GenerativeModel, Part
 
-C.set_appearance_mode("dark") # Default system theme
+C.set_appearance_mode("dark")  # Default system theme
 
-themes = { # Color schemes
+themes = {  # Color schemes
     "frappe": resource("color_themes\\frappe.json"),
     "latte": resource("color_themes\\latte.json"),
     "macchiato": resource("color_themes\\macchiato.json"),
@@ -39,8 +39,9 @@ themes = { # Color schemes
     "H2O": resource("color_themes\\H2O.json"),
     "oceanic": resource("color_themes\\Oceanic.json"),
     "slate": resource("color_themes\\Slate.json"),
-    "lumber": resource("color_themes\\Lumber.json")
+    "lumber": resource("color_themes\\Lumber.json"),
 }
+
 
 def change_theme(theme_name):
     if theme_name in themes:
@@ -48,13 +49,14 @@ def change_theme(theme_name):
     else:
         print(f"Theme '{theme_name}' not found.")
 
+
 # This defines the main function, which is the entry point of the application
 def main():
     global root
     root = C.CTk()
     root.geometry(f"{1100}x{580}")
     root.title("NyxText")
-    change_theme("frappe") # Default theme
+    change_theme("frappe")  # Default theme
 
     # configure grid layout (4x4)
     # Useful for responsiveness
@@ -90,9 +92,7 @@ def main():
     )  # Adjust height as needed
     top_frame.grid(row=0, column=0, columnspan=2, sticky="nsew")
 
-    left_frame = C.CTkFrame(
-        root, width=screen_width * 0.16, corner_radius=0
-    )
+    left_frame = C.CTkFrame(root, width=screen_width * 0.16, corner_radius=0)
     left_frame.grid(row=1, column=0, rowspan=4, sticky="nsew")
 
     right_frame = C.CTkFrame(
@@ -251,9 +251,7 @@ def main():
     def open_settings_window():
         settings = Settings(root)
 
-    settings_button = C.CTkButton(
-        top_frame, text="⚙️", command=open_settings_window
-    )
+    settings_button = C.CTkButton(top_frame, text="⚙️", command=open_settings_window)
     settings_button.pack(side="right", padx=5, pady=10)
     settings_button.configure(width=10)
 
@@ -291,9 +289,7 @@ def main():
     def chat_gpt():
         webbrowser.open("https://chat.openai.com/")
 
-    chat_gpt_button = C.CTkButton(
-        top_frame, text="⚙️ ChatGPT", command=chat_gpt
-    )
+    chat_gpt_button = C.CTkButton(top_frame, text="⚙️ ChatGPT", command=chat_gpt)
     chat_gpt_button.pack(side="right", padx=5, pady=10)
     chat_gpt_button.configure(width=10)
 
@@ -307,9 +303,7 @@ def main():
     def Blackbox_AI():
         webbrowser.open("https://www.blackbox.ai/")
 
-    chat_gpt_button = C.CTkButton(
-        top_frame, text="BlackBox AI", command=Blackbox_AI
-    )
+    chat_gpt_button = C.CTkButton(top_frame, text="BlackBox AI", command=Blackbox_AI)
     chat_gpt_button.pack(side="right", padx=5, pady=10)
     chat_gpt_button.configure(width=10)
 
@@ -502,6 +496,8 @@ def main():
     set_opacity(ai_bottom_frame, value=0.6)
 
     root.update()
+
+
 # The main function is called only when the script is run directly, not when it's imported as a module
 if __name__ == "__main__":
     Nyxtext = main()
