@@ -1,7 +1,6 @@
 # Main system construct file aka entry point for the Editor to start
 # System imports here
 import os
-from tkinter import *
 
 # File imports here
 from about import MyWindow
@@ -21,6 +20,7 @@ from menu_Bar import Menubar
 from pywinstyles import *
 
 # Function import here
+from framework.file_Tree import treeView
 from settings import Settings
 from text_Area import textarea
 from tkterm import Terminal
@@ -35,14 +35,15 @@ theme_names = [  # Assets and color themes for the editor
     "H2O",
     "oceanic",
     "slate",
-    "lumber",
+    "lumber"
 ]
 
 themes = {
     name: resource(os.path.join("color_themes", f"{name}.json")) for name in theme_names
 }
 icon = resource("misc\\icons\\icon.ico")  # Icon for the editor
-
+def_folder_image = resource("misc\\icons\\folder.png")  # Folder icon for the editor
+def_file_image = resource("misc\\icons\\file.png")  # File icon for the editor
 
 class sysUI(CTk):
     def __init__(self, master, change_color_theme):
@@ -105,7 +106,14 @@ class Nyxtext(CTk):
             self.tabview.tab_view
         )  # Create the codespace for the editor
 
-        for frame in [
+        bg_color_tree = self._apply_appearance_mode(ThemeManager.theme["CTkFrame"]["fg_color"]) # Treeview (theme colors are selected)
+        selected_color_tree = self._apply_appearance_mode(ThemeManager.theme["CTkButton"]["fg_color"])
+
+        self.treeView = treeView(
+            self.left_frame,bg_color_tree,selected_color_tree,def_folder_image,def_file_image
+        )  # Create the tree view for the editor
+
+        for frame in [ # Set the opacity for the frames for the editor
             self.top_frame,
             self.left_frame,
             self.right_frame,
