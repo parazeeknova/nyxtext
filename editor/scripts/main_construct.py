@@ -8,7 +8,7 @@ from about import MyWindow
 # Third party imports here
 from customtkinter import *
 from def_path import resource
-from external import CTkScrollableDropdown as Dropdown
+from external.CTkScrollableDropdown import *
 from framework.codespace import Codespace
 
 # Packages
@@ -46,7 +46,7 @@ def_folder_image = resource("misc\\icons\\folder.png")  # Folder icon for the ed
 def_file_image = resource("misc\\icons\\file.png")  # File icon for the editor
 
 class sysUI(CTk):
-    def __init__(self, master, change_color_theme):
+    def __init__(self, master):
         super().__init__(master=master)
 
     def change_theme(theme_name):
@@ -113,6 +113,26 @@ class Nyxtext(CTk):
             self.left_frame,bg_color_tree,selected_color_tree,def_folder_image,def_file_image
         )  # Create the tree view for the editor
 
+        self.settings_button = CTkButton(self.top_frame, text="⚙️", command=self.open_settings_window)
+        self.settings_button.pack(side="right", padx=5, pady=2)
+        self.settings_button.configure(fg_color="transparent", width=10)
+
+        appearance_optionmenu = CTkOptionMenu( 
+            self.top_frame,
+            values=["◑"],
+            width=2
+        )
+        appearance_optionmenu.pack(side="right", padx=2, pady=2)
+        CTkScrollableDropdown(appearance_optionmenu,
+                              values=["Light","Dark"],
+                              command=self.change_appearance_mode_event,
+                              width=100,
+                              alpha=0.5,
+                              frame_border_width=0,
+                              scrollbar=False
+        )
+
+        # Always keep this at the end of the constructor to prevent widgets being hidden
         for frame in [ # Set the opacity for the frames for the editor
             self.top_frame,
             self.left_frame,
@@ -123,7 +143,7 @@ class Nyxtext(CTk):
 
     def create_frames(self):  # Skeleton for the editor
         self.top_frame = self.create_frame(
-            height=self.screen_height * 0.08,
+            height=self.screen_height * 0.05,
             width=self.screen_width,
             grid_config={"row": 0, "column": 0, "columnspan": 2},
         )
@@ -168,6 +188,15 @@ class Nyxtext(CTk):
         )
         return frame
 
+    def open_settings_window(self):
+        self.settings = Settings(self)
+    
+    def change_appearance_mode_event(self,new_appearance_mode: str):
+        set_appearance_mode(new_appearance_mode)
+    
+    def change_scaling_event(self, new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        set_widget_scaling(new_scaling_float)
 
 # Main function to start the editor
 if __name__ == "__main__":

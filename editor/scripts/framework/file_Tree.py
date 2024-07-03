@@ -11,7 +11,7 @@ class treeView:
 
   def setup_treeview(self,parent_frame,bg_color_tree,selected_color_tree,def_folder_image,def_file_image):
       self.fileTree_label = C.CTkLabel(
-          parent_frame, text="Treeview", font=("JetbrainsMono Nerd Font", 12, "bold")
+          parent_frame, text="EXPLORER", font=("JetbrainsMono Nerd Font", 12, "bold")
       )
       self.fileTree_label.grid(
           row=0, column=0,pady =2,padx=4, columnspan=2, sticky="nsew"
@@ -27,7 +27,7 @@ class treeView:
           "Treeview", background=bg_color_tree, fieldbackground=bg_color_tree, borderwidth=0
       )
       treestyle.configure("Treeview.Heading", background=bg_color_tree, foreground="white")
-      treestyle.configure("Treeview", treeareaforeground="gray")
+      treestyle.configure("Treeview", treeareaforeground="gray", show="tree lines")
       treestyle.map(
           "Treeview", background=[("selected", selected_color_tree)], foreground=[("selected", "white")]
       )
