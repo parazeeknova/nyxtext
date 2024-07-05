@@ -1,6 +1,7 @@
 # Main system construct file aka entry point for the Editor to start
 # System imports here
 import os
+import webbrowser
 
 # File imports here
 from about import MyWindow
@@ -9,6 +10,7 @@ from about import MyWindow
 from customtkinter import *
 from def_path import resource
 from external.CTkScrollableDropdown import *
+from CTkToolTip import *
 from framework.codespace import Codespace
 
 # Packages
@@ -93,6 +95,13 @@ class Nyxtext(CTk):
         self.right_frame.grid_rowconfigure(0, weight=1)
         self.right_frame.grid_columnconfigure(0, weight=2)
 
+        self.terminal_frame.grid_remove()  # Hide the terminal frame for the editor
+        self.terminal = Terminal(self.terminal_frame)  # Create the terminal for the editor
+        self.terminal.shell = True
+        self.terminal.linebar = True
+        self.terminal.pack(fill="both", expand=True)
+
+
         self.tabview = TabView(
             self.right_frame, screen_width, screen_height
         )  # Create the tab view for the editor
@@ -115,7 +124,19 @@ class Nyxtext(CTk):
 
         self.settings_button = CTkButton(self.top_frame, text="⚙️", command=self.open_settings_window)
         self.settings_button.pack(side="right", padx=5, pady=2)
-        self.settings_button.configure(fg_color="transparent", width=10)
+        self.settings_button.configure(width=10)
+
+        self.terminal_button = CTkButton(self.top_frame, text="⋕", command=lambda: self.toggle_frame(self.terminal_frame))
+        self.terminal_button.configure(width=5)
+        self.terminal_button.pack(side="right", padx=5, pady=2)
+
+        self.filetree_button = CTkButton(self.top_frame, text="◧", command=lambda: self.toggle_frame(self.left_frame))
+        self.filetree_button.configure(width=5)
+        self.filetree_button.pack(side="right", padx=5, pady=2)
+
+        self.bottomframe_button = CTkButton(self.top_frame, text="⬓", command=lambda: self.toggle_frame(self.bottom_frame))
+        self.bottomframe_button.configure(width=5)
+        self.bottomframe_button.pack(side="right", padx=5, pady=2)
 
         appearance_optionmenu = CTkOptionMenu( 
             self.top_frame,
@@ -132,6 +153,46 @@ class Nyxtext(CTk):
                               scrollbar=False
         )
 
+        self.seperator(self.top_frame,"right")
+
+        self.remove_current_tab = CTkButton(self.top_frame, text="✕", command=self.tabview.remove_current_tab)
+        self.remove_current_tab.configure(width=5)
+        self.remove_current_tab.pack(side="right", padx=5, pady=2)
+
+        self.add_new_tab = CTkButton(self.top_frame, text="⌂", command=self.tabview.add_new_workspace)
+        self.add_new_tab.configure(width=5)
+        self.add_new_tab.pack(side="right", padx=5, pady=2)
+
+        self.add_new_codespace = CTkButton(self.top_frame, text="⋊", command=self.tabview.add_new_codespace)
+        self.add_new_codespace.configure(width=5)
+        self.add_new_codespace.pack(side="right", padx=5, pady=2)
+
+        self.seperator(self.top_frame,"right")        
+
+        self.remove_top_frame = CTkButton(self.bottom_frame, text="⬒", command=lambda: self.toggle_frame(self.top_frame))
+        self.remove_top_frame.configure(width=5)
+        self.remove_top_frame.pack(side="left", padx=5, pady=2)
+
+        current_dir_path = os.path.dirname(os.path.realpath(__file__))
+        directory_label = CTkLabel(self.bottom_frame, text=current_dir_path)
+        directory_label.pack(side="left", padx=10, pady=2)
+        directory_label.configure(width=100, font=("JetBrainsMono Nerd Font", 12, "bold"), fg_color=f"{ThemeManager.theme['CTkLabel']['fg_color']}")
+
+        tooltips = [ # Tooltips for the editor 
+          (appearance_optionmenu, "Dark / Light switch"),
+          (self.settings_button, "Settings"),
+          (self.terminal_button, "Terminal"),
+          (self.filetree_button, "Toggle Filetree"),
+          (self.add_new_tab, "Add new workspace"),
+          (self.add_new_codespace, "Add new codespace"),
+          (self.remove_current_tab, "Remove current tab"),
+          (self.remove_top_frame, "Toggle Toolbar"),
+          (self.bottomframe_button, "Toggle Status bar"),
+        ]
+
+        for widget, text in tooltips:
+          CTkToolTip(widget, text, alpha=0.7)
+
         # Always keep this at the end of the constructor to prevent widgets being hidden
         for frame in [ # Set the opacity for the frames for the editor
             self.top_frame,
@@ -140,6 +201,12 @@ class Nyxtext(CTk):
             self.bottom_frame,
         ]:
             set_opacity(frame, value=0.6)
+
+        # Frame specific opacity
+        set_opacity(self.terminal_frame, value=1.0)  # Set the opacity for the terminal frame for the editor
+
+        self.update()  # Update the editor
+        self.update_idletasks()  # Update the editor
 
     def create_frames(self):  # Skeleton for the editor
         self.top_frame = self.create_frame(
@@ -150,12 +217,12 @@ class Nyxtext(CTk):
         self.left_frame = self.create_frame(
             width=self.screen_width * 0.15,
             height=self.screen_height,
-            grid_config={"row": 1, "column": 0, "rowspan": 4},
+            grid_config={"row": 1, "column": 0, "rowspan": 1},
         )
         self.right_frame = self.create_frame(
             width=self.screen_width * 0.8,
             height=self.screen_height,
-            grid_config={"row": 1, "column": 1},
+            grid_config={"row": 1, "column": 1, "rowspan": 1},
             corner_radius=1,
         )
         self.bottom_frame = self.create_frame(
@@ -169,7 +236,7 @@ class Nyxtext(CTk):
             width=self.screen_width,
             corner_radius=0,
             grid_config={"row": 3, "column": 0, "columnspan": 2},
-        ).grid_remove()
+        )
         self.ai_frame = self.create_frame(
             width=self.screen_width,
             height=self.screen_height,
@@ -194,9 +261,18 @@ class Nyxtext(CTk):
     def change_appearance_mode_event(self,new_appearance_mode: str):
         set_appearance_mode(new_appearance_mode)
     
-    def change_scaling_event(self, new_scaling: str):
-        new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        set_widget_scaling(new_scaling_float)
+    def seperator(self,frame,side) -> None:
+        seperator = CTkLabel(frame, text="|")
+        seperator.pack(side=f"{side}", padx=4, pady=2)
+        seperator.configure(width=2, font=("Arial", 16, "bold"), fg_color="transparent")
+
+    def toggle_frame(self, frame):
+        if frame.winfo_viewable():
+            frame.grid_remove()
+            self.update_idletasks()
+        else:
+            frame.grid()
+            self.update_idletasks()
 
 # Main function to start the editor
 if __name__ == "__main__":
