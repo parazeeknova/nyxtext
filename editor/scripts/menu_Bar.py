@@ -1,9 +1,9 @@
 import os
-
 from tkinter import filedialog
-from framework.tab_View import TabView
+
 from CTkMenuBar import *
 from CTkMessagebox import CTkMessagebox
+from framework.tab_View import TabView
 from hPyT import *
 
 
@@ -165,7 +165,7 @@ class Menubar:
             self.root.destroy()
         else:
             pass
-    
+
     def file_path_prompt():
         file_path = filedialog.askopenfilename()
         return file_path
