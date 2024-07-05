@@ -1,18 +1,16 @@
+# Main system construct file aka entry point for the Editor to start
 # System imports here
 import os
-import threading
-import webbrowser
-from tkinter import PhotoImage, filedialog, ttk
-
-# Third party imports here
-import customtkinter as C  # Alias for customtkinter
-import vertexai
-import vertexai.preview.generative_models as generative_models
 
 # File imports here
-from about import MyWindow
+# from about import MyWindow
+
+# Third party imports here
+from tkinter import filedialog
+from customtkinter import *
 from def_path import resource
-from external import CTkScrollableDropdown as Dropdown
+from external.CTkScrollableDropdown import *
+from CTkToolTip import *
 from framework.codespace import Codespace
 
 # Packages
@@ -24,483 +22,276 @@ from menu_Bar import Menubar
 from pywinstyles import *
 
 # Function import here
+from framework.file_Tree import treeView
 from settings import Settings
 from text_Area import textarea
 from tkterm import Terminal
-from vertexai.generative_models import FinishReason, GenerativeModel, Part
 
-C.set_appearance_mode("dark")  # Default system theme
+set_appearance_mode("dark")  # Global default theme (default = dark)
 
-themes = {  # Color schemes
-    "frappe": resource("color_themes\\frappe.json"),
-    "latte": resource("color_themes\\latte.json"),
-    "macchiato": resource("color_themes\\macchiato.json"),
-    "mocha": resource("color_themes\\mocha.json"),
-    "H2O": resource("color_themes\\H2O.json"),
-    "oceanic": resource("color_themes\\Oceanic.json"),
-    "slate": resource("color_themes\\Slate.json"),
-    "lumber": resource("color_themes\\Lumber.json"),
+theme_names = [  # Assets and color themes for the editor
+    "frappe",
+    "latte",
+    "macchiato",
+    "mocha",
+    "H2O",
+    "oceanic",
+    "slate",
+    "lumber"
+]
+
+themes = {
+    name: resource(os.path.join("color_themes", f"{name}.json")) for name in theme_names
 }
+icon = resource("misc\\icons\\icon.ico")  # Icon for the editor
+def_folder_image = resource("misc\\icons\\folder.png")  # Folder icon for the editor
+def_file_image = resource("misc\\icons\\file.png")  # File icon for the editor
 
+class sysUI(CTk):
+    def __init__(self, master):
+        super().__init__(master=master)
 
-def change_theme(theme_name):
-    if theme_name in themes:
-        C.set_default_color_theme(themes[theme_name])
-    else:
-        print(f"Theme '{theme_name}' not found.")
-
-
-# This defines the main function, which is the entry point of the application
-def main():
-    global root
-    root = C.CTk()
-    root.geometry(f"{1100}x{580}")
-    root.title("NyxText")
-    change_theme("frappe")  # Default theme
-
-    # configure grid layout (4x4)
-    # Useful for responsiveness
-    root.grid_rowconfigure(0, weight=1)
-    root.grid_rowconfigure(1, weight=2)
-    root.grid_columnconfigure(0, weight=1)
-    root.grid_columnconfigure(1, weight=1)
-
-    # Menu bar in the title bar for windows also this is the icon for the application.
-    icon = resource("misc\\icons\\icon.ico")
-    if os.name == "nt":  # for Windows
-        # Pywinstyles for theming
-        apply_style(root, "aero")
-        change_border_color(
-            root, color=get_accent_color()
-        )  # Change the border color to the accent color
-        change_header_color(
-            root, color=get_accent_color()
-        )  # Change the header color to the accent color
-        root.iconbitmap(icon)
-        menu_bar = Menubar(root)
-    elif os.name == "posix":  # for Linux and MacOS
-        # root.iconphoto(False, PhotoImage(file="editor/scripts/misc/icons/icon.png"))
-        pass
-
-    # Setting width variables
-    screen_width = root.winfo_screenwidth()
-    screen_height = root.winfo_screenheight()
-
-    # Frames for the main text editor
-    top_frame = C.CTkFrame(
-        root, width=screen_width, height=int(screen_height * 0.15), corner_radius=0
-    )  # Adjust height as needed
-    top_frame.grid(row=0, column=0, columnspan=2, sticky="nsew")
-
-    left_frame = C.CTkFrame(root, width=screen_width * 0.16, corner_radius=0)
-    left_frame.grid(row=1, column=0, rowspan=4, sticky="nsew")
-
-    right_frame = C.CTkFrame(
-        root,
-        width=int(screen_width) - 100,
-        height=int(screen_height) - 30,
-        corner_radius=1,
-    )
-    right_frame.grid(row=1, column=1, sticky="nsew")
-
-    bottom_frame = C.CTkFrame(
-        root, width=screen_width, height=int(screen_height * 0.15), corner_radius=0
-    )
-    bottom_frame.grid(row=2, column=0, columnspan=2, sticky="nsew")
-
-    right_frame.grid_rowconfigure(0, weight=1)
-    right_frame.grid_columnconfigure(0, weight=2)
-
-    # Create a toggable more_bottom_frame for terminal and other features
-    def toggle_more_bottom_frame():
-        if more_bottom_frame.winfo_viewable():
-            more_bottom_frame.grid_remove()
+    def change_theme(theme_name):
+        if theme_name in themes:
+            set_default_color_theme(themes[theme_name])
         else:
-            more_bottom_frame.grid()
+            print(f"Theme '{theme_name}' not found.")
 
-    def toggle_left_frame():
-        if left_frame.winfo_viewable():
-            left_frame.grid_remove()
-        else:
-            left_frame.grid()
 
-    def toggle_ai_bottom_frame():
-        if ai_bottom_frame.winfo_viewable():
-            ai_bottom_frame.grid_remove()
-        else:
-            ai_bottom_frame.grid()
+class Nyxtext(CTk):
+    def __init__(self):
+        super().__init__()
 
-    more_bottom_frame = C.CTkFrame(
-        root, width=screen_width, height=int(screen_height * 0.15), corner_radius=0
-    )
-    more_bottom_frame.grid(row=3, column=0, columnspan=2, sticky="nsew")
+        self.geometry(f"{800}x{600}")
+        self.title("Nyxtext")
+        sysUI.change_theme("frappe")  # Default color scheme is frappe for now
 
-    ai_bottom_frame = C.CTkFrame(
-        root, width=int(screen_width), height=int(screen_height), corner_radius=0
-    )
-    ai_bottom_frame.grid(row=0, column=3, columnspan=2, rowspan=3, sticky="nsew")
+        # Configure grid rows
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(1, weight=2)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.rowconfigure(2, weight=1)
 
-    toggle_button = C.CTkButton(
-        bottom_frame, text="Terminal", width=5, command=toggle_more_bottom_frame
-    )
-    toggle_button.pack(side="right", padx=2, pady=10)
-    more_bottom_frame.grid_remove()
 
-    toggle_left_frame_button = C.CTkButton(
-        top_frame, text="Toggle FileTree", width=5, command=toggle_left_frame
-    )
-    toggle_left_frame_button.pack(side="right", padx=2, pady=10)
+        if os.name == "nt":  # Setting OS specific settings for the editor
+            apply_style(self, "aero")
+            change_border_color(
+                self, color=get_accent_color()
+            )  # Change border color to accent color
+            change_header_color(
+                self, color=get_accent_color()
+            )  # Change header color to accent color
+            self.iconbitmap(icon)  # Set the icon for the editor
+            menubar = Menubar(self)
+        elif os.name == "posix":
+            menubar = Menubar(self)
 
-    def combined_op():
-        toggle_ai_bottom_frame()
-        toggle_left_frame()
+        screen_width = self.winfo_screenwidth()  # Calculate the screen width and height
+        screen_height = self.winfo_screenheight()
+        self.screen_width = int(screen_width)
+        self.screen_height = int(screen_height)
 
-    toggle_ai_bottom_frame_button = C.CTkButton(
-        bottom_frame, text="AI", width=5, command=combined_op
-    )
-    toggle_ai_bottom_frame_button.pack(side="right", padx=2, pady=10)
-    ai_bottom_frame.grid_remove()
+        self.create_frames()  # Create the frames for the editor
+        self.right_frame.grid_rowconfigure(0, weight=1)
+        self.right_frame.grid_columnconfigure(0, weight=2)
+        self.top_frame.pack_propagate(False)
+        self.top_frame.configure(height=4)
+        self.bottom_frame.pack_propagate(False)
+        self.bottom_frame.configure(height=4)
 
-    # Terminal :
-    terminal = Terminal(more_bottom_frame)
-    terminal.shell = True
-    terminal.linebar = True
-    terminal.pack(expand=True, fill="both")
+        self.terminal_frame.grid_remove()  # Hide the terminal frame for the editor
+        self.terminal = Terminal(self.terminal_frame)  # Create the terminal for the editor
+        self.terminal.shell = True
+        self.terminal.linebar = True
+        self.terminal.pack(fill="both", expand=True)
 
-    # Tab management, welcome screen and workspace, codespace
-    tab_view = TabView(right_frame, screen_width, screen_height)
-    welcome_tab = WelcomeScreen(tab_view.tab_view)
-    tab_init = Workspace(tab_view.tab_view)
-    Codeview = Codespace(tab_view.tab_view)
 
-    # All Items for the left frame are below :
-    Filetree_Button = C.CTkLabel(
-        left_frame, text="FileTree :", font=("VictorMono Nerd Font", 14, "bold")
-    )
-    Filetree_Button.grid(row=0, column=0, pady=5, sticky="nsew")
-    Filetree_Button.configure(width=2)
+        self.tabview = TabView(
+            self.right_frame, screen_width, screen_height
+        )  # Create the tab view for the editor
+        self.welcomeTab = WelcomeScreen(
+            self.tabview.tab_view
+        )  # Create the welcome screen for the editor
+        self.workspace = Workspace(
+            self.tabview.tab_view
+        )  # Create the workspace for the editor
+        self.codespace = Codespace(
+            self.tabview.tab_view
+        )  # Create the codespace for the editor
 
-    # Preparing images for the file tree
-    # Commented for better version in future
-    def_folder_image = resource("misc\\icons\\folder.png")
-    folder_image = PhotoImage(file=def_folder_image)
-    folder_path = folder_image
+        bg_color_tree = self._apply_appearance_mode(ThemeManager.theme["CTkFrame"]["fg_color"]) # Treeview (theme colors are selected)
+        selected_color_tree = self._apply_appearance_mode(ThemeManager.theme["CTkButton"]["fg_color"])
 
-    def_file_image = resource("misc\\icons\\file.png")
-    file_image = PhotoImage(file=def_file_image)
-    file_path = file_image
+        self.treeView = treeView(
+            self.left_frame,bg_color_tree,selected_color_tree,def_folder_image,def_file_image
+        )  # Create the tree view for the editor
 
-    # Inside the main function, after creating the left_frame
-    file_tree = ttk.Treeview(left_frame, height=35)
-    file_tree.heading("#0", text="Files :", anchor="w")
-    file_tree.grid(row=1, column=0, sticky="nsew")
+        self.settings_button = CTkButton(self.top_frame, text="⚙️", command=self.open_settings_window)
+        self.settings_button.pack(side="right", padx=5)
+        self.settings_button.configure(width=10)
 
-    # Function to put items in the file tree :
-    def populate_file_tree(tree, path):
-        for item in os.listdir(path):
-            item_path = os.path.join(path, item)
-            if os.path.isdir(item_path):
-                # Insert the directory into the tree and get its ID
-                dir_id = tree.insert("", "end", text=item, open=True, image=folder_path)
-                # Recursively populate the directory
-                populate_file_tree(tree, item_path)
-            else:
-                # Insert the file into the tree using the parent directory's ID
-                dir_id = tree.insert("", "end", text=item, open=True)
-                tree.insert(dir_id, "end", text=item, image=file_path)
+        self.terminal_button = CTkButton(self.top_frame, text="⋕", command=lambda: self.toggle_frame(self.terminal_frame))
+        self.terminal_button.configure(width=5)
+        self.terminal_button.pack(side="right", padx=5)
 
-    def open_directory_dialog():
-        directory_path = filedialog.askdirectory()
-        if directory_path:
-            # Clear the current file tree
-            for item in file_tree.get_children():
-                file_tree.delete(item)
-        # Populate the file tree with the selected directory
-        populate_file_tree(file_tree, directory_path)
+        self.filetree_button = CTkButton(self.top_frame, text="◧", command=lambda: self.toggle_frame(self.left_frame))
+        self.filetree_button.configure(width=5)
+        self.filetree_button.pack(side="right", padx=5)
 
-    # Styling the Treeview to look dark
-    style = ttk.Style()
-    style.configure("Treeview", background="#51576d", foreground="#fff")
-    style.configure("Treeview.Heading", background="#51576d", foreground="#fff")
+        self.bottomframe_button = CTkButton(self.top_frame, text="⬓", command=lambda: self.toggle_frame(self.bottom_frame))
+        self.bottomframe_button.configure(width=5)
+        self.bottomframe_button.pack(side="right", padx=5)
 
-    # Customizing the appearance of selected items and lines
-    style.map(
-        "Treeview", background=[("selected", "#555")], foreground=[("selected", "#fff")]
-    )
-
-    # Bydefault populate the file tree with the desktop directory
-    # desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    current_directory_path = os.getcwd()
-    populate_file_tree(file_tree, current_directory_path)
-
-    # Add a button to open the directory dialog
-    open_directory_button = C.CTkButton(
-        left_frame, text="Open Directory", command=open_directory_dialog
-    )
-    open_directory_button.grid(row=2, column=0, pady=5, sticky="nsew")
-
-    def new_instance_window():
-        pass
-
-    open_new_window = C.CTkButton(
-        left_frame, text="Open New Window", command=new_instance_window
-    )
-    open_new_window.grid(row=3, column=0, pady=5, sticky="nsew")
-
-    # All buttons and search bar in the top frame for different functions (Right)
-    def open_settings_window():
-        settings = Settings(root)
-
-    settings_button = C.CTkButton(top_frame, text="⚙️", command=open_settings_window)
-    settings_button.pack(side="right", padx=5, pady=10)
-    settings_button.configure(width=10)
-
-    # Switch to change Light and DarkMode :
-    def change_appearance_mode_event(new_appearance_mode: str):
-        C.set_appearance_mode(new_appearance_mode)
-
-    Appearance_mode_optionemenu = C.CTkOptionMenu(
-        top_frame,
-        values=["Light", "Dark", "System"],
-        command=change_appearance_mode_event,
-    )
-    Appearance_mode_optionemenu.pack(side="right", padx=2, pady=10)
-
-    # Switch to change the System Scaling to user desired percentage
-    def change_scaling_event(new_scaling: str):
-        new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        C.set_widget_scaling(new_scaling_float)
-
-    scaling_optionemenu = C.CTkOptionMenu(
-        top_frame,
-        width=80,
-        values=["80%", "90%", "100%", "110%", "120%"],
-        command=change_scaling_event,
-    )
-    scaling_optionemenu.pack(side="right", padx=2, pady=10)
-
-    def Seperator_R() -> None:
-        Seperator = C.CTkLabel(top_frame, text="|")
-        Seperator.pack(side="right", padx=2, pady=10)
-        Seperator.configure(width=2, font=("Arial", 16), fg_color="transparent")
-
-    Seperator_R()
-
-    def chat_gpt():
-        webbrowser.open("https://chat.openai.com/")
-
-    chat_gpt_button = C.CTkButton(top_frame, text="⚙️ ChatGPT", command=chat_gpt)
-    chat_gpt_button.pack(side="right", padx=5, pady=10)
-    chat_gpt_button.configure(width=10)
-
-    def Phind():
-        webbrowser.open("https://www.phind.com/")
-
-    chat_gpt_button = C.CTkButton(top_frame, text="Phind", command=Phind)
-    chat_gpt_button.pack(side="right", padx=5, pady=10)
-    chat_gpt_button.configure(width=10)
-
-    def Blackbox_AI():
-        webbrowser.open("https://www.blackbox.ai/")
-
-    chat_gpt_button = C.CTkButton(top_frame, text="BlackBox AI", command=Blackbox_AI)
-    chat_gpt_button.pack(side="right", padx=5, pady=10)
-    chat_gpt_button.configure(width=10)
-
-    def Gemini():
-        webbrowser.open("https://gemini.google.com/")
-
-    chat_gpt_button = C.CTkButton(top_frame, text="Gemini", command=Gemini)
-    chat_gpt_button.pack(side="right", padx=5, pady=10)
-    chat_gpt_button.configure(width=10)
-
-    Seperator_R()
-
-    label_gemini = C.CTkLabel(
-        ai_bottom_frame, text="Gemini ✨", font=("JetBrainsMono NF", 14, "bold")
-    )
-    label_gemini.pack(side="top", padx=10, pady=10)
-    output_text = C.CTkTextbox(
-        ai_bottom_frame, width=350, wrap="word", font=("JetBrainsMono NF", 12)
-    )
-    output_text.pack(fill="both", expand=True)
-    label_about_dev = C.CTkLabel(
-        ai_bottom_frame,
-        text="Configured by Parazeeknova",
-        font=("JetBrainsMono NF", 10, "italic"),
-    )
-    label_about_dev.pack(side="bottom", padx=10, pady=0)
-    label_about = C.CTkLabel(
-        ai_bottom_frame,
-        text="Powered by Google Vertex AI ☁️ - Gemini AI Experimental",
-        font=("JetBrainsMono NF", 10, "italic"),
-    )
-    label_about.pack(side="bottom", padx=10, pady=0)
-
-    def generate(input_text):
-        vertexai.init(project="vital-platform-421513", location="us-central1")
-        model = GenerativeModel("gemini-1.5-flash-001")
-        global responses
-        responses = model.generate_content(
-            [input_text],
-            generation_config=generation_config,
-            safety_settings=safety_settings,
-            stream=True,
+        appearance_optionmenu = CTkOptionMenu( 
+            self.top_frame,
+            values=["◑"],
+            width=2
+        )
+        appearance_optionmenu.pack(side="right", padx=2, pady=2)
+        CTkScrollableDropdown(appearance_optionmenu,
+                              values=["Light","Dark"],
+                              command=self.change_appearance_mode_event,
+                              width=100,
+                              alpha=0.5,
+                              frame_border_width=0,
+                              scrollbar=False
         )
 
-        for response in responses:
-            output_text.insert(C.END, response.text)
-            output_text.see(C.END)
+        self.seperator(self.top_frame,"right")
 
-    generation_config = {
-        "max_output_tokens": 8192,
-        "temperature": 1,
-        "top_p": 0.95,
-    }
+        self.remove_current_tab = CTkButton(self.top_frame, text="✕", command=self.tabview.remove_current_tab)
+        self.remove_current_tab.configure(width=5)
+        self.remove_current_tab.pack(side="right", padx=5)
 
-    safety_settings = {
-        generative_models.HarmCategory.HARM_CATEGORY_HATE_SPEECH: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-        generative_models.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-        generative_models.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-        generative_models.HarmCategory.HARM_CATEGORY_HARASSMENT: generative_models.HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
-    }
+        self.add_new_tab = CTkButton(self.top_frame, text="⌂", command=self.tabview.add_new_workspace)
+        self.add_new_tab.configure(width=5)
+        self.add_new_tab.pack(side="right", padx=5)
 
-    def combined_command(event=None):
-        on_button_click()
-        toggle_ai_bottom_frame()
-        toggle_left_frame()
+        self.add_new_codespace = CTkButton(self.top_frame, text="⋊", command=self.tabview.add_new_codespace)
+        self.add_new_codespace.configure(width=5)
+        self.add_new_codespace.pack(side="right", padx=5)
 
-    generate_button = C.CTkButton(
-        top_frame, text="🔍", command=combined_command, width=1
-    )
-    generate_button.pack(side="right", padx=2, pady=10)
+        self.seperator(self.top_frame,"right")
 
-    input_entry = C.CTkEntry(
-        top_frame, placeholder_text="Search | Powered by Gemini ✨", height=35
-    )
-    input_entry.pack(fill="x", expand=True, side="right", padx=10, pady=10)
-    input_entry.bind("<Return>", combined_command)
+        def file_path_prompt():
+            file_path = filedialog.askopenfilename()
+            return file_path
 
-    def on_button_click():
-        input_text = input_entry.get()
-        threading.Thread(target=generate, args=(input_text,)).start()
+        self.openFile_button = CTkButton(self.top_frame, text="📂", command=lambda: self.tabview.add_new_workspace_with_file(file_path_prompt()))
+        self.openFile_button.configure(width=5)
+        self.openFile_button.pack(side="left", padx=5)        
 
-    # All buttons in the top frame for different functions (Left)
-    New_button = C.CTkButton(top_frame, text="📄")
-    New_button.pack(side="left", padx=2, pady=10)
-    New_button.configure(width=2, font=("Arial", 18))
+        self.remove_top_frame = CTkButton(self.bottom_frame, text="⬒", command=lambda: self.toggle_frame(self.top_frame))
+        self.remove_top_frame.configure(width=5)
+        self.remove_top_frame.pack(side="left", padx=5, pady=2)
 
-    def file_path_prompt():
-        file_path = filedialog.askopenfilename()
-        return file_path
+        current_dir_path = os.path.dirname(os.path.realpath(__file__))
+        directory_label = CTkLabel(self.bottom_frame, text=current_dir_path)
+        directory_label.pack(side="left", padx=10, pady=2)
+        directory_label.configure(width=100, font=("JetBrainsMono Nerd Font", 12, "bold"), fg_color=f"{ThemeManager.theme['CTkLabel']['fg_color']}")
 
-    Open_button = C.CTkButton(
-        top_frame,
-        text="📂",
-        command=lambda: tab_view.add_new_workspace_with_file(file_path_prompt()),
-    )
-    Open_button.pack(side="left", padx=2, pady=10)
-    Open_button.configure(width=2, font=("Arial", 18))
+        tooltips = [ # Tooltips for the editor 
+          (appearance_optionmenu, "Dark / Light switch"),
+          (self.settings_button, "Settings"),
+          (self.terminal_button, "Terminal"),
+          (self.filetree_button, "Toggle Filetree"),
+          (self.add_new_tab, "Add new workspace"),
+          (self.add_new_codespace, "Add new codespace"),
+          (self.remove_current_tab, "Remove current tab"),
+          (self.remove_top_frame, "Toggle Toolbar"),
+          (self.bottomframe_button, "Toggle Status bar"),
+          (self.openFile_button, "Open file"),
+        ]
 
-    Save_button = C.CTkButton(top_frame, text="💾")
-    Save_button.pack(side="left", padx=3, pady=10)
-    Save_button.configure(width=2, font=("Arial", 18))
+        for widget, text in tooltips:
+          CTkToolTip(widget, text, alpha=0.7)
 
-    def Seperator() -> None:
-        Seperator = C.CTkLabel(top_frame, text="|")
-        Seperator.pack(side="left", padx=2, pady=10)
-        Seperator.configure(width=2, font=("Arial", 16), fg_color="transparent")
+        # Always keep this at the end of the constructor to prevent widgets being hidden
+        for frame in [ # Set the opacity for the frames for the editor
+            self.top_frame,
+            self.left_frame,
+            self.right_frame,
+            self.bottom_frame,
+        ]:
+            set_opacity(frame, value=0.6)
 
-    Seperator()
+        # Frame specific opacity
+        set_opacity(self.terminal_frame, value=0.8)  # Set the opacity for the terminal frame for the editor
 
-    Cut_button = C.CTkButton(top_frame, text="Cut")
-    Cut_button.pack(side="left", padx=3, pady=10)
-    Cut_button.configure(width=2)
+        self.update()  # Update the editor
+        self.update_idletasks()  # Update the editor
 
-    Copy_button = C.CTkButton(top_frame, text="Copy")
-    Copy_button.pack(side="left", padx=3, pady=10)
-    Copy_button.configure(width=2)
+    def create_frames(self):  # Skeleton for the editor
+        self.top_frame = self.create_frame(
+            height=self.screen_height * 0.05,
+            width=self.screen_width,
+            grid_config={"row": 0, "column": 0, "columnspan": 2},
+        )
+        self.left_frame = self.create_frame(
+            width=self.screen_width * 0.15,
+            height=self.screen_height,
+            grid_config={"row": 1, "column": 0, "rowspan": 1},
+        )
+        self.right_frame = self.create_frame(
+            width=self.screen_width * 0.8,
+            height=self.screen_height,
+            grid_config={"row": 1, "column": 1, "rowspan": 1},
+            corner_radius=1,
+        )
+        self.bottom_frame = self.create_frame(
+            height=self.screen_height * 0.1,
+            width=self.screen_width,
+            grid_config={"row": 2, "column": 0, "columnspan": 2},
+        )
 
-    Paste_button = C.CTkButton(top_frame, text="Paste")
-    Paste_button.pack(side="left", padx=3, pady=10)
-    Paste_button.configure(width=2)
+        self.terminal_frame = self.create_frame(
+            height=self.screen_height * 0.1,
+            width=self.screen_width,
+            corner_radius=0,
+            grid_config={"row": 3, "column": 0, "columnspan": 2},
+        )
+        self.ai_frame = self.create_frame(
+            width=self.screen_width,
+            height=self.screen_height,
+            corner_radius=0,
+            grid_config={"row": 0, "column": 3, "rowspan": 3, "columnspan": 2},
+        ).grid_remove()
 
-    select_button = C.CTkButton(top_frame, text="Select")
-    select_button.pack(side="left", padx=3, pady=10)
-    select_button.configure(width=2)
+    def create_frame(self, width, height, grid_config={}, corner_radius=0):
+        frame = CTkFrame(self, width=width, height=height, corner_radius=corner_radius)
+        frame.grid(
+            row=grid_config.get("row"),
+            column=grid_config.get("column"),
+            rowspan=grid_config.get("rowspan", 1),
+            columnspan=grid_config.get("columnspan", 1),
+            sticky="nsew",
+        )
+        return frame
 
-    undo_button = C.CTkButton(top_frame, text="Undo")
-    undo_button.pack(side="left", padx=3, pady=10)
-    undo_button.configure(width=2)
+    def open_settings_window(self):
+        self.settings = Settings(self)
+    
+    def change_appearance_mode_event(self,new_appearance_mode: str):
+        set_appearance_mode(new_appearance_mode)
+    
+    def seperator(self,frame,side) -> None:
+        seperator = CTkLabel(frame, text="|")
+        seperator.pack(side=f"{side}", padx=4, pady=2)
+        seperator.configure(width=2, font=("Arial", 16, "bold"), fg_color="transparent")
 
-    redo_button = C.CTkButton(top_frame, text="Redo")
-    redo_button.pack(side="left", padx=3, pady=10)
-    redo_button.configure(width=2)
+    def toggle_frame(self, frame):
+        if frame.winfo_viewable():
+            frame.grid_remove()
+            self.update_idletasks()
+        else:
+            frame.grid()
+            self.update_idletasks()
+        if frame == self.terminal_frame:
+            self.bottom_frame.lift()
+        self.update_idletasks()
 
-    Seperator()
-
-    Suggestions = C.CTkButton(top_frame, text="Suggest a Feature")
-    Suggestions.pack(side="left", padx=2, pady=10)
-    Suggestions.configure(width=3)
-
-    # About button in the top_bar
-    About = C.CTkButton(top_frame, text="About", command=MyWindow)
-    About.pack(side="left", padx=2, pady=10)
-    About.configure(width=2)
-
-    Exit_button = C.CTkButton(top_frame, text="Exit")
-    Exit_button.pack(side="left", padx=3, pady=10)
-    Exit_button.configure(width=2)
-
-    Seperator()
-
-    Dir_Label = C.CTkLabel(bottom_frame, text="Working directory : ")
-    Dir_Label.pack(side="left", padx=(10, 0), pady=10)
-    Dir_Label.configure(width=2, font=("JetBrainsMono NF", 12, "bold"))
-
-    dirvar = str(current_directory_path)
-    Dir_Label_pth = C.CTkLabel(bottom_frame, text=dirvar)
-    Dir_Label_pth.pack(side="left", padx=2, pady=10)
-    Dir_Label_pth.configure(width=2, font=("JetBrainsMono NF", 12))
-
-    def Seperator_R() -> None:
-        Seperator = C.CTkLabel(bottom_frame, text="|")
-        Seperator.pack(side="right", padx=2, pady=10)
-        Seperator.configure(width=2, font=("Arial", 16), fg_color="transparent")
-
-    Seperator_R()
-
-    remove_current_tab = C.CTkButton(
-        bottom_frame, text="Remove Tab", command=tab_view.remove_current_tab
-    )
-    remove_current_tab.pack(side="right", padx=2, pady=10)
-
-    add_workspace_button = C.CTkButton(
-        bottom_frame, text="Add Workspace", command=tab_view.add_new_workspace
-    )
-    add_workspace_button.pack(side="right", padx=2, pady=10)
-
-    add_codespace_button = C.CTkButton(
-        bottom_frame, text="Add Codespace", command=tab_view.add_new_codespace
-    )
-    add_codespace_button.pack(side="right", padx=2, pady=10)
-
-    Seperator_R()
-
-    # Function to set opacity of the frames (pywinstyles)
-    set_opacity(top_frame, value=0.6)
-    set_opacity(left_frame, value=0.6)
-    set_opacity(right_frame, value=0.6)
-    set_opacity(bottom_frame, value=0.6)
-    set_opacity(more_bottom_frame, value=0.6)
-    set_opacity(ai_bottom_frame, value=0.6)
-
-    root.update()
-
-
-# The main function is called only when the script is run directly, not when it's imported as a module
+# Main function to start the editor
 if __name__ == "__main__":
-    Nyxtext = main()
-    # show_welcome_window(root)
-    # This is the main loop of the application. It keeps the application running until it is closed
-    root.mainloop()
+    editor = Nyxtext()
+    editor.mainloop()

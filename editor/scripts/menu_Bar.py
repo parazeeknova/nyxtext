@@ -1,5 +1,7 @@
 import os
 
+from tkinter import filedialog
+from framework.tab_View import TabView
 from CTkMenuBar import *
 from CTkMessagebox import CTkMessagebox
 from hPyT import *
@@ -25,7 +27,7 @@ class Menubar:
 
         self.file_menu_drop = CustomDropdownMenu(widget=self.file_menu)
         self.file_menu_drop.add_option(option="Open   Ctrl+O").configure(
-            font=("JetBrainsMono Nerd Font", 12, "bold")
+            font=("JetBrainsMono Nerd Font", 12, "bold"),
         )
         self.file_menu_drop.add_option(option="New    Ctrl+N").configure(
             font=("JetBrainsMono Nerd Font", 12, "bold")
@@ -163,3 +165,7 @@ class Menubar:
             self.root.destroy()
         else:
             pass
+    
+    def file_path_prompt():
+        file_path = filedialog.askopenfilename()
+        return file_path
