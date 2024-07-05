@@ -82,13 +82,16 @@
 
 ---
 
-> [!CAUTION]
+> [!IMPORTANT]
 > Because the application is not signed by Microsoft, Windows Defender blocks it; add an exclusion in Defender to run the application. Its a false positive, the application is safe to use. or build it yourself from the source code.
 
 > [!NOTE] 
-> As the first project developed by a group of undergraduates, NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
+> NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
 
 ### ✨ Installing Nyxtext
+
+> [!TIP]
+> Use Nerd Font to avoid any broken symbols : [JetbrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads) 
 
 <details>
 
@@ -230,8 +233,6 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] There is no dynamic heading.
 - [ ] Search bar does not work.
 
-- Currently the codebase is not modular and contains a lot of redundant code and is not optimized for performance, has two versions. First tkinter based and second custom tkinter based (hybrid).
-
 ---
 ### 🛹 Development : 
 
@@ -301,10 +302,10 @@ For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/
 
 ### 💖 Gratitude
 
-Thanks to my Friends for the initial development of the project, contributing this project :
+Thanks for the initial development of the project, contributing this project :
 
-- [Og Noviciuss](https://github.com/noviciusss) (initial Developer)
-- [Og Castimonia07](https://github.com/castimonia07) (initial Colorschemes)
+- [Noviciuss](https://github.com/noviciusss) for `editor/.old/menubar` - depreciated
+- [Castimonia07](https://github.com/castimonia07) `Catppuccin platte` - incomplete 
 
 &nbsp;
 
