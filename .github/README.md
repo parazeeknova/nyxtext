@@ -147,6 +147,16 @@ Download Nyxtext from [the releases page](https://github.com/parazeeknova/nyxtex
 
 &nbsp;
 
+### 📸 Early Editor Screenshots
+
+| Homescreen (as of α-v0.1.5 ) | Terminal (as of α-v0.1.5 ) | Gemini (as of α-v0.1.5 ) | Exit (as of α-v0.1.5 ) |
+|--------------------------------------|--------------------------------------------|---------------------------------|---------------------------------|
+| ![Homescreen](assets/screenshots/Homescreen.png) | ![Terminal](assets/screenshots/Terminal.png) | ![Gemini](assets/screenshots/Gemini.png) | ![Exit](assets/screenshots/Exit.png) |
+| Codespace (as of α-v0.1.5 ) | Default Dark Windowed (as of α-v0.1.5 ) | Default Light Windowed (as of α-v0.1.5 ) | Workspace (as of α-v0.1.5 ) |
+| ![Codespace](assets/screenshots/Codespace.png) | ![Dark mode](assets/screenshots/Default_Dark.png) | ![Light mode](assets/screenshots/Default_Light_mode.png) | ![Workspace](assets/screenshots/Workspace.png) |
+
+&nbsp;
+
 ### 🎨 Palette
 
 **Catppuccin** consists of 4 beautiful pastel color palettes. \
@@ -176,16 +186,6 @@ The number of themes is not definite, we will be adding more in the future, Also
 - **Accent** Picks accent color for the editor (border, title) from you windows theme (windows)
 - **Glassmorphic** design for the editor (windows)
 - ***More Soon...***
-
-&nbsp;
-
-### 📸 Early Editor Screenshots
-
-| Homescreen (as of α-v0.1.5 ) | Terminal (as of α-v0.1.5 ) | Gemini (as of α-v0.1.5 ) | Exit (as of α-v0.1.5 ) |
-|--------------------------------------|--------------------------------------------|---------------------------------|---------------------------------|
-| ![Homescreen](assets/screenshots/Homescreen.png) | ![Terminal](assets/screenshots/Terminal.png) | ![Gemini](assets/screenshots/Gemini.png) | ![Exit](assets/screenshots/Exit.png) |
-| Codespace (as of α-v0.1.5 ) | Default Dark Windowed (as of α-v0.1.5 ) | Default Light Windowed (as of α-v0.1.5 ) | Workspace (as of α-v0.1.5 ) |
-| ![Codespace](assets/screenshots/Codespace.png) | ![Dark mode](assets/screenshots/Default_Dark.png) | ![Light mode](assets/screenshots/Default_Light_mode.png) | ![Workspace](assets/screenshots/Workspace.png) |
 
 &nbsp;
 
