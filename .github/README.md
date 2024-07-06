@@ -29,7 +29,7 @@
 		<img alt="Stargazers" src="https://img.shields.io/github/stars/parazeeknova/nyxtext?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=D9E0EE&labelColor=302D41"></a>
 	<a href="https://github.com/parazeeknova/nyxtext/issues">
 		<img alt="Issues" src="https://img.shields.io/github/issues/parazeeknova/nyxtext?style=for-the-badge&logo=gitbook&color=B5E8E0&logoColor=D9E0EE&labelColor=302D41"></a>
-    <a href="https://github.com/catppuccin/catppuccin/releases/latest">
+    <a href="https://github.com/parazeeknova/nyxtext/releases/latest">
     <img alt="Maintained" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
 		<img alt="Releases" src="https://img.shields.io/github/release/parazeeknova/nyxtext.svg?style=for-the-badge&logo=github&color=F2CDCD&logoColor=D9E0EE&labelColor=302D41"/></a>
 </p>
@@ -85,8 +85,8 @@
 > [!IMPORTANT]
 > Because the application is not signed by Microsoft, Windows Defender blocks it; add an exclusion in Defender to run the application. Its a false positive, the application is safe to use. or build it yourself from the source code.
 
-> [!NOTE] 
-> NyxNote is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
+> [!NOTE]
+> Nyxtext is a work in progress. We appreciate any contributions, understanding that the project may have bugs, instability, and limited features during the time of active development. Please check back or join our Discord server to see our progress! 
 
 ### ✨ Installing Nyxtext
 
@@ -191,7 +191,8 @@ The number of themes is not definite, we will be adding more in the future, Also
 - **Immersive Mode** Fullscreen mode for distraction-free writing. (hides titlebar)
 - **Accent** Picks accent color for the editor (border, title) from you windows theme (windows)
 - **Glassmorphic** design for the editor (windows)
-- ***More Soon...***
+
+***More Soon...***
 
 &nbsp;
 
@@ -287,7 +288,7 @@ Because Nyxtext is better.
 ### 👐 Contributing
 
 > [!NOTE]<br>
-> Thank you for considering contributing to NyxNote! We welcome contributions from everyone, whether you're fixing a bug, adding a feature, or improving documentation.
+> Thank you for considering contributing to Nyxtext! We welcome contributions from everyone, whether you're fixing a bug, adding a feature, or improving documentation.
 
 See [CONTRIBUTING.md](../docs/CONTRIBUTING.md)
 
@@ -296,7 +297,7 @@ See [CONTRIBUTING.md](../docs/CONTRIBUTING.md)
 ### 📜 License
 
 NyxText is released under the MIT license:
-For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/nyxtext/blob/main/LICENSE).
+For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/nyxtext/LICENSE).
 
 &nbsp;
 
@@ -317,4 +318,4 @@ Thanks for the initial development of the project, contributing this project :
 ![Love](http://ForTheBadge.com/images/badges/built-with-love.svg)
 </div>
 <p align="center">Copyright &copy; 2024-present <a href="https://github.com/parazeeknova/nyxtext" target="_blank">NyxText</a>
-<p align="center"><a href="https://github.com/parazeeknova/nyxtext/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=302d41&colorB=b7bdf8"/></a></p>
+<p align="center"><a href="https://github.com/parazeeknova/nyxtext/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=302d41&colorB=b7bdf8"/></a></p>
