@@ -17,5 +17,6 @@ Report security bugs in third-party modules to the person or team maintaining th
 
 | Version | Supported          |
 | ------- | ------------------ |
-| v0.1.0-closed-alpha   | :white_check_mark: |
+| alpha builds  | :white_check_mark: |
+| v0.1.0-closed-alpha   | :x: |
 | v0.0.1-alpha-firstrelease  | :x:                |
