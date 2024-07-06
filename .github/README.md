@@ -297,7 +297,7 @@ See [CONTRIBUTING.md](../docs/CONTRIBUTING.md)
 ### 📜 License
 
 NyxText is released under the MIT license:
-For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/nyxtext/LICENSE).
+For more convoluted language, see the [LICENSE](https://github.com/parazeeknova/nyxtext/blob/main/LICENSE).
 
 &nbsp;
 
@@ -318,4 +318,4 @@ Thanks for the initial development of the project, contributing this project :
 ![Love](http://ForTheBadge.com/images/badges/built-with-love.svg)
 </div>
 <p align="center">Copyright &copy; 2024-present <a href="https://github.com/parazeeknova/nyxtext" target="_blank">NyxText</a>
-<p align="center"><a href="https://github.com/parazeeknova/nyxtext/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=302d41&colorB=b7bdf8"/></a></p>
+<p align="center"><a href="https://github.com/parazeeknova/nyxtext/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=MIT&logoColor=d9e0ee&colorA=302d41&colorB=b7bdf8"/></a></p>
