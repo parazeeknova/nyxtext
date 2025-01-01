@@ -234,13 +234,6 @@ The number of themes is not definite, we will be adding more in the future, Also
 - [ ] There is no dynamic heading.
 - [ ] Search bar does not work.
 
----
-### 🛹 Development : 
-
-![Alt](https://repobeats.axiom.co/api/embed/48b536e2dca4bf56e257d45398e6c692872b17bb.svg "Repobeats analytics image")
-
----
-
 ## ❓ FAQs:
 
 ### What's new in the latest NyxText release?
